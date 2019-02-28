@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import CodeMirror from '@uiw/react-codemirror';
+import markdownIt from 'markdown-it';
+import highlightjs from 'highlight.js';
+import 'highlight.js/styles/github.css';
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 
@@ -9,16 +12,18 @@ import 'codemirror/theme/monokai.css';
 import { CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN } from './utils/constant.js';
 import { queryParse, axiosJSON, axiosGithub } from './utils/helper';
 
-const code = '# guan peng shi zhu chou zhu da chou zhu';
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       failed: '',
       isFullScreen: false,
-      content: '',
+      content: '# Guan Peng is a chou Pig',
       title: '',
-      code: ''
+      code: '',
+      marked_text: ''
     };
     const CODE = queryParse().code;
     this.state.code = CODE;
@@ -29,6 +34,21 @@ class App extends Component {
     if (TOKEN) {
       axios.defaults.headers.common['Authorization'] = `token ${TOKEN}`;
     }
+
+    this.md = new markdownIt({
+      highlight: (str, lang) => {
+        console.log(' come in', str, lang);
+        if (lang && highlightjs.getLanguage(lang)) {
+          try {
+            return '<pre class="hljs"><code>' +
+              highlightjs.highlight(lang, str, true).value +
+              '</code></pre>';
+          } catch (__) { }
+        }
+        return '<pre class="hljs"><code>' + this.md.utils.escapeHtml(str) + '</code></pre>';
+      }
+    });
+
   }
 
   createRepo = async () => {
@@ -49,8 +69,12 @@ class App extends Component {
     console.log(this.state.title);
   }
 
-  changeContent = (event) => {
-    this.setState({ content: event.target.value });
+  changeContent = (editor, changeObj) => {
+    console.log(editor.getValue());
+    console.log(changeObj)
+    let editorContent = editor.getValue();
+    let markedContent = this.md.render(editorContent);
+    this.setState({ content: editorContent, marked_text: markedContent });
     console.log(this.state.content);
   }
 
@@ -103,30 +127,50 @@ class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="App">
-        <button onClick={this.login}>点击登录</button>
 
-        <button onClick={this.fullScreen} id="goFS">
-          {this.state.isFullScreen ? 'ON' : 'OFF'}
-        </button>
-        <button onClick={this.createRepo} id="createRepo">
-          Create a New Repo
-      </button>
-        <input id="fileName" type='text' value={this.state.title} onChange={this.changeTitle} />
-        <input id="fileContent" type="text" value={this.state.content} onChange={this.changeContent} />
-        <button onClick={this.commitFile} id="commitFile">
-          commit the file
-      </button>
-        <CodeMirror
-          value={code}
-          options={{
-            theme: 'monokai',
-            keyMap: 'sublime',
-            mode: 'markdown',
-          }}
-        />
+        <div className="navi-bar">
+          <div className="left-nav"></div>
+          <div className="right-nav"></div>
+
+          <button onClick={this.login}>点击登录</button>
+
+          <button onClick={this.fullScreen} id="goFS">
+            {this.state.isFullScreen ? '取消全屏' : '全屏'}
+          </button>
+
+          <button onClick={this.createRepo} id="createRepo">
+            Create a New Repo
+          </button>
+
+          <input id="fileName" type='text' value={this.state.title} onChange={this.changeTitle} />
+          <button onClick={this.commitFile} id="commitFile">
+            commit the file
+          </button>
+
+        </div>
+
+
+        <div className="text-container">
+          <div className="written-area text-box">
+            <CodeMirror
+              value={this.state.content}
+              options={{
+                theme: '3024-day',
+                keyMap: 'sublime',
+                mode: 'markdown',
+              }}
+              onChange={this.changeContent}
+            />
+          </div>
+
+          <div className="divide-bar"></div>
+
+          <div id="marked-text" className="text-box" dangerouslySetInnerHTML={{ __html: this.state.marked_text }}></div>
+        </div>
 
       </div>
     );

@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -29,4 +31,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* my style */
+.navi-bar{
+  display:flex;
+  justify-content: space-between;
+}
+
+.text-container{
+  display: flex;
+  justify-content: center;
+  height: 93vh;
+  margin:20px 10px;
+}
+.text-box{
+  width:50%;
+  margin:10px;
+  height: 93vh;
+}
+.divide-bar{
+  width:8px;
+  height:100%;
+  border-left: 1px solid rgba(218,218,218,0.5)
+}
+.written-area{
+  /* flex:auto; */
+  
+}
+#marked-text{
+  /* flex:auto;  */
+  overflow: scroll;
 }
