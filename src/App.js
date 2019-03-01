@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './markdown-css/markdown.css';
 import axios from 'axios';
 import CodeMirror from '@uiw/react-codemirror';
 import markdownIt from 'markdown-it';
@@ -20,7 +21,7 @@ class App extends Component {
     this.state = {
       failed: '',
       isFullScreen: false,
-      content: '# Guan Peng is a chou Pig',
+      content: '### Guan Peng is a chou Pig',
       title: '',
       code: '',
       marked_text: ''
@@ -127,6 +128,12 @@ class App extends Component {
     }
   }
 
+  changeTheme = () => {
+    var el = document.getElementById('markdown-theme');
+    el.type = "text/css";
+    el.href = './markdown-css/test.css';
+  }
+
 
   render() {
     return (
@@ -150,6 +157,8 @@ class App extends Component {
           <button onClick={this.commitFile} id="commitFile">
             commit the file
           </button>
+
+          <button onClick={this.changeTheme}>Change the Style</button>
 
         </div>
 
