@@ -46,7 +46,7 @@
   margin:20px 10px;
 }
 .text-box{
-  width:50%;
+  flex:1;
   margin:10px;
   height: 93vh;
 }
@@ -55,11 +55,8 @@
   height:100%;
   border-left: 1px solid rgba(218,218,218,0.5)
 }
-.written-area{
-  /* flex:auto; */
-  
-}
+
 #marked-text{
   /* flex:auto;  */
-  overflow: scroll;
+  overflow-y: scroll;
 }
