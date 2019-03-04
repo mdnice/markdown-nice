@@ -47,8 +47,10 @@
 }
 .text-box{
   flex:1;
+  width:50%;
   margin:10px;
   height: 93vh;
+  word-wrap: break-word; 
 }
 .divide-bar{
   width:8px;

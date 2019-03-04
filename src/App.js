@@ -49,6 +49,7 @@ class App extends Component {
       }
     });
     this.scale = 1;
+    this.hasContentChanged = true;
   }
 
   createRepo = async () => {
@@ -138,27 +139,34 @@ class App extends Component {
     el.href = `./markdown-css/${event.target.value}.css`;
   }
 
-  setCurrentIndex(index, e) {
+  setCurrentIndex(index) {
     this.index = index;
-    console.log(e);
+    console.log(this.index);
   }
 
+  getInstance = (instance) => {
+    if (instance) {
+      this.codemirror = instance.codemirror;
+      this.editor = instance.editor;
+    }
+  }
+  
   containerScroll = () => {
-    let cmData = this.cm.getScrollInfo();
+    let cmData = this.editor.getScrollInfo();
     console.log(cmData);
     let editorToTop = cmData.top;
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
-    this.hasContentChanged && this.setScrollValue(editorScrollHeight);
-    this.previewContainer.scrollTop = editorToTop * this.scale;
-
-
-
+    // this.hasContentChanged && 
+    this.setScrollValue(editorScrollHeight);
+    if (this.index === 1) {
+      this.previewContainer.scrollTop = editorToTop * this.scale;
+    } else {
+      this.editorTop = this.previewContainer.scrollTop / this.scale;
+      this.editor.scrollTo(null,this.editorTop);
+    }
   }
-  containerScroll2 = () => {
-    //   e.scrollIntoView();
-    //   this.editContainer.scrollTop = this.previewContainer.scrollTop / this.scale;
-  }
+
   setScrollValue = (editorScrollHeight) => {
     // 设置值，方便 scrollBy 操作
     this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight) / editorScrollHeight;
@@ -171,23 +179,9 @@ class App extends Component {
     console.log(e.getScrollInfo());
     this.cm = e;
   }
-  render() {
-    const cm = <CodeMirror
-    value={this.state.content}
-    options={{
-      theme: '3024-day',
-      keyMap: 'sublime',
-      mode: 'markdown',
-      lineWrapping: true,
-      autofocus: true,
-    }} id="marked-editor"
-    onChange={this.changeContent}
-    // onMouseOver={(e) => this.setCurrentIndex(1, e)}
-    // onScroll={this.containerScroll}
-    onFocus={this.focusTest}
 
-  />
-  console.log(cm)
+  render() {
+
     return (
       <div className="App">
 
@@ -222,7 +216,7 @@ class App extends Component {
 
 
         <div className="text-container">
-          <div className="text-box">
+          <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
 
             <CodeMirror
               value={this.state.content}
@@ -234,20 +228,20 @@ class App extends Component {
                 autofocus: true,
               }} id="marked-editor"
               onChange={this.changeContent}
-              // onMouseOver={(e) => this.setCurrentIndex(1, e)}
-              // onScroll={this.containerScroll}
-
+              
+              onScroll={this.containerScroll}
+              ref={this.getInstance}
               onFocus={this.focusTest}
-          
+
             />
 
           </div>
 
           {/* <div className="divide-bar"></div> */}
 
-          <div id="marked-text" className="text-box" 
-          // onScroll={this.containerScroll} 
-          // onMouseOver={(e) => this.setCurrentIndex(2, e)} ref={node => this.previewContainer = node}
+          <div id="marked-text" className="text-box"
+            onScroll={this.containerScroll}
+            onMouseOver={(e) => this.setCurrentIndex(2, e)} ref={node => this.previewContainer = node}
           >
 
             <div ref={node => this.previewWrap = node} dangerouslySetInnerHTML={{ __html: this.state.marked_text }}></div>
