@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 import '../App.css'
 import axios from 'axios';
+import githubIcon from '../icon/github.svg'
+import fullscreenIcon from '../icon/fullscreen.svg'
 
 import { CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN } from '../utils/constant.js';
 import { queryParse, axiosJSON, axiosGithub } from '../utils/helper';
+
+// Material Design 
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
+
+
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+    borderRadius: 0,
+  },
+});
 
 
 class Navbar extends Component {
@@ -41,8 +59,6 @@ class Navbar extends Component {
     this.setState({ title: event.target.value });
     console.log(this.state.title);
   }
-
-
 
   login = () => {
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=public_repo`;
@@ -88,10 +104,13 @@ class Navbar extends Component {
   //commit the file
 
   commitFile = async () => {
+
+    console.log(this.props.content);
     try {
       const response = await axiosGithub.put(`/repos/zhning12/markdown_example/contents/${this.state.title}.md`, {
         "message": "I am the commit message",
-        "content": btoa(this.state.content)
+        // "content": btoa(this.state.content)
+        "content": btoa(this.props.content)
       });
       console.log(response);
     } catch (error) {
@@ -100,16 +119,24 @@ class Navbar extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div className="navi-bar">
         <div className="left-nav"></div>
         <div className="right-nav"></div>
+        <Tooltip title="Log in GitHub" enterDelay={500} leaveDelay={200}>
+          <IconButton className={classes.button} onClick={this.login}>
+            <img src={githubIcon} alt="log in"></img>
+          </IconButton>
+        </Tooltip>
 
-        <button onClick={this.login}>点击登录</button>
+        <IconButton className={classes.button} aria-label="Delete">
+          <DeleteIcon />
+        </IconButton>
 
-        <button onClick={this.fullScreen} id="goFS">
-          {this.state.isFullScreen ? '取消全屏' : '全屏'}
-        </button>
+        <IconButton className={classes.button} onClick={this.fullScreen} id="goFS">
+          <img src={fullscreenIcon} alt="full screen"></img>
+        </IconButton>
 
         <button onClick={this.createRepo} id="createRepo">
           Create a New Repo
@@ -133,4 +160,8 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Navbar);

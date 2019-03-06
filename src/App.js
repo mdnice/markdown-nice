@@ -86,8 +86,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar></Navbar>
-
+        <Navbar content={this.state.content}></Navbar>
+      
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
 
