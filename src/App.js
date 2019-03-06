@@ -8,18 +8,17 @@ import 'highlight.js/styles/github.css';
 import 'codemirror/keymap/sublime';
 import 'codemirror/theme/monokai.css';
 
-import { MARKDOWN_EXAMPLE } from './utils/constant.js';
+import { observer, inject } from "mobx-react";
 
-
-
+@inject("content")
+@observer
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       failed: '',
-      content: MARKDOWN_EXAMPLE,
       title: '',
-      marked_text: ''
+      markedText: ''
     };
 
     this.md = new markdownIt({
@@ -38,13 +37,8 @@ class App extends Component {
     this.hasContentChanged = true;
   }
 
-
-
-
-
   setCurrentIndex(index) {
     this.index = index;
-    console.log(this.index);
   }
 
   getInstance = (instance) => {
@@ -71,9 +65,9 @@ class App extends Component {
   changeContent = (editor, changeObj) => {
     let editorContent = editor.getValue();
     let markedContent = this.md.render(editorContent);
+    this.props.content.updateContent(editorContent);
     this.setState({
-      content: editorContent,
-      marked_text: markedContent
+      markedText: markedContent
     });
     this.hasContentChanged = true;
   }
@@ -86,13 +80,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar content={this.state.content}></Navbar>
+        <Navbar></Navbar>
       
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
 
             <CodeMirror
-              value={this.state.content}
+              value={this.props.content.commitContent}
               options={{
                 theme: '3024-day',
                 keyMap: 'sublime',
@@ -101,11 +95,9 @@ class App extends Component {
                 autofocus: true,
               }} id="marked-editor"
               onChange={this.changeContent}
-
               onScroll={this.containerScroll}
               ref={this.getInstance}
             />
-
           </div>
 
           <div id="marked-text" className="text-box"
@@ -113,7 +105,7 @@ class App extends Component {
             onMouseOver={(e) => this.setCurrentIndex(2, e)} ref={node => this.previewContainer = node}
           >
 
-            <div ref={node => this.previewWrap = node} dangerouslySetInnerHTML={{ __html: this.state.marked_text }}></div>
+            <div ref={node => this.previewWrap = node} dangerouslySetInnerHTML={{ __html: this.state.markedText }}></div>
 
           </div>
         </div>

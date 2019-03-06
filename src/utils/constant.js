@@ -1,5 +1,7 @@
-export const CLIENT_ID = 'e791aa2a7a64b3f766a2';
-export const CLIENT_SECRET = 'e80cde65c7071286086077892f3336bc2a3f4576';
+export const CLIENT_ID = process.env.NODE_ENV === 'development' ? 'e791aa2a7a64b3f766a2' : 'b3a3c46bd66318367efa';
+export const CLIENT_SECRET =
+    process.env.NODE_ENV === 'development' ? 'e80cde65c7071286086077892f3336bc2a3f4576' : 'dfd9fdc1da6a6b10e473280bf0a379513f1d154d';
+
 export const PROXY = 'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token';
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 
@@ -65,7 +67,6 @@ export const MARKDOWN_EXAMPLE = `在文字写书写不同数量的#可以完成�
 <http://example.com/> or <address@example.com> 
 插入互联网上图片，格式如下：
 ![这里写图片描述](https://user-images.githubusercontent.com/13995641/46252312-c8a38480-c499-11e8-8e91-3aba030facf6.jpg)
-![这里写图片描述][jane-eyre-douban] 
 
 用TAB键起始的段落，会被认为是代码块，如下：
     <php> 

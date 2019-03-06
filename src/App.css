@@ -37,19 +37,35 @@
 .navi-bar{
   display:flex;
   justify-content: space-between;
+  margin:10px;
+}
+.left-nav{
+  flex:1;
+  display:flex;
+  justify-content: flex-start;
+  align-items:center;
+
+}
+.title-container{
+  width:90%;
+  display:flex;
+  align-items:center;
+}
+.right-nav{
+  flex:1;
+  display:flex;
+  justify-content: flex-end;
 }
 
 .text-container{
   display: flex;
   justify-content: center;
-  height: 93vh;
-  margin:20px 10px;
+  height: 92vh;
+  margin-left:10px;
 }
 .text-box{
-  flex:1;
   width:50%;
   margin:10px;
-  height: 93vh;
   word-wrap: break-word; 
 }
 .divide-bar{
@@ -59,6 +75,5 @@
 }
 
 #marked-text{
-  /* flex:auto;  */
   overflow-y: scroll;
 }
