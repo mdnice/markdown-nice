@@ -35,9 +35,11 @@
 
 /* my style */
 .navi-bar{
+  /* height:60px; */
   display:flex;
   justify-content: space-between;
-  margin:10px;
+  flex:none;
+  padding:10px;
 }
 .left-nav{
   flex:1;
@@ -60,12 +62,15 @@
 .text-container{
   display: flex;
   justify-content: center;
-  height: 92vh;
-  margin-left:10px;
+  flex-grow:1;
+
+  /* height:calc(100vh-60px); */
+  height: 91vh;
+  padding-left:10px;
 }
 .text-box{
   width:50%;
-  margin:10px;
+  padding:10px;
   word-wrap: break-word; 
 }
 .divide-bar{
