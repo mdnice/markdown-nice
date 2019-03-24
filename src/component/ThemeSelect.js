@@ -1,9 +1,7 @@
 import React from 'react';
-import NavIcon from './NavIcon'
 import themeIcon from '../icon/theme.svg';
-
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Button, Icon, Menu, Dropdown, } from 'antd';
+import 'antd/dist/antd.css';
 
 const options = [
   {
@@ -28,23 +26,17 @@ const options = [
   },
 ]
 
-const ITEM_HEIGHT = 48;
-
 class ThemeSelect extends React.Component {
   state = {
-    anchorEl: null,
-    themeValue:'normal'
+    themeValue: 'normal',
+    themeName: '默认样式'
   };
 
-  handleClick = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = (value, event) => {
-    this.setState({ anchorEl: null });
-    event.persist();
-    this.selectTheme(value);
-  };
+  changeTheme = (item) => {
+    let index = item.key;
+    this.selectTheme(options[index].value);
+    this.setState({ themeName: options[index].name });
+  }
 
   selectTheme = (value) => {
     this.setState({ themeValue: value });
@@ -53,30 +45,22 @@ class ThemeSelect extends React.Component {
   }
 
   render() {
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    const menu = (
+      <Menu onClick={this.changeTheme}>
+        {options.map((option, index) => (
+          <Menu.Item key={index}  > <Icon type="user" /> {option.name}</Menu.Item>
+        ))}
+      </Menu>
+    );
 
     return (
       <div>
-        <NavIcon title="change the theme" onClick={this.handleClick} src={themeIcon} alt="change the theme"></NavIcon>
-        <Menu
-            id="long-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={this.handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: 200,
-              },
-            }}
-          >
-            {options.map(option => (
-              <MenuItem key={option.value} selected={option.value === 'normal'} onClick={(e) => this.handleClose(option.value, e)} value={option.value}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </Menu>
+        <Dropdown overlay={menu}>
+          <Button style={{ marginLeft: 8 }}>
+            {this.state.themeName}
+            <Icon component={themeIcon} style={{ fontSize: "18px" }}></Icon>
+          </Button>
+        </Dropdown>
       </div>
     );
   }

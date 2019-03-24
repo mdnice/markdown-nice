@@ -65,6 +65,7 @@ class App extends Component {
     }
   }
   changeContent = (editor, changeObj) => {
+
     let editorContent = editor.getValue();
     let markedContent = this.md.render(editorContent);
     this.props.content.updateContent(editorContent);

@@ -5,6 +5,9 @@ import ThemeSelect from '../component/ThemeSelect'
 import Save from '../component/Save'
 import LogIn from '../component/LogIn'
 
+import fullscreen from '../icon/fullscreen.svg'; // path to your '*.svg' file.
+
+
 import { observer, inject } from "mobx-react"
 
 import TextField from '@material-ui/core/TextField';
@@ -41,6 +44,8 @@ class Navbar extends Component {
           </button> */}
           <FullScreen></FullScreen>
           <LogIn></LogIn>
+
+
         </div>
       </div>
 

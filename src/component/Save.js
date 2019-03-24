@@ -1,9 +1,12 @@
 import React from 'react';
-import NavIcon from './NavIcon';
-import saveIcon from '../icon/save.svg'
 
+import { Tooltip, Button,Icon } from 'antd';
+import 'antd/dist/antd.css';
+
+import SaveIcon from '../icon/save.svg';
 import { observer, inject } from "mobx-react";
 import { axiosGithub, transCode } from '../utils/helper';
+
 
 @inject("content")
 @inject("title")
@@ -49,7 +52,12 @@ class Save extends React.Component {
 
   render() {
     return (
-      <NavIcon title="保存提交" onClick={this.commitFile} src={saveIcon} alt="save it to github"></NavIcon>
+      <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title="保存提交">
+        <Button style={{padding:"0 8px"}} onClick={this.commitFile}>
+          <Icon component={SaveIcon} style={{ fontSize: "18px"}}></Icon>
+        </Button>
+      </Tooltip>
+
     );
   }
 }

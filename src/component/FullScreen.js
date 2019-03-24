@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import fullscreenIcon from '../icon/fullscreen.svg';
-import NavIcon from './NavIcon'
+
+import { Tooltip, Button, Icon } from 'antd';
+import 'antd/dist/antd.css';
 
 class FullScreen extends Component {
   constructor(props) {
@@ -32,7 +34,12 @@ class FullScreen extends Component {
 
   render() {
     return (
-      <NavIcon title="全屏" onClick={this.fullScreen} src={fullscreenIcon} alt="full screen"></NavIcon>
+      <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title="全屏">
+        <Button style={{ padding: "0 8px" }} onClick={this.fullScreen}>
+          <Icon component={fullscreenIcon} style={{ fontSize: "18px" }}></Icon>
+        </Button>
+      </Tooltip>
+
     );
   }
 }
