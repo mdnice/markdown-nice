@@ -2,6 +2,9 @@
   height: 100vh;
   display:flex;
   flex-direction: column;
+  font-family: 'PingFang SC', BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serifhtml, body;
+  font-size:16px;
+;
 }
 
 .App-logo {
@@ -35,14 +38,14 @@
 
 /* my style */
 .navi-bar{
-  /* height:60px; */
+  height:64px;
   display:flex;
   justify-content: space-between;
   flex:none;
-  padding:10px;
+  padding:20px;
 }
 .left-nav{
-  flex:1;
+  flex:1 1 33.33%;
   display:flex;
   justify-content: flex-start;
   align-items:center;
@@ -54,23 +57,22 @@
   align-items:center;
 }
 .right-nav{
-  flex:1;
+  flex:1 1 66.66%;
   display:flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .text-container{
   display: flex;
   justify-content: center;
   flex-grow:1;
-
-  /* height:calc(100vh-60px); */
   height: 91vh;
   padding-left:10px;
 }
 .text-box{
   width:50%;
-  padding:10px;
+  padding:20px;
   word-wrap: break-word; 
 }
 .divide-bar{
@@ -80,6 +82,32 @@
 }
 
 #marked-text{
-  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+ 
 }
 
+.wx-box{
+  overflow-y: scroll;
+  width: 375px;
+  height:100%;
+  padding: 20px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.1);
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: rgba(0,0,0,0.06);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0,0,0,0.12);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}

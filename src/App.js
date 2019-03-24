@@ -55,10 +55,10 @@ class App extends Component {
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
     // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
     this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 44) / editorScrollHeight;
-    console.log('(this.previewWrap.offsetHeight:',this.previewWrap.offsetHeight,'this.previewContainer.offsetHeight:',this.previewContainer.offsetHeight)
+    console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
     console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
-      this.previewContainer.scrollTop = editorToTop  * this.scale;
+      this.previewContainer.scrollTop = editorToTop * this.scale;
     } else {
       this.editorTop = this.previewContainer.scrollTop / this.scale;
       this.editor.scrollTo(null, this.editorTop);
@@ -84,7 +84,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar></Navbar>
-      
+
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
 
@@ -104,13 +104,13 @@ class App extends Component {
           </div>
 
           <div id="marked-text" className="text-box"
-            onScroll={this.containerScroll}
-            onMouseOver={(e) => this.setCurrentIndex(2, e)} ref={node => this.previewContainer = node}
+            onMouseOver={(e) => this.setCurrentIndex(2, e)} 
           >
-
-            <div ref={node => this.previewWrap = node} dangerouslySetInnerHTML={{ __html: this.state.markedText }}></div>
-
-          </div>
+            <div className="wx-box" onScroll={this.containerScroll} ref={node => this.previewContainer = node}>
+              <div dangerouslySetInnerHTML={{ __html: this.state.markedText }} ref={node => this.previewWrap = node} ></div>
+            </div>
+              
+            </div>
         </div>
 
       </div>

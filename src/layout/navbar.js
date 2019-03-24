@@ -4,14 +4,9 @@ import FullScreen from '../component/FullScreen'
 import ThemeSelect from '../component/ThemeSelect'
 import Save from '../component/Save'
 import LogIn from '../component/LogIn'
-
-import fullscreen from '../icon/fullscreen.svg'; // path to your '*.svg' file.
-
+import { Input } from 'antd';
 
 import { observer, inject } from "mobx-react"
-
-import TextField from '@material-ui/core/TextField';
-
 
 @inject("title")
 @observer
@@ -26,13 +21,8 @@ class Navbar extends Component {
       <div className="navi-bar">
         <div className="left-nav">
           <div className="title-container">
-            <TextField
-              style={{ margin: 8 }}
-              placeholder="标题"
-              fullWidth
-              margin="normal"
-              value={this.props.title.title} onChange={this.changeTitle}
-            />
+            <Input placeholder="标题" allowClear style={{ margin: 8 }} value={this.props.title.title} onChange={this.changeTitle} />
+
           </div>
 
         </div>
