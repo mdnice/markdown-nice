@@ -1,5 +1,5 @@
-/*可任意修改样式，或恢复预设值，保存后生效
-相对“默认样式”而作的修改会用  红色 标注*/
+/*可任意修改样式，或恢复预设值，保存后生效*/
+
 
 .output_wrapper/*此属性为全局*/
 {
@@ -26,7 +26,6 @@ h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
 }
-
 h1 {
   font-size: 1.6em  ;
  
@@ -46,23 +45,26 @@ h5 {
 h6 {
   font-size: 1em;
 }
-h3
-{/*增加对H3标题属性的修改*/
-  margin-bottom:2em;
-  margin-right: 5px;
-  padding: 8px 15px;
-  letter-spacing: 2px;
-  background-image: linear-gradient(to right bottom, rgb(0, 188, 212), rgb(63, 81, 181));
-  background-color: rgb(63, 81, 181);
-  color: rgb(255, 255, 255);
-  border-left: 10px solid rgb(51, 51, 51);
-  border-radius:5px;
-  text-shadow: rgb(102, 102, 102) 1px 1px 1px;
-  box-shadow: rgb(102, 102, 102) 1px 1px 2px;
-  
- 
+h3{/*增加对h3标题的修改*/
+  border-bottom:2px  solid   #EC4444;
 }
-
+h3 span{/*增加对h3标题字体的修改*/
+  display:inline-block;
+  font-weight:normal;
+  background: #EC4444;
+  color:#ffffff;
+  padding:3px 10px 0px;
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px; 
+  margin-right:3px;
+}
+h3:after{/*增加对h3标题后面的修饰*/
+  display: inline-block; 
+  content:" "; 
+  vertical-align: bottom;
+  border-bottom: 36px solid #EFEBE9;
+  border-right: 20px solid transparent; 
+}
 ul, ol {
   padding-left: 32px;
 }
@@ -100,7 +102,7 @@ li{  /*在公众号下，改变不了li符号的属性（如颜色），并会�
 pre code /*代码块*/
 {           
      font-family: Consolas, Inconsolata, Courier, monospace;
-    border-radius: 0px;
+      border-radius: 0px;
 }
 blockquote { /*引用块*/
   display: block;
@@ -212,6 +214,8 @@ table tr th {
   background-color: #F0F0F0;
 }
 /*================表格结束================*/
+
+
 
 /*================数学公式开始================*/
 .katex-display {/*块公式*/

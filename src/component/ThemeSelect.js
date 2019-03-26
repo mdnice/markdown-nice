@@ -45,7 +45,14 @@ class ThemeSelect extends React.Component {
   }
 
   render() {
-    const menu = (
+    const mdMenu = (
+      <Menu onClick={this.changeTheme}>
+        {options.map((option, index) => (
+          <Menu.Item key={index}  > <Icon type="user" /> {option.name}</Menu.Item>
+        ))}
+      </Menu>
+    );
+    const codeMenu = (
       <Menu onClick={this.changeTheme}>
         {options.map((option, index) => (
           <Menu.Item key={index}  > <Icon type="user" /> {option.name}</Menu.Item>
@@ -55,7 +62,13 @@ class ThemeSelect extends React.Component {
 
     return (
       <div>
-        <Dropdown overlay={menu}>
+        <Dropdown overlay={mdMenu}>
+          <Button style={{ marginLeft: 8 }}>
+            {this.state.themeName}
+            <Icon component={themeIcon} style={{ fontSize: "18px" }}></Icon>
+          </Button>
+        </Dropdown>
+        <Dropdown overlay={codeMenu}>
           <Button style={{ marginLeft: 8 }}>
             {this.state.themeName}
             <Icon component={themeIcon} style={{ fontSize: "18px" }}></Icon>
