@@ -68,10 +68,12 @@
   justify-content: center;
   flex-grow:1;
   height: 91vh;
+  width:100%;
   padding-left:10px;
 }
 .text-box{
-  width:50%;
+  /* width:50%; */
+  flex:1;
   padding:20px;
   word-wrap: break-word; 
 }

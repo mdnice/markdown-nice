@@ -85,11 +85,7 @@ class App extends Component {
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
     // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
-    this.scale =
-      (this.previewWrap.offsetHeight -
-        this.previewContainer.offsetHeight +
-        44) /
-      editorScrollHeight;
+    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight+55) / editorScrollHeight;
     // console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
     // console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
@@ -119,13 +115,9 @@ class App extends Component {
       let codeStyle = codeEl.href;
       const codeRes = await axios.get(codeStyle);
 
-      let htmlStr = `<section class="output_wrapper">${
-        this.state.markedText
-      }</section>`;
-      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, {
-        inlinePseudoElements: true
-      });
-      this.setState({ resultHtml: result });
+      let htmlStr = `<section class="output_wrapper">${this.state.markedText}</section>`;
+      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, { inlinePseudoElements: true });
+      this.setState({resultHtml:result});
       console.log(result);
       this.copyToClip(result);
     } catch (error) {
