@@ -27,6 +27,7 @@ class App extends Component {
       title: '',
       markedText: '',
       cssStyle: '',
+      resultHtml:''
     };
 
     this.md = new markdownIt({
@@ -82,43 +83,35 @@ class App extends Component {
       this.editor.scrollTo(null, this.editorTop);
     }
   }
-  changeContent = (editor, changeObj) => {
 
+  changeContent = (editor, changeObj) => {
     let editorContent = editor.getValue();
     let markedContent = this.md.render(editorContent);
     this.props.content.updateContent(editorContent);
     this.setState({
       markedText: markedContent
     });
-
-    // this.hasContentChanged = true;
-
-    // setScrollValue = (editorScrollHeight) => {
-    //   // 设置值，方便 scrollBy 操作
-    //   this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight) / editorScrollHeight;
   }
-  // getCss = () => {
-  //   this.getMdStyle();
-  //   this.getCodeStyle();
-  // }
+
   getCss = async () => {
     try {
-      let el = document.getElementById('markdown-theme');
-      let cssStyle = el.href;
-      const response = await axios.get(cssStyle);
-      let codeStyle = await axios.get('./code-styles/railscasts.css');
-      // console.log(response.data);
-      // this.setState({ cssStyle: response.data });
-      var result = juice.inlineContent(this.state.markedText, response.data + codeStyle.data, { inlinePseudoElements: true });
+      let mdEl = document.getElementById('markdown-theme');
+      let mdStyle = mdEl.href;
+      const mdRes = await axios.get(mdStyle);
+
+      let codeEl = document.getElementById('code-theme');
+      let codeStyle = codeEl.href;
+      const codeRes = await axios.get(codeStyle);
+
+      let htmlStr = `<div class="output_wrapper">${this.state.markedText}</div>`;
+      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, { inlinePseudoElements: true });
+      this.setState({resultHtml:result});
       console.log(result);
       this.copyToClip(result);
     } catch (error) {
       console.error(error);
     }
   }
-  // getCodeStyle = async () => {
-  //   try { } catch{ }
-  // }
 
   copyToClip = (str) => {
     function listener(e) {
@@ -130,8 +123,6 @@ class App extends Component {
     document.execCommand("copy");
     document.removeEventListener("copy", listener);
   };
-
-
 
   render() {
     return (
@@ -156,17 +147,14 @@ class App extends Component {
             />
           </div>
 
-          <div id="marked-text" className="text-box"
-            onMouseOver={(e) => this.setCurrentIndex(2, e)}
-          >
+          <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
             <div className="wx-box" onScroll={this.containerScroll} ref={node => this.previewContainer = node}>
-              <div dangerouslySetInnerHTML={{ __html: this.state.markedText }} ref={node => this.previewWrap = node} ></div>
+              <div className="output_wrapper" dangerouslySetInnerHTML={{ __html: this.state.markedText }} ref={node => this.previewWrap = node} ></div>
             </div>
-
           </div>
 
           <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title="点击复制">
-            <Button style={{ padding: "0 8px" }} className="getBtn" onClick={this.getCss}>
+            <Button style={{ padding: "0 8px", color: 'orange' }} className="getBtn" onClick={this.getCss}>
               <Icon component={copyIcon} style={{ fontSize: "18px" }}></Icon>
             </Button>
           </Tooltip>

@@ -17,7 +17,6 @@ p {/*段落*/
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
-  color:#159957;      /*改变了其默认的标题颜色*/
 }
 h1 {
   font-size: 1.6em  ;
@@ -37,6 +36,24 @@ h5 {
 }
 h6 {
   font-size: 1em;
+}
+h3/*增加对h3标题属性的修改*/
+{
+   border-bottom: 2px solid rgb(239,112,96);
+   border-top: 2px solid rgb(239,112,96);
+   margin-bottom:50px;
+   font-size: 1.1em;
+   text-align:center;
+   font-weight:normal;
+   letter-spacing:1px;
+}
+
+h3 span{/*增加对h3标题字体的修改*/
+  display:block;
+  color:#ffffff;
+  background:rgb(239,112,96);
+  padding:  10px  10px;
+  margin:1px 1px;
 }
 
 ul, ol {
@@ -189,6 +206,8 @@ table tr th {
 }
 /*================表格结束================*/
 
+
+
 /*================数学公式开始================*/
 .katex-display {/*块公式*/
   font-size:1.22em; 
@@ -270,4 +289,3 @@ a[href^="#"] sup
 {/*每级目录的缩进*/
   margin-left:25px;
 }
-

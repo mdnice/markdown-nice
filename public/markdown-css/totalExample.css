@@ -1,32 +1,30 @@
 /*可任意修改样式，或恢复预设值，保存后生效
+这是个综合的示例，所以对很多地方都进行了修改
 相对“默认样式”而作的修改会用  红色 标注*/
+
 
 .output_wrapper/*此属性为全局*/
 {
-     font-size: 16px;
+     font-size: 15px;/*更改默认的字体大小*/
      color: #3e3e3e;
-     line-height: 1.6;
-      word-spacing:0px; 
-     letter-spacing:0px;
+     line-height: 1.8; /*更改默认的行距*/
+     word-spacing:2px; /*更改默认的词间距*/
+     letter-spacing:2px;/*更改默认的字符间距*/
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
-}
-.output_wrapper *
-{
-  font-size: inherit  ;
-  color: inherit;
-  line-height: inherit;
-  margin:0px;
-  padding:0px;
+
+     /*增加背景网格*/
+     background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg,rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+     background-size: 20px 20px;
+     background-position: center center;
 }
 
 p {/*段落*/
-  margin: 1.5em 0px;
+  margin: 1.7em 0px;/*更改默认的段落距离*/
 }
 h1,h2,h3,h4,h5,h6 {
-  margin: 1.5em 0px;
+  margin: 1.6em 0px;/*增加默认的标题间距*/
   font-weight:bold;
 }
-
 h1 {
   font-size: 1.6em  ;
  
@@ -46,25 +44,31 @@ h5 {
 h6 {
   font-size: 1em;
 }
-h3/*增加对h3标题属性的修改*/
-{
-  border-bottom: 2px solid rgb(63,63,63);
-  margin-bottom:50px;
-  font-size: 1em;
+
+
+
+h3{/*增加对h3标题的修改*/
+   border-bottom:2px  solid   rgb(239,112,96);
+   font-size: 1.3em;
 }
 h3 span{/*增加对h3标题字体的修改*/
   display:inline-block;
-  background: rgb(63,63,63);
+  font-weight:normal;
+  background:rgb(239,112,96);
   color:#ffffff;
-  padding:  10px  16px;
-  border-radius:5px;
-  box-shadow: 5px 5px 10px black;
+  padding:3px 10px 1px;
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px; 
+  margin-right:3px;
+}
+h3:after{/*增加对h3标题后面的修饰*/
+  display: inline-block; 
+  content:" "; 
+  vertical-align: bottom;
+  border-bottom: 36px solid #EFEBE9;
+  border-right: 20px solid transparent;  
 }
 
-h3 span:before{ /*增加对h3标题before 属性*/
-  content:". "; /*你可以参考这种方法，把它改为图片*/
-  color:#159957; 
-}
 
 ul, ol {
   padding-left: 32px;
@@ -103,7 +107,7 @@ li{  /*在公众号下，改变不了li符号的属性（如颜色），并会�
 pre code /*代码块*/
 {           
      font-family: Consolas, Inconsolata, Courier, monospace;
-    border-radius: 0px;
+     border-radius: 0px;
 }
 blockquote { /*引用块*/
   display: block;
@@ -111,9 +115,12 @@ blockquote { /*引用块*/
   font-size: 0.9em;
   padding-right: 15px;
   margin: 1em 0;
-  color: #819198;
-  border-left: 6px solid #dce6f0;
-  background: #f2f7fb;
+  
+  /*更改默认值*/
+  color: #000000;
+  border-left: 5px solid rgb(239,112,96);
+  background: #EFEBE9;
+  
   overflow: auto;
   overflow-scrolling: touch; 
   word-wrap: normal;
@@ -132,19 +139,25 @@ a { /*超链接*/
 strong  /*强调*/
 {
   font-weight: bold;
+  color:#e96900;/*更改默认的颜色*/
 }
 em /*斜体*/
 {
- font-style:italic;
+ /*font-style:italic;*//*把默认的斜体去掉*/
+ color:#6200EA;/*更改默认的颜色*/
 }
 del /*删除线*/
 {
  font-style:italic;
+ text-decoration:none;/*把默认的删除线去掉*/
+ color:#2962FF;/*更改默认的颜色*/
 }
 strong em/*强调的斜体*/
 {
 font-weight: bold;
+color:#C51162;/*更改默认的颜色*/
 }
+
 
 hr {  /*分隔线*/
   height: 1px;
@@ -153,13 +166,14 @@ hr {  /*分隔线*/
   border-top: 1px dashed #A5A5A5;
 }
 
+
 code /*行内代码*/
 {
     word-wrap: break-word;
     padding: 2px 4px;
     border-radius: 4px;
     margin:0 2px;
-    color:#e96900;
+    color:#f82375;/*更改默认的颜色*/
     background:#f8f8f8;
 }
 img
@@ -196,12 +210,11 @@ table tr {
  
 }
 
-/*隔行改变行的背景色，如需要请打开*/
-/*
+/*隔行改变行的背景色*/
 table tr:nth-child(2n) {
   background-color: #F8F8F8;
 }
-*/
+
 
 table tr th, table tr td {
   font-size: 1em;
@@ -215,6 +228,8 @@ table tr th {
   background-color: #F0F0F0;
 }
 /*================表格结束================*/
+
+
 
 /*================数学公式开始================*/
 .katex-display {/*块公式*/

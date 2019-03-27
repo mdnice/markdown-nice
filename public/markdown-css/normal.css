@@ -10,14 +10,7 @@
      letter-spacing:0px;
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
 }
-.output_wrapper *
-{
-  font-size: inherit  ;
-  color: inherit;
-  line-height: inherit;
-  margin:0px;
-  padding:0px;
-}
+
 
 p {/*段落*/
   margin: 1.5em 0px;

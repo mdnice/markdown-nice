@@ -61,17 +61,13 @@ export const MARKDOWN_EXAMPLE = `在文字写书写不同数量的#可以完成�
 
 在引用中加链接，第一个中括号添加需要添加的文字，第二个中括号中是引用链接的id，之后在引用中，使用id加链接：如下：
 [link text][id] 
+
 [id]: http://example.com/ "optional title here"
 
 在文中直接引用链接，直接使用尖括号，把链接加入到尖括号中就可以实现，如下：
 <http://example.com/> or <address@example.com> 
 插入互联网上图片，格式如下：
 ![这里写图片描述](https://user-images.githubusercontent.com/13995641/46252312-c8a38480-c499-11e8-8e91-3aba030facf6.jpg)
-
-用TAB键起始的段落，会被认为是代码块，如下：
-    <php> 
-        echo “hello world"; 
-    </php>
 
 如果在一个行内需要引用代码，只要用反引号\`引起来就好，如下：
 

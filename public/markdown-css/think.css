@@ -14,14 +14,7 @@
      margin:0px 10%;    /*使两边间距增大*/
      text-align:center; /*使所有居中*/
 }
-.output_wrapper *
-{
-  font-size: inherit  ;
-  color: inherit;
-  line-height: inherit;
-  margin:0px;
-  padding:0px;
-}
+
 
 p {/*段落*/
   margin: 1em 0px;/*改变默认的段间距*/

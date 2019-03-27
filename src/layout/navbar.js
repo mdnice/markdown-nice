@@ -6,7 +6,16 @@ import Save from '../component/Save'
 import LogIn from '../component/LogIn'
 import { Input } from 'antd';
 
-import { observer, inject } from "mobx-react"
+import { observer, inject } from "mobx-react";
+
+import { Button, Icon } from 'antd';
+import delIcon from '../icon/del.svg'
+import boldIcon from '../icon/bold.svg'
+import italicIcon from '../icon/italic.svg'
+import linkIcon from '../icon/link.svg'
+import codeIcon from '../icon/code1.svg'
+
+const ButtonGroup = Button.Group;
 
 @inject("title")
 @observer
@@ -27,6 +36,20 @@ class Navbar extends Component {
 
         </div>
         <div className="right-nav">
+          <ButtonGroup>
+            <Button style={{ padding: "0 8px" }}>
+              <Icon component={delIcon} style={{ fontSize: "18px" }}></Icon></Button>
+            <Button style={{ padding: "0 8px" }}>
+              <Icon component={boldIcon} style={{ fontSize: "18px" }}></Icon></Button>
+            <Button style={{ padding: "0 8px" }}>
+              <Icon component={italicIcon} style={{ fontSize: "18px" }}></Icon></Button>
+          </ButtonGroup>
+          <ButtonGroup style={{marginLeft:'10px'}}>
+            <Button style={{ padding: "0 8px" }}>
+              <Icon component={codeIcon} style={{ fontSize: "18px" }}></Icon></Button>
+            <Button style={{ padding: "0 8px" }}>
+              <Icon component={linkIcon} style={{ fontSize: "18px" }}></Icon></Button>
+          </ButtonGroup>
           <ThemeSelect></ThemeSelect>
           <Save></Save>
           {/* <button onClick={this.createRepo} id="createRepo">

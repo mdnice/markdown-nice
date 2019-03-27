@@ -6,7 +6,7 @@
      font-size: 16px;
      color: #3e3e3e;
      line-height: 1.6;
-      word-spacing:0px; 
+     word-spacing:0px; 
      letter-spacing:0px;
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
 }
@@ -17,7 +17,6 @@ p {/*段落*/
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
-  color:#159957;      /*改变了其默认的标题颜色*/
 }
 h1 {
   font-size: 1.6em  ;
@@ -37,6 +36,23 @@ h5 {
 }
 h6 {
   font-size: 1em;
+}
+h3{/*增加对h3标题的修改*/
+  border-top:2px  solid   #00ACC1;
+}
+h3 span{/*增加对h3标题字体的修改*/
+  display:inline-block;
+  font-weight:normal;
+  background: #00ACC1;
+  color:#ffffff;
+  padding:3px 10px 0px;
+  border-bottom-right-radius: 3px; 
+  border-bottom-left-radius: 4px; 
+  border-bottom: 2px solid #006064;
+  border-right: 3px solid #006064;
+  margin-left:5px;
+  margin-right:2px;
+ /*box-shadow: 2px 2px 15px black;*/
 }
 
 ul, ol {
@@ -189,6 +205,8 @@ table tr th {
 }
 /*================表格结束================*/
 
+
+
 /*================数学公式开始================*/
 .katex-display {/*块公式*/
   font-size:1.22em; 
@@ -270,4 +288,3 @@ a[href^="#"] sup
 {/*每级目录的缩进*/
   margin-left:25px;
 }
-

@@ -1,5 +1,20 @@
+/*此样式比较适合对标题的第一个字做特殊效果，一般像标题序号这些
+
+注：后来发现，用此模板实现的“首字突出”效果，复制到公众号或博客并没有效果，
+所以如果有此需要，请根据下面的步骤用另一方法实现
+1：在此文件下，找到h3 span:first-letter这一行，把此行整行删掉，只留下下面那一行：h3 .firstletter
+2：直接用html来实现“首字突出”的效果，如，在编辑markdown内容的地方，把内容由之前的：
+###1试试首字突出 
+改为：
+###<span class="firstletter">1</span>试试首字突出
+其中class="firstletter"会指到用h3 .firstletter{}中的样式，1为你想突出的数字，当然可以为任何你想要的数字
+h3 .firstletter{}只是个例子，如果你想h1就用：h1 .firstletter{}就Ok
+
+*/
+
 /*可任意修改样式，或恢复预设值，保存后生效
 相对“默认样式”而作的修改会用  红色 标注*/
+
 
 .output_wrapper/*此属性为全局*/
 {
@@ -11,13 +26,13 @@
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
 }
 
+
 p {/*段落*/
   margin: 1.5em 0px;
 }
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
-  color:#159957;      /*改变了其默认的标题颜色*/
 }
 h1 {
   font-size: 1.6em  ;
@@ -38,6 +53,24 @@ h5 {
 h6 {
   font-size: 1em;
 }
+h3/*增加对h3标题属性的修改*/ 
+{
+  border-bottom: 2px solid #3e3e3e;
+  margin-bottom:50px;
+}
+h3 span{/*增加对h3标题字体的修改*/
+  display:inline-block;
+  padding:  10px  0px;
+}
+h3 span:first-letter,
+h3 .firstletter
+{/*增加对标题中第一个字的样式*/
+  color:#ffffff;
+  padding:10px 15px;
+  margin-right:20px;
+  background: #3e3e3e;
+}
+
 
 ul, ol {
   padding-left: 32px;
@@ -189,6 +222,8 @@ table tr th {
 }
 /*================表格结束================*/
 
+
+
 /*================数学公式开始================*/
 .katex-display {/*块公式*/
   font-size:1.22em; 
@@ -270,4 +305,3 @@ a[href^="#"] sup
 {/*每级目录的缩进*/
   margin-left:25px;
 }
-

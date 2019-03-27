@@ -6,7 +6,7 @@
      font-size: 16px;
      color: #3e3e3e;
      line-height: 1.6;
-      word-spacing:0px; 
+     word-spacing:0px; 
      letter-spacing:0px;
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
 }
@@ -17,8 +17,8 @@ p {/*段落*/
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
-  color:#159957;      /*改变了其默认的标题颜色*/
 }
+
 h1 {
   font-size: 1.6em  ;
  
@@ -37,6 +37,22 @@ h5 {
 }
 h6 {
   font-size: 1em;
+}
+h3
+{/*增加对H3标题属性的修改*/
+  margin-bottom:2em;
+  margin-right: 5px;
+  padding: 8px 15px;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right bottom, rgb(0, 188, 212), rgb(63, 81, 181));
+  background-color: rgb(63, 81, 181);
+  color: rgb(255, 255, 255);
+  border-left: 10px solid rgb(51, 51, 51);
+  border-radius:5px;
+  text-shadow: rgb(102, 102, 102) 1px 1px 1px;
+  box-shadow: rgb(102, 102, 102) 1px 1px 2px;
+  
+ 
 }
 
 ul, ol {
@@ -76,7 +92,7 @@ li{  /*在公众号下，改变不了li符号的属性（如颜色），并会�
 pre code /*代码块*/
 {           
      font-family: Consolas, Inconsolata, Courier, monospace;
-     border-radius: 0px;
+    border-radius: 0px;
 }
 blockquote { /*引用块*/
   display: block;
@@ -270,4 +286,3 @@ a[href^="#"] sup
 {/*每级目录的缩进*/
   margin-left:25px;
 }
-

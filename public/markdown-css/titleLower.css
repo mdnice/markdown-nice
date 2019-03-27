@@ -11,13 +11,13 @@
      font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;   
 }
 
+
 p {/*段落*/
   margin: 1.5em 0px;
 }
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
   font-weight:bold;
-  color:#159957;      /*改变了其默认的标题颜色*/
 }
 h1 {
   font-size: 1.6em  ;
@@ -37,6 +37,15 @@ h5 {
 }
 h6 {
   font-size: 1em;
+}
+h3/*增加对h3标题属性的修改*/
+{
+  border-bottom: 2px solid rgb(63,63,63);
+  margin-bottom:50px;
+}
+h3 span{/*增加对h3标题字体的修改*/
+  display:inline-block;
+  padding:  10px  0px;
 }
 
 ul, ol {
@@ -76,7 +85,7 @@ li{  /*在公众号下，改变不了li符号的属性（如颜色），并会�
 pre code /*代码块*/
 {           
      font-family: Consolas, Inconsolata, Courier, monospace;
-     border-radius: 0px;
+    border-radius: 0px;
 }
 blockquote { /*引用块*/
   display: block;
@@ -189,6 +198,8 @@ table tr th {
 }
 /*================表格结束================*/
 
+
+
 /*================数学公式开始================*/
 .katex-display {/*块公式*/
   font-size:1.22em; 
@@ -270,4 +281,3 @@ a[href^="#"] sup
 {/*每级目录的缩进*/
   margin-left:25px;
 }
-
