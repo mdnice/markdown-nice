@@ -73,7 +73,7 @@ class App extends Component {
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
     // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
-    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 44) / editorScrollHeight;
+    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight+55) / editorScrollHeight;
     // console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
     // console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
