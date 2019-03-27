@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import './App.css';
-import axios from 'axios'
-import Navbar from './layout/navbar';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
+import Navbar from "./layout/navbar";
 
-import CodeMirror from '@uiw/react-codemirror';
-import markdownIt from 'markdown-it';
-import MarkdownItH from './utils/span';
-import highlightjs from 'highlight.js';
-// import 'highlight.js/styles/railscasts.css';
-import juice from 'juice';
-import 'codemirror/keymap/sublime';
-import 'codemirror/theme/monokai.css';
+import CodeMirror from "@uiw/react-codemirror";
+import markdownIt from "markdown-it";
+import markdownItSup from "markdown-it-sup";
+import markdownItFootnote from "markdown-it-footnote";
+import markdownItSub from "markdown-it-sub";
+import markdownItDeflist from "markdown-it-deflist";
+import markdownItSpan from "./utils/span";
 
-import { Tooltip, Button, Icon } from 'antd';
-import 'antd/dist/antd.css';
-import copyIcon from './icon/copy.svg';
+import highlightjs from "highlight.js";
+import juice from "juice";
+import "codemirror/keymap/sublime";
+import "codemirror/theme/base16-light.css";
+
+import { Tooltip, Button, Icon } from "antd";
+import "antd/dist/antd.css";
+import copyIcon from "./icon/copy.svg";
 
 import { observer, inject } from "mobx-react";
 
@@ -24,33 +28,41 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      markedText: '',
-      cssStyle: '',
-      resultHtml:''
+      title: "",
+      markedText: "",
+      cssStyle: "",
+      resultHtml: ""
     };
 
     this.md = new markdownIt({
       highlight: (str, lang) => {
         if (lang && highlightjs.getLanguage(lang)) {
           try {
-            return '<pre ><code class="hljs">' +
+            return (
+              '<pre ><code class="hljs">' +
               highlightjs.highlight(lang, str, true).value +
-              '</code></pre>';
-          } catch (__) { }
+              "</code></pre>"
+            );
+          } catch (__) {}
         }
-        return '<pre ><code class="hljs">' + this.md.utils.escapeHtml(str) + '</code></pre>';
+        return (
+          '<pre ><code class="hljs">' +
+          this.md.utils.escapeHtml(str) +
+          "</code></pre>"
+        );
       }
     });
-    this.md.use(MarkdownItH, { addHeadingSpan: true, })
+    // 在标题标签中添加span
+    this.md
+      .use(markdownItSpan)
       // 上标
-      .use(require('markdown-it-sup'))
+      .use(markdownItSup)
       // 脚注
-      .use(require('markdown-it-footnote'))
+      .use(markdownItFootnote)
       // 下标
-      .use(require('markdown-it-sub'))
+      .use(markdownItSub)
       // 定义列表
-      .use(require('markdown-it-deflist'));
+      .use(markdownItDeflist);
 
     this.scale = 1;
     // this.hasContentChanged = true;
@@ -60,12 +72,12 @@ class App extends Component {
     this.index = index;
   }
 
-  getInstance = (instance) => {
+  getInstance = instance => {
     if (instance) {
       this.codemirror = instance.codemirror;
       this.editor = instance.editor;
     }
-  }
+  };
 
   containerScroll = () => {
     let cmData = this.editor.getScrollInfo();
@@ -73,7 +85,11 @@ class App extends Component {
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
     // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
-    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 44) / editorScrollHeight;
+    this.scale =
+      (this.previewWrap.offsetHeight -
+        this.previewContainer.offsetHeight +
+        44) /
+      editorScrollHeight;
     // console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
     // console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
@@ -82,7 +98,7 @@ class App extends Component {
       this.editorTop = this.previewContainer.scrollTop / this.scale;
       this.editor.scrollTo(null, this.editorTop);
     }
-  }
+  };
 
   changeContent = (editor, changeObj) => {
     let editorContent = editor.getValue();
@@ -91,29 +107,33 @@ class App extends Component {
     this.setState({
       markedText: markedContent
     });
-  }
+  };
 
   getCss = async () => {
     try {
-      let mdEl = document.getElementById('markdown-theme');
+      let mdEl = document.getElementById("markdown-theme");
       let mdStyle = mdEl.href;
       const mdRes = await axios.get(mdStyle);
 
-      let codeEl = document.getElementById('code-theme');
+      let codeEl = document.getElementById("code-theme");
       let codeStyle = codeEl.href;
       const codeRes = await axios.get(codeStyle);
 
-      let htmlStr = `<div class="output_wrapper">${this.state.markedText}</div>`;
-      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, { inlinePseudoElements: true });
-      this.setState({resultHtml:result});
+      let htmlStr = `<section class="output_wrapper">${
+        this.state.markedText
+      }</section>`;
+      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, {
+        inlinePseudoElements: true
+      });
+      this.setState({ resultHtml: result });
       console.log(result);
       this.copyToClip(result);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  copyToClip = (str) => {
+  copyToClip = str => {
     function listener(e) {
       e.clipboardData.setData("text/html", str);
       e.clipboardData.setData("text/plain", str);
@@ -127,43 +147,65 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar></Navbar>
+        <Navbar />
 
         <div className="text-container">
-          <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
-
+          <div
+            className="text-box"
+            onMouseOver={e => this.setCurrentIndex(1, e)}
+          >
             <CodeMirror
               value={this.props.content.commitContent}
               options={{
-                theme: '3024-day',
-                keyMap: 'sublime',
-                mode: 'markdown',
+                theme: "base16-light",
+                keyMap: "sublime",
+                mode: "markdown",
                 lineWrapping: true,
-                autofocus: true,
-              }} id="marked-editor"
+                autofocus: true
+              }}
+              id="marked-editor"
               onChange={this.changeContent}
               onScroll={this.containerScroll}
               ref={this.getInstance}
             />
           </div>
 
-          <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
-            <div className="wx-box" onScroll={this.containerScroll} ref={node => this.previewContainer = node}>
-              <div className="output_wrapper" dangerouslySetInnerHTML={{ __html: this.state.markedText }} ref={node => this.previewWrap = node} ></div>
+          <div
+            id="marked-text"
+            className="text-box"
+            onMouseOver={e => this.setCurrentIndex(2, e)}
+          >
+            <div
+              className="wx-box"
+              onScroll={this.containerScroll}
+              ref={node => (this.previewContainer = node)}
+            >
+              <div
+                className="output_wrapper"
+                dangerouslySetInnerHTML={{ __html: this.state.markedText }}
+                ref={node => (this.previewWrap = node)}
+              />
             </div>
           </div>
 
-          <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title="点击复制">
-            <Button style={{ padding: "0 8px", color: 'orange' }} className="getBtn" onClick={this.getCss}>
-              <Icon component={copyIcon} style={{ fontSize: "18px" }}></Icon>
+          <Tooltip
+            placement="bottom"
+            mouseEnterDelay={0.5}
+            mouseLeaveDelay={0.2}
+            title="点击复制"
+          >
+            <Button
+              style={{ padding: "0 8px", color: "orange" }}
+              className="getBtn"
+              onClick={this.getCss}
+            >
+              <Icon component={copyIcon} style={{ fontSize: "18px" }} />
             </Button>
           </Tooltip>
         </div>
-
       </div>
     );
   }
 }
 
 export default App;
-
