@@ -103,7 +103,7 @@ class App extends Component {
       let codeStyle = codeEl.href;
       const codeRes = await axios.get(codeStyle);
 
-      let htmlStr = `<div class="output_wrapper">${this.state.markedText}</div>`;
+      let htmlStr = `<section class="output_wrapper">${this.state.markedText}</section>`;
       let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, { inlinePseudoElements: true });
       this.setState({resultHtml:result});
       console.log(result);

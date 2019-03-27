@@ -54,7 +54,7 @@ const options = [
     name: "综合示例"
   },
 ]
-const codeOptions = ['ascetic', 'dark', 'darkula', 'github', 'github-gist', 'gml', 'hybird', 'idea', 'rainbow', 'tomorrow', 'vs', 'vs2015', 'xcode', 'xt256', 'zenburn'];
+const codeOptions = ['railscasts', 'dark', 'darkula', 'github', 'github-gist', 'gml', 'hybird', 'idea', 'rainbow', 'tomorrow', 'vs', 'vs2015', 'xcode', 'xt256', 'zenburn'];
 
 class ThemeSelect extends React.Component {
   state = {
