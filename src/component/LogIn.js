@@ -2,7 +2,6 @@ import React from 'react';
 import githubIcon from '../icon/github.svg'
 import githubOnIcon from '../icon/githubOn.svg'
 import { Tooltip, Button, Icon } from 'antd';
-import 'antd/dist/antd.css';
 
 import axios from 'axios';
 import { CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN } from '../utils/constant.js';
@@ -50,7 +49,7 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title={this.props.userInfo.userInfo.login ? 'Online' : 'Log in GitHub'}>
+      <Tooltip placement="bottom" mouseEnterDelay={0.5} mouseLeaveDelay={0.2} title={this.props.userInfo.userInfo.login ? '我的' : '登录'}>
         <Button style={{ padding: "0 8px" }} onClick={this.login}>
           <Icon component={this.props.userInfo.userInfo.login ? githubOnIcon : githubIcon} style={{ fontSize: "20px" }}></Icon>
         </Button>

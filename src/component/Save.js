@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { Tooltip, Button,Icon } from 'antd';
-import 'antd/dist/antd.css';
 
 import SaveIcon from '../icon/save.svg';
 import { observer, inject } from "mobx-react";
 import { axiosGithub, transCode } from '../utils/helper';
-
 
 @inject("content")
 @inject("title")

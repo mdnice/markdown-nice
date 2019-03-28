@@ -1,0 +1,36 @@
+.nav-bar {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  flex: none;
+  padding: 20px;
+}
+.left-nav {
+  flex: 1 1 33.33%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+.right-nav {
+  flex: 1 1 66.66%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-padding {
+  padding: 0 8px !important;
+}
+
+.btn-group-margin {
+  margin-left: 10px;
+}
+
+.icon-size {
+  font-size: 18px;
+}

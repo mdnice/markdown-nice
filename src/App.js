@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
 import axios from "axios";
-import Navbar from "./layout/navbar";
+import Navbar from "./layout/Navbar";
 
 import CodeMirror from "@uiw/react-codemirror";
 import markdownIt from "markdown-it";
@@ -14,13 +13,20 @@ import markdownItSpan from "./utils/span";
 import highlightjs from "highlight.js";
 import juice from "juice";
 import "codemirror/keymap/sublime";
-import "codemirror/theme/base16-light.css";
+import "./utils/base16-light.css";
 
-import { Tooltip, Button, Icon } from "antd";
+import { Tooltip, Button, Icon, message } from "antd";
 import "antd/dist/antd.css";
+
+import "./App.css";
+
 import copyIcon from "./icon/copy.svg";
 
 import { observer, inject } from "mobx-react";
+
+const success = () => {
+  message.success('已复制，请到微信公众平台粘贴');
+};
 
 @inject("content")
 @observer
@@ -52,17 +58,13 @@ class App extends Component {
         );
       }
     });
-    // 在标题标签中添加span
+
     this.md
-      .use(markdownItSpan)
-      // 上标
-      .use(markdownItSup)
-      // 脚注
-      .use(markdownItFootnote)
-      // 下标
-      .use(markdownItSub)
-      // 定义列表
-      .use(markdownItDeflist);
+      .use(markdownItSpan) // 在标题标签中添加span
+      .use(markdownItSup) // 上标
+      .use(markdownItFootnote) // 脚注
+      .use(markdownItSub) // 下标
+      .use(markdownItDeflist); // 定义列表
 
     this.scale = 1;
     // this.hasContentChanged = true;
@@ -85,7 +87,11 @@ class App extends Component {
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
     // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
-    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight+55) / editorScrollHeight;
+    this.scale =
+      (this.previewWrap.offsetHeight -
+        this.previewContainer.offsetHeight +
+        55) /
+      editorScrollHeight;
     // console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
     // console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
@@ -97,8 +103,8 @@ class App extends Component {
   };
 
   changeContent = (editor, changeObj) => {
-    let editorContent = editor.getValue();
-    let markedContent = this.md.render(editorContent);
+    const editorContent = editor.getValue();
+    const markedContent = this.md.render(editorContent);
     this.props.content.updateContent(editorContent);
     this.setState({
       markedText: markedContent
@@ -107,19 +113,28 @@ class App extends Component {
 
   getCss = async () => {
     try {
-      let mdEl = document.getElementById("markdown-theme");
-      let mdStyle = mdEl.href;
+      const basicEl = document.getElementById("basic-theme");
+      const basicStyle = basicEl.href;
+      const basicRes = await axios.get(basicStyle);
+
+      const mdEl = document.getElementById("markdown-theme");
+      const mdStyle = mdEl.href;
       const mdRes = await axios.get(mdStyle);
 
-      let codeEl = document.getElementById("code-theme");
-      let codeStyle = codeEl.href;
+      const codeEl = document.getElementById("code-theme");
+      const codeStyle = codeEl.href;
       const codeRes = await axios.get(codeStyle);
 
-      let htmlStr = `<section class="output_wrapper">${this.state.markedText}</section>`;
-      let result = juice.inlineContent(htmlStr, mdRes.data + codeRes.data, { inlinePseudoElements: true });
-      this.setState({resultHtml:result});
+      const htmlStr = `<section class="layout">${
+        this.state.markedText
+      }</section>`;
+      const result = juice.inlineContent(htmlStr, basicRes.data + mdRes.data + codeRes.data, {
+        inlinePseudoElements: true
+      });
+      this.setState({ resultHtml: result });
       console.log(result);
       this.copyToClip(result);
+      success()
     } catch (error) {
       console.error(error);
     }
@@ -172,8 +187,8 @@ class App extends Component {
               onScroll={this.containerScroll}
               ref={node => (this.previewContainer = node)}
             >
-              <div
-                className="output_wrapper"
+              <section
+                className="layout"
                 dangerouslySetInnerHTML={{ __html: this.state.markedText }}
                 ref={node => (this.previewWrap = node)}
               />

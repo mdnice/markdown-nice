@@ -1,105 +1,43 @@
 .App {
   height: 100vh;
-  display:flex;
-  flex-direction: column;
-  font-family: 'PingFang SC', BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serifhtml, body;
-  font-size:16px;
-;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: "PingFang SC", BlinkMacSystemFont, Roboto, "Helvetica Neue",
+    sans-serifhtml, body;
+  font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* my style */
-.navi-bar{
-  height:64px;
-  display:flex;
-  justify-content: space-between;
-  flex:none;
-  padding:20px;
-}
-.left-nav{
-  flex:1 1 33.33%;
-  display:flex;
-  justify-content: flex-start;
-  align-items:center;
-
-}
-.title-container{
-  width:90%;
-  display:flex;
-  align-items:center;
-}
-.right-nav{
-  flex:1 1 66.66%;
-  display:flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.text-container{
+.text-container {
   display: flex;
   justify-content: center;
-  flex-grow:1;
+  flex-grow: 1;
   height: 91vh;
-  width:100%;
-  padding-left:10px;
+  width: 100%;
+  padding-left: 10px;
 }
-.text-box{
+.text-box {
   /* width:50%; */
-  flex:1;
-  padding:20px;
-  word-wrap: break-word; 
-}
-.divide-bar{
-  width:8px;
-  height:100%;
-  border-left: 1px solid rgba(218,218,218,0.5)
+  flex: 1;
+  padding: 20px;
+  word-wrap: break-word;
 }
 
-#marked-text{
+#marked-text {
   display: flex;
   justify-content: center;
- 
 }
 
-.wx-box{
-  overflow-y: scroll;
+.wx-box {
+  overflow-y: auto;
   width: 375px;
-  height:100%;
+  height: 100%;
   padding: 20px;
-  box-shadow: 0 0 60px rgba(0,0,0,0.1);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
 }
-.getBtn{
+.getBtn {
   position: fixed;
-  right:20px;
-  top:20px;
+  right: 20px;
+  top: 84px;
 }
 
 /* 滚动槽 */
@@ -109,19 +47,12 @@
 }
 ::-webkit-scrollbar-track {
   border-radius: 3px;
-  background: rgba(0,0,0,0.06);
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+  background: rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
 }
 /* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: rgba(0,0,0,0.12);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
-.CodeMirror {
-  font-size: 16px !important;
-  padding: 20px;
-  line-height: 21px;
-}
-
