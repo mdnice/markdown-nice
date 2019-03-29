@@ -9,9 +9,20 @@ export const CLIENT_SECRET =
 
 export const PROXY =
   "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token";
+export const SM_MS_PROXY =
+  "https://cors-anywhere.herokuapp.com/https://sm.ms/api/upload";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export const CONTENT = "content";
+export const STYLE = "style";
+
+export const BASIC_THEME_ID = "basic-theme";
+export const CODE_THEME_ID = "code-theme";
+export const MARKDOWN_THEME_ID = "markdown-theme";
+
+export const ENTER_DELAY = 0.5;
+export const LEAVE_DELAY = 0.0;
+
 export const MARKDOWN_EXAMPLE = `## 1. Markdown Nice 简介
 
 - 一款支持自定义样式的 Markdown 编辑器
@@ -40,8 +51,7 @@ export const MARKDOWN_EXAMPLE = `## 1. Markdown Nice 简介
 - 无序列表1
 - 无序列表2
   - 无序列表2.1
-     - 列表内容
-     - 列表内容
+  - 无序列表2.2
 
 ## 4. 有序列表
 
@@ -88,8 +98,7 @@ public class HelloWorld
   // Java 入口程序，程序从此入口
   public static void main(String[] args)
   {
-    // 向控制台打印一条语句
-    System.out.println("Hello,World!");// 向控制台打印一条语句
+    System.out.println("Hello,World!"); // 向控制台打印一条语句
   }
 }
 \`\`\`
@@ -123,63 +132,52 @@ ___
 
 使用两个\`~\`包围可作为下标，如下：H~2~O`;
 
-export const THEMES_OPTIONS = [
+export const MARKDOWN_OPTIONS = [
   {
-    value: "normal",
+    id: "normal",
+    name: "默认主题"
+  },
+  {
+    id: "orange",
     name: "橙色主题"
   },
   {
-    value: "titleDaogua",
-    name: "标题倒挂"
+    id: "title1",
+    name: "标题示例1"
   },
   {
-    value: "bgGrid",
-    name: "网格背景"
+    id: "title2",
+    name: "标题示例2"
   },
   {
-    value: "titleLower",
-    name: "标题下边框"
-  },
-  {
-    value: "titleLH",
-    name: "标题上下边框"
-  },
-  {
-    value: "title4",
-    name: "标题四边框"
-  },
-  {
-    value: "titleBg",
-    name: "标题背景"
-  },
-  {
-    value: "titleBgChange",
-    name: "标题背景渐变"
-  },
-  {
-    value: "titlecolor",
-    name: "标题颜色"
-  },
-  {
-    value: "titleHandsome",
-    name: "标题酷酷"
+    id: "custom",
+    name: "自定义"
   }
 ];
 
 export const CODE_OPTIONS = [
-  "railscasts",
-  "dark",
-  "darkula",
-  "github",
-  "github-gist",
-  "gml",
-  "hybird",
-  "idea",
-  "rainbow",
-  "tomorrow",
-  "vs",
-  "vs2015",
-  "xcode",
-  "xt256",
-  "zenburn"
+  {
+    id: "atomOneDark",
+    name: "atom-one-dark"
+  },
+  {
+    id: "atomOneLight",
+    name: "atom-one-light"
+  },
+  {
+    id: "monokai",
+    name: "monokai"
+  },
+  {
+    id: "github",
+    name: "github"
+  },
+  {
+    id: "vs2015",
+    name: "vs2015"
+  },
+  {
+    id: "xcode",
+    name: "xcode"
+  }
 ];

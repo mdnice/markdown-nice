@@ -1,73 +1,36 @@
 import React, { Component } from "react";
-import axios from "axios";
-import Navbar from "./layout/Navbar";
+import { Modal } from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
-import markdownIt from "markdown-it";
-import markdownItSup from "markdown-it-sup";
-import markdownItFootnote from "markdown-it-footnote";
-import markdownItSub from "markdown-it-sub";
-import markdownItDeflist from "markdown-it-deflist";
-import markdownItSpan from "./utils/span";
-
-import highlightjs from "highlight.js";
-import juice from "juice";
 import "codemirror/keymap/sublime";
-import "./utils/base16-light.css";
-
-import { Tooltip, Button, Icon, message } from "antd";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/hint/show-hint";
+import "codemirror/addon/hint/show-hint.css";
+import "codemirror/addon/hint/css-hint";
 import "antd/dist/antd.css";
-
-import "./App.css";
-
-import copyIcon from "./icon/copy.svg";
-
 import { observer, inject } from "mobx-react";
 
-const success = () => {
-  message.success('已复制，请到微信公众平台粘贴');
-};
+import Navbar from "./layout/Navbar";
+import StyleEditor from "./layout/StyleEditor";
+import CopyBtn from "./component/CopyBtn";
+
+import "./App.css";
+import "./utils/mdMirror.css";
+
+import { markdownParser, replaceStyle } from "./utils/helper";
+import { BASIC_THEME_ID, MARKDOWN_THEME_ID } from "./utils/constant";
+import THEMES from "./theme/index";
 
 @inject("content")
+@inject("navbar")
 @observer
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: "",
-      markedText: "",
-      cssStyle: "",
-      resultHtml: ""
-    };
-
-    this.md = new markdownIt({
-      highlight: (str, lang) => {
-        if (lang && highlightjs.getLanguage(lang)) {
-          try {
-            return (
-              '<pre ><code class="hljs">' +
-              highlightjs.highlight(lang, str, true).value +
-              "</code></pre>"
-            );
-          } catch (__) {}
-        }
-        return (
-          '<pre ><code class="hljs">' +
-          this.md.utils.escapeHtml(str) +
-          "</code></pre>"
-        );
-      }
-    });
-
-    this.md
-      .use(markdownItSpan) // 在标题标签中添加span
-      .use(markdownItSup) // 上标
-      .use(markdownItFootnote) // 脚注
-      .use(markdownItSub) // 下标
-      .use(markdownItDeflist); // 定义列表
-
+    this.focus = false;
     this.scale = 1;
-    // this.hasContentChanged = true;
+    // 初始化整体主题
+    replaceStyle(BASIC_THEME_ID, THEMES.basic);
   }
 
   setCurrentIndex(index) {
@@ -76,7 +39,6 @@ class App extends Component {
 
   getInstance = instance => {
     if (instance) {
-      this.codemirror = instance.codemirror;
       this.editor = instance.editor;
     }
   };
@@ -103,52 +65,57 @@ class App extends Component {
   };
 
   changeContent = (editor, changeObj) => {
-    const editorContent = editor.getValue();
-    const markedContent = this.md.render(editorContent);
-    this.props.content.updateContent(editorContent);
-    this.setState({
-      markedText: markedContent
+    const content = editor.getValue();
+    this.props.content.setContent(content);
+  };
+
+  getStyleInstance = instance => {
+    if (instance) {
+      this.styleEditor = instance.editor;
+      this.styleEditor.on("keyup", (cm, e) => {
+        if ((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 189) {
+          cm.showHint(e);
+        }
+      });
+    }
+  };
+
+  showConfirm = () => {
+    Modal.confirm({
+      title: "是否想自定义主题？",
+      content: "确定后将复制当前主题并切换为自定义",
+      cancelText: "取消",
+      okText: "确定",
+      onOk: () => {
+        const { markdownId } = this.props.navbar;
+        const style =
+          `/*自定义样式，实时生效*/\n\n` + THEMES.markdown[markdownId];
+        replaceStyle(MARKDOWN_THEME_ID, style);
+        this.props.content.setCustomStyle(style);
+        this.props.navbar.setMarkdownName("自定义");
+        this.props.navbar.setMarkdownId("custom");
+      },
+      onCancel: () => {}
     });
   };
 
-  getCss = async () => {
-    try {
-      const basicEl = document.getElementById("basic-theme");
-      const basicStyle = basicEl.href;
-      const basicRes = await axios.get(basicStyle);
-
-      const mdEl = document.getElementById("markdown-theme");
-      const mdStyle = mdEl.href;
-      const mdRes = await axios.get(mdStyle);
-
-      const codeEl = document.getElementById("code-theme");
-      const codeStyle = codeEl.href;
-      const codeRes = await axios.get(codeStyle);
-
-      const htmlStr = `<section class="layout">${
-        this.state.markedText
-      }</section>`;
-      const result = juice.inlineContent(htmlStr, basicRes.data + mdRes.data + codeRes.data, {
-        inlinePseudoElements: true
-      });
-      this.setState({ resultHtml: result });
-      console.log(result);
-      this.copyToClip(result);
-      success()
-    } catch (error) {
-      console.error(error);
+  changeStyle = (editor, changeObj) => {
+    // focus状态很重要，初始化时被调用则不会进入条件
+    if (this.focus && this.props.navbar.markdownId !== "custom") {
+      this.showConfirm();
+    } else if (this.focus) {
+      const style = editor.getValue();
+      replaceStyle(MARKDOWN_THEME_ID, style);
+      this.props.content.setCustomStyle(style);
     }
   };
 
-  copyToClip = str => {
-    function listener(e) {
-      e.clipboardData.setData("text/html", str);
-      e.clipboardData.setData("text/plain", str);
-      e.preventDefault();
-    }
-    document.addEventListener("copy", listener);
-    document.execCommand("copy");
-    document.removeEventListener("copy", listener);
+  handleFocus = e => {
+    this.focus = true;
+  };
+
+  handleBlur = e => {
+    this.focus = false;
   };
 
   render() {
@@ -162,13 +129,13 @@ class App extends Component {
             onMouseOver={e => this.setCurrentIndex(1, e)}
           >
             <CodeMirror
-              value={this.props.content.commitContent}
+              value={this.props.content.content}
               options={{
-                theme: "base16-light",
+                theme: "md-mirror",
                 keyMap: "sublime",
                 mode: "markdown",
                 lineWrapping: true,
-                autofocus: true
+                lineNumbers: false
               }}
               id="marked-editor"
               onChange={this.changeContent}
@@ -176,6 +143,12 @@ class App extends Component {
               ref={this.getInstance}
             />
           </div>
+
+          {this.props.navbar.isStyleEditorOpen ? (
+            <div className="text-box">
+              <StyleEditor />
+            </div>
+          ) : null}
 
           <div
             id="marked-text"
@@ -189,26 +162,14 @@ class App extends Component {
             >
               <section
                 className="layout"
-                dangerouslySetInnerHTML={{ __html: this.state.markedText }}
+                dangerouslySetInnerHTML={{
+                  __html: markdownParser.render(this.props.content.content)
+                }}
                 ref={node => (this.previewWrap = node)}
               />
             </div>
           </div>
-
-          <Tooltip
-            placement="bottom"
-            mouseEnterDelay={0.5}
-            mouseLeaveDelay={0.2}
-            title="点击复制"
-          >
-            <Button
-              style={{ padding: "0 8px", color: "orange" }}
-              className="getBtn"
-              onClick={this.getCss}
-            >
-              <Icon component={copyIcon} style={{ fontSize: "18px" }} />
-            </Button>
-          </Tooltip>
+          <CopyBtn />
         </div>
       </div>
     );

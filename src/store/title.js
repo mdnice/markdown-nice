@@ -6,7 +6,7 @@ class Title {
   @observable title = "";
 
   @action
-  updateTitle = (title) => {
+  setTitle = (title) => {
     this.title = title
   }
 }

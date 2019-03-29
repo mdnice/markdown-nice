@@ -6,18 +6,18 @@
   padding: 20px;
 }
 .left-nav {
-  flex: 1 1 33.33%;
+  flex: 1 1 50%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 .title-container {
-  width: 90%;
+  width: 60%;
   display: flex;
   align-items: center;
 }
 .right-nav {
-  flex: 1 1 66.66%;
+  flex: 1 1 50%;
   display: flex;
   justify-content: flex-end;
   align-items: center;

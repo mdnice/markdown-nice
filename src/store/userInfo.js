@@ -7,11 +7,11 @@ class UserInfo {
   @observable userRepo = [];
 
   @action
-  updateUserInfo = (userInfo) => {
+  setUserInfo = (userInfo) => {
     this.userInfo = userInfo;
   }
   @action
-  updateUserRepo = (userRepoList) =>{
+  setUserRepo = (userRepoList) =>{
     this.userRepo = userRepoList;
   }
 }

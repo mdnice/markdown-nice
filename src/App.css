@@ -34,11 +34,6 @@
   padding: 20px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
 }
-.getBtn {
-  position: fixed;
-  right: 20px;
-  top: 84px;
-}
 
 /* 滚动槽 */
 ::-webkit-scrollbar {
