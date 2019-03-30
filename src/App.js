@@ -10,9 +10,9 @@ import "codemirror/addon/hint/css-hint";
 import "antd/dist/antd.css";
 import { observer, inject } from "mobx-react";
 
+import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
 import StyleEditor from "./layout/StyleEditor";
-import CopyBtn from "./component/CopyBtn";
 
 import "./App.css";
 import "./utils/mdMirror.css";
@@ -137,19 +137,11 @@ class App extends Component {
                 lineWrapping: true,
                 lineNumbers: false
               }}
-              id="marked-editor"
               onChange={this.changeContent}
               onScroll={this.containerScroll}
               ref={this.getInstance}
             />
           </div>
-
-          {this.props.navbar.isStyleEditorOpen ? (
-            <div className="text-box">
-              <StyleEditor />
-            </div>
-          ) : null}
-
           <div
             id="marked-text"
             className="text-box"
@@ -169,7 +161,14 @@ class App extends Component {
               />
             </div>
           </div>
-          <CopyBtn />
+          
+          {this.props.navbar.isStyleEditorOpen ? (
+            <div className="text-box">
+              <StyleEditor />
+            </div>
+          ) : null}
+
+          <Dialog />
         </div>
       </div>
     );

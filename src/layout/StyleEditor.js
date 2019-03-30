@@ -10,7 +10,6 @@ import "codemirror/addon/hint/css-hint";
 import "antd/dist/antd.css";
 import { observer, inject } from "mobx-react";
 
-import "./StyleEditor.css";
 import "../utils/styleMirror.css";
 import { replaceStyle } from "../utils/helper";
 import { MARKDOWN_THEME_ID } from "../utils/constant";

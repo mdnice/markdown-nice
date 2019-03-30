@@ -10,9 +10,16 @@ import content from "./store/content";
 import title from "./store/title";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
+import dialog from "./store/dialog";
 
 ReactDOM.render(
-  <Provider content={content} title={title} userInfo={userInfo} navbar={navbar}>
+  <Provider
+    content={content}
+    title={title}
+    userInfo={userInfo}
+    navbar={navbar}
+    dialog={dialog}
+  >
     <App />
   </Provider>,
   document.getElementById("root")

@@ -27,6 +27,7 @@ export const MARKDOWN_EXAMPLE = `## 1. Markdown Nice 简介
 
 - 一款支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
+- 欢迎推荐主题，处于Beta版，欢迎试用
 
 ## 2. 标题
 
@@ -78,10 +79,19 @@ export const MARKDOWN_EXAMPLE = `## 1. Markdown Nice 简介
 *这个是斜体*
 ***这个是粗体加斜体***
 
+## 7. 链接和脚注
+
+链接用法为由于微信不支持外链故而不演示，用法如下：
+\`[](http://www.mdnice.com)\`
+
+脚注用法待更新
+
 ## 8. 图片
 
 插入互联网上图片，格式如下：
-![这里写图片描述](https://octodex.github.com/images/dojocat.jpg)
+![这里写图片描述](![](https://i.loli.net/2019/03/30/5c9eff84d81c4.png)
+
+也可使用上方工具上传本地图片，感谢SM.MS图床助力
 
 ## 9. 代码块
 

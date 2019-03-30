@@ -60,6 +60,7 @@
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
+    "styled-jsx": "^3.2.1",
     "terser-webpack-plugin": "1.2.2",
     "to-string-loader": "^1.1.5",
     "url-loader": "1.1.2",

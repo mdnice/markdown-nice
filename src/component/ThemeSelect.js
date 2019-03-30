@@ -2,9 +2,6 @@ import React from "react";
 import { Button, Icon, Menu, Dropdown, Switch, Tooltip } from "antd";
 import { observer, inject } from "mobx-react";
 
-import themeIcon from "../icon/theme.svg";
-import codeIcon from "../icon/code.svg";
-
 import {
   MARKDOWN_OPTIONS,
   CODE_OPTIONS,
@@ -36,11 +33,12 @@ class ThemeSelect extends React.Component {
     this.props.navbar.setMarkdownName(name);
     this.props.navbar.setMarkdownId(id);
 
-    console.log(id)
     // 更新style编辑器
     replaceStyle(MARKDOWN_THEME_ID, THEMES.markdown[id]);
     if (id === "custom") {
       this.props.content.setCustomStyle();
+      // 自定义主题则自动打开样式编辑
+      this.props.navbar.setStyleEditorOpen(true);
     } else {
       this.props.content.setStyle(THEMES.markdown[id]);
     }
@@ -77,30 +75,31 @@ class ThemeSelect extends React.Component {
 
     return (
       <div>
+        <Dropdown overlay={mdMenu} placement="bottomCenter">
+          <Button style={{ marginLeft: 8 }}>
+            {this.props.navbar.markdownName}
+            <Icon type="down" />
+          </Button>
+        </Dropdown>
+        <Dropdown overlay={codeMenu} placement="bottomCenter">
+          <Button style={{ marginLeft: 8, marginRight: 8 }}>
+            {this.state.codeName}
+            <Icon type="down" />
+          </Button>
+        </Dropdown>
         <Tooltip
           placement="bottom"
           mouseEnterDelay={ENTER_DELAY}
           mouseLeaveDelay={LEAVE_DELAY}
-          title="样式编辑器"
+          title="样式编辑"
         >
           <Switch
+            checked={this.props.navbar.isStyleEditorOpen}
             size="small"
             onChange={this.toggleStyleEditor}
-            style={{ marginLeft: 8 }}
+            style={{ marginRight: 8 }}
           />
         </Tooltip>
-        <Dropdown overlay={mdMenu}>
-          <Button style={{ marginLeft: 8 }}>
-            {this.props.navbar.markdownName}
-            <Icon component={themeIcon} style={{ fontSize: "18px" }} />
-          </Button>
-        </Dropdown>
-        <Dropdown overlay={codeMenu}>
-          <Button style={{ marginLeft: 8, marginRight: 8 }}>
-            {this.state.codeName}
-            <Icon component={codeIcon} style={{ fontSize: "18px" }} />
-          </Button>
-        </Dropdown>
       </div>
     );
   }
