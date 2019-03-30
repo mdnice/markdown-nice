@@ -5,6 +5,12 @@ import THEMES from "../theme/index";
 class Content {
   @observable content = MARKDOWN_EXAMPLE;
   @observable style = THEMES.markdown["normal"];
+  @observable markdownEditor;
+
+  @action
+  setMarkdownEditor = markdownEditor => {
+    this.markdownEditor = markdownEditor;
+  };
 
   @action
   setContent = content => {

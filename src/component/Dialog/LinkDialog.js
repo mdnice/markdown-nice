@@ -6,12 +6,27 @@ import { Modal, Input, Form } from "antd";
 @inject("content")
 @observer
 class LinkDialog extends Component {
+  state = {
+    link: ""
+  };
+
   handleOk = e => {
+    const { markdownEditor } = this.props.content;
+    const cursor = markdownEditor.getCursor();
+    const selection = markdownEditor.getSelection();
+    const text = `[${selection}](${this.state.link})`
+    markdownEditor.replaceSelection(text, cursor);
+    this.setState({link: ""})
     this.props.dialog.setLinkOpen(false);
   };
 
   handleCancel = e => {
+    this.setState({link: ""})
     this.props.dialog.setLinkOpen(false);
+  };
+
+  handleChange = e => {
+    this.setState({ link: e.target.value });
   };
 
   render() {
@@ -25,7 +40,11 @@ class LinkDialog extends Component {
         onCancel={this.handleCancel}
       >
         <Form.Item label="链接地址">
-          <Input placeholder="请输入链接地址" />
+          <Input
+            placeholder="请输入链接地址"
+            value={this.state.link}
+            onChange={this.handleChange}
+          />
         </Form.Item>
       </Modal>
     );

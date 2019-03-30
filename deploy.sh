@@ -5,6 +5,8 @@ set -e
 npm run build
 cd build
 
+echo www.mdnice.com > CNAME
+
 git init
 git add -A
 git commit -m 'deploy'

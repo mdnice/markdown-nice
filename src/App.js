@@ -3,10 +3,6 @@ import { Modal } from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
-import "codemirror/addon/edit/closebrackets";
-import "codemirror/addon/hint/show-hint";
-import "codemirror/addon/hint/show-hint.css";
-import "codemirror/addon/hint/css-hint";
 import "antd/dist/antd.css";
 import { observer, inject } from "mobx-react";
 
@@ -39,12 +35,13 @@ class App extends Component {
 
   getInstance = instance => {
     if (instance) {
-      this.editor = instance.editor;
+      this.props.content.setMarkdownEditor(instance.editor);
     }
   };
 
-  containerScroll = () => {
-    let cmData = this.editor.getScrollInfo();
+  handleScroll = () => {
+    const { markdownEditor } = this.props.content
+    let cmData = markdownEditor.getScrollInfo();
     let editorToTop = cmData.top;
     let editorScrollHeight = cmData.height - cmData.clientHeight;
     // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
@@ -60,11 +57,11 @@ class App extends Component {
       this.previewContainer.scrollTop = editorToTop * this.scale;
     } else {
       this.editorTop = this.previewContainer.scrollTop / this.scale;
-      this.editor.scrollTo(null, this.editorTop);
+      markdownEditor.scrollTo(null, this.editorTop);
     }
   };
 
-  changeContent = (editor, changeObj) => {
+  handlChange = (editor, changeObj) => {
     const content = editor.getValue();
     this.props.content.setContent(content);
   };
@@ -137,8 +134,8 @@ class App extends Component {
                 lineWrapping: true,
                 lineNumbers: false
               }}
-              onChange={this.changeContent}
-              onScroll={this.containerScroll}
+              onChange={this.handlChange}
+              onScroll={this.handleScroll}
               ref={this.getInstance}
             />
           </div>
@@ -149,7 +146,7 @@ class App extends Component {
           >
             <div
               className="wx-box"
-              onScroll={this.containerScroll}
+              onScroll={this.handleScroll}
               ref={node => (this.previewContainer = node)}
             >
               <section
@@ -161,7 +158,7 @@ class App extends Component {
               />
             </div>
           </div>
-          
+
           {this.props.navbar.isStyleEditorOpen ? (
             <div className="text-box">
               <StyleEditor />

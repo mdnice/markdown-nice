@@ -5,16 +5,21 @@ export default
 .layout {
   font-size: 16px;
   color: #3e3e3e;
+  padding: 10px;
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
-  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB",
-    "Microsoft YaHei", Arial, sans-serif;
+  font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /*段落*/
 p {
-  margin: 1.5em 0px;
+  font-size: 16px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0;
+  line-height: 26px;
+  color: #3e3e3e;
 }
 
 /*标题*/
@@ -24,32 +29,37 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 1.5em 0px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   font-weight: bold;
+  color: #3e3e3e;
 }
 h1 {
-  font-size: 1.6em;
+  font-size: 28px;
 }
 h2 {
-  font-size: 1.4em;
+  font-size: 24px;
 }
 h3 {
-  font-size: 1.3em;
+  font-size: 20px;
 }
 h4 {
-  font-size: 1.2em;
+  font-size: 18px;
 }
 h5 {
-  font-size: 1em;
+  font-size: 16px;
 }
 h6 {
-  font-size: 1em;
+  font-size: 16px;
 }
 
 /*列表*/
 ul,
 ol {
-  padding-left: 32px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  color: #3e3e3e;
 }
 ul {
   list-style-type: disc;
@@ -58,38 +68,38 @@ ol {
   list-style-type: decimal;
 }
 li {
-  margin-bottom: 0.5em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 26px;
   text-align: left;
+  color: #3e3e3e;
 }
 
-/*代码块*/
-pre {
-  overflow-x: auto;
-}
-pre code {
-  font-family: Consolas, Inconsolata, Courier, monospace;
-  border-radius: 0px;
-}
-pre code span {
-  font-size: 14px;
-  line-height: 26px;
-}
+
 
 /*引用*/
 blockquote {
   display: block;
   font-size: 0.9em;
-  margin: 1em 0;
   overflow: auto;
   overflow-scrolling: touch;
   word-wrap: normal;
   word-break: normal;
-  border-left: .25em solid #dfe2e5;
+  border-left: 3px solid rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.05);
   color: #6a737d;
-  padding: 0 1em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
+
 blockquote p {
   margin: 0px;
+  color: #3e3e3e;
+  line-height: 26px;
 }
 
 /*链接*/
@@ -102,53 +112,81 @@ a {
 /*加粗*/
 strong {
   font-weight: bold;
+  color: #3e3e3e;
 }
 
 /*斜体*/
 em {
   font-style: italic;
+  color: #3e3e3e;
 }
 
 /*加粗斜体*/
 strong em {
   font-weight: bold;
+  color: #3e3e3e;
 }
 
 /*删除线*/
 del {
   font-style: italic;
+  color: #3e3e3e;
 }
 
 /*分隔线*/
 hr {
   height: 1px;
-  margin: 1.5rem 0px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: none;
-  border-top: 1px solid #a5a5a5;
+  border-top: 1px solid #3e3e3e;
+}
+
+/*代码块*/
+pre {
+  overflow-x: auto;
+}
+pre code {
+  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+  border-radius: 0px;
+}
+pre code span {
+  font-size: 14px;
+  line-height: 26px;
 }
 
 /*行内代码*/
 code {
+  font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;
   border-radius: 4px;
   margin: 0 2px;
   background-color: rgba(27,31,35,.05);
+  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
 }
 
 /*图片*/
 img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  width: 80%;
+}
+
+/*图片*/
+figure {
+  mairgin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /*图片描述文字*/
 figcaption {
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
-  color: #999;
-  font-size: 0.7em;
+  color: #888;
+  font-size: 14px;
 }
 
 /*表格*/
@@ -172,9 +210,9 @@ table tr:nth-child(2n) {
 
 table tr th,
 table tr td {
-  font-size: 1em;
+  font-size: 16px;
   border: 1px solid #ccc;
-  padding: 0.5em 1em;
+  padding: 5px 15px;
   text-align: left;
   min-width: 70px;
 }

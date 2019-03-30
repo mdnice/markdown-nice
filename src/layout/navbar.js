@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { Button } from "antd";
 
-// import FullScreen from "../component/FullScreen";
 import ThemeSelect from "../component/ThemeSelect";
 import Copy from "../component/Copy";
 import Reset from "../component/Reset";
@@ -12,7 +11,8 @@ import Code from "../component/Code";
 import Italic from "../component/Italic";
 import Bold from "../component/Bold";
 import Del from "../component/Del";
-import Title from "../component/Title";
+// import FullScreen from "../component/FullScreen";
+// import Title from "../component/Title";
 // import LogIn from "../component/LogIn";
 
 const ButtonGroup = Button.Group;
@@ -29,7 +29,7 @@ class Navbar extends Component {
     return (
       <div style={style.navBar}>
         <div style={style.leftNav}>
-          <Title />
+          {/* <Title /> */}
           <ButtonGroup>
             <Del />
             <Bold />
@@ -61,13 +61,13 @@ const style = {
     padding: "20px"
   },
   leftNav: {
-    flex: "1 1 50%",
+    flex: "1 1 60%",
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center"
   },
   rightNav: {
-    flex: "1 1 50%",
+    flex: "1 1 40%",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center"

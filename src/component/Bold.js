@@ -10,7 +10,11 @@ import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
 class Bold extends Component {
 
   handleClick = () => {
-
+    const { markdownEditor } = this.props.content;
+    const cursor = markdownEditor.getCursor();
+    const selection = markdownEditor.getSelection();
+    const text = `**${selection}**`
+    markdownEditor.replaceSelection(text, cursor);
   }
 
   render() {

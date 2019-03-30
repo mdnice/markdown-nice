@@ -4,6 +4,7 @@ import markdownItSup from "markdown-it-sup";
 import markdownItFootnote from "markdown-it-footnote";
 import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
+import markdownItImplicitFigures from "markdown-it-implicit-figures";
 import markdownItSpan from "./span";
 import highlightjs from "highlight.js";
 
@@ -65,6 +66,7 @@ markdownParser
   .use(markdownItSup) // 上标
   .use(markdownItFootnote) // 脚注
   .use(markdownItSub) // 下标
+  .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表
 
 export const replaceStyle = (id, css) => {

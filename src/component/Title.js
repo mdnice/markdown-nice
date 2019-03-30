@@ -22,7 +22,7 @@ class Title extends Component {
 
 const style = {
   titleContainer: {
-    width: "60%",
+    width: "50%",
     display: "flex",
     alignItems: "center"
   },

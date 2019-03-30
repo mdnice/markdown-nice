@@ -6675,6 +6675,11 @@ markdown-it-footnote@^3.0.1:
   resolved "https://registry.yarnpkg.com/markdown-it-footnote/-/markdown-it-footnote-3.0.1.tgz#7f3730747cacc86e2fe0bf8a17a710f34791517a"
   integrity sha1-fzcwdHysyG4v4L+KF6cQ80eRUXo=
 
+markdown-it-implicit-figures@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-implicit-figures/-/markdown-it-implicit-figures-0.9.0.tgz#21bf562ab4fd177828febb5e24eda571cf9d1a58"
+  integrity sha512-ykLQZmhy8QnNEm6NgImIrr+/QMe7gSnHgLhNAjz9GGCNdSLR7C/SLFNwGdUZq7vK3a0myWiOYE0tpaZuB0rWWw==
+
 markdown-it-katex@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/markdown-it-katex/-/markdown-it-katex-2.0.3.tgz#d7b86a1aea0b9d6496fab4e7919a18fdef589c39"

@@ -52,9 +52,11 @@ class ImageDialog extends Component {
         }
       })
       .then(({ data: response }) => {
-        // 成功后直接添加url
-        const { content } = this.props.content;
-        this.props.content.setContent(`![](${response.data.url})\n${content}`);
+        // 成功后添加url
+        const { markdownEditor } = this.props.content;
+        const cursor = markdownEditor.getCursor();
+        const text = `![](${response.data.url})\n`
+        markdownEditor.replaceSelection(text, cursor);
         this.props.dialog.setImageOpen(false);
         onSuccess(response, file);
       })
