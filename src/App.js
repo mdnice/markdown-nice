@@ -16,9 +16,12 @@ import "./utils/mdMirror.css";
 import {
   markdownParser,
   markdownParserWechat,
-  replaceStyle
+  replaceStyle,
 } from "./utils/helper";
-import { BASIC_THEME_ID, MARKDOWN_THEME_ID } from "./utils/constant";
+import {
+  BASIC_THEME_ID,
+  MARKDOWN_THEME_ID,
+} from "./utils/constant";
 import THEMES from "./theme/index";
 
 @inject("content")
@@ -153,6 +156,7 @@ class App extends Component {
             onMouseOver={e => this.setCurrentIndex(2, e)}
           >
             <div
+              id="wx-box"
               className="wx-box"
               onScroll={this.handleScroll}
               ref={node => (this.previewContainer = node)}

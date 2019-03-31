@@ -19,6 +19,7 @@ export const STYLE = "style";
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
+export const FONT_THEME_ID = "font-theme";
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
@@ -33,7 +34,7 @@ export const MARKDOWN_EXAMPLE =
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
 - 内容和自定义样式浏览器中实时保存
-- 欢迎推荐主题，试用Beta版
+- 欢迎登录GitHub账号，提交自定义主题
 
 ## 2. 标题
 
@@ -181,7 +182,30 @@ ___
 
 ## 15. 数学公式
 
-待支持
+数学公式由于转换过慢，故而放在了代码块中，需要使用可以将代码块去除
+
+\`\`\`
+行内公式使用方法，比如这个著名的公式：$E=mc^2$，源于爱因斯坦
+
+块公式使用方法如下：
+
+$$H(D_2) = -(\\frac{2}{4}\\ log_2 \\frac{2}{4} + \\frac{2}{4}\\ log_2 \\frac{2}{4}) = 1$$
+
+矩阵：
+
+$$
+  \\begin{pmatrix}
+  1 & a_1 & a_1^2 & \\cdots & a_1^n \\\\
+  1 & a_2 & a_2^2 & \\cdots & a_2^n \\\\
+  \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\
+  1 & a_m & a_m^2 & \\cdots & a_m^n \\\\
+  \\end{pmatrix}
+$$
+\`\`\`
+
+公式由于微信不支持，目前的解决方案就是转成图片放到微信中，由于粘贴图片经常失败，目前还在测试
+
+可考虑手动将转成图片的公式保存下来上传到微信上再将链接取回则万无一失
 
 ## 16. UML
 
@@ -194,7 +218,7 @@ export const MARKDOWN_OPTIONS = [
   },
   {
     id: "orange",
-    name: "橙色主题"
+    name: "清新小橙"
   },
   // {
   //   id: "title1",
@@ -240,3 +264,7 @@ export const CODE_OPTIONS = [
     name: "xcode"
   }
 ];
+
+
+
+export const base64 = "data:image/png;base64,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"

@@ -1,7 +1,7 @@
 import axios from "axios";
 import markdownIt from "markdown-it";
 import markdownItSup from "markdown-it-sup";
-// import markdownItFootnote from "markdown-it-footnote";
+import markdownItKatex from "markdown-it-katex";
 import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
@@ -77,7 +77,7 @@ markdownParserWechat
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItRemovepre) // 移除代码段中的 pre code
   .use(markdownItSup) // 上标
-  // .use(markdownItFootnote) // 脚注
+  .use(markdownItKatex) // 数学公式
   .use(markdownItChangefoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
@@ -107,7 +107,7 @@ export const markdownParser = new markdownIt({
 markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItSup) // 上标
-  // .use(markdownItFootnote) // 脚注
+  .use(markdownItKatex) // 数学公式
   .use(markdownItChangefoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
@@ -123,3 +123,25 @@ export const replaceStyle = (id, css) => {
   const head = document.getElementsByTagName("head")[0];
   head.appendChild(style);
 };
+
+
+export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+  const byteCharacters = atob(b64Data);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+  }
+
+const blob = new Blob(byteArrays, {type: contentType});
+return blob;
+}

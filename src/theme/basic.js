@@ -287,6 +287,31 @@ table tr th {
   line-height: 20px;
 }
 
+/* 脚注 */
 .footnote-ref {
   font-weight: bold;
+}
+
+/* 公式注释 */
+.katex-mathml {
+  display: none;
+}
+
+.katex {
+  display: inline-block;
+  line-height: 28px;
+}
+
+.math-img-inline {
+  display: inline;
+  margin: 0;
+  width: 20%;
+}
+
+.katex-inline {
+  display: inline;
+}
+
+.math-img-block {
+  width: 100%;
 }`

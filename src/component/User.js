@@ -13,7 +13,7 @@ class LogIn extends React.Component {
   showConfirm = () => {
     const content = (
       <p>
-        <a target="_blank" href="https://github.com/zhning12/markdown-nice">
+        <a rel="noopener noreferrer" target="_blank" href="https://github.com/zhning12/markdown-nice">
           markdown-nice
         </a>
         正在接收自定义主题，维护人员将会根据主题质量进行添加，是否确认将你的自定义CSS发送？
@@ -23,7 +23,7 @@ class LogIn extends React.Component {
       return (
         <span>
           提交成功，
-          <a target="_blank" href={link}>
+          <a rel="noopener noreferrer" target="_blank" href={link}>
             查看Issue
           </a>
         </span>
@@ -60,21 +60,22 @@ class LogIn extends React.Component {
   };
 
   render() {
+    const hrefLink = '#';
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a onClick={this.showConfirm}>提交主题</a>
+          <a rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>提交主题</a>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="1">
-          <a onClick={this.signOut}>退出登录</a>
+          <a rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>退出登录</a>
         </Menu.Item>
       </Menu>
     );
 
     return (
       <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" href="#">
+        <a rel="noopener noreferrer" className="ant-dropdown-link" href={hrefLink}>
           <Avatar style={style.avatar} icon="user" shape="square" />
         </a>
       </Dropdown>

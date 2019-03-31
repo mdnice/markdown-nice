@@ -15,6 +15,8 @@ import FullScreen from "../component/FullScreen";
 // import Title from "../component/Title";
 import LogIn from "../component/LogIn";
 import User from "../component/User";
+import About from "../component/About";
+import Font from "../component/Font";
 
 const ButtonGroup = Button.Group;
 
@@ -31,21 +33,28 @@ class Navbar extends Component {
       <div style={style.navBar}>
         <div style={style.leftNav}>
           {/* <Title /> */}
-          <ButtonGroup style={style.btnGroupMargin}>
-            <Del />
-            <Bold />
-            <Italic />
-            <Code />
-            <Link />
-            <Image />
-          </ButtonGroup>
-          <ButtonGroup>
-            <Reset />
-            <FullScreen />
-          </ButtonGroup>
+          <p style={style.title}>Markdown Nice</p>
+          <div>
+            <ButtonGroup style={style.btnGroupMargin}>
+              <Del />
+              <Bold />
+              <Italic />
+              <Code />
+            </ButtonGroup>
+            <ButtonGroup style={style.btnGroupMargin}>
+              <Link />
+              <Image />
+            </ButtonGroup>
+            <ButtonGroup style={style.btnGroupRight}>
+              <Reset />
+              <FullScreen />
+              <Font />
+            </ButtonGroup>
+          </div>
         </div>
         <div style={style.rightNav}>
           <Copy />
+          <About />
           <ThemeSelect />
           {/* <Save /> */}
           {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
@@ -64,19 +73,26 @@ const style = {
     padding: "20px"
   },
   leftNav: {
-    flex: "1 1 60%",
+    flex: "1 1 50%",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   rightNav: {
-    flex: "1 1 40%",
+    flex: "1 1 50%",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center"
   },
   btnGroupMargin: {
     marginRight: "10px"
+  },
+  btnGroupRight: {
+    marginRight: "20px"
+  },
+  title: {
+    marginRight: "10px",
+    fontWeight: "bold"
   }
 };
 
