@@ -150,9 +150,9 @@ pre {
 pre code {
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
+  font-size: 12px;
 }
 pre code span {
-  font-size: 14px;
   line-height: 26px;
 }
 
@@ -220,4 +220,73 @@ table tr td {
 table tr th {
   font-weight: bold;
   background-color: #f0f0f0;
+}
+
+/* 微信代码块 */
+.code-snippet__fix {
+  word-wrap: break-word !important;
+  ont-size: 14px;
+  margin: 10px 0;
+  display: block;
+  color: #333;
+  position: relative;
+  background-color: rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+  display: flex;
+  line-height: 20px;
+  font-size: 12px;
+}
+.code-snippet__fix .code-snippet__line-index {
+  counter-reset: line;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 1em;
+  list-style-type: none;
+  margin: 0;
+}
+.code-snippet__fix .code-snippet__line-index li {
+  list-style-type: none;
+  text-align: right;
+}
+.code-snippet__fix .code-snippet__line-index li::before {
+  min-width: 1.5em;
+  text-align: right;
+  left: -2.5em;
+  counter-increment: line;
+  content: counter(line);
+  display: inline;
+  color: rgba(0,0,0,0.3);
+}
+.code-snippet__fix pre {
+  overflow-x: auto;
+  padding: 1em;
+  padding-left: 1em;
+  padding-left: 0;
+  white-space: normal;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+.code-snippet__fix code {
+  text-align: left;
+  font-size: 14px;
+  display: block;
+  white-space: pre;
+  display: flex;
+  position: relative;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  background: rgba(0,0,0,0);
+  font-size: 12px;
+}
+.code-snippet__fix code span {
+  line-height: 20px;
+}
+.code-snippet__fix ol li {
+  margin: 0;
+  padding: 2px;
+  line-height: 20px;
+}
+
+.footnote-ref {
+  font-weight: bold;
 }`

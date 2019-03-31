@@ -6670,6 +6670,11 @@ markdown-it-deflist@^2.0.3:
   resolved "https://registry.yarnpkg.com/markdown-it-deflist/-/markdown-it-deflist-2.0.3.tgz#5727db04184d3cb2bc6ee4a9641e3a1091d5fd6f"
   integrity sha512-/BNZ8ksW42bflm1qQLnRI09oqU2847Z7MVavrR0MORyKLtiUYOMpwtlAfMSZAQU9UCvaUZMpgVAqoS3vpToJxw==
 
+markdown-it-footnote-conventional@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-footnote-conventional/-/markdown-it-footnote-conventional-2.0.1.tgz#565d193b6ed4bdbfabcb007e81f64f273b029846"
+  integrity sha1-Vl0ZO27Uvb+rywB+gfZPJzsCmEY=
+
 markdown-it-footnote@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/markdown-it-footnote/-/markdown-it-footnote-3.0.1.tgz#7f3730747cacc86e2fe0bf8a17a710f34791517a"

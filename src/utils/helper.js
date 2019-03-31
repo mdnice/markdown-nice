@@ -1,11 +1,13 @@
 import axios from "axios";
 import markdownIt from "markdown-it";
 import markdownItSup from "markdown-it-sup";
-import markdownItFootnote from "markdown-it-footnote";
+// import markdownItFootnote from "markdown-it-footnote";
 import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
-import markdownItSpan from "./span";
+import markdownItSpan from "./markdown-it-span";
+import markdownItRemovepre from "./markdown-it-removepre";
+import markdownItChangefoot from "./markdown-it-changefoot";
 import highlightjs from "highlight.js";
 
 export const axiosGithub = axios.create({
@@ -42,19 +44,60 @@ export const deCode = str => {
   return decodeURIComponent(escape(window.atob(str)));
 };
 
+// 专门微信代码高亮的解析器
+export const markdownParserWechat = new markdownIt({
+  highlight: (str, lang) => {
+    const text = str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const lines = text.split("\n");
+    const codeLines = [];
+    const numbers = [];
+    for (let i = 0; i < lines.length - 1; i++) {
+      codeLines.push(
+        '<code><span class="code-snippet_outer">' +
+          (lines[i] || "<br>") +
+          "</span></code>"
+      );
+      numbers.push("<li></li>");
+    }
+    return (
+      '<section class="code-snippet__fix code-snippet__js">' +
+      '<ol class="code-snippet__line-index code-snippet__js">' +
+      numbers.join("") +
+      "</ol>" +
+      '<pre class="code-snippet__js" data-lang="' +
+      lang +
+      '">' +
+      codeLines.join("") +
+      "</pre></section>"
+    );
+  }
+});
+
+markdownParserWechat
+  .use(markdownItSpan) // 在标题标签中添加span
+  .use(markdownItRemovepre) // 移除代码段中的 pre code
+  .use(markdownItSup) // 上标
+  // .use(markdownItFootnote) // 脚注
+  .use(markdownItChangefoot) // 修改脚注
+  .use(markdownItSub) // 下标
+  .use(markdownItImplicitFigures, { figcaption: true }) // 图示
+  .use(markdownItDeflist); // 定义列表
+
+// 普通解析器，代码高亮用highlight
 export const markdownParser = new markdownIt({
   highlight: (str, lang) => {
+    // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
     if (lang && highlightjs.getLanguage(lang)) {
       try {
         return (
-          '<pre ><code class="hljs">' +
+          '<pre class="custom"><code class="hljs">' +
           highlightjs.highlight(lang, str, true).value +
           "</code></pre>"
         );
       } catch (__) {}
     }
     return (
-      '<pre ><code class="hljs">' +
+      '<pre class="custom"><code class="hljs">' +
       markdownParser.utils.escapeHtml(str) +
       "</code></pre>"
     );
@@ -64,7 +107,8 @@ export const markdownParser = new markdownIt({
 markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItSup) // 上标
-  .use(markdownItFootnote) // 脚注
+  // .use(markdownItFootnote) // 脚注
+  .use(markdownItChangefoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表

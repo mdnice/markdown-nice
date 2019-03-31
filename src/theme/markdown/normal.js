@@ -1,19 +1,20 @@
 export default 
 `/* 全局属性
-* 页边距 padding: 30px;
-* 全文字体 font-family: ptima-Regular;
-*/
+ * 页边距 padding: 30px;
+ * 全文字体 font-family: ptima-Regular;
+ */
 .layout {
 }
 
 /* 段落，下方未标注标签参数均同此处
-* 上边距 margin-top: 5px;
-* 下边距 margin-bottom: 5px;
-* 行高 line-height: 26px;
-* 对齐 text-align: left;
-* 颜色 color: #3e3e3e;
-* 字体大小 font-size: 16px;
-*/
+ * 上边距 margin-top: 5px;
+ * 下边距 margin-bottom: 5px;
+ * 行高 line-height: 26px;
+ * 对齐 text-align: left;
+ * 颜色 color: #3e3e3e;
+ * 字体大小 font-size: 16px;
+ * 首行缩进 text-indent: 2em;
+ */
 p {
 }
 
@@ -105,4 +106,16 @@ img {
 
 /* 图片描述文字 */
 figcaption {
+}
+
+/* 脚注上标 */
+.footnote-ref {
+
+}
+
+/* 脚注参考资料文字 
+ * 隐藏 display: none;
+ */
+.footnotes-sep {
+
 }`

@@ -4,7 +4,6 @@ import { observer, inject } from "mobx-react";
 import axios from "axios";
 
 import githubIcon from "../icon/github.svg";
-import githubOnIcon from "../icon/githubOn.svg";
 
 import {
   CLIENT_ID,
@@ -61,19 +60,29 @@ class LogIn extends React.Component {
         placement="bottom"
         mouseEnterDelay={ENTER_DELAY}
         mouseLeaveDelay={LEAVE_DELAY}
-        title={this.props.userInfo.userInfo.login ? "我的" : "登录"}
+        title="登录"
       >
-        <Button style={{ padding: "0 8px" }} onClick={this.login}>
-          <Icon
-            component={
-              this.props.userInfo.userInfo.login ? githubOnIcon : githubIcon
-            }
-            style={{ fontSize: "20px" }}
-          />
+        <Button shape="circle" style={style.btnStyle} onClick={this.login}>
+          <Icon component={githubIcon} style={style.iconSize} />
         </Button>
       </Tooltip>
     );
   }
 }
+
+const style = {
+  btnStyle: {
+    border: "none",
+    width: "24px",
+    height: "24px"
+  },
+  iconSize: {
+    fontSize: "24px"
+  },
+  avatar: {
+    background: "white",
+    color: "black"
+  }
+};
 
 export default LogIn;

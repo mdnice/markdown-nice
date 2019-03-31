@@ -38,7 +38,7 @@ const style = {
     padding: "0 8px"
   },
   iconSize: {
-    fontSize: "18px"
+    fontSize: "17px"
   }
 };
 

@@ -52,12 +52,21 @@ class FullScreen extends Component {
         mouseLeaveDelay={LEAVE_DELAY}
         title="全屏"
       >
-        <Button style={{ padding: "0 8px" }} onClick={this.toggleFullScreen}>
-          <Icon component={fullscreenIcon} style={{ fontSize: "18px" }} />
+        <Button style={style.btnPadding} onClick={this.toggleFullScreen}>
+          <Icon component={fullscreenIcon} style={style.iconSize} />
         </Button>
       </Tooltip>
     );
   }
 }
+
+const style = {
+  btnPadding: {
+    padding: "0 8px"
+  },
+  iconSize: {
+    fontSize: "16px"
+  }
+};
 
 export default FullScreen;

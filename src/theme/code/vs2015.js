@@ -7,7 +7,7 @@ export default
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 16px;
   background: #1E1E1E;
   color: #DCDCDC;
 }

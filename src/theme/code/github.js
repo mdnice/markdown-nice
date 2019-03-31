@@ -8,7 +8,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 16px;
   color: #333;
   background: #f8f8f8;
 }

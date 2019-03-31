@@ -21,6 +21,7 @@ export default
  * 对齐 text-align: left;
  * 颜色 color: #3e3e3e;
  * 字体大小 font-size: 16px;
+ * 首行缩进 text-indent: 2em;
  */
 p {
 }
@@ -135,4 +136,16 @@ figcaption {
 /* 行内代码 */
 code {
   color: rgb(239, 112, 96);
+}
+
+/* 脚注上标 */
+.footnote-ref {
+  color: rgb(239, 112, 96);
+}
+
+/* 脚注参考资料文字 
+ * 隐藏 display: none;
+ */
+.footnotes-sep {
+
 }`

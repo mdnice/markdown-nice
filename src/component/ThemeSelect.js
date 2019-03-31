@@ -20,11 +20,11 @@ class ThemeSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      codeName: "github"
+      codeName: "微信代码主题"
     };
-    // 初始化markdown主题和代码主题
+    // 初始化markdown主题
     replaceStyle(MARKDOWN_THEME_ID, THEMES.markdown["normal"]);
-    replaceStyle(CODE_THEME_ID, THEMES.code["github"]);
+    // replaceStyle(CODE_THEME_ID, THEMES.code["github"]);
   }
 
   changeMarkdownTheme = item => {
@@ -47,10 +47,15 @@ class ThemeSelect extends React.Component {
   changeCodeTheme = item => {
     const index = item.key;
     const { id, name } = CODE_OPTIONS[index];
-    this.setState({ codeName: name });
 
-    // 更新style
-    replaceStyle(CODE_THEME_ID, THEMES.code[id]);
+    this.setState({ codeName: name });
+    if (id === "wechat") {
+      this.props.navbar.setWechatCode(true);
+    } else {
+      this.props.navbar.setWechatCode(false);
+      // 更新style
+      replaceStyle(CODE_THEME_ID, THEMES.code[id]);
+    }
   };
 
   toggleStyleEditor = checked => {

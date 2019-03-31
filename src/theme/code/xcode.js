@@ -8,7 +8,7 @@ XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 16px;
   background: #fff;
   color: black;
 }

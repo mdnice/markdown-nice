@@ -11,16 +11,17 @@ import Code from "../component/Code";
 import Italic from "../component/Italic";
 import Bold from "../component/Bold";
 import Del from "../component/Del";
-// import FullScreen from "../component/FullScreen";
+import FullScreen from "../component/FullScreen";
 // import Title from "../component/Title";
-// import LogIn from "../component/LogIn";
+import LogIn from "../component/LogIn";
+import User from "../component/User";
 
 const ButtonGroup = Button.Group;
 
 @inject("title")
+@inject("userInfo")
 @observer
 class Navbar extends Component {
-
   changeTitle = event => {
     this.props.title.setTitle(event.target.value);
   };
@@ -30,22 +31,24 @@ class Navbar extends Component {
       <div style={style.navBar}>
         <div style={style.leftNav}>
           {/* <Title /> */}
-          <ButtonGroup>
+          <ButtonGroup style={style.btnGroupMargin}>
             <Del />
             <Bold />
             <Italic />
             <Code />
             <Link />
             <Image />
+          </ButtonGroup>
+          <ButtonGroup>
             <Reset />
+            <FullScreen />
           </ButtonGroup>
         </div>
         <div style={style.rightNav}>
           <Copy />
           <ThemeSelect />
           {/* <Save /> */}
-          {/* <FullScreen /> */}
-          {/* <LogIn /> */}
+          {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
         </div>
       </div>
     );
@@ -71,6 +74,9 @@ const style = {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center"
+  },
+  btnGroupMargin: {
+    marginRight: "10px"
   }
 };
 

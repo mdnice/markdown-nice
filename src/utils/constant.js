@@ -57,6 +57,8 @@ export const MARKDOWN_EXAMPLE =
   - 无序列表2.1
   - 无序列表2.2
 
+粘贴到微信编辑器后后**无序列表整体样式与微信一致**。
+
 ## 4. 有序列表
 
 有序列表的使用，在数字及符号\`.\`后加空格后输入内容，如下：
@@ -64,6 +66,8 @@ export const MARKDOWN_EXAMPLE =
 1. 有序列表1
 2. 有序列表2
 3. 有序列表3
+
+粘贴到微信编辑器后后**有序列表整体样式与微信一致**。
 
 ## 5. 引用
 
@@ -87,13 +91,11 @@ export const MARKDOWN_EXAMPLE =
 
 ***这个是粗体加斜体***
 
-## 7. 链接和脚注
+## 7. 链接
 
-链接用法为由于微信不支持外链故而不演示。
+微信公众号仅支持公众号内文章链接，故而不做演示，以免体验者粘贴到公众号内无法预览。
 
-如下：\`[](https://www.mdnice.com)\`
-
-脚注用法待更新
+如下：\`[你是《未来世界的幸存者》么？](https://mp.weixin.qq.com/s/s5IhxV2ooX3JN_X416nidA)\`
 
 ## 8. 图片
 
@@ -101,7 +103,7 @@ export const MARKDOWN_EXAMPLE =
 
 ![这里写图片描述](https://i.loli.net/2019/03/30/5c9eff84d81c4.png)
 
-可使用上方工具上传本地图片，感谢 SM.MS 图床助力
+**可使用上方工具上传本地图片，感谢 SM.MS 图床助力**
 
 ## 9. 代码块
 
@@ -113,15 +115,23 @@ Use the \`printf()\`  function.
 
 \`\`\`java
 // FileName: HelloWorld.java
-public class HelloWorld
-{
+public class HelloWorld {
   // Java 入口程序，程序从此入口
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     System.out.println("Hello,World!"); // 向控制台打印一条语句
   }
 }
 \`\`\`
+
+如果想要更换代码主题，可在上方挑选，不支持代码主题自定义。
+
+其中**微信代码主题与微信官方一致**，有以下注意事项：
+
+- 带行号且不换行，代码大小与官方一致
+- 需要在代码块处标志语言，否则无法高亮
+- 粘贴到公众号后，用鼠标点代码块内外一次，完成高亮
+
+**其他主题不带行号且换行，代码大小与编辑器一致**
 
 ## 10. 分割线
 
@@ -147,11 +157,35 @@ ___
 | 小勇敢 | 20 | 爬勇敢树 |
 | 小机智 | 22 | 看机智书 |
 
-## 13. 上标和下标
+## 13. 脚注
+
+脚注的使用中，会自动编号，**分为行内脚注和块脚注**，如果块脚注内容需要换行，那么**在换行内容前方加入tab或者4个空格**
+
+行内脚注如下：
+
+有人认为在大前端时代^[以前端开发为业务主导，https://en.wikipedia.org/wiki/Front-end_web_development]的背景下，移动端开发（Android、IOS）将逐步退出历史舞台。
+
+块脚注如下：
+
+全栈工程师[^全栈]在业务开发流程中起到了至关重要的作用。
+
+[^全栈]: 掌握多种技能，并能利用多种技能独立完成产品的人
+
+    https://baike.baidu.com/item/全栈工程师
+
+## 14. 上标和下标
 
 使用两个\`^\`包围可作为上标，如下：19^th^
 
-使用两个\`~\`包围可作为下标，如下：H~2~O`;
+使用两个\`~\`包围可作为下标，如下：H~2~O
+
+## 15. 数学公式
+
+待支持
+
+## 16. UML
+
+不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作好导入图片`;
 
 export const MARKDOWN_OPTIONS = [
   {
@@ -162,14 +196,14 @@ export const MARKDOWN_OPTIONS = [
     id: "orange",
     name: "橙色主题"
   },
-  {
-    id: "title1",
-    name: "标题示例1"
-  },
-  {
-    id: "title2",
-    name: "标题示例2"
-  },
+  // {
+  //   id: "title1",
+  //   name: "标题示例1"
+  // },
+  // {
+  //   id: "title2",
+  //   name: "标题示例2"
+  // },
   {
     id: "custom",
     name: "自定义"
@@ -177,6 +211,10 @@ export const MARKDOWN_OPTIONS = [
 ];
 
 export const CODE_OPTIONS = [
+  {
+    id: "wechat",
+    name: "微信代码主题"
+  },
   {
     id: "atomOneDark",
     name: "atom-one-dark"

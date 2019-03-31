@@ -13,7 +13,11 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import { markdownParser, replaceStyle } from "./utils/helper";
+import {
+  markdownParser,
+  markdownParserWechat,
+  replaceStyle
+} from "./utils/helper";
 import { BASIC_THEME_ID, MARKDOWN_THEME_ID } from "./utils/constant";
 import THEMES from "./theme/index";
 
@@ -40,7 +44,7 @@ class App extends Component {
   };
 
   handleScroll = () => {
-    const { markdownEditor } = this.props.content
+    const { markdownEditor } = this.props.content;
     let cmData = markdownEditor.getScrollInfo();
     let editorToTop = cmData.top;
     let editorScrollHeight = cmData.height - cmData.clientHeight;
@@ -116,6 +120,10 @@ class App extends Component {
   };
 
   render() {
+    const parseHtml = this.props.navbar.isWechatCode
+      ? markdownParserWechat.render(this.props.content.content)
+      : markdownParser.render(this.props.content.content);
+
     return (
       <div className="App">
         <Navbar />
@@ -152,7 +160,7 @@ class App extends Component {
               <section
                 className="layout"
                 dangerouslySetInnerHTML={{
-                  __html: markdownParser.render(this.props.content.content)
+                  __html: parseHtml
                 }}
                 ref={node => (this.previewWrap = node)}
               />

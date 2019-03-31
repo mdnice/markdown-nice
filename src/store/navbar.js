@@ -3,6 +3,7 @@ import { MARKDOWN_OPTIONS } from "../utils/constant"
 
 class Navbar {
   @observable isStyleEditorOpen = false;
+  @observable isWechatCode = true;
   @observable markdownId = MARKDOWN_OPTIONS[0].id;
   @observable markdownName = MARKDOWN_OPTIONS[0].name;
 
@@ -19,6 +20,11 @@ class Navbar {
   @action
   setMarkdownName = markdownName => {
     this.markdownName = markdownName;
+  };
+
+  @action
+  setWechatCode = isWechatCode => {
+    this.isWechatCode = isWechatCode;
   };
 }
 
