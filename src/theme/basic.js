@@ -303,9 +303,11 @@ table tr th {
 }
 
 .math-img-inline {
-  display: inline;
-  margin: 0;
-  width: 20%;
+  display: inline-block;
+  line-height: inherit;
+  height: 28px;
+  width: auto;
+  vertical-align: middle
 }
 
 .katex-inline {

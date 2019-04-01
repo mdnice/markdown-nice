@@ -4,10 +4,7 @@ import { observer, inject } from "mobx-react";
 import { Button, message, ConfigProvider } from "antd";
 import html2canvas from "html2canvas";
 
-import {
-  axiosJSON,
-  b64toBlob
-} from "../utils/helper";
+import { axiosJSON, b64toBlob } from "../utils/helper";
 import {
   BASIC_THEME_ID,
   CODE_THEME_ID,
@@ -40,18 +37,18 @@ class Copy extends Component {
   solveMath = async () => {
     const mathNums = document.getElementsByClassName("katex").length;
     // 图片已经转换完了
-    if(mathNums === 0) {
+    if (mathNums === 0) {
       this.copyHtml();
       return;
     }
-    const hide = message.loading('正在将公式转成图片', 0);
+    const hide = message.loading("正在将公式转成图片", 0);
     // Dismiss manually and asynchronously
     let count = 0;
     // 先处理块公式，再处理行内公式
     const tagsBlock = document.getElementsByClassName("katex-display");
     for (let i = 0; i < tagsBlock.length; i++) {
       const canvas = await html2canvas(tagsBlock[i], { logging: false });
-      const url = await this.uploadMathImage(canvas.toDataURL())
+      const url = await this.uploadMathImage(canvas.toDataURL());
       const img = new Image();
       img.src = url;
       img.onload = () => {
@@ -72,7 +69,7 @@ class Copy extends Component {
     for (let i = 0; i < tagsInline.length; i++) {
       if (tagsInline[i]) {
         const canvas = await html2canvas(tagsInline[i], { logging: false });
-        const url = await this.uploadMathImage(canvas.toDataURL())
+        const url = await this.uploadMathImage(canvas.toDataURL());
         const img = new Image();
         img.src = url;
         img.onload = () => {
@@ -97,10 +94,6 @@ class Copy extends Component {
     const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
     const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
     const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
-    // const parseHtml = this.props.navbar.isWechatCode
-    //   ? markdownParserWechat.render(this.props.content.content)
-    //   : markdownParser.render(this.props.content.content);
-    // const htmlStr = `<section class="layout">${parseHtml}</section>`;
     const result = juice.inlineContent(
       element.innerHTML,
       basicStyle + markdownStyle + codeStyle,
@@ -108,12 +101,14 @@ class Copy extends Component {
         inlinePseudoElements: true
       }
     );
+    // console.log(result);
     this.copyToClip(result);
     this.success();
   };
 
   copyToClip = str => {
     function listener(e) {
+      console.log(str);
       e.clipboardData.setData("text/html", str);
       e.clipboardData.setData("text/plain", str);
       e.preventDefault();
