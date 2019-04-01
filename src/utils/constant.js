@@ -29,6 +29,8 @@ export const MARKDOWN_EXAMPLE =
 
 请阅读下方文本熟悉工具使用方法。
 
+<img style="width: 120px" src="https://i.loli.net/2019/04/01/5ca1766ad4e58.png"/>
+
 ## 1. Markdown Nice 简介
 
 - 支持自定义样式的 Markdown 编辑器
@@ -208,9 +210,16 @@ $$
 可考虑手动将转成图片的公式保存下来上传到微信上再将链接取回则万无一失
 
 不推荐使用行内公式，微信会将图片放大
-## 16. UML
 
-不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作好导入图片`;
+## 16. HTML
+
+支持原生 HTML 语法，除个别情况外，建议尽少使用，如下：
+
+<p align="right" style="color:orangered;">橙色居右</p>
+
+## 17. UML
+
+不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作后再导入图片`;
 
 export const MARKDOWN_OPTIONS = [
   {
