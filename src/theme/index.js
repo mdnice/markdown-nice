@@ -3,6 +3,11 @@ import orange from "./markdown/orange";
 import title1 from "./markdown/title1";
 import title2 from "./markdown/title2";
 import custom from "./markdown/custom";
+
+import normalContent from "./content/normal";
+import orangeContent from "./content/orange";
+import customContent from "./content/custom";
+
 import atomOneDark from "./code/atomOneDark";
 import atomOneLight from "./code/atomOneLight";
 import github from "./code/github";
@@ -27,5 +32,10 @@ export default {
     monokai,
     vs2015,
     xcode
+  },
+  content: {
+    normal: normalContent,
+    orange: orangeContent,
+    custom: customContent
   }
 };

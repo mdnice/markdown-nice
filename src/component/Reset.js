@@ -5,7 +5,8 @@ import resetIcon from "../icon/reset.svg";
 
 import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
 
-import { MARKDOWN_EXAMPLE } from "../utils/constant.js";
+import NORMAL_EXAMPLE from "../theme/content/normal";
+
 import THEMES from "../theme/index";
 
 @inject("content")
@@ -21,7 +22,7 @@ class Reset extends Component {
       okType: "danger",
       cancelText: "取消",
       onOk: () => {
-        this.props.content.setContent(MARKDOWN_EXAMPLE);
+        this.props.content.setContent(NORMAL_EXAMPLE);
         this.props.content.setStyle(THEMES.markdown["normal"]);
         this.props.content.setCustomStyle(THEMES.markdown["custom"]);
       },

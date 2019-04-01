@@ -1,9 +1,10 @@
 import { observable, action } from "mobx";
-import { MARKDOWN_EXAMPLE, CONTENT, STYLE } from "../utils/constant.js";
+import { CONTENT, STYLE } from "../utils/constant.js";
+import NORMAL_EXAMPLE from "../theme/content/normal";
 import THEMES from "../theme/index";
 
 class Content {
-  @observable content = MARKDOWN_EXAMPLE;
+  @observable content = NORMAL_EXAMPLE;
   @observable style = THEMES.markdown["normal"];
   @observable markdownEditor;
 
@@ -37,7 +38,7 @@ class Content {
 const store = new Content();
 // 用于处理刷新后的信息持久化
 const content = window.localStorage.getItem(CONTENT);
-store.content = content ? content : MARKDOWN_EXAMPLE;
+store.content = content ? content : NORMAL_EXAMPLE;
 
 window.localStorage.setItem(STYLE, THEMES.markdown["custom"]);
 

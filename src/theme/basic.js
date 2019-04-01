@@ -171,7 +171,7 @@ code {
 img {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
 }
 
 /*图片*/

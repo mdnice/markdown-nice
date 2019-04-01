@@ -37,10 +37,13 @@ class ThemeSelect extends React.Component {
     replaceStyle(MARKDOWN_THEME_ID, THEMES.markdown[id]);
     if (id === "custom") {
       this.props.content.setCustomStyle();
+      // this.props.content.setContent(THEMES.content['custom']);
+
       // 自定义主题则自动打开样式编辑
       this.props.navbar.setStyleEditorOpen(true);
     } else {
       this.props.content.setStyle(THEMES.markdown[id]);
+      // this.props.content.setContent(THEMES.content[id]);
     }
   };
 
