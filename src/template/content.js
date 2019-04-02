@@ -10,7 +10,7 @@ export default
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
 - 内容和自定义样式浏览器中实时保存
-- 欢迎登录GitHub账号，提交自定义主题
+- 欢迎登录 GitHub 账号，提交自定义主题
 
 ## 2. 标题
 
@@ -70,9 +70,9 @@ export default
 
 ## 7. 链接
 
-微信公众号仅支持公众号内文章链接，故而不做演示，以免体验者粘贴到公众号内无法预览。
+微信公众号仅支持公众号文章链接，请勿添加外链或无效链接。如下：
 
-如下：\`[你是《未来世界的幸存者》么？](https://mp.weixin.qq.com/s/s5IhxV2ooX3JN_X416nidA)\`
+[终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
 
 ## 8. 图片
 
@@ -193,7 +193,7 @@ $$
 
 ## 17. UML
 
-不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作后再导入图片
+暂不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作后再导入图片
 
 ## 18. 了解更多
 

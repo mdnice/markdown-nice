@@ -3,15 +3,18 @@ import { Button, Icon, Menu, Dropdown, Switch, Tooltip } from "antd";
 import { observer, inject } from "mobx-react";
 
 import {
-  MARKDOWN_OPTIONS,
+  TEMPLATE_OPTIONS,
   CODE_OPTIONS,
   CODE_THEME_ID,
   MARKDOWN_THEME_ID,
   ENTER_DELAY,
-  LEAVE_DELAY
+  LEAVE_DELAY,
+  TEMPLATE_CUSTOM_NUM,
+  TEMPLATE_NUM,
+  CODE_NUM
 } from "../utils/constant";
 import { replaceStyle } from "../utils/helper";
-import THEMES from "../theme/index";
+import TEMPLATE from "../template/index";
 
 @inject("content")
 @inject("navbar")
@@ -19,45 +22,41 @@ import THEMES from "../theme/index";
 class ThemeSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      codeName: "微信代码主题"
-    };
+    const templateNum = window.localStorage.getItem(TEMPLATE_NUM);
+    const codeNum = window.localStorage.getItem(CODE_NUM);
     // 初始化markdown主题
-    replaceStyle(MARKDOWN_THEME_ID, THEMES.markdown["normal"]);
-    // replaceStyle(CODE_THEME_ID, THEMES.code["github"]);
+    const id = TEMPLATE_OPTIONS[templateNum].id;
+    const codeId = CODE_OPTIONS[codeNum].id;
+    
+    replaceStyle(MARKDOWN_THEME_ID, TEMPLATE.style[id]);
+
+    if (this.props.navbar.codeNum !== 0) {
+      replaceStyle(CODE_THEME_ID, TEMPLATE.code[codeId]);
+    }
   }
 
-  changeMarkdownTheme = item => {
-    const index = item.key;
-    const { id, name } = MARKDOWN_OPTIONS[index];
-    this.props.navbar.setMarkdownName(name);
-    this.props.navbar.setMarkdownId(id);
+  changeTemplate = item => {
+    const index = parseInt(item.key);
+    const { id } = TEMPLATE_OPTIONS[index];
+    this.props.navbar.setTemplateNum(index);
 
     // 更新style编辑器
-    replaceStyle(MARKDOWN_THEME_ID, THEMES.markdown[id]);
     if (id === "custom") {
       this.props.content.setCustomStyle();
-      // this.props.content.setContent(THEMES.content['custom']);
-
-      // 自定义主题则自动打开样式编辑
-      this.props.navbar.setStyleEditorOpen(true);
     } else {
-      this.props.content.setStyle(THEMES.markdown[id]);
-      // this.props.content.setContent(THEMES.content[id]);
+      this.props.content.setStyle(TEMPLATE.style[id]);
     }
+    replaceStyle(MARKDOWN_THEME_ID, TEMPLATE.style[id]);
   };
 
   changeCodeTheme = item => {
-    const index = item.key;
-    const { id, name } = CODE_OPTIONS[index];
+    const codeNum = parseInt(item.key);
+    const { id } = CODE_OPTIONS[codeNum];
+    this.props.navbar.setCodeNum(codeNum);
 
-    this.setState({ codeName: name });
-    if (id === "wechat") {
-      this.props.navbar.setWechatCode(true);
-    } else {
-      this.props.navbar.setWechatCode(false);
-      // 更新style
-      replaceStyle(CODE_THEME_ID, THEMES.code[id]);
+    // 更新style
+    if (codeNum !== 0) {
+      replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
     }
   };
 
@@ -67,8 +66,8 @@ class ThemeSelect extends React.Component {
 
   render() {
     const mdMenu = (
-      <Menu onClick={this.changeMarkdownTheme}>
-        {MARKDOWN_OPTIONS.map((option, index) => (
+      <Menu onClick={this.changeTemplate}>
+        {TEMPLATE_OPTIONS.map((option, index) => (
           <Menu.Item key={index}>{option.name}</Menu.Item>
         ))}
       </Menu>
@@ -81,17 +80,22 @@ class ThemeSelect extends React.Component {
       </Menu>
     );
 
+    // 自定义则加上特殊描边
+    const { templateNum, codeNum } = this.props.navbar;
+    const mdMenuStyle =
+      templateNum === TEMPLATE_CUSTOM_NUM ? style.mdCutomMenu : style.mdMenu;
+
     return (
       <div>
         <Dropdown overlay={mdMenu} placement="bottomCenter">
-          <Button style={{ marginLeft: 8 }}>
-            {this.props.navbar.markdownName}
+          <Button style={mdMenuStyle}>
+            {TEMPLATE_OPTIONS[templateNum].name}
             <Icon type="down" />
           </Button>
         </Dropdown>
         <Dropdown overlay={codeMenu} placement="bottomCenter">
-          <Button style={{ marginLeft: 8, marginRight: 8 }}>
-            {this.state.codeName}
+          <Button style={style.codeMenu}>
+            {CODE_OPTIONS[codeNum].name}
             <Icon type="down" />
           </Button>
         </Dropdown>
@@ -112,5 +116,19 @@ class ThemeSelect extends React.Component {
     );
   }
 }
+
+const style = {
+  mdCutomMenu: {
+    marginLeft: 8,
+    border: "1px dashed #1890ff"
+  },
+  mdMenu: {
+    marginLeft: 8
+  },
+  codeMenu: {
+    marginLeft: 8,
+    marginRight: 8
+  }
+};
 
 export default ThemeSelect;

@@ -1,7 +1,5 @@
-export default 
-`/* 自定义样式，实时生效 */
-
-/* 全局属性
+export default
+`/* 全局属性
  * 页边距 padding: 30px;
  * 全文字体 font-family: ptima-Regular;
  */
@@ -18,6 +16,9 @@ export default
  * 首行缩进 text-indent: 2em;
  */
 p {
+  font-size: 17px;
+  word-spacing: 3px;
+  letter-spacing: 1px
 }
 
 /* 一级标题 */
@@ -38,6 +39,10 @@ h2 {
 
 /* 二级标题内容 */
 h2 span {
+    background-color: #5c5c5c;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 1px;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
@@ -61,9 +66,9 @@ li {
 }
 
 /* 引用
- * 左边缘颜色 border-left-color: black;
- * 背景色 background: gray;
- */
+* 左边缘颜色 border-left-color: black;
+* 背景色 background: gray;
+*/
 blockquote {
 }
 
@@ -89,21 +94,24 @@ strong em {
 
 /* 删除线 */
 del {
+  
 }
 
 /* 分隔线
- * 粗细、样式和颜色
- * border-top: 1px solid #3e3e3e;
- */
+* 粗细、样式和颜色
+* border-top: 1px solid #3e3e3e;
+*/
 hr {
+  border-top: 1px dashed #dddddd;
 }
 
 /* 图片
- * 宽度 width: 80%;
- * 居中 margin: 0 auto;
- * 居左 margin: 0 0;
- */
+* 宽度 width: 80%;
+* 居中 margin: 0 auto;
+* 居左 margin: 0 0;
+*/
 img {
+  border-radius: 5px;
 }
 
 /* 图片描述文字 */

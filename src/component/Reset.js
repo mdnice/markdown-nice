@@ -5,9 +5,7 @@ import resetIcon from "../icon/reset.svg";
 
 import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
 
-import NORMAL_EXAMPLE from "../theme/content/normal";
-
-import THEMES from "../theme/index";
+import TEMPLATE from "../template/index";
 
 @inject("content")
 @observer
@@ -22,9 +20,9 @@ class Reset extends Component {
       okType: "danger",
       cancelText: "取消",
       onOk: () => {
-        this.props.content.setContent(NORMAL_EXAMPLE);
-        this.props.content.setStyle(THEMES.markdown["normal"]);
-        this.props.content.setCustomStyle(THEMES.markdown["custom"]);
+        this.props.content.setContent(TEMPLATE.content);
+        this.props.content.setStyle(TEMPLATE.style["normal"]);
+        this.props.content.setCustomStyle(TEMPLATE.style["custom"]);
       },
       onCancel() {}
     });
@@ -38,7 +36,7 @@ class Reset extends Component {
         mouseLeaveDelay={LEAVE_DELAY}
         title="重置"
       >
-        <Button onClick={this.showConfirm} style={style.btnPadding}>
+        <Button type="danger" onClick={this.showConfirm} style={style.btnPadding}>
           <Icon component={resetIcon} style={style.iconSize}/>
         </Button>
       </Tooltip>

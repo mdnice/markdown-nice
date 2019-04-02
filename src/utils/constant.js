@@ -15,6 +15,8 @@ export const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export const CONTENT = "content";
 export const STYLE = "style";
+export const TEMPLATE_NUM = "template_num";
+export const CODE_NUM = "code_num";
 
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
@@ -24,28 +26,26 @@ export const FONT_THEME_ID = "font-theme";
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
 
-export const MARKDOWN_OPTIONS = [
+export const TEMPLATE_OPTIONS = [
   {
     id: "normal",
-    name: "默认主题"
+    name: "默认模板"
   },
   {
     id: "orange",
     name: "清新小橙"
   },
-  // {
-  //   id: "title1",
-  //   name: "标题示例1"
-  // },
-  // {
-  //   id: "title2",
-  //   name: "标题示例2"
-  // },
+  {
+    id: "Mayandev",
+    name: "Mayandev"
+  },
   {
     id: "custom",
     name: "自定义"
   }
 ];
+
+export const TEMPLATE_CUSTOM_NUM = TEMPLATE_OPTIONS.length - 1;
 
 export const CODE_OPTIONS = [
   {

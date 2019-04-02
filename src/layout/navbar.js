@@ -33,7 +33,7 @@ class Navbar extends Component {
       <div style={style.navBar}>
         <div style={style.leftNav}>
           {/* <Title /> */}
-          <p style={style.title}>Markdown Nice</p>
+          <section style={style.title}>Markdown Nice</section>
           <div>
             <ButtonGroup style={style.btnGroupMargin}>
               <Del />
@@ -92,7 +92,8 @@ const style = {
   },
   title: {
     marginRight: "10px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "16px"
   }
 };
 

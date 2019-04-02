@@ -1,5 +1,7 @@
 export default 
-`/* 全局属性
+`/* 自定义样式，实时生效，浏览器实时缓存 */
+
+/* 全局属性
  * 页边距 padding: 30px;
  * 全文字体 font-family: ptima-Regular;
  */
@@ -10,6 +12,8 @@ export default
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
  * 行高 line-height: 26px;
+ * 词间距 word-spacing: 3px;
+ * 字间距 letter-spacing: 3px;
  * 对齐 text-align: left;
  * 颜色 color: #3e3e3e;
  * 字体大小 font-size: 16px;
@@ -59,9 +63,9 @@ li {
 }
 
 /* 引用
-* 左边缘颜色 border-left-color: black;
-* 背景色 background: gray;
-*/
+ * 左边缘颜色 border-left-color: black;
+ * 背景色 background: gray;
+ */
 blockquote {
 }
 
@@ -90,17 +94,17 @@ del {
 }
 
 /* 分隔线
-* 粗细、样式和颜色
-* border-top: 1px solid #3e3e3e;
-*/
+ * 粗细、样式和颜色
+ * border-top: 1px solid #3e3e3e;
+ */
 hr {
 }
 
 /* 图片
-* 宽度 width: 80%;
-* 居中 margin: 0 auto;
-* 居左 margin: 0 0;
-*/
+ * 宽度 width: 80%;
+ * 居中 margin: 0 auto;
+ * 居左 margin: 0 0;
+ */
 img {
 }
 

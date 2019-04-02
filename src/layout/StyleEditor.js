@@ -12,8 +12,12 @@ import { observer, inject } from "mobx-react";
 
 import "../utils/styleMirror.css";
 import { replaceStyle } from "../utils/helper";
-import { MARKDOWN_THEME_ID } from "../utils/constant";
-import THEMES from "../theme/index";
+import {
+  MARKDOWN_THEME_ID,
+  TEMPLATE_CUSTOM_NUM,
+  TEMPLATE_OPTIONS
+} from "../utils/constant";
+import TEMPLATE from "../template/index";
 
 @inject("content")
 @inject("navbar")
@@ -37,26 +41,26 @@ class StyleEditor extends Component {
 
   showConfirm = () => {
     Modal.confirm({
-      title: "是否想自定义主题？",
-      content: "确定后将复制当前主题并切换为自定义",
+      title: "是否想使用该模板？",
+      content: "确定后将复制当前内容和样式并切换为自定义",
       cancelText: "取消",
       okText: "确定",
       onOk: () => {
-        const { markdownId } = this.props.navbar;
-        const style =
-          `/*自定义样式，实时生效*/\n\n` + THEMES.markdown[markdownId];
+        const { templateNum } = this.props.navbar;
+        const id = TEMPLATE_OPTIONS[templateNum].id;
+        const style = `/*自定义样式，实时生效*/\n\n` + TEMPLATE.style[id];
         replaceStyle(MARKDOWN_THEME_ID, style);
         this.props.content.setCustomStyle(style);
-        this.props.navbar.setMarkdownName("自定义");
-        this.props.navbar.setMarkdownId("custom");
+        this.props.navbar.setTemplateNum(TEMPLATE_CUSTOM_NUM);
       },
       onCancel: () => {}
     });
   };
 
   changeStyle = (editor, changeObj) => {
+    const { templateNum } = this.props.navbar;
     // focus状态很重要，初始化时被调用则不会进入条件
-    if (this.focus && this.props.navbar.markdownId !== "custom") {
+    if (this.focus && templateNum !== TEMPLATE_CUSTOM_NUM) {
       this.showConfirm();
     } else if (this.focus) {
       const style = editor.getValue();

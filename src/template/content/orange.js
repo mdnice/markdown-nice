@@ -43,7 +43,7 @@ Markdown 是一种排版语法，拥有极简的输入方式和极低的学习�
 
 这么多优秀的特性摆在你面前，还在等什么？
 
-地址：\`https://www.mdnice.com\`
+地址：\`https://mdnice.github.io\`
 
 **快让你的微信排版 Nice 起来！**
 
@@ -92,7 +92,7 @@ Markdown 是一种排版语法，拥有极简的输入方式和极低的学习�
 
 <br/>
 
-<img style="width: 100%" src="https://i.loli.net/2019/04/01/5ca1a3eda5a7d.jpg" />
+![](https://i.loli.net/2019/04/01/5ca1a3eda5a7d.jpg)
 
 ---
 

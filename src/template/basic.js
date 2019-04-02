@@ -9,6 +9,7 @@ export default
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
+  word-wrap: break-word;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -83,8 +84,6 @@ blockquote {
   font-size: 0.9em;
   overflow: auto;
   overflow-scrolling: touch;
-  word-wrap: normal;
-  word-break: normal;
   border-left: 3px solid rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.05);
   color: #6a737d;

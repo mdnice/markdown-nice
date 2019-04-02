@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Modal } from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
@@ -16,13 +15,10 @@ import "./utils/mdMirror.css";
 import {
   markdownParser,
   markdownParserWechat,
-  replaceStyle,
+  replaceStyle
 } from "./utils/helper";
-import {
-  BASIC_THEME_ID,
-  MARKDOWN_THEME_ID,
-} from "./utils/constant";
-import THEMES from "./theme/index";
+import { BASIC_THEME_ID } from "./utils/constant";
+import TEMPLATE from "./template/index";
 
 @inject("content")
 @inject("navbar")
@@ -33,7 +29,7 @@ class App extends Component {
     this.focus = false;
     this.scale = 1;
     // 初始化整体主题
-    replaceStyle(BASIC_THEME_ID, THEMES.basic);
+    replaceStyle(BASIC_THEME_ID, TEMPLATE.basic);
   }
 
   setCurrentIndex(index) {
@@ -51,15 +47,11 @@ class App extends Component {
     let cmData = markdownEditor.getScrollInfo();
     let editorToTop = cmData.top;
     let editorScrollHeight = cmData.height - cmData.clientHeight;
-    // console.log('top:', editorToTop, 'editorScrollHeight:', editorScrollHeight);
-    // this.hasContentChanged && this.setScrollValue(editorScrollHeight);
     this.scale =
       (this.previewWrap.offsetHeight -
         this.previewContainer.offsetHeight +
         55) /
       editorScrollHeight;
-    // console.log('(this.previewWrap.offsetHeight:', this.previewWrap.offsetHeight, 'this.previewContainer.offsetHeight:', this.previewContainer.offsetHeight)
-    // console.log(this.previewContainer.scrollTop);
     if (this.index === 1) {
       this.previewContainer.scrollTop = editorToTop * this.scale;
     } else {
@@ -69,8 +61,18 @@ class App extends Component {
   };
 
   handlChange = (editor, changeObj) => {
-    const content = editor.getValue();
-    this.props.content.setContent(content);
+    if (this.focus) {
+      const content = editor.getValue();
+      this.props.content.setContent(content);
+    }
+  };
+
+  handleFocus = e => {
+    this.focus = true;
+  };
+
+  handleBlur = e => {
+    this.focus = false;
   };
 
   getStyleInstance = instance => {
@@ -84,46 +86,9 @@ class App extends Component {
     }
   };
 
-  showConfirm = () => {
-    Modal.confirm({
-      title: "是否想自定义主题？",
-      content: "确定后将复制当前主题并切换为自定义",
-      cancelText: "取消",
-      okText: "确定",
-      onOk: () => {
-        const { markdownId } = this.props.navbar;
-        const style =
-          `/*自定义样式，实时生效*/\n\n` + THEMES.markdown[markdownId];
-        replaceStyle(MARKDOWN_THEME_ID, style);
-        this.props.content.setCustomStyle(style);
-        this.props.navbar.setMarkdownName("自定义");
-        this.props.navbar.setMarkdownId("custom");
-      },
-      onCancel: () => {}
-    });
-  };
-
-  changeStyle = (editor, changeObj) => {
-    // focus状态很重要，初始化时被调用则不会进入条件
-    if (this.focus && this.props.navbar.markdownId !== "custom") {
-      this.showConfirm();
-    } else if (this.focus) {
-      const style = editor.getValue();
-      replaceStyle(MARKDOWN_THEME_ID, style);
-      this.props.content.setCustomStyle(style);
-    }
-  };
-
-  handleFocus = e => {
-    this.focus = true;
-  };
-
-  handleBlur = e => {
-    this.focus = false;
-  };
-
   render() {
-    const parseHtml = this.props.navbar.isWechatCode
+    const { codeNum } = this.props.navbar
+    const parseHtml = codeNum === 0
       ? markdownParserWechat.render(this.props.content.content)
       : markdownParser.render(this.props.content.content);
 
@@ -147,6 +112,8 @@ class App extends Component {
               }}
               onChange={this.handlChange}
               onScroll={this.handleScroll}
+              onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
               ref={this.getInstance}
             />
           </div>

@@ -1,11 +1,16 @@
 import { observable, action } from "mobx";
-import { CONTENT, STYLE } from "../utils/constant.js";
-import NORMAL_EXAMPLE from "../theme/content/normal";
-import THEMES from "../theme/index";
+import {
+  CONTENT,
+  STYLE,
+  TEMPLATE_OPTIONS,
+  TEMPLATE_NUM,
+  TEMPLATE_CUSTOM_NUM
+} from "../utils/constant.js";
+import TEMPLATE from "../template/index";
 
 class Content {
-  @observable content = NORMAL_EXAMPLE;
-  @observable style = THEMES.markdown["normal"];
+  @observable content;
+  @observable style;
   @observable markdownEditor;
 
   @action
@@ -36,10 +41,30 @@ class Content {
 }
 
 const store = new Content();
-// 用于处理刷新后的信息持久化
-const content = window.localStorage.getItem(CONTENT);
-store.content = content ? content : NORMAL_EXAMPLE;
 
-window.localStorage.setItem(STYLE, THEMES.markdown["custom"]);
+// 如果为空先把数据放进去
+if (!window.localStorage.getItem(CONTENT)) {
+  window.localStorage.setItem(CONTENT, TEMPLATE.content);
+}
+if (!window.localStorage.getItem(STYLE)) {
+  window.localStorage.setItem(STYLE, TEMPLATE.style["custom"]);
+}
+
+const templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM));
+
+// 用于处理刷新后的信息持久化
+// 属于自定义主题则从localstorage中读数据
+if (templateNum === TEMPLATE_CUSTOM_NUM) {
+  store.style = window.localStorage.getItem(STYLE);
+} else {
+  if (templateNum) {
+    const id = TEMPLATE_OPTIONS[templateNum].id;
+    store.style = TEMPLATE.style[id];
+  } else {
+    store.style = TEMPLATE.style["normal"];
+  }
+}
+
+store.content = window.localStorage.getItem(CONTENT);
 
 export default store;

@@ -1,12 +1,9 @@
 import normal from "./markdown/normal";
 import orange from "./markdown/orange";
-import title1 from "./markdown/title1";
-import title2 from "./markdown/title2";
 import custom from "./markdown/custom";
+import Mayandev from "./markdown/Mayandev";
 
-import normalContent from "./content/normal";
-import orangeContent from "./content/orange";
-import customContent from "./content/custom";
+import content from "./content";
 
 import atomOneDark from "./code/atomOneDark";
 import atomOneLight from "./code/atomOneLight";
@@ -18,12 +15,11 @@ import basic from "./basic"
 
 export default {
   basic,
-  markdown: {
+  style: {
     normal,
     orange,
-    title1,
-    title2,
-    custom
+    custom,
+    Mayandev
   },
   code: {
     atomOneDark,
@@ -33,9 +29,5 @@ export default {
     vs2015,
     xcode
   },
-  content: {
-    normal: normalContent,
-    orange: orangeContent,
-    custom: customContent
-  }
+  content
 };

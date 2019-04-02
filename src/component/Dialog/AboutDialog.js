@@ -28,12 +28,12 @@ class AboutDialog extends Component {
         }}
       >
         <h3 style={style.headerMargin}>Markdown Nice</h3>
-        <p style={style.lineHeight}>一款Markdown微信排版工具；</p>
+        <p style={style.lineHeight}>一款 Markdown 微信排版工具；</p>
         <p style={style.lineHeight}>支持图片上传；</p>
         <p style={style.lineHeight}>支持代码样式；</p>
-        <p style={style.lineHeight}>支持自定义CSS；</p>
-        <p style={style.lineHeight}>支持数学公式；</p>
-        <h3 style={style.headerMargin}>Markdown All</h3>
+        <p style={style.lineHeight}>支持自定义样式；</p>
+        <p style={style.lineHeight}>支持数学公式。</p>
+        <h3 style={style.headerMargin}>我们</h3>
         <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注
           <a
@@ -41,15 +41,15 @@ class AboutDialog extends Component {
             target="_blank"
             href="https://github.com/zhning12/markdown-nice"
           >
-          Phoebe
+          &nbsp;GitHub&nbsp;
           </a>
-          和
+           和新项目
           <a
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/guanpengchn/markdown-resume"
           >
-            Markdown简历
+            &nbsp;Markdown 简历
           </a>
           ，愿意
           <strong>微信打赏</strong>就更好啦。
