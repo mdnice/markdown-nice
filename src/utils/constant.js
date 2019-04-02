@@ -29,7 +29,7 @@ export const LEAVE_DELAY = 0.0;
 export const TEMPLATE_OPTIONS = [
   {
     id: "normal",
-    name: "默认模板"
+    name: "默认主题"
   },
   {
     id: "orange",
