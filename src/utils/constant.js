@@ -40,6 +40,10 @@ export const TEMPLATE_OPTIONS = [
     name: "Mayandev"
   },
   {
+    id: "djmaxwow",
+    name: "djmaxwow"
+  },
+  {
     id: "custom",
     name: "自定义"
   }
