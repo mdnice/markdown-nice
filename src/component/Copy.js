@@ -16,6 +16,7 @@ import {
 @inject("navbar")
 @observer
 class Copy extends Component {
+
   success = () => {
     message.success("已复制，请到微信公众平台粘贴");
   };
@@ -34,16 +35,24 @@ class Copy extends Component {
     return res.data.data.url;
   };
 
+  imgOnload = () => {
+    this.count++;
+    if (this.count === this.mathNums) {
+      this.hide();
+      this.copyHtml();
+    }
+  };
+
   solveMath = async () => {
-    const mathNums = document.getElementsByClassName("katex").length;
+    this.count = 0;
+    this.mathNums = document.getElementsByClassName("katex").length;
     // 图片已经转换完了
-    if (mathNums === 0) {
+    if (this.mathNums === 0) {
       this.copyHtml();
       return;
     }
-    const hide = message.loading("正在将公式转成图片", 0);
-    // Dismiss manually and asynchronously
-    let count = 0;
+    this.hide = message.loading("正在将公式转成图片", 0);
+
     // 先处理块公式，再处理行内公式
     const tagsBlock = document.getElementsByClassName("katex-display");
     for (let i = 0; i < tagsBlock.length; i++) {
@@ -51,13 +60,7 @@ class Copy extends Component {
       const url = await this.uploadMathImage(canvas.toDataURL());
       const img = new Image();
       img.src = url;
-      img.onload = () => {
-        count++;
-        if (count === mathNums) {
-          hide();
-          this.copyHtml();
-        }
-      };
+      img.onload = this.imgOnload;
       img.className = "math-img-block";
       while (tagsBlock[i].firstChild) {
         tagsBlock[i].removeChild(tagsBlock[i].firstChild);
@@ -72,13 +75,7 @@ class Copy extends Component {
         const url = await this.uploadMathImage(canvas.toDataURL());
         const img = new Image();
         img.src = url;
-        img.onload = () => {
-          count++;
-          if (count === mathNums) {
-            hide();
-            this.copyHtml();
-          }
-        };
+        img.onload = this.imgOnload;
         img.className = "math-img-inline";
         while (tagsInline[i].firstChild) {
           tagsInline[i].removeChild(tagsInline[i].firstChild);
