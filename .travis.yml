@@ -11,7 +11,7 @@ script:
 addons:
   ssh_known_hosts: 39.96.191.154
 before_install:
-- openssl aes-256-cbc -K $encrypted_****_key -iv $encrypted_****_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_e6c41ade86ae_key -iv $encrypted_e6c41ade86ae_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
-- chmod 600 ~/.ssh/id_rsa
-- ssh travis@39.96.191.154 -o StrictHostKeyChecking=no 'cd ~/markdown-nice && git pull && yarn install && yarn build'
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh travis@39.96.191.154 -o StrictHostKeyChecking=no 'cd ~/markdown-nice && git pull && yarn install && yarn build'
