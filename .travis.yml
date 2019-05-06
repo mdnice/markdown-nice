@@ -1,7 +1,22 @@
-# .travis.yml
-language: node_js   #前端工程所以是JavaScript，编译环境是node_js
+nguage: node_js
 node_js:
-- '8'   #指定node版本
+- '8'
 branchs:
   only:
-  - master  #指定只有检测到master分支有变动时才执行任务
+  - master
+install:
+- yarn install
+script:
+- yarn build
+env:
+  global:
+    secure: *********
+addons:
+  ssh_known_hosts:
+  - 39.96.191.154
+before_install:
+- openssl aes-256-cbc -K $encrypted_****_key -iv $encrypted_****_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+after_success:
+- chmod 600 ~/.ssh/id_rsa
+- ssh travis@39.96.191.154 -o StrictHostKeyChecking=no 'cd ~/markdown-nice && git pull && yarn install && yarn build'
