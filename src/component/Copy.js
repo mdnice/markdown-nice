@@ -98,14 +98,12 @@ class Copy extends Component {
         inlinePseudoElements: true
       }
     );
-    // console.log(result);
     this.copyToClip(result);
     this.success();
   };
 
   copyToClip = str => {
     function listener(e) {
-      console.log(str);
       e.clipboardData.setData("text/html", str);
       e.clipboardData.setData("text/plain", str);
       e.preventDefault();

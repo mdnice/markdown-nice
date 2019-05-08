@@ -7,7 +7,7 @@ import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
 import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
-import markdownItChangefoot from "./markdown-it-changefoot";
+import markdownItLinkfoot from "./markdown-it-linkfoot";
 import highlightjs from "highlight.js";
 
 export const axiosGithub = axios.create({
@@ -79,7 +79,7 @@ markdownParserWechat
   .use(markdownItRemovepre) // 移除代码段中的 pre code
   .use(markdownItSup) // 上标
   .use(markdownItKatex) // 数学公式
-  .use(markdownItChangefoot) // 修改脚注
+  .use(markdownItLinkfoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表
@@ -110,7 +110,7 @@ markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItSup) // 上标
   .use(markdownItKatex) // 数学公式
-  .use(markdownItChangefoot) // 修改脚注
+  .use(markdownItLinkfoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表

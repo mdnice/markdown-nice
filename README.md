@@ -4,6 +4,7 @@
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
+<p align="center"><img src="https://api.travis-ci.org/zhning12/markdown-nice.svg?branch=master"></p>
 
 ## 简介
 

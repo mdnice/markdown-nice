@@ -140,13 +140,12 @@ code {
   color: rgb(239, 112, 96);
 }
 
+/* 脚注文字 */
+.footnote-word {
+  color: #ff3502;
+}
+
 /* 脚注上标 */
 .footnote-ref {
   color: rgb(239, 112, 96);
-}
-
-/* 脚注参考资料文字 
- * 隐藏 display: none;
- */
-.footnotes-sep {
 }`

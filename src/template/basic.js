@@ -4,13 +4,13 @@ export default
 /*全局属性*/
 .layout {
   font-size: 16px;
-  color: #3e3e3e;
+  color: black;
   padding: 10px;
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
   word-wrap: break-word;
-  font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 /*段落*/
@@ -20,7 +20,7 @@ p {
   padding-bottom: 5px;
   margin: 0;
   line-height: 26px;
-  color: #3e3e3e;
+  color: black;
 }
 
 /*标题*/
@@ -33,7 +33,7 @@ h6 {
   margin-top: 20px;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #3e3e3e;
+  color: black;
 }
 h1 {
   font-size: 28px;
@@ -60,7 +60,7 @@ ol {
   margin-top: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
-  color: #3e3e3e;
+  color: black;
 }
 ul {
   list-style-type: disc;
@@ -73,10 +73,8 @@ li {
   margin-bottom: 5px;
   line-height: 26px;
   text-align: left;
-  color: #3e3e3e;
+  color: black;
 }
-
-
 
 /*引用*/
 blockquote {
@@ -97,7 +95,7 @@ blockquote {
 
 blockquote p {
   margin: 0px;
-  color: #3e3e3e;
+  color: black;
   line-height: 26px;
 }
 
@@ -106,30 +104,31 @@ a {
   text-decoration: none;
   color: #1e6bb8;
   word-wrap: break-word;
+  font-weight: bold;
 }
 
 /*加粗*/
 strong {
   font-weight: bold;
-  color: #3e3e3e;
+  color: black;
 }
 
 /*斜体*/
 em {
   font-style: italic;
-  color: #3e3e3e;
+  color: black;
 }
 
 /*加粗斜体*/
 strong em {
   font-weight: bold;
-  color: #3e3e3e;
+  color: black;
 }
 
 /*删除线*/
 del {
   font-style: italic;
-  color: #3e3e3e;
+  color: black;
 }
 
 /*分隔线*/
@@ -139,7 +138,7 @@ hr {
   margin-top: 10px;
   margin-bottom: 10px;
   border: none;
-  border-top: 1px solid #3e3e3e;
+  border-top: 1px solid black;
 }
 
 /*代码块*/
@@ -286,11 +285,6 @@ table tr th {
   line-height: 20px;
 }
 
-/* 脚注 */
-.footnote-ref {
-  font-weight: bold;
-}
-
 /* 公式注释 */
 .katex-mathml {
   display: none;
@@ -315,4 +309,38 @@ table tr th {
 
 .math-img-block {
   width: 100%;
+}
+
+.footnote-word {
+  color: #1e6bb8;
+  font-weight: bold;
+}
+
+.footnote-ref {
+  color: #1e6bb8;
+  font-weight: bold;
+}
+
+.footnote-item {
+  display: flex;
+}
+
+.footnote-num {
+  display: inline-block;
+  background: none;
+  font-size: 80%;
+  opacity: 0.6;
+  padding-right: 5px;
+  line-height: 26px;
+  font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.footnote-item p {
+  display: inline;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0;
+  line-height: 26px;
+  color: black;
+  word-break:break-all;
 }`

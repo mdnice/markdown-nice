@@ -118,12 +118,10 @@ img {
 figcaption {
 }
 
-/* 脚注上标 */
-.footnote-ref {
+/* 脚注文字 */
+.footnote-word {
 }
 
-/* 脚注参考资料文字 
- * 隐藏 display: none;
- */
-.footnotes-sep {
+/* 脚注上标 */
+.footnote-ref {
 }`
