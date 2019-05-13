@@ -24,7 +24,7 @@ export default
  * 首行缩进 text-indent: 2em;
  */
 p {
-  margin: 1em 4px !important;
+  margin: 1em 4px;
 }
 
 /* 一级标题 */

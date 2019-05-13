@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://mdnice.github.io">
+<a href="https://mdnice.com">
 <img width="200" src="./logo.png"/>
 </a>
 </div>
@@ -15,9 +15,15 @@
 - 支持上传图片、脚注、公式
 - 欢迎[在线使用](https://mdnice.com/)
 
+## 示例
+
+- [终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
+
+> 欢迎提供更多文章示例~~
+
 ## 关于
 
-如果你喜欢该工具，欢迎搜索公众号**牧码咯**或**mumalo**，关注后获取更多开源资讯
+如果你喜欢该工具，欢迎搜索公众号**牧码咯**或**mumalo**，关注后获取更多开源资讯。
 
 欢迎打赏哟，您的支持是我最大的动力！
 
