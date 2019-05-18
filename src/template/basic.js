@@ -11,6 +11,7 @@ export default
   letter-spacing: 0px;
   word-wrap: break-word;
   font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  word-break:break-all;
 }
 
 /*段落*/
@@ -163,6 +164,7 @@ code {
   margin: 0 2px;
   background-color: rgba(27,31,35,.05);
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+  word-break: break-all;
 }
 
 /*图片*/
