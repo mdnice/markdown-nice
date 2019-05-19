@@ -136,7 +136,7 @@ figcaption {
 }
 
 /* 行内代码 */
-code {
+p code {
   color: rgb(239, 112, 96);
 }
 

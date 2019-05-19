@@ -11,9 +11,7 @@ import "antd/dist/antd.css";
 import { observer, inject } from "mobx-react";
 
 import "../utils/styleMirror.css";
-import { replaceStyle } from "../utils/helper";
 import {
-  MARKDOWN_THEME_ID,
   TEMPLATE_CUSTOM_NUM,
   TEMPLATE_OPTIONS
 } from "../utils/constant";
@@ -49,7 +47,6 @@ class StyleEditor extends Component {
         const { templateNum } = this.props.navbar;
         const id = TEMPLATE_OPTIONS[templateNum].id;
         const style = `/*自定义样式，实时生效*/\n\n` + TEMPLATE.style[id];
-        replaceStyle(MARKDOWN_THEME_ID, style);
         this.props.content.setCustomStyle(style);
         this.props.navbar.setTemplateNum(TEMPLATE_CUSTOM_NUM);
       },
@@ -64,7 +61,6 @@ class StyleEditor extends Component {
       this.showConfirm();
     } else if (this.focus) {
       const style = editor.getValue();
-      replaceStyle(MARKDOWN_THEME_ID, style);
       this.props.content.setCustomStyle(style);
     }
   };

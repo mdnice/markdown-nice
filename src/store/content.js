@@ -4,8 +4,11 @@ import {
   STYLE,
   TEMPLATE_OPTIONS,
   TEMPLATE_NUM,
-  TEMPLATE_CUSTOM_NUM
+  TEMPLATE_CUSTOM_NUM,
+  MARKDOWN_THEME_ID,
+  BASIC_THEME_ID
 } from "../utils/constant.js";
+import { replaceStyle } from "../utils/helper";
 import TEMPLATE from "../template/index";
 
 class Content {
@@ -27,6 +30,7 @@ class Content {
   @action
   setStyle = style => {
     this.style = style;
+    replaceStyle(MARKDOWN_THEME_ID, style);
   };
 
   // 自定义样式
@@ -37,6 +41,7 @@ class Content {
       window.localStorage.setItem(STYLE, style);
     }
     this.style = window.localStorage.getItem(STYLE);
+    replaceStyle(MARKDOWN_THEME_ID, this.style);
   };
 }
 
@@ -64,6 +69,10 @@ if (templateNum === TEMPLATE_CUSTOM_NUM) {
     store.style = TEMPLATE.style["normal"];
   }
 }
+
+// 初始化整体主题
+replaceStyle(BASIC_THEME_ID, TEMPLATE.basic);
+replaceStyle(MARKDOWN_THEME_ID, store.style);
 
 store.content = window.localStorage.getItem(CONTENT);
 

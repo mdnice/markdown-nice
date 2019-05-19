@@ -5,35 +5,16 @@ import { observer, inject } from "mobx-react";
 import {
   TEMPLATE_OPTIONS,
   CODE_OPTIONS,
-  CODE_THEME_ID,
-  MARKDOWN_THEME_ID,
   ENTER_DELAY,
   LEAVE_DELAY,
   TEMPLATE_CUSTOM_NUM,
-  TEMPLATE_NUM,
-  CODE_NUM
 } from "../utils/constant";
-import { replaceStyle } from "../utils/helper";
 import TEMPLATE from "../template/index";
 
 @inject("content")
 @inject("navbar")
 @observer
 class ThemeSelect extends React.Component {
-  constructor(props) {
-    super(props);
-    const templateNum = window.localStorage.getItem(TEMPLATE_NUM);
-    const codeNum = window.localStorage.getItem(CODE_NUM);
-    // 初始化markdown主题
-    const id = TEMPLATE_OPTIONS[templateNum].id;
-    const codeId = CODE_OPTIONS[codeNum].id;
-    
-    replaceStyle(MARKDOWN_THEME_ID, TEMPLATE.style[id]);
-
-    if (this.props.navbar.codeNum !== 0) {
-      replaceStyle(CODE_THEME_ID, TEMPLATE.code[codeId]);
-    }
-  }
 
   changeTemplate = item => {
     const index = parseInt(item.key);
@@ -48,18 +29,11 @@ class ThemeSelect extends React.Component {
     } else {
       this.props.content.setStyle(TEMPLATE.style[id]);
     }
-    replaceStyle(MARKDOWN_THEME_ID, TEMPLATE.style[id]);
   };
 
   changeCodeTheme = item => {
     const codeNum = parseInt(item.key);
-    const { id } = CODE_OPTIONS[codeNum];
     this.props.navbar.setCodeNum(codeNum);
-
-    // 更新style
-    if (codeNum !== 0) {
-      replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
-    }
   };
 
   toggleStyleEditor = checked => {

@@ -156,7 +156,7 @@ pre code span {
 }
 
 /*行内代码*/
-code {
+p code {
   font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;

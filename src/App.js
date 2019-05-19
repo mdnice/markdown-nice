@@ -15,10 +15,7 @@ import "./utils/mdMirror.css";
 import {
   markdownParser,
   markdownParserWechat,
-  replaceStyle
 } from "./utils/helper";
-import { BASIC_THEME_ID } from "./utils/constant";
-import TEMPLATE from "./template/index";
 
 @inject("content")
 @inject("navbar")
@@ -28,8 +25,6 @@ class App extends Component {
     super(props);
     this.focus = false;
     this.scale = 1;
-    // 初始化整体主题
-    replaceStyle(BASIC_THEME_ID, TEMPLATE.basic);
   }
 
   setCurrentIndex(index) {

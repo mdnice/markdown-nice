@@ -118,6 +118,11 @@ img {
 figcaption {
 }
 
+/* 行内代码 */
+p code {
+  color: rgb(239, 112, 96);
+}
+
 /* 脚注文字 */
 .footnote-word {
 }
