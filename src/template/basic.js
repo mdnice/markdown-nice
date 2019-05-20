@@ -332,9 +332,9 @@ table tr th {
   background: none;
   font-size: 80%;
   opacity: 0.6;
-  padding-right: 5px;
   line-height: 26px;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 50px;
 }
 
 .footnote-item p {
