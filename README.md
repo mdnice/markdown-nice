@@ -19,12 +19,13 @@
 ## 示例
 
 - [终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
+- [天天算法 LeetCode-938-二叉搜索树的范围和](https://mp.weixin.qq.com/s/ni6l_a1QMCi2sKuZDNoe4Q)
 
 > 欢迎提供更多文章示例~~
 
 ## 关于
 
-如果你喜欢该工具，欢迎搜索公众号**牧码咯**或**mumalo**，关注后获取更多开源资讯。
+如果你喜欢该工具，欢迎搜索公众号**牧码啦**，关注后获取更多开源资讯。
 
 欢迎打赏哟，您的支持是我最大的动力！
 
