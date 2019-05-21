@@ -328,21 +328,23 @@ table tr th {
 }
 
 .footnote-num {
-  display: inline-block;
+  display: inline;
+  width: 10%; /*神奇，50px就不可以*/
   background: none;
   font-size: 80%;
   opacity: 0.6;
   line-height: 26px;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  width: 50px;
 }
 
 .footnote-item p {
   display: inline;
   font-size: 14px;
+  width: 90%;
   padding: 0px;
   margin: 0;
   line-height: 26px;
   color: black;
   word-break:break-all;
+  width: calc(100%-50)
 }`
