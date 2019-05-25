@@ -150,6 +150,7 @@ pre code {
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   font-size: 12px;
+  padding: 2px;
 }
 pre code span {
   line-height: 26px;

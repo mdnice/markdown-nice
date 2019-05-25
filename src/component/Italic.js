@@ -15,6 +15,10 @@ class Italic extends Component {
     const selection = markdownEditor.getSelection();
     const text = `*${selection}*`
     markdownEditor.replaceSelection(text, cursor);
+
+    // 上传后实时更新内容
+    const content = markdownEditor.getValue();
+    this.props.content.setContent(content);
   }
 
   render() {

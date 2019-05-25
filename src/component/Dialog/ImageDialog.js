@@ -57,7 +57,11 @@ class ImageDialog extends Component {
         const cursor = markdownEditor.getCursor();
         const text = `![](${response.data.url})\n`
         markdownEditor.replaceSelection(text, cursor);
-        this.props.dialog.setImageOpen(false);
+
+        // 上传后实时更新内容
+        const content = markdownEditor.getValue();
+        this.props.content.setContent(content);
+        // this.props.dialog.setImageOpen(false);
         onSuccess(response, file);
       })
       .catch(onError);
@@ -80,14 +84,14 @@ class ImageDialog extends Component {
       >
         <Dragger
           name="file"
-          // multiple: true,
+          multiple={true}
           action={SM_MS_PROXY}
           customRequest={this.customRequest}
         >
           <p className="ant-upload-drag-icon">
             <Icon type="inbox" />
           </p>
-          <p className="ant-upload-text">点击或拖拽一张照片上传</p>
+          <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
           <p className="ant-upload-hint">感谢SM.MS图床助力</p>
         </Dragger>
       </Modal>
