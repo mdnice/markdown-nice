@@ -11,7 +11,26 @@ const Dragger = Upload.Dragger;
 @inject("content")
 @observer
 class ImageDialog extends Component {
+  constructor(props) {
+    super(props);
+    this.images = [];
+  }
+
+  // 确认后将内容更新到编辑器上
   handleOk = e => {
+    let text = "";
+    // 成功后添加url
+    this.images.forEach(value => {
+      text += `![${value.filename}](${value.url})\n`;
+    });
+    this.images = [];
+    const { markdownEditor } = this.props.content;
+    const cursor = markdownEditor.getCursor();
+    markdownEditor.replaceSelection(text, cursor);
+    // 上传后实时更新内容
+    const content = markdownEditor.getValue();
+    this.props.content.setContent(content);
+
     this.props.dialog.setImageOpen(false);
   };
 
@@ -52,20 +71,12 @@ class ImageDialog extends Component {
         }
       })
       .then(({ data: response }) => {
-        // 成功后添加url
-        const { markdownEditor } = this.props.content;
-        const cursor = markdownEditor.getCursor();
-        const text = `![](${response.data.url})\n`
-        markdownEditor.replaceSelection(text, cursor);
+        this.images.push(response.data);
 
-        // 上传后实时更新内容
-        const content = markdownEditor.getValue();
-        this.props.content.setContent(content);
         // this.props.dialog.setImageOpen(false);
         onSuccess(response, file);
       })
       .catch(onError);
-
     return {
       abort() {
         console.log("upload progress is aborted.");
