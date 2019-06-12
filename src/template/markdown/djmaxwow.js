@@ -7,7 +7,6 @@ export default
  */
 .layout {
   font-size: 15px;
-  line-height: 1.55em;
   letter-spacing: 0.05em;
   color:#595959
 }
@@ -105,11 +104,8 @@ blockquote {
   margin: 10px 5px;
   border-left: 5px solid #9654B5;
   border-right: 1px solid #9654B5;
-  padding: 1px;
   color: #616161;
   quotes: none;
-  margin-left: 0.7em;
-  margin-top: 3 px;
   background:#FBF9FD
 }
 
@@ -157,7 +153,7 @@ img {
 
 /* 行内代码 */
 p code, li code {
-  color: rgb(239, 112, 96);
+  color: #9654B5;
 }
 
 /* 非微信代码块

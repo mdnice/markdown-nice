@@ -4,14 +4,6 @@ export default
  * 全文字体 font-family: ptima-Regular;
  */
 .layout {
-  background-image: linear-gradient(
-    90deg,
-    rgba(50, 0, 0, 0.05) 3%,
-    rgba(0, 0, 0, 0) 3%
-  ),
-  linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
-  background-size: 20px 20px;
-  background-position: center center;
 }
 
 /* 段落，下方未标注标签参数均同此处
