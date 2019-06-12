@@ -144,9 +144,10 @@ hr {
 
 /*代码块*/
 pre {
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 pre code {
+  display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   font-size: 12px;

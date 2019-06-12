@@ -160,6 +160,13 @@ p code, li code {
   color: rgb(239, 112, 96);
 }
 
+/* 非微信代码块
+ * 代码块不换行 display: -webkit-box !important;
+ * 代码块换行 display: block;
+ */
+pre code {
+}
+
 /* 脚注文字 */
 .footnote-word {
 }
