@@ -102,7 +102,7 @@ li {
 */
 blockquote {
   margin: 10px 5px;
-  border-left: 5px solid #9654B5;
+  border-left: 3px solid #9654B5;
   border-right: 1px solid #9654B5;
   color: #616161;
   quotes: none;

@@ -19,7 +19,8 @@
 ## 示例
 
 - [终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
-- [天天算法 LeetCode-938-二叉搜索树的范围和](https://mp.weixin.qq.com/s/ni6l_a1QMCi2sKuZDNoe4Q)
+- [3道题彻底搞定：套路解决递归问题](https://mp.weixin.qq.com/s/NCRTvdeqcC8INdPPfsMsVA)
+- [画解算法：19. 删除链表的倒数第N个节点](https://mp.weixin.qq.com/s/qsElRxU6qJML9KQ3nWw9Yg)
 
 > 欢迎提供更多文章示例~~
 

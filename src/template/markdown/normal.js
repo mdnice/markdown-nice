@@ -112,7 +112,6 @@ figcaption {
 
 /* 行内代码 */
 p code, li code {
-  color: rgb(239, 112, 96);
 }
 
 /* 非微信代码块

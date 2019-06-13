@@ -164,6 +164,7 @@ p code, li code{
   padding: 2px 4px;
   border-radius: 4px;
   margin: 0 2px;
+  color: #1e6bb8;
   background-color: rgba(27,31,35,.05);
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   word-break: break-all;
