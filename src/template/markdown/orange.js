@@ -81,7 +81,7 @@ li {
  */
 blockquote {
   border-left-color: rgb(239, 112, 96);
-  background: #efebe9;
+  background: #fff9f9;
 }
 
 /* 引用文字 */
