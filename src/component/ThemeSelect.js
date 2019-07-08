@@ -7,7 +7,7 @@ import {
   CODE_OPTIONS,
   ENTER_DELAY,
   LEAVE_DELAY,
-  TEMPLATE_CUSTOM_NUM,
+  TEMPLATE_CUSTOM_NUM
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 
@@ -15,7 +15,6 @@ import TEMPLATE from "../template/index";
 @inject("navbar")
 @observer
 class ThemeSelect extends React.Component {
-
   changeTemplate = item => {
     const index = parseInt(item.key);
     const { id } = TEMPLATE_OPTIONS[index];
@@ -44,7 +43,13 @@ class ThemeSelect extends React.Component {
     const mdMenu = (
       <Menu onClick={this.changeTemplate}>
         {TEMPLATE_OPTIONS.map((option, index) => (
-          <Menu.Item key={index}>{option.name}</Menu.Item>
+          <Menu.Item key={index}>
+            <div style={style.themeItem}>
+              <span style={style.themeItemName}>{option.name}</span>
+              
+              <span style={style.themeItemAuthor}>{option.author}</span>
+            </div>
+          </Menu.Item>
         ))}
       </Menu>
     );
@@ -104,6 +109,16 @@ const style = {
   codeMenu: {
     marginLeft: 8,
     marginRight: 8
+  },
+  themeItem: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  themeItemAuthor: {
+    color: "gray"
+  },
+  themeItemName: {
+    marginRight: "10px"
   }
 };
 

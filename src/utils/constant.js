@@ -29,23 +29,28 @@ export const LEAVE_DELAY = 0.0;
 export const TEMPLATE_OPTIONS = [
   {
     id: "normal",
-    name: "默认主题"
+    name: "默认主题",
+    author: "zhning12"
   },
   {
     id: "orange",
-    name: "清新小橙"
+    name: "小橙",
+    author: "zhning12"
   },
   {
     id: "Mayandev",
-    name: "Mayandev"
+    name: "墨色",
+    author: "Mayandev"
   },
   {
     id: "djmaxwow",
-    name: "djmaxwow"
+    name: "姹紫",
+    author: "djmaxwow"
   },
   {
     id: "custom",
-    name: "自定义"
+    name: "自定义",
+    author: ""
   }
 ];
 

@@ -1,7 +1,5 @@
 export default
-`/*自定义样式，实时生效*/
-
-/* 全局属性
+`/* 全局属性
  * 页边距 padding: 30px;
  * 全文字体 font-family: ptima-Regular;
  */
@@ -56,7 +54,7 @@ h2 {
   padding-right: 0.5em;
   padding-left: 0.5em;
   margin-bottom: -3px;
-  font-size: 18px;
+  font-size: 22px;
   margin:1em auto;
   padding: 0.5em 0;
   text-align: center;
