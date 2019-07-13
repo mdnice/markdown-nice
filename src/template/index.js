@@ -3,6 +3,7 @@ import orange from "./markdown/orange";
 import custom from "./markdown/custom";
 import Mayandev from "./markdown/Mayandev";
 import djmaxwow from "./markdown/djmaxwow";
+import cyan from "./markdown/cyan";
 
 import content from "./content";
 
@@ -21,7 +22,8 @@ export default {
     orange,
     custom,
     Mayandev,
-    djmaxwow
+    djmaxwow,
+    cyan
   },
   code: {
     atomOneDark,

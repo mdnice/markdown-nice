@@ -48,6 +48,11 @@ export const TEMPLATE_OPTIONS = [
     author: "djmaxwow"
   },
   {
+    id: "cyan",
+    name: "嫩青",
+    author: "画手"
+  },
+  {
     id: "custom",
     name: "自定义",
     author: ""
