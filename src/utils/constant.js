@@ -38,12 +38,12 @@ export const TEMPLATE_OPTIONS = [
     author: "zhning12"
   },
   {
-    id: "Mayandev",
-    name: "墨色",
+    id: "ink",
+    name: "墨黑",
     author: "Mayandev"
   },
   {
-    id: "djmaxwow",
+    id: "purple",
     name: "姹紫",
     author: "djmaxwow"
   },

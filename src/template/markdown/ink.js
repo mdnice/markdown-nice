@@ -39,7 +39,7 @@ h2 {
 
 /* 二级标题内容 */
 h2 span {
-    background-color: #5c5c5c;
+  background-color: #5c5c5c;
   color: white;
   padding: 5px 15px;
   border-radius: 1px;
@@ -120,7 +120,6 @@ figcaption {
 
 /* 行内代码 */
 p code, li code {
-  color: rgb(239, 112, 96);
 }
 
 /* 非微信代码块

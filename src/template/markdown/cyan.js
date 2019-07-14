@@ -102,6 +102,8 @@ blockquote p {
 
 /* 链接 */
 a {
+  color: rgb(71, 193, 168);
+  border-bottom: 1px solid rgb(71, 193, 168);
 }
 
 /* 加粗 */

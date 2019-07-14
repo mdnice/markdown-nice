@@ -1,8 +1,8 @@
 import normal from "./markdown/normal";
 import orange from "./markdown/orange";
 import custom from "./markdown/custom";
-import Mayandev from "./markdown/Mayandev";
-import djmaxwow from "./markdown/djmaxwow";
+import ink from "./markdown/ink";
+import purple from "./markdown/purple";
 import cyan from "./markdown/cyan";
 
 import content from "./content";
@@ -21,8 +21,8 @@ export default {
     normal,
     orange,
     custom,
-    Mayandev,
-    djmaxwow,
+    ink,
+    purple,
     cyan
   },
   code: {

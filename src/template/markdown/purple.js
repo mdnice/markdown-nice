@@ -113,6 +113,8 @@ blockquote p {
 
 /* 链接 */
 a {
+  color: #773098;
+  border-bottom: 1px solid #773098;
 }
 
 /* 加粗 */
