@@ -2,6 +2,7 @@ export default
 `/* 全局属性
  * 页边距 padding: 30px;
  * 全文字体 font-family: ptima-Regular;
+ * 英文换行 word-break: break-all;
  */
 .layout {
   font-size: 15px;
@@ -165,8 +166,10 @@ pre code {
 
 /* 脚注文字 */
 .footnote-word {
+  color: #773098;
 }
 
 /* 脚注上标 */
 .footnote-ref {
+  color: #773098;
 }`
