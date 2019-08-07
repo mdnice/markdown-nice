@@ -19,6 +19,10 @@ export default
  * 首行缩进 text-indent: 2em;
  */
 p {
+  line-height: 1.6;
+  color: #3f3f3f;
+  font-size: 16px;
+  margin: 10px 0px;
 }
 
 /* 一级标题 */
@@ -35,6 +39,11 @@ h1:after {
 
 /* 二级标题 */
 h2 {
+  margin: 80px 10px 40px 10px;
+  text-align: center;
+  font-weight: normal;
+  color: #3f3f3f;
+  font-size: 140%;
 }
 
 /* 二级标题内容 */
@@ -47,6 +56,11 @@ h2:after {
 
 /* 三级标题 */
 h3 {
+  margin: 40px 0px 20px 0px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #3f3f3f;
+  font-size: 120%;
 }
 
 /* 三级标题内容 */
@@ -66,19 +80,33 @@ li {
 * 背景色 background: gray;
 */
 blockquote {
+  color: rgb(91,91,91);
+  border-left: 3px solid rgb(158,158,158);
+  background: rgba(158, 158, 158, 0.1);
+  padding: 1px 0 1px 10px;
+  margin: 20px 0px;
 }
 
 /* 引用文字 */
 blockquote p {
+  color: #3f3f3f;
+  line-height: 1.5;
+  font-size: 16px;
+  margin: 10px;
+  padding: 0px;
 }
 
 /* 链接 */
 a {
-  border-bottom: 1px solid #1e6bb8;
+  color: #ff3502;
+  border-bottom: 1px solid #ff3502;
 }
 
 /* 加粗 */
 strong {
+  color: #ff3502;
+  line-height: 1.5;
+  font-size: 16px;
 }
 
 /* 斜体 */
@@ -114,6 +142,12 @@ figcaption {
 
 /* 行内代码 */
 p code, li code {
+  background: #f8f5ec;
+  color: #ff3502;
+  line-height: 1.5;
+  font-size: 90%;
+  padding: 3px 5px;
+  border-radius: 2px;
 }
 
 /* 非微信代码块
@@ -125,8 +159,14 @@ pre code {
 
 /* 脚注文字 */
 .footnote-word {
+  color: #ff3502;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
 }
 
 /* 脚注上标 */
 .footnote-ref {
+  color: #ff3502;
+  font-weight: normal;
 }`

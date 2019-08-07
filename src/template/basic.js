@@ -30,8 +30,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   font-weight: bold;
   color: black;
 }

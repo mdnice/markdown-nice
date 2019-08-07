@@ -53,6 +53,16 @@ export const TEMPLATE_OPTIONS = [
     author: "画手"
   },
   {
+    id: "green",
+    name: "绿意",
+    author: "夜尽天明"
+  },
+  {
+    id: "wechatFormat",
+    name: "WeChat-Format",
+    author: "画手"
+  },
+  {
     id: "custom",
     name: "自定义",
     author: ""

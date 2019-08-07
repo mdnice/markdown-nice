@@ -4,6 +4,8 @@ import custom from "./markdown/custom";
 import ink from "./markdown/ink";
 import purple from "./markdown/purple";
 import cyan from "./markdown/cyan";
+import green from "./markdown/green";
+import wechatFormat from "./markdown/wechatFormat";
 
 import content from "./content";
 
@@ -23,7 +25,9 @@ export default {
     custom,
     ink,
     purple,
-    cyan
+    cyan,
+    green,
+    wechatFormat
   },
   code: {
     atomOneDark,
