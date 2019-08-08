@@ -18,9 +18,9 @@
 
 ## 示例
 
-- [终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
-- [3道题彻底搞定：套路解决递归问题](https://mp.weixin.qq.com/s/NCRTvdeqcC8INdPPfsMsVA)
-- [JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
+- 小橙：[终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
+- 姹紫：[JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
+- 绿意：[前端硬核面试专题之 CSS 55 问](https://mp.weixin.qq.com/s/SVKMsQtOLNqYXeT_f95FUw)
 
 > 欢迎提供更多文章示例~~
 
