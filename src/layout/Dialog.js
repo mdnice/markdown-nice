@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ImageDialog from "../component/Dialog/ImageDialog"
 import LinkDialog from "../component/Dialog/LinkDialog"
 import AboutDialog from "../component/Dialog/AboutDialog";
+import VersionDialog from "../component/Dialog/VersionDialog";
 
 class Dialog extends Component {
  
@@ -11,6 +12,7 @@ class Dialog extends Component {
         <ImageDialog />
         <LinkDialog />
         <AboutDialog />
+        <VersionDialog />
       </div>
     );
   }

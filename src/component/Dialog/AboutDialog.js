@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { Modal } from "antd";
+import { Modal, Button } from "antd";
 
 @inject("dialog")
 @observer
@@ -13,6 +13,11 @@ class AboutDialog extends Component {
     this.props.dialog.setAboutOpen(false);
   };
 
+  handleVersion = e => {
+    this.props.dialog.setAboutOpen(false);
+    this.props.dialog.setVersionOpen(true);
+  };
+
   render() {
     return (
       <Modal
@@ -22,17 +27,28 @@ class AboutDialog extends Component {
         visible={this.props.dialog.isAboutOpen}
         onOk={this.handleOk}
         onCancel={this.handleCancel}
-        footer={null}
+        footer={[
+          <Button onClick={this.handleVersion}>更新记录</Button>,
+          <Button type="primary" onClick={this.handleOk}>
+            确认
+          </Button>
+        ]}
         bodyStyle={{
           paddingTop: "5px"
         }}
       >
-        <h3 style={style.headerMargin}>Markdown Nice</h3>
-        <p style={style.lineHeight}>一款 Markdown 微信排版工具；</p>
-        <p style={style.lineHeight}>支持图片上传；</p>
-        <p style={style.lineHeight}>支持代码样式；</p>
-        <p style={style.lineHeight}>支持自定义样式；</p>
-        <p style={style.lineHeight}>支持数学公式。</p>
+        <h3 style={style.headerMargin}>
+          Markdown Nice
+          <img
+            alt=""
+            style={style.img}
+            src="https://badgen.net/github/stars/zhning12/markdown-nice"
+          />
+        </h3>
+
+        <p style={style.lineHeight}>支持自定义样式的 Markdown 编辑器；</p>
+        <p style={style.lineHeight}>支持微信公众号排版；</p>
+        <p style={style.lineHeight}>支持知乎、掘金、博客园和CSDN等平台；</p>
         <h3 style={style.headerMargin}>我们</h3>
         <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注
@@ -41,10 +57,11 @@ class AboutDialog extends Component {
             target="_blank"
             href="https://github.com/zhning12/markdown-nice"
           >
-          &nbsp;GitHub&nbsp;
+            &nbsp;GitHub&nbsp;
           </a>
-           和新项目
+          和新项目
           <a
+            style={style.a}
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/guanpengchn/markdown-resume"
@@ -52,15 +69,15 @@ class AboutDialog extends Component {
             &nbsp;Markdown 简历
           </a>
           ，愿意
-          <strong>微信打赏</strong>就更好啦。
+          <strong style={style.strong}>微信打赏</strong>就更好啦。
         </p>
-        <div style={{display: "flex",}}>
-        <img
-          alt="图片描述"
-          style={style.imgWidth}
-          src="https://i.loli.net/2019/03/31/5ca08c7d19872.png"
-        />
-        {/* <img
+        <div style={{ display: "flex" }}>
+          <img
+            alt="图片描述"
+            style={style.imgWidth}
+            src="https://i.loli.net/2019/03/31/5ca08c7d19872.png"
+          />
+          {/* <img
           alt="图片描述"
           style={style.imgWidth}
           src="https://i.loli.net/2019/03/31/5ca095dfa4714.png"
@@ -78,11 +95,19 @@ const style = {
   },
   headerMargin: {
     marginTop: "5px",
-    marginBottom: "5px"
+    marginBottom: "5px",
+    color: "black"
   },
   lineHeight: {
     lineHeight: "26px",
-    padding: 0
+    color: "black",
+    padding: 0,
+    margin: 0
+  },
+  img: {
+    width: "70px",
+    marginLeft: "10px",
+    display: "inline-block"
   }
 };
 

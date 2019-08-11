@@ -17,11 +17,14 @@ export const CONTENT = "content";
 export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
+export const VERSION = 'version';
 
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
+
+export const VERSION_NUM = '1.0.0';
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
@@ -101,3 +104,10 @@ export const CODE_OPTIONS = [
     name: "xcode"
   }
 ];
+
+export const VERSION_TIMELINE = [
+  "2019-08-07 新增主题「绿意」与「wechat-format」",
+  "2019-07-13 新增主题「嫩青」",
+  "2019-05-08 v0.1.0版本发布",
+  "2019-02-02 第一次提交"
+]

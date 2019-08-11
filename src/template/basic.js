@@ -178,7 +178,7 @@ img {
 
 /*图片*/
 figure {
-  mairgin: 0;
+  margin: 0;
   margin-top: 10px;
   margin-bottom: 10px;
 }
