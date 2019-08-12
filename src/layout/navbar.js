@@ -17,6 +17,7 @@ import LogIn from "../component/LogIn";
 import User from "../component/User";
 import About from "../component/About";
 import Font from "../component/Font";
+import Setting from "../component/Setting";
 
 const ButtonGroup = Button.Group;
 
@@ -35,6 +36,9 @@ class Navbar extends Component {
           {/* <Title /> */}
           <section style={style.title}>Markdown Nice</section>
           <div>
+            <ButtonGroup style={style.btnGroupMargin}>
+              <Setting />
+            </ButtonGroup>
             <ButtonGroup style={style.btnGroupMargin}>
               <Del />
               <Bold />

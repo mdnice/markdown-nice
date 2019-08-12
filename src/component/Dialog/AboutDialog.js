@@ -28,8 +28,8 @@ class AboutDialog extends Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
         footer={[
-          <Button onClick={this.handleVersion}>更新记录</Button>,
-          <Button type="primary" onClick={this.handleOk}>
+          <Button key="version" onClick={this.handleVersion}>更新记录</Button>,
+          <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
           </Button>
         ]}

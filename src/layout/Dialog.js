@@ -3,6 +3,7 @@ import ImageDialog from "../component/Dialog/ImageDialog"
 import LinkDialog from "../component/Dialog/LinkDialog"
 import AboutDialog from "../component/Dialog/AboutDialog";
 import VersionDialog from "../component/Dialog/VersionDialog";
+import SettingDialog from "../component/Dialog/SettingDialog";
 
 class Dialog extends Component {
  
@@ -13,6 +14,7 @@ class Dialog extends Component {
         <LinkDialog />
         <AboutDialog />
         <VersionDialog />
+        <SettingDialog />
       </div>
     );
   }

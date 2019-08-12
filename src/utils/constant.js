@@ -18,13 +18,12 @@ export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
 export const VERSION = 'version';
+export const IS_PASTE_CHECK_OPEN = 'is_paste_check_open'
 
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
-
-export const VERSION_NUM = '1.0.0';
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
@@ -105,9 +104,12 @@ export const CODE_OPTIONS = [
   }
 ];
 
+export const VERSION_NUM = '1.0.1';
+
 export const VERSION_TIMELINE = [
+  "2019-08-12 v1.0.1 新增粘贴时语法检测功能，可转换微信外链",
   "2019-08-07 新增主题「绿意」与「wechat-format」",
   "2019-07-13 新增主题「嫩青」",
-  "2019-05-08 v0.1.0版本发布",
+  "2019-05-08 v0.1.0 版本发布",
   "2019-02-02 第一次提交"
 ]

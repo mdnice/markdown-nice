@@ -6,6 +6,7 @@ class Dialog {
   @observable isLinkOpen = false;
   @observable isAboutOpen = false;
   @observable isVersionOpen = false;
+  @observable isSettingOpen = false;
 
   @action
   setImageOpen = isImageOpen => {
@@ -25,6 +26,11 @@ class Dialog {
   @action
   setVersionOpen = isVersionOpen => {
     this.isVersionOpen = isVersionOpen;
+  };
+
+  @action
+  setSettingOpen = isSettingOpen => {
+    this.isSettingOpen = isSettingOpen;
   };
 }
 

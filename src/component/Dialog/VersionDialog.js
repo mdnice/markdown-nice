@@ -4,7 +4,6 @@ import { Modal, Timeline, Button } from "antd";
 import { VERSION_TIMELINE } from "../../utils/constant";
 
 @inject("dialog")
-@inject("content")
 @observer
 class LinkDialog extends Component {
   handleOk = e => {
@@ -28,8 +27,8 @@ class LinkDialog extends Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
         footer={[
-          <Button onClick={this.handleMore}>更多</Button>,
-          <Button type="primary" onClick={this.handleOk}>
+          <Button key="more" onClick={this.handleMore}>更多</Button>,
+          <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
           </Button>
         ]}
@@ -38,12 +37,12 @@ class LinkDialog extends Component {
           {VERSION_TIMELINE.map((version, index) => {
             if (index === 0) {
               return (
-                <Timeline.Item>
+                <Timeline.Item key={index}>
                   <strong>{version}</strong>
                 </Timeline.Item>
               );
             } else {
-              return <Timeline.Item>{version}</Timeline.Item>;
+              return <Timeline.Item key={index}>{version}</Timeline.Item>;
             }
           })}
         </Timeline>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { Modal } from "antd";
+
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
@@ -12,10 +14,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {
-  markdownParser,
-  markdownParserWechat,
-} from "./utils/helper";
+import { markdownParser, markdownParserWechat } from "./utils/helper";
 
 @inject("content")
 @inject("navbar")
@@ -55,11 +54,47 @@ class App extends Component {
     }
   };
 
-  handlChange = (editor, changeObj) => {
+  handleChange = (editor, changeObj) => {
     if (this.focus) {
-      const content = editor.getValue();
-      this.props.content.setContent(content);
+      let content = editor.getValue();
+      // 粘贴时检测
+      if (this.props.navbar.isPasteCheckOpen && changeObj.origin === "paste") {
+        const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com)[\w:/.#])*\)/g;
+        const res = content.match(linkImgReg); // 匹配到图片和链接
+        const filterRes = res.filter(val => val[0] !== "!"); // 过滤掉图片
+
+        if (filterRes.length > 0) {
+          this.showConfirm(filterRes, content);
+        } else {
+          this.props.content.setContent(content);
+        }
+      } else {
+        this.props.content.setContent(content);
+      }
     }
+  };
+
+  showConfirm = (filterRes, content) => {
+    Modal.confirm({
+      title: "微信之外链接",
+      content: "粘贴过程中检测到存在微信域名之外链接，是否自动转成脚注？",
+      okText: "确定",
+      cancelText: "取消",
+      onOk: () => {
+        filterRes.forEach(val => {
+          const linkReg = /\[(.*?)\]\((.*?)\)/; // 匹配链接中具体的值
+          const comment = val.match(linkReg)[1];
+          const newVal = `${val.slice(0, -1)} "${comment}")`;
+          console.log(newVal);
+          content = content.replace(val, newVal);
+        });
+
+        this.props.content.setContent(content);
+      },
+      onCancel: () => {
+        this.props.content.setContent(content);
+      }
+    });
   };
 
   handleFocus = e => {
@@ -82,10 +117,11 @@ class App extends Component {
   };
 
   render() {
-    const { codeNum } = this.props.navbar
-    const parseHtml = codeNum === 0
-      ? markdownParserWechat.render(this.props.content.content)
-      : markdownParser.render(this.props.content.content);
+    const { codeNum } = this.props.navbar;
+    const parseHtml =
+      codeNum === 0
+        ? markdownParserWechat.render(this.props.content.content)
+        : markdownParser.render(this.props.content.content);
 
     return (
       <div className="App">
@@ -105,7 +141,7 @@ class App extends Component {
                 lineWrapping: true,
                 lineNumbers: false
               }}
-              onChange={this.handlChange}
+              onChange={this.handleChange}
               onScroll={this.handleScroll}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}

@@ -1,16 +1,29 @@
 import { observable, action } from "mobx";
-import { TEMPLATE_NUM, CODE_NUM, CODE_THEME_ID, CODE_OPTIONS } from "../utils/constant";
+import {
+  TEMPLATE_NUM,
+  CODE_NUM,
+  CODE_THEME_ID,
+  CODE_OPTIONS,
+  IS_PASTE_CHECK_OPEN
+} from "../utils/constant";
 import TEMPLATE from "../template/index";
 import { replaceStyle } from "../utils/helper";
 
 class Navbar {
   @observable isStyleEditorOpen = false;
+  @observable isPasteCheckOpen = true;
+
   @observable templateNum;
   @observable codeNum;
 
   @action
   setStyleEditorOpen = isStyleEditorOpen => {
     this.isStyleEditorOpen = isStyleEditorOpen;
+  };
+
+  @action
+  setAutoFootOpen = isPasteCheckOpen => {
+    this.isPasteCheckOpen = isPasteCheckOpen;
   };
 
   @action
@@ -43,9 +56,16 @@ if (!window.localStorage.getItem(CODE_NUM)) {
   window.localStorage.setItem(CODE_NUM, 0);
 }
 
+// 如果为空先把数据放进去
+if (!window.localStorage.getItem(IS_PASTE_CHECK_OPEN)) {
+  window.localStorage.setItem(IS_PASTE_CHECK_OPEN, true);
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM));
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM));
+store.isPasteCheckOpen =
+  window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true" ? true : false;
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;
