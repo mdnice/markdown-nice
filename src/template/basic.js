@@ -99,6 +99,12 @@ blockquote p {
   line-height: 26px;
 }
 
+.table-of-contents a {
+  border: none;
+  color: black;
+  font-weight: normal;
+}
+
 /*链接*/
 a {
   text-decoration: none;

@@ -41,7 +41,7 @@ export default
   - 无序列表2.1
   - 无序列表2.2
 
-粘贴到微信编辑器后后**无序列表整体样式与微信一致**。
+最多支持到二级列表，粘贴到微信编辑器后后**无序列表整体样式与微信一致**。
 
 ## 5. 有序列表
 
@@ -191,13 +191,23 @@ $$
 
 不推荐使用行内公式，微信会将图片放大
 
-## 17. HTML
+## 17. TOC
+
+TOC全称为Table of Content，列出全部标题。由于示例标题过多，需要使用将下方代码段去除即可。
+
+\`\`\`
+[[TOC]]
+\`\`\`
+
+由于微信只支持到二级列表，本工具仅支持二级标题和三级标题的显示。
+
+## 18. HTML
 
 支持原生 HTML 语法，除个别情况外，建议尽少使用，如下：
 
 <span style="display:block;text-align:right;color:orangered;">橙色居右</span>
 <span style="display:block;text-align:center;color:orangered;">橙色居中</span>
 
-## 18. UML
+## 19. UML
 
 不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作后再导入图片`;

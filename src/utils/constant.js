@@ -104,9 +104,10 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = '1.0.1';
+export const VERSION_NUM = '1.0.2';
 
 export const VERSION_TIMELINE = [
+  "2019-08-13 v1.0.2 支持TOC，示例请重置后查看「第17条」",
   "2019-08-12 v1.0.1 新增粘贴时语法检测功能，可转换微信外链",
   "2019-08-07 新增主题「绿意」与「wechat-format」",
   "2019-07-13 新增主题「嫩青」",

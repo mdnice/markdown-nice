@@ -46,6 +46,7 @@
     "markdown-it-katex": "^2.0.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
+    "markdown-it-table-of-contents": "^0.4.4",
     "mini-css-extract-plugin": "0.5.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",

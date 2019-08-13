@@ -21,8 +21,6 @@ class Copy extends Component {
     message.success("已复制，请到微信公众平台粘贴");
   };
 
-  loadFinish = sum => {};
-
   uploadMathImage = async base64 => {
     const block = base64.split(";");
     const contentType = block[0].split(":")[1];
@@ -38,6 +36,7 @@ class Copy extends Component {
   imgOnload = () => {
     this.count++;
     if (this.count === this.mathNums) {
+      console.log(1)
       this.hide();
       this.copyHtml();
     }
@@ -103,6 +102,7 @@ class Copy extends Component {
   };
 
   copyToClip = str => {
+    console.log(2)
     function listener(e) {
       e.clipboardData.setData("text/html", str);
       e.clipboardData.setData("text/plain", str);

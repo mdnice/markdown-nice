@@ -59,9 +59,25 @@ class App extends Component {
       let content = editor.getValue();
       // 粘贴时检测
       if (this.props.navbar.isPasteCheckOpen && changeObj.origin === "paste") {
-        const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com)[\w:/.#])*\)/g;
-        const res = content.match(linkImgReg); // 匹配到图片和链接
-        const filterRes = res.filter(val => val[0] !== "!"); // 过滤掉图片
+        const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
+        const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
+
+        if(res === null) {
+          this.props.content.setContent(content);
+          return;
+        }
+
+        const footReg = /.*?\(.*?"(.*?)".*?\)/;
+        const filterRes = res.filter(val => {
+          const comment = val.match(footReg);
+          if (val[0] === "!") {
+            return false;
+          }
+          if (comment && comment[1] !== "") {
+            return false;
+          }
+          return true;
+        }); // 过滤掉图片和脚注
 
         if (filterRes.length > 0) {
           this.showConfirm(filterRes, content);
@@ -83,9 +99,11 @@ class App extends Component {
       onOk: () => {
         filterRes.forEach(val => {
           const linkReg = /\[(.*?)\]\((.*?)\)/; // 匹配链接中具体的值
-          const comment = val.match(linkReg)[1];
-          const newVal = `${val.slice(0, -1)} "${comment}")`;
-          console.log(newVal);
+          const matchValue = val.match(linkReg);
+          const name = matchValue[1];
+          const url = matchValue[2].trim();
+
+          const newVal = `[${name}](${url} "${name}")`;
           content = content.replace(val, newVal);
         });
 
