@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { Icon, Modal, Upload } from "antd";
 import axios from "axios";
+// import OSS from "ali-oss";
 
 import { SM_MS_PROXY } from "../../utils/constant";
 
@@ -38,6 +39,36 @@ class ImageDialog extends Component {
     this.props.dialog.setImageOpen(false);
   };
 
+  // testOSS = form => {
+  //   const client = new OSS({
+  //     region: "oss-cn-hangzhou",
+  //     //云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，部署在服务端使用RAM子账号或STS，部署在客户端使用STS。
+  //     accessKeyId: "LTAIzqm39B0rUg5l",
+  //     accessKeySecret: "7DCr95Vbd7lR1dcOPHkcaXjSAVbmzJ",
+  //     bucket: "draw-wechat"
+  //   });
+
+  //   client
+  //     .put("object.jpg", form)
+  //     .then(function(r1) {
+  //       console.log("put success: %j", r1);
+  //       // return client.get("object");
+  //     })
+  //     .catch(function(err) {
+  //       console.error("error: %j", err);
+  //     });
+  // };
+
+  // toBlob(urlData,fileType) {
+  //   let bytes = window.atob(urlData);
+  //   let n = bytes.length;
+  //   let u8arr = new Uint8Array(n);
+  //   while (n--) {
+  //       u8arr[n] = bytes.charCodeAt(n);
+  //   }
+  //   return new Blob([u8arr], { type: fileType });
+  // }
+
   customRequest = ({
     action,
     data,
@@ -55,6 +86,28 @@ class ImageDialog extends Component {
         formData.append(key, data[key]);
       });
     }
+    // console.log(file);
+    // formData.append("file", file);
+
+    // const r = new FileReader();
+    // r.readAsDataURL(file);
+    // r.onload = e => {
+    //   const urlData = e.target.result
+    //   const base64 = urlData.split(',').pop();
+    //   console.log(urlData)
+    //   console.log(base64)
+    //   // const base64 = urlData.split(',').pop();
+    //   // const fileType = urlData.split(';').shift().split(':').pop();
+
+    //   // const blob = this.toBlob(base64, fileType);
+    //   // console.log(blob)
+
+    //   const buffer = OSS.Buffer(base64);
+    //   console.log(buffer)
+    //   this.testOSS(buffer);
+    // };
+
+    // return;
     // SM.MS图床必须这里命名为smfile
     formData.append("smfile", file);
     axios
@@ -72,8 +125,6 @@ class ImageDialog extends Component {
       })
       .then(({ data: response }) => {
         this.images.push(response.data);
-
-        // this.props.dialog.setImageOpen(false);
         onSuccess(response, file);
       })
       .catch(onError);
