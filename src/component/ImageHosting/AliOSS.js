@@ -61,22 +61,22 @@ class AliOSS extends Component {
     } = this.state.imageHosting;
     return (
       <Form {...formItemLayout}>
-        <Form.Item label="region">
+        <Form.Item label="region" style={style.formItem}>
           <Input value={region} onChange={this.regionChange} />
         </Form.Item>
-        <Form.Item label="accessKeyId">
+        <Form.Item label="accessKeyId" style={style.formItem}>
           <Input value={accessKeyId} onChange={this.accessKeyIdChange} />
         </Form.Item>
-        <Form.Item label="accessKeySecret">
+        <Form.Item label="accessKeySecret" style={style.formItem}>
           <Input
             value={accessKeySecret}
             onChange={this.accessKeySecretChange}
           />
         </Form.Item>
-        <Form.Item label="bucket">
+        <Form.Item label="bucket" style={style.formItem}>
           <Input value={bucket} onChange={this.bucketChange} />
         </Form.Item>
-        <Form.Item label="提示">
+        <Form.Item label="提示" style={style.formItem}>
           <span>配置好图床信息后请在右上角进行切换</span>
         </Form.Item>
       </Form>
@@ -84,27 +84,10 @@ class AliOSS extends Component {
   }
 }
 
-// const style = {
-//   imgWidth: {
-//     width: "50%",
-//     height: "100%"
-//   },
-//   headerMargin: {
-//     marginTop: "5px",
-//     marginBottom: "5px",
-//     color: "black"
-//   },
-//   lineHeight: {
-//     lineHeight: "26px",
-//     color: "black",
-//     padding: 0,
-//     margin: 0
-//   },
-//   img: {
-//     width: "70px",
-//     marginLeft: "10px",
-//     display: "inline-block"
-//   }
-// };
+const style = {
+  formItem: {
+    marginBottom: "10px"
+  }
+};
 
 export default AliOSS;

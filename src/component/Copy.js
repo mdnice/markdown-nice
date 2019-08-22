@@ -3,19 +3,26 @@ import juice from "juice";
 import { observer, inject } from "mobx-react";
 import { Button, message, ConfigProvider } from "antd";
 import html2canvas from "html2canvas";
+import OSS from "ali-oss";
 
 import { axiosJSON, b64toBlob } from "../utils/helper";
 import {
   BASIC_THEME_ID,
   CODE_THEME_ID,
   MARKDOWN_THEME_ID,
-  SM_MS_PROXY
+  SM_MS_PROXY,
+  ALIOSS_IMAGE_HOSTING
 } from "../utils/constant";
 
 @inject("content")
 @inject("navbar")
+@inject("imageHosting")
 @observer
 class Copy extends Component {
+  constructor(props) {
+    super(props);
+    this.mathNums = 0;
+  }
 
   success = () => {
     message.success("已复制，请到微信公众平台粘贴");
@@ -27,6 +34,35 @@ class Copy extends Component {
     const realData = block[1].split(",")[1];
     var blob = b64toBlob(realData, contentType);
 
+    // 使用阿里云图床
+    if (this.props.imageHosting.type === "阿里云") {
+      return await this.aliOSSUploadFile(blob);
+    } else {
+      return await this.smmsUploadFile(blob);
+    }
+  };
+
+  aliOSSUploadFile = blob => {
+    const config = JSON.parse(
+      window.localStorage.getItem(ALIOSS_IMAGE_HOSTING)
+    );
+    return new Promise(function(resolve, reject) {
+      // blob转arrayBuffer
+      const bufferReader = new FileReader();
+      bufferReader.readAsArrayBuffer(blob);
+      bufferReader.onload = event => {
+        const buffer = new OSS.Buffer(event.target.result);
+        const client = new OSS(config);
+        // 公式根据时间命名，避免重复
+        const name = "math_" + new Date().getTime() + ".jpg";
+        client.put(name, buffer).then(response => {
+          resolve(response.url);
+        });
+      };
+    });
+  };
+
+  smmsUploadFile = async blob => {
     const formData = new FormData();
     formData.append("smfile", blob);
     const res = await axiosJSON.post(SM_MS_PROXY, formData);
@@ -36,7 +72,6 @@ class Copy extends Component {
   imgOnload = () => {
     this.count++;
     if (this.count === this.mathNums) {
-      console.log(1)
       this.hide();
       this.copyHtml();
     }
@@ -50,7 +85,7 @@ class Copy extends Component {
       this.copyHtml();
       return;
     }
-    this.hide = message.loading("正在将公式转成图片", 0);
+    this.hide = message.loading(`正在将${this.mathNums}个公式转成图片`, 0);
 
     // 先处理块公式，再处理行内公式
     const tagsBlock = document.getElementsByClassName("katex-display");
@@ -68,7 +103,8 @@ class Copy extends Component {
     }
 
     const tagsInline = document.getElementsByClassName("katex");
-    for (let i = 0; i < tagsInline.length; i++) {
+    while (tagsInline.length > 0) {
+      const i = 0;
       if (tagsInline[i]) {
         const canvas = await html2canvas(tagsInline[i], { logging: false });
         const url = await this.uploadMathImage(canvas.toDataURL());
@@ -97,13 +133,15 @@ class Copy extends Component {
         inlinePseudoElements: true
       }
     );
+    // console.log("copyHtml")
     this.copyToClip(result);
     this.success();
   };
 
   copyToClip = str => {
-    console.log(2)
+    // console.log("copyToClip")
     function listener(e) {
+      // console.log("copy")
       e.clipboardData.setData("text/html", str);
       e.clipboardData.setData("text/plain", str);
       e.preventDefault();

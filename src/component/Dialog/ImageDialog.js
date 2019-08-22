@@ -70,7 +70,7 @@ class ImageDialog extends Component {
     // 使用阿里云图床
     if (this.props.imageHosting.type === "阿里云") {
       const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
-      this.aliOSSUpload(config, formData, file, onSuccess, onError);
+      this.aliOSSUpload(config, file, onSuccess, onError);
     }
     // 使用SM.MS图床
     else {
@@ -129,9 +129,7 @@ class ImageDialog extends Component {
       .catch(onError);
   };
 
-  aliOSSUpload = (config, formData, file, onSuccess, onError) => {
-    formData.append("file", file);
-
+  aliOSSUpload = (config, file, onSuccess, onError) => {
     const base64Reader = new FileReader();
     base64Reader.readAsDataURL(file);
     base64Reader.onload = e => {
