@@ -11,6 +11,7 @@ import title from "./store/title";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
 import dialog from "./store/dialog";
+import imageHosting from "./store/imageHosting";
 
 ReactDOM.render(
   <Provider
@@ -19,6 +20,7 @@ ReactDOM.render(
     userInfo={userInfo}
     navbar={navbar}
     dialog={dialog}
+    imageHosting={imageHosting}
   >
     <App />
   </Provider>,

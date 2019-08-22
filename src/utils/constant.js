@@ -17,8 +17,14 @@ export const CONTENT = "content";
 export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
-export const VERSION = 'version';
-export const IS_PASTE_CHECK_OPEN = 'is_paste_check_open'
+export const VERSION = "version";
+export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
+export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
+export const IMAGE_HOSTING_TYPE = "image_hosting_type";
+export const IMAGE_HOSTING_TYPE_OPTIONS = [
+  { value: "SM.MS", label: "SM.MS" },
+  { value: "阿里云", label: "阿里云" }
+];
 
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
@@ -104,13 +110,14 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = '1.0.2';
+export const VERSION_NUM = "1.0.3 Beta";
 
 export const VERSION_TIMELINE = [
+  "2019-08-22 v1.0.3 Beta 支持阿里云OSS做图床，测试中",
   "2019-08-13 v1.0.2 支持TOC，示例请重置后查看「第17条」",
   "2019-08-12 v1.0.1 新增粘贴时语法检测功能，可转换微信外链",
   "2019-08-07 新增主题「绿意」与「wechat-format」",
   "2019-07-13 新增主题「嫩青」",
   "2019-05-08 v0.1.0 版本发布",
   "2019-02-02 第一次提交"
-]
+];

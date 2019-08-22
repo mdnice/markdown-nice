@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { Icon, Modal, Upload } from "antd";
+import { Icon, Modal, Upload, Tabs, Select } from "antd";
 import axios from "axios";
-// import OSS from "ali-oss";
+import OSS from "ali-oss";
 
-import { SM_MS_PROXY } from "../../utils/constant";
+import AliOSS from "../ImageHosting/AliOSS";
+
+import { toBlob } from "../../utils/helper";
+import {
+  SM_MS_PROXY,
+  ALIOSS_IMAGE_HOSTING,
+  IMAGE_HOSTING_TYPE,
+  IMAGE_HOSTING_TYPE_OPTIONS
+} from "../../utils/constant";
 
 const Dragger = Upload.Dragger;
+const { TabPane } = Tabs;
+const { Option } = Select;
 
 @inject("dialog")
 @inject("content")
+@inject("imageHosting")
 @observer
 class ImageDialog extends Component {
   constructor(props) {
@@ -39,36 +50,6 @@ class ImageDialog extends Component {
     this.props.dialog.setImageOpen(false);
   };
 
-  // testOSS = form => {
-  //   const client = new OSS({
-  //     region: "oss-cn-hangzhou",
-  //     //云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，部署在服务端使用RAM子账号或STS，部署在客户端使用STS。
-  //     accessKeyId: "LTAIzqm39B0rUg5l",
-  //     accessKeySecret: "7DCr95Vbd7lR1dcOPHkcaXjSAVbmzJ",
-  //     bucket: "draw-wechat"
-  //   });
-
-  //   client
-  //     .put("object.jpg", form)
-  //     .then(function(r1) {
-  //       console.log("put success: %j", r1);
-  //       // return client.get("object");
-  //     })
-  //     .catch(function(err) {
-  //       console.error("error: %j", err);
-  //     });
-  // };
-
-  // toBlob(urlData,fileType) {
-  //   let bytes = window.atob(urlData);
-  //   let n = bytes.length;
-  //   let u8arr = new Uint8Array(n);
-  //   while (n--) {
-  //       u8arr[n] = bytes.charCodeAt(n);
-  //   }
-  //   return new Blob([u8arr], { type: fileType });
-  // }
-
   customRequest = ({
     action,
     data,
@@ -86,28 +67,42 @@ class ImageDialog extends Component {
         formData.append(key, data[key]);
       });
     }
-    // console.log(file);
-    // formData.append("file", file);
+    // 使用阿里云图床
+    if (this.props.imageHosting.type === "阿里云") {
+      const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
+      this.aliOSSUpload(config, formData, file, onSuccess, onError);
+    }
+    // 使用SM.MS图床
+    else {
+      this.smmsUpload(
+        formData,
+        file,
+        action,
+        onProgress,
+        onSuccess,
+        onError,
+        headers,
+        withCredentials
+      );
+    }
 
-    // const r = new FileReader();
-    // r.readAsDataURL(file);
-    // r.onload = e => {
-    //   const urlData = e.target.result
-    //   const base64 = urlData.split(',').pop();
-    //   console.log(urlData)
-    //   console.log(base64)
-    //   // const base64 = urlData.split(',').pop();
-    //   // const fileType = urlData.split(';').shift().split(':').pop();
+    return {
+      abort() {
+        console.log("upload progress is aborted.");
+      }
+    };
+  };
 
-    //   // const blob = this.toBlob(base64, fileType);
-    //   // console.log(blob)
-
-    //   const buffer = OSS.Buffer(base64);
-    //   console.log(buffer)
-    //   this.testOSS(buffer);
-    // };
-
-    // return;
+  smmsUpload = (
+    formData,
+    file,
+    action,
+    onProgress,
+    onSuccess,
+    onError,
+    headers,
+    withCredentials
+  ) => {
     // SM.MS图床必须这里命名为smfile
     formData.append("smfile", file);
     axios
@@ -124,17 +119,77 @@ class ImageDialog extends Component {
         }
       })
       .then(({ data: response }) => {
-        this.images.push(response.data);
+        const image = {
+          filename: response.data.filename,
+          url: response.data.url
+        }
+        this.images.push(image);
         onSuccess(response, file);
       })
       .catch(onError);
-    return {
-      abort() {
-        console.log("upload progress is aborted.");
-      }
+  };
+
+  aliOSSUpload = (config, formData, file, onSuccess, onError) => {
+    formData.append("file", file);
+
+    const base64Reader = new FileReader();
+    base64Reader.readAsDataURL(file);
+    base64Reader.onload = e => {
+      const urlData = e.target.result;
+      const base64 = urlData.split(",").pop();
+      const fileType = urlData
+        .split(";")
+        .shift()
+        .split(":")
+        .pop();
+
+      // base64转blob
+      const blob = toBlob(base64, fileType);
+
+      // blob转arrayBuffer
+      const bufferReader = new FileReader();
+      bufferReader.readAsArrayBuffer(blob);
+      bufferReader.onload = event => {
+        const buffer = new OSS.Buffer(event.target.result);
+        this.aliOSSPutObject(config, file, buffer, onSuccess, onError);
+      };
     };
   };
+
+  aliOSSPutObject = (config, file, value, onSuccess, onError) => {
+    const client = new OSS(config);
+
+    client
+      .put(file.name, value)
+      .then(response => {
+        console.log("put success: %j", response);
+        // return client.get("object");
+        const image = {
+          filename: response.name,
+          url: response.url
+        }
+        this.images.push(image);
+        onSuccess(response, file);
+      })
+      .catch(onError);
+  };
+
+  typeChange = type => {
+    this.props.imageHosting.setType(type);
+    localStorage.setItem(IMAGE_HOSTING_TYPE, type);
+  };
+
   render() {
+    const columns = IMAGE_HOSTING_TYPE_OPTIONS.map((option, index) => (
+      <Option key={index} value={option.value}>
+        {option.label}
+      </Option>
+    ));
+    const imageHostingSwitch = (
+      <Select value={this.props.imageHosting.type} onChange={this.typeChange}>
+        {columns}
+      </Select>
+    );
     return (
       <Modal
         title="本地上传"
@@ -143,19 +198,29 @@ class ImageDialog extends Component {
         visible={this.props.dialog.isImageOpen}
         onOk={this.handleOk}
         onCancel={this.handleCancel}
+        bodyStyle={{ paddingTop: "10px" }}
       >
-        <Dragger
-          name="file"
-          multiple={true}
-          action={SM_MS_PROXY}
-          customRequest={this.customRequest}
-        >
-          <p className="ant-upload-drag-icon">
-            <Icon type="inbox" />
-          </p>
-          <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
-          <p className="ant-upload-hint">感谢SM.MS图床助力</p>
-        </Dragger>
+        <Tabs tabBarExtraContent={imageHostingSwitch} type="card">
+          <TabPane tab="图片上传" key="1">
+            <Dragger
+              name="file"
+              multiple={true}
+              action={SM_MS_PROXY}
+              customRequest={this.customRequest}
+            >
+              <p className="ant-upload-drag-icon">
+                <Icon type="inbox" />
+              </p>
+              <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
+              <p className="ant-upload-hint">
+                {"正在使用" + this.props.imageHosting.type + "图床"}
+              </p>
+            </Dragger>
+          </TabPane>
+          <TabPane tab="阿里云OSS" key="2">
+            <AliOSS />
+          </TabPane>
+        </Tabs>
       </Modal>
     );
   }
