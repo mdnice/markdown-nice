@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { Icon, Modal, Upload, Tabs, Select } from "antd";
+import { Icon, Modal, Upload, Tabs, Select, message } from "antd";
 import axios from "axios";
 import OSS from "ali-oss";
 
 import AliOSS from "../ImageHosting/AliOSS";
 
-import { toBlob } from "../../utils/helper";
+import { toBlob, dateFormat } from "../../utils/helper";
 import {
   SM_MS_PROXY,
   ALIOSS_IMAGE_HOSTING,
@@ -69,7 +69,9 @@ class ImageDialog extends Component {
     }
     // 使用阿里云图床
     if (this.props.imageHosting.type === "阿里云") {
-      const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
+      const config = JSON.parse(
+        window.localStorage.getItem(ALIOSS_IMAGE_HOSTING)
+      );
       this.aliOSSUpload(config, file, onSuccess, onError);
     }
     // 使用SM.MS图床
@@ -119,14 +121,20 @@ class ImageDialog extends Component {
         }
       })
       .then(({ data: response }) => {
+        if (response.code === "exception") {
+          throw response.message;
+        }
         const image = {
           filename: response.data.filename,
           url: response.data.url
-        }
+        };
         this.images.push(image);
         onSuccess(response, file);
       })
-      .catch(onError);
+      .catch(error => {
+        message.error(error.toString());
+        onError(error, error.toString());
+      });
   };
 
   aliOSSUpload = (config, file, onSuccess, onError) => {
@@ -157,19 +165,34 @@ class ImageDialog extends Component {
   aliOSSPutObject = (config, file, value, onSuccess, onError) => {
     const client = new OSS(config);
 
+    const names = file.name.split(".");
+    let key = "";
+    if (names.length > 1) {
+      const suffix = names.pop();
+      key = `${names.join(".")}_${dateFormat(
+        new Date(),
+        "yyyyMMddhhmmss"
+      )}.${suffix}`;
+    } else {
+      key = file.name + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
+    }
     client
-      .put(file.name, value)
+      .put(key, value)
       .then(response => {
-        console.log("put success: %j", response);
-        // return client.get("object");
+        const names = file.name.split(".");
+        names.pop();
+        const filename = names.join(".");
         const image = {
-          filename: response.name,
+          filename, // 名字不变并且去掉后缀
           url: response.url
-        }
+        };
         this.images.push(image);
         onSuccess(response, file);
       })
-      .catch(onError);
+      .catch(error => {
+        message.error("请根据文档检查配置项");
+        onError(error, error.toString());
+      });
   };
 
   typeChange = type => {

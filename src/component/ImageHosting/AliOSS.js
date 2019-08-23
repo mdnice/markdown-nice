@@ -61,20 +61,21 @@ class AliOSS extends Component {
     } = this.state.imageHosting;
     return (
       <Form {...formItemLayout}>
-        <Form.Item label="region" style={style.formItem}>
-          <Input value={region} onChange={this.regionChange} />
+        <Form.Item label="Bucket" style={style.formItem}>
+          <Input value={bucket} onChange={this.bucketChange} placeholder="例如：my-wechat"/>
         </Form.Item>
-        <Form.Item label="accessKeyId" style={style.formItem}>
-          <Input value={accessKeyId} onChange={this.accessKeyIdChange} />
+        <Form.Item label="Region" style={style.formItem}>
+          <Input value={region} onChange={this.regionChange} placeholder="例如：oss-cn-hangzhou"/>
         </Form.Item>
-        <Form.Item label="accessKeySecret" style={style.formItem}>
+        <Form.Item label="AccessKey ID" style={style.formItem}>
+          <Input value={accessKeyId} onChange={this.accessKeyIdChange} placeholder="例如：qweASDF1234zxcvb"/>
+        </Form.Item>
+        <Form.Item label="AccessKey Secret" style={style.formItem}>
           <Input
             value={accessKeySecret}
             onChange={this.accessKeySecretChange}
+            placeholder="例如：qweASDF1234zxcvbqweASD"
           />
-        </Form.Item>
-        <Form.Item label="bucket" style={style.formItem}>
-          <Input value={bucket} onChange={this.bucketChange} />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
           <span>配置好图床信息后请在右上角进行切换</span>
