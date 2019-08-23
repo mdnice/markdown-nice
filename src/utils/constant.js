@@ -110,14 +110,13 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = "1.0.3 Beta";
+export const VERSION_NUM = "1.1.0";
 
 export const VERSION_TIMELINE = [
-  "2019-08-22 v1.0.3 Beta 支持阿里云OSS做图床，测试中",
+  "2019-08-23 v1.1.0 支持自定义「阿里云OSS」做图床",
   "2019-08-13 v1.0.2 支持TOC，示例请重置后查看「第17条」",
   "2019-08-12 v1.0.1 新增粘贴时语法检测功能，可转换微信外链",
-  "2019-08-07 新增主题「绿意」与「wechat-format」",
-  "2019-07-13 新增主题「嫩青」",
+  "2019-08-07 v1.0.0 稳定使用，新增主题「绿意」与「wechat-format」",
   "2019-05-08 v0.1.0 版本发布",
   "2019-02-02 第一次提交"
 ];

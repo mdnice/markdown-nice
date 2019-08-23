@@ -78,7 +78,8 @@ class AliOSS extends Component {
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
-          <span>配置好图床信息后请在右上角进行切换</span>
+          <span>配置好图床信息后请在右上角进行切换</span><br/>
+          <a rel="noopener noreferrer" target="_blank" href="https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg">阿里云图床配置文档</a>
         </Form.Item>
       </Form>
     );
