@@ -163,8 +163,13 @@ class ImageDialog extends Component {
   };
 
   aliOSSPutObject = (config, file, value, onSuccess, onError) => {
-    const client = new OSS(config);
-
+    let client;
+    try{
+      client = new OSS(config);
+    } catch(error) {
+      message.error("OSS配置错误，请根据文档检查配置项");
+      return;
+    }
     const names = file.name.split(".");
     let key = "";
     if (names.length > 1) {
