@@ -42,7 +42,7 @@ h2 {
 /* 二级标题内容 */
 h2 span {
   display: inline-block;
-  font-weight: normal;
+  font-weight: bold;
   background: rgb(239, 112, 96);
   color: #ffffff;
   padding: 3px 10px 1px;
@@ -140,6 +140,16 @@ p code, li code {
  * 代码块换行 display: block;
  */
 pre code {
+}
+
+/*
+ * 表格内的单元格
+ * 字体大小 font-size: 16px;
+ * 边框 border: 1px solid #ccc;
+ * 内边距 padding: 5px 10px;
+ */
+table tr th,
+table tr td {
 }
 
 /* 脚注文字 */

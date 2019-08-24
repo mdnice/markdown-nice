@@ -41,8 +41,8 @@ export const TEMPLATE_OPTIONS = [
     author: "zhning12"
   },
   {
-    id: "orange",
-    name: "小橙",
+    id: "orangeHeart",
+    name: "橙心",
     author: "zhning12"
   },
   {
@@ -64,6 +64,11 @@ export const TEMPLATE_OPTIONS = [
     id: "green",
     name: "绿意",
     author: "夜尽天明"
+  },
+  {
+    id: "red",
+    name: "红绯",
+    author: "HeyRain"
   },
   {
     id: "wechatFormat",
@@ -110,13 +115,14 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = "1.1.0";
+export const VERSION_NUM = "1.1.1";
 
 export const VERSION_TIMELINE = [
-  "2019-08-23 v1.1.0 支持自定义「阿里云OSS」做图床，示例请重置后查看「第10条」",
-  "2019-08-13 v1.0.2 支持TOC，示例请重置后查看「第17条」",
-  "2019-08-12 v1.0.1 新增粘贴时语法检测功能，可转换微信外链",
-  "2019-08-07 v1.0.0 稳定使用，新增主题「绿意」与「wechat-format」",
-  "2019-05-08 v0.1.0 版本发布",
+  "2019-08-24 新增主题「红绯」",
+  "2019-08-23 支持自定义「阿里云OSS」做图床，示例请重置后查看「第10条」",
+  "2019-08-13 支持TOC，示例请重置后查看「第17条」",
+  "2019-08-12 新增粘贴时语法检测功能，可转换微信外链",
+  "2019-08-07 稳定使用，新增主题「绿意」与「wechat-format」",
+  "2019-05-08 版本发布",
   "2019-02-02 第一次提交"
 ];

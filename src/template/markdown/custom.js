@@ -121,6 +121,16 @@ p code, li code {
 pre code {
 }
 
+/*
+ * 表格内的单元格
+ * 字体大小 font-size: 16px;
+ * 边框 border: 1px solid #ccc;
+ * 内边距 padding: 5px 10px;
+ */
+table tr th,
+table tr td {
+}
+
 /* 脚注文字 */
 .footnote-word {
 }

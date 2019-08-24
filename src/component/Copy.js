@@ -90,7 +90,7 @@ class Copy extends Component {
     // 先处理块公式，再处理行内公式
     const tagsBlock = document.getElementsByClassName("katex-display");
     for (let i = 0; i < tagsBlock.length; i++) {
-      const canvas = await html2canvas(tagsBlock[i], { logging: false });
+      const canvas = await html2canvas(tagsBlock[i].firstChild, { logging: false });
       const url = await this.uploadMathImage(canvas.toDataURL());
       const img = new Image();
       img.src = url;

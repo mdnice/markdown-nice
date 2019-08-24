@@ -1,5 +1,6 @@
 import normal from "./markdown/normal";
-import orange from "./markdown/orange";
+import orangeHeart from "./markdown/orangeHeart";
+import red from "./markdown/red";
 import custom from "./markdown/custom";
 import ink from "./markdown/ink";
 import purple from "./markdown/purple";
@@ -21,12 +22,13 @@ export default {
   basic,
   style: {
     normal,
-    orange,
+    orangeHeart,
     custom,
     ink,
     purple,
     cyan,
     green,
+    red,
     wechatFormat
   },
   code: {

@@ -64,18 +64,18 @@ class LogIn extends React.Component {
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>提交主题</a>
+          <a style={style.link} rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>提交主题</a>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="1">
-          <a rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>退出登录</a>
+          <a style={style.link} rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>退出登录</a>
         </Menu.Item>
       </Menu>
     );
 
     return (
       <Dropdown overlay={menu}>
-        <a rel="noopener noreferrer" className="ant-dropdown-link" href={hrefLink}>
+        <a style={style.link} rel="noopener noreferrer" className="ant-dropdown-link" href={hrefLink}>
           <Avatar style={style.avatar} icon="user" shape="square" />
         </a>
       </Dropdown>
@@ -96,6 +96,9 @@ const style = {
     background: "white",
     color: "#1e1e1e",
     fontSize: "22px"
+  },
+  link: {
+    border: "none"
   }
 };
 

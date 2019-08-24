@@ -3,7 +3,7 @@ export default
 
 请阅读下方文本熟悉工具使用方法。
 
-<img style="width: 120px" src="https://i.loli.net/2019/04/01/5ca1766ad4e58.png"/>
+<img style="width: 120px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%20logo_20190823192027.png"/>
 
 ## 1. Markdown Nice 简介
 
@@ -101,7 +101,7 @@ export default
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
-![这里写图片描述](https://i.loli.net/2019/03/30/5c9eff84d81c4.png)
+![这里写图片描述](https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E4%BA%8C%E7%BB%B4%E7%A0%81_20190823124950.gif)
 
 **可使用上方工具上传本地图片，感谢 SM.MS 图床助力，该图床不够稳定，会经常存在粘贴失败的现象。**
 

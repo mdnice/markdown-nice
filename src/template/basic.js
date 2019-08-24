@@ -9,7 +9,9 @@ export default
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
-  word-break: break-all;
+  word-break: break-word;
+  word-wrap: break-word;
+  text-align: left;
   font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -220,9 +222,8 @@ table tr th,
 table tr td {
   font-size: 16px;
   border: 1px solid #ccc;
-  padding: 5px 15px;
+  padding: 5px 10px;
   text-align: left;
-  min-width: 70px;
 }
 
 table tr th {
