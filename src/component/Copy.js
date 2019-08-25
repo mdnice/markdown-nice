@@ -45,7 +45,8 @@ class Copy extends Component {
         const math = mathBlock[i];
         let formula = math.split("$$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const url = `https://math.mdnice.com/type/png/scale/${this.scale}/math/${formula}`;
+        const ip = window.returnCitySN.cip.replace(/\./g, '-');
+        const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
 
@@ -87,7 +88,8 @@ class Copy extends Component {
         const math = mathInline[i];
         let formula = math.split("$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const url = `https://math.mdnice.com/${window.returnCitySN.cip}/type/png/scale/${this.scale}/math/${formula}`;
+        const ip = window.returnCitySN.cip.replace(/\./g, '-');
+        const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
       // 使用promise并行发请求，增快公式转换速度
