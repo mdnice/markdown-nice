@@ -156,8 +156,9 @@ export const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
   return blob;
 };
 
-export const toBlob = (urlData, fileType) => {
-  let bytes = window.atob(urlData);
+// base64转blob
+export const toBlob = (base64, fileType) => {
+  let bytes = window.atob(base64);
   let n = bytes.length;
   let u8arr = new Uint8Array(n);
   while (n--) {
@@ -192,3 +193,39 @@ export const dateFormat = function(date, fmt) {
   }
   return fmt;
 };
+
+
+// export const url2Blob = (imgUrl) => {
+//   window.URL = window.URL || window.webkitURL;
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("get", imgUrl, true);
+//   xhr.responseType = "blob";
+//   xhr.onload = function () {
+//     if (this.status == 200) {
+//       //得到一个blob对象
+//       var blob = this.response;
+//       console.log("blob", blob)
+//     }
+//   }
+//   xhr.send();
+// }
+
+function getBase64Image(img) {
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  var dataURL = canvas.toDataURL("image/png");  // 可选其他值 image/jpeg
+  return dataURL;
+}
+
+export const url2Blob = (src, cb) => {
+  var image = new Image();
+  image.src = src + '?v=' + Math.random(); // 处理缓存
+  image.crossOrigin = "Anonymous";  // 支持跨域图片
+  image.onload = function(){
+      var base64 = getBase64Image(image);
+      cb && cb(base64);
+  }
+}

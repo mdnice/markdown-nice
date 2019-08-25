@@ -115,9 +115,10 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = "1.1.1";
+export const VERSION_NUM = "1.1.2";
 
 export const VERSION_TIMELINE = [
+  "2019-08-26 完整支持公式处理，示例请重置后查看「第16条」，测试中",
   "2019-08-24 新增主题「红绯」",
   "2019-08-23 支持自定义「阿里云OSS」做图床，示例请重置后查看「第10条」",
   "2019-08-13 支持TOC，示例请重置后查看「第17条」",

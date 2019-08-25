@@ -306,20 +306,22 @@ table tr th {
   line-height: 28px;
 }
 
-.math-img-inline {
-  display: inline-block;
-  line-height: inherit;
-  height: 28px;
-  width: auto;
-  vertical-align: middle
-}
-
 .katex-inline {
   display: inline;
 }
 
+.math-img-inline {
+  display: inline-block;
+  line-height: inherit;
+  height: 18px;
+  width: auto;
+  max-width: 100%;
+  vertical-align: middle
+}
+
 .math-img-block {
-  width: 100%;
+  max-width: 100%;
+  width: auto;
 }
 
 .footnote-word {

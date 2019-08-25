@@ -18,6 +18,7 @@ export default
 - <span style="color:orangered;font-weight:bold;">小橙：</span>[终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
 - <span style="color:#773098;font-weight:bold;">姹紫：</span>[JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
 - <span style="color:#35b378;font-weight:bold;">绿意：</span>[前端硬核面试专题之 CSS 55 问](https://mp.weixin.qq.com/s/SVKMsQtOLNqYXeT_f95FUw)
+- <span style="color:rgb(248,57,41);font-weight:bold;">红绯：</span>[日常 | 我用什么工具写作？](https://mp.weixin.qq.com/s/DrvJBEWqH14atF_4O1IXFw)
 - <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 
 ## 3. 标题
@@ -171,9 +172,6 @@ ___
 
 ## 16. 数学公式
 
-需要使用数学公式将代码块去除即可
-
-\`\`\`
 行内公式使用方法，比如这个著名的公式：$E=mc^2$，源于爱因斯坦
 
 块公式使用方法如下：
@@ -190,13 +188,12 @@ $$
   1 & a_m & a_m^2 & \\cdots & a_m^n \\\\
   \\end{pmatrix}
 $$
-\`\`\`
 
-公式由于微信不支持，目前的解决方案就是转成图片放到微信中，由于图床稳定性，目前还在测试
+公式由于微信不支持，目前的解决方案就是转成图片放到微信中，**公式图片目前存于工具作者的阿里云图床中，一天后自动删除，无法二次使用**。
 
-可考虑手动将转成图片的公式保存下来上传到微信上再将链接取回则万无一失
+由于图片大小不固定，目前没有办法强制添加公式图片长度和宽度，所以拷贝过后需要在微信中调整公式大小。
 
-不推荐使用行内公式，微信会将图片放大
+如果遇到第一次复制没有提示复制成功的现象，请再点击一次即可。
 
 ## 17. TOC
 

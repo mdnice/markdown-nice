@@ -33,7 +33,7 @@ h1 {
   font-size:1.3em;
 }
 
-/* 二级标题内容 */
+/* 一级标题内容 */
 h1 span {
   display:inline-block;
   font-weight:normal;

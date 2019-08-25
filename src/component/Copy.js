@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import juice from "juice";
 import { observer, inject } from "mobx-react";
 import { Button, message, ConfigProvider } from "antd";
-import html2canvas from "html2canvas";
-import OSS from "ali-oss";
+import axios from "axios";
 
-import { axiosJSON, b64toBlob } from "../utils/helper";
 import {
   BASIC_THEME_ID,
   CODE_THEME_ID,
-  MARKDOWN_THEME_ID,
-  SM_MS_PROXY,
-  ALIOSS_IMAGE_HOSTING
+  MARKDOWN_THEME_ID
 } from "../utils/constant";
 
 @inject("content")
@@ -22,139 +18,146 @@ class Copy extends Component {
   constructor(props) {
     super(props);
     this.mathNums = 0;
+    this.html = "";
+    this.scale = 2;
+    this.state = {
+      loading: false
+    };
   }
 
-  success = () => {
-    message.success("已复制，请到微信公众平台粘贴");
-  };
+  // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
+  solveBlockMath = async () => {
+    const mathReg = /\$\$([^]*?)\$\$/g;
+    const content = this.props.content.content;
 
-  uploadMathImage = async base64 => {
-    const block = base64.split(";");
-    const contentType = block[0].split(":")[1];
-    const realData = block[1].split(",")[1];
-    var blob = b64toBlob(realData, contentType);
-
-    // 使用阿里云图床
-    if (this.props.imageHosting.type === "阿里云") {
-      return await this.aliOSSUploadFile(blob);
-    } else {
-      return await this.smmsUploadFile(blob);
-    }
-  };
-
-  aliOSSUploadFile = blob => {
-    const config = JSON.parse(
-      window.localStorage.getItem(ALIOSS_IMAGE_HOSTING)
-    );
-    return new Promise(function(resolve, reject) {
-      // blob转arrayBuffer
-      const bufferReader = new FileReader();
-      bufferReader.readAsArrayBuffer(blob);
-      bufferReader.onload = event => {
-        const buffer = new OSS.Buffer(event.target.result);
-        const client = new OSS(config);
-        // 公式根据时间命名，避免重复
-        const name = "math_" + new Date().getTime() + ".jpg";
-        client.put(name, buffer).then(response => {
-          resolve(response.url);
-        });
-      };
-    });
-  };
-
-  smmsUploadFile = async blob => {
-    const formData = new FormData();
-    formData.append("smfile", blob);
-    const res = await axiosJSON.post(SM_MS_PROXY, formData);
-    return res.data.data.url;
-  };
-
-  imgOnload = () => {
-    this.count++;
-    if (this.count === this.mathNums) {
-      this.hide();
-      this.copyHtml();
-    }
-  };
-
-  solveMath = async () => {
-    this.count = 0;
-    this.mathNums = document.getElementsByClassName("katex").length;
-    // 图片已经转换完了
-    if (this.mathNums === 0) {
-      this.copyHtml();
-      return;
-    }
-    this.hide = message.loading(`正在将${this.mathNums}个公式转成图片`, 0);
-
-    // 先处理块公式，再处理行内公式
+    const mathBlock = content.match(mathReg);
     const tagsBlock = document.getElementsByClassName("katex-display");
-    for (let i = 0; i < tagsBlock.length; i++) {
-      const canvas = await html2canvas(tagsBlock[i].firstChild, { logging: false });
-      const url = await this.uploadMathImage(canvas.toDataURL());
-      const img = new Image();
-      img.src = url;
-      img.onload = this.imgOnload;
-      img.className = "math-img-block";
-      while (tagsBlock[i].firstChild) {
-        tagsBlock[i].removeChild(tagsBlock[i].firstChild);
-      }
-      tagsBlock[i].appendChild(img);
-    }
 
-    const tagsInline = document.getElementsByClassName("katex");
-    while (tagsInline.length > 0) {
-      const i = 0;
-      if (tagsInline[i]) {
-        const canvas = await html2canvas(tagsInline[i], { logging: false });
-        const url = await this.uploadMathImage(canvas.toDataURL());
+    if (mathBlock != null) {
+      if (mathBlock.length !== tagsBlock.length) {
+        return false;
+      }
+
+      const urlArr = [];
+      for (let i = 0; i < mathBlock.length; i++) {
+        // 转换过的公式避免再次转换
+        if (tagsBlock[i].firstChild.className === "math-img-block") continue;
+        const math = mathBlock[i];
+        let formula = math.split("$$")[1];
+        formula = encodeURI(formula.replace(/\s/g, "&space;"));
+        const url = `https://math.mdnice.com/type/png/scale/${this.scale}/math/${formula}`;
+        urlArr.push(url);
+      }
+
+      // 使用promise并行发请求，增快公式转换速度
+      const promiseArr = urlArr.map(url => axios.get(url));
+
+      const resultArr = await Promise.all(promiseArr);
+      resultArr.forEach((result, index) => {
         const img = new Image();
-        img.src = url;
+        img.src = result.data;
+        img.onload = this.imgOnload;
+        img.className = "math-img-block";
+        tagsBlock[index].removeChild(tagsBlock[index].firstChild);
+        tagsBlock[index].appendChild(img);
+      });
+    }
+    return true;
+  };
+
+  // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
+  solveInlineMath = async () => {
+    const mathReg = /\$([^]*?)\$/g;
+    const content = this.props.content.content;
+
+    let mathInline = content.match(mathReg);
+
+    if (mathInline != null) {
+      mathInline = mathInline.filter(item => item !== "$$"); // 过滤掉匹配的$$没用符号
+      const tagsInline = document.getElementsByClassName("katex");
+
+      if (mathInline.length !== tagsInline.length) {
+        return false;
+      }
+
+      const urlArr = [];
+      for (let i = 0; i < mathInline.length; i++) {
+        // 转换过的公式避免再次转换
+        if (tagsInline[i].firstChild.className === "math-img-inline") continue;
+        const math = mathInline[i];
+        let formula = math.split("$")[1];
+        formula = encodeURI(formula.replace(/\s/g, "&space;"));
+        const url = `https://math.mdnice.com/type/png/scale/${this.scale}/math/${formula}`;
+        urlArr.push(url);
+      }
+      // 使用promise并行发请求，增快公式转换速度
+      const promiseArr = urlArr.map(url => axios.get(url));
+
+      const resultArr = await Promise.all(promiseArr);
+      resultArr.forEach((result, index) => {
+        const img = new Image();
+        img.src = result.data;
         img.onload = this.imgOnload;
         img.className = "math-img-inline";
-        while (tagsInline[i].firstChild) {
-          tagsInline[i].removeChild(tagsInline[i].firstChild);
-        }
-        tagsInline[i].appendChild(img);
-        tagsInline[i].setAttribute("class", "katex-inline");
-      }
+        tagsInline[index].removeChild(tagsInline[index].firstChild);
+        tagsInline[index].removeChild(tagsInline[index].firstChild);
+        tagsInline[index].appendChild(img);
+      });
     }
+    return true;
   };
 
-  copyHtml = () => {
+  solveHtml = () => {
     const element = document.getElementById("wx-box");
     const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
     const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
     const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
-    const result = juice.inlineContent(
+    this.html = juice.inlineContent(
       element.innerHTML,
       basicStyle + markdownStyle + codeStyle,
       {
         inlinePseudoElements: true
       }
     );
-    // console.log("copyHtml")
-    this.copyToClip(result);
-    this.success();
   };
 
-  copyToClip = str => {
-    // console.log("copyToClip")
-    function listener(e) {
-      // console.log("copy")
-      e.clipboardData.setData("text/html", str);
-      e.clipboardData.setData("text/plain", str);
-      e.preventDefault();
+  // 拷贝流程 块级公式 => 行内公式 => 其他
+  copy = async () => {
+    try {
+      this.setState({ loading: true });
+      const flagBlock = await this.solveBlockMath();
+      if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
+      const flagInline = await this.solveInlineMath();
+      if (!flagInline) throw new Error("块级公式格式错误，无法进行转换");
+      this.solveHtml();
+      document.addEventListener("copy", this.copyListener);
+      document.execCommand("copy");
+      document.removeEventListener("copy", this.copyListener);
+    } catch (e) {
+      message.error(e.message);
+    } finally {
+      this.setState({ loading: false });
     }
-    document.addEventListener("copy", listener);
-    document.execCommand("copy");
-    document.removeEventListener("copy", listener);
+  };
+
+  copyListener = e => {
+    // 由于antd的message原因，有这行输出则每次都会进来，否则有问题，具体原因不明
+    console.log("clipboard");
+    message.success("已复制，请到微信公众平台粘贴");
+    e.clipboardData.setData("text/html", this.html);
+    e.clipboardData.setData("text/plain", this.html);
+    e.preventDefault();
   };
 
   render() {
     return (
       <ConfigProvider autoInsertSpaceInButton={false}>
-        <Button type="primary" style={style.btnHeight} onClick={this.solveMath}>
+        <Button
+          type="primary"
+          style={style.btnHeight}
+          onClick={this.copy}
+          loading={this.state.loading}
+        >
           复制
         </Button>
       </ConfigProvider>

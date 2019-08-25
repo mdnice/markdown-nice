@@ -8,6 +8,7 @@ import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
 import TEMPLATE from "../template/index";
 
 @inject("content")
+@inject("navbar")
 @observer
 class Reset extends Component {
   state = { visible: false };
@@ -23,6 +24,7 @@ class Reset extends Component {
         this.props.content.setContent(TEMPLATE.content);
         this.props.content.setStyle(TEMPLATE.style["normal"]);
         this.props.content.setCustomStyle(TEMPLATE.style["custom"]);
+        this.props.navbar.setTemplateNum(0);
       },
       onCancel() {}
     });
