@@ -28,7 +28,9 @@ class AboutDialog extends Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
         footer={[
-          <Button key="version" onClick={this.handleVersion}>更新记录</Button>,
+          <Button key="version" onClick={this.handleVersion}>
+            更新记录
+          </Button>,
           <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
           </Button>
@@ -39,11 +41,18 @@ class AboutDialog extends Component {
       >
         <h3 style={style.headerMargin}>
           Markdown Nice
-          <img
-            alt=""
-            style={style.img}
-            src="https://badgen.net/github/stars/zhning12/markdown-nice"
-          />
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/zhning12/markdown-nice"
+            style={style.noBorder}
+          >
+            <img
+              alt=""
+              style={style.img}
+              src="https://badgen.net/github/stars/zhning12/markdown-nice"
+            />
+          </a>
         </h3>
 
         <p style={style.lineHeight}>支持自定义样式的 Markdown 编辑器；</p>
@@ -75,13 +84,8 @@ class AboutDialog extends Component {
           <img
             alt="图片描述"
             style={style.imgWidth}
-            src="https://i.loli.net/2019/03/31/5ca08c7d19872.png"
+            src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E6%89%93%E8%B5%8F%E4%BA%8C%E7%BB%B4%E7%A0%81_20190825201704.png"
           />
-          {/* <img
-          alt="图片描述"
-          style={style.imgWidth}
-          src="https://i.loli.net/2019/03/31/5ca095dfa4714.png"
-        /> */}
         </div>
       </Modal>
     );
@@ -108,6 +112,9 @@ const style = {
     width: "70px",
     marginLeft: "10px",
     display: "inline-block"
+  },
+  noBorder: {
+    border: "none"
   }
 };
 

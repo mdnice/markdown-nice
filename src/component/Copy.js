@@ -87,7 +87,7 @@ class Copy extends Component {
         const math = mathInline[i];
         let formula = math.split("$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const url = `https://math.mdnice.com/type/png/scale/${this.scale}/math/${formula}`;
+        const url = `https://math.mdnice.com/${window.returnCitySN.cip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
       // 使用promise并行发请求，增快公式转换速度
@@ -124,6 +124,9 @@ class Copy extends Component {
   // 拷贝流程 块级公式 => 行内公式 => 其他
   copy = async () => {
     try {
+      axios.get(
+        `https://math.mdnice.com/${window.returnCitySN.cip}/${window.returnCitySN.cname}`
+      );
       this.setState({ loading: true });
       const flagBlock = await this.solveBlockMath();
       if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
