@@ -68,7 +68,7 @@ class Copy extends Component {
 
   // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
   solveInlineMath = async () => {
-    const mathReg = /\$([^]*?)\$/g;
+    const mathReg = /\$(.*?)\$/g;
     const content = this.props.content.content;
 
     let mathInline = content.match(mathReg);
@@ -133,7 +133,7 @@ class Copy extends Component {
       const flagBlock = await this.solveBlockMath();
       if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
       const flagInline = await this.solveInlineMath();
-      if (!flagInline) throw new Error("块级公式格式错误，无法进行转换");
+      if (!flagInline) throw new Error("行内公式格式错误，无法进行转换");
       this.solveHtml();
       document.addEventListener("copy", this.copyListener);
       document.execCommand("copy");
