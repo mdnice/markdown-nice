@@ -38,7 +38,7 @@ class Reset extends Component {
         mouseLeaveDelay={LEAVE_DELAY}
         title="重置"
       >
-        <Button type="danger" onClick={this.showConfirm} style={style.btnPadding}>
+        <Button onClick={this.showConfirm} style={style.btnPadding}>
           <Icon component={resetIcon} style={style.iconSize}/>
         </Button>
       </Tooltip>

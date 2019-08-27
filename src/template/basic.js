@@ -234,7 +234,7 @@ table tr th {
 /* 微信代码块 */
 .code-snippet__fix {
   word-wrap: break-word !important;
-  ont-size: 14px;
+  font-size: 14px;
   margin: 10px 0;
   display: block;
   color: #333;
@@ -244,7 +244,6 @@ table tr th {
   border-radius: 2px;
   display: flex;
   line-height: 20px;
-  font-size: 12px;
 }
 .code-snippet__fix .code-snippet__line-index {
   counter-reset: line;
@@ -252,11 +251,13 @@ table tr th {
   height: 100%;
   padding: 1em;
   list-style-type: none;
+  padding: 16px;
   margin: 0;
 }
 .code-snippet__fix .code-snippet__line-index li {
   list-style-type: none;
   text-align: right;
+  margin: 0;
 }
 .code-snippet__fix .code-snippet__line-index li::before {
   min-width: 1.5em;
@@ -269,8 +270,7 @@ table tr th {
 }
 .code-snippet__fix pre {
   overflow-x: auto;
-  padding: 1em;
-  padding-left: 1em;
+  padding: 16px;
   padding-left: 0;
   white-space: normal;
   flex: 1;
@@ -284,17 +284,9 @@ table tr th {
   display: flex;
   position: relative;
   font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
-  background: rgba(0,0,0,0);
-  font-size: 12px;
+  padding: 0px;
 }
-.code-snippet__fix code span {
-  line-height: 20px;
-}
-.code-snippet__fix ol li {
-  margin: 0;
-  padding: 2px;
-  line-height: 20px;
-}
+
 
 /* 公式注释 */
 .katex-mathml {

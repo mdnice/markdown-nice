@@ -20,7 +20,7 @@ class Setting extends Component {
         mouseLeaveDelay={LEAVE_DELAY}
         title="设置"
       >
-        <Button type="link" style={style.btnPadding} onClick={this.showModal}>
+        <Button style={style.btnPadding} onClick={this.showModal} >
           <Icon component={settingIcon} style={style.iconSize} />
         </Button>
       </Tooltip>
