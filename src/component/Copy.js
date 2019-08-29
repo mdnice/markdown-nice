@@ -68,7 +68,7 @@ class Copy extends Component {
 
   // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
   solveInlineMath = async () => {
-    const mathReg = /\$(.*?)\$/g;
+    const mathReg = /\$(\S*?)\$/g;
     const content = this.props.content.content;
 
     let mathInline = content.match(mathReg);
