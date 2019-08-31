@@ -118,7 +118,7 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = "1.1.4";
+export const VERSION_NUM = "1.1.5";
 
 export const VERSION_TIMELINE = [
   "2019-09-01 支持自定义「七牛云」做图床，同时提供mdnice自建免费图床，示例请重置后查看「第10条」，测试中...",
