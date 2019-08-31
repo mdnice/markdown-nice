@@ -205,13 +205,19 @@ TOC全称为Table of Content，列出全部标题。由于示例标题过多，�
 
 由于微信只支持到二级列表，本工具仅支持二级标题和三级标题的显示。
 
-## 18. HTML
+## 18. 注音符号
+
+支持注音符号，用法如下：
+
+Markdown Nice这么好用，简直是{喜大普奔|hē hē hē hē}呀！
+
+## 19. HTML
 
 支持原生 HTML 语法，除个别情况外，建议尽少使用，如下：
 
 <span style="display:block;text-align:right;color:orangered;">橙色居右</span>
 <span style="display:block;text-align:center;color:orangered;">橙色居中</span>
 
-## 19. UML
+## 20. UML
 
 不支持，推荐使用\`https://www.draw.io/\` 或 \`https://www.processon.com/\` 制作后再导入图片`;

@@ -30,12 +30,21 @@ class Copy extends Component {
     const mathReg = /\$\$([^]*?)\$\$/g;
     const content = this.props.content.content;
 
-    const mathBlock = content.match(mathReg);
+    let mathBlock = content.match(mathReg);
     const tagsBlock = document.getElementsByClassName("katex-display");
 
     if (mathBlock != null) {
       if (mathBlock.length !== tagsBlock.length) {
-        return false;
+        const codes = document.getElementsByTagName("code");
+        let text = "";
+        for (const code of codes) {
+          text += code.innerText;
+        }
+        mathBlock = mathBlock.filter(math => !text.includes(math));
+        // 经过转换后依然不相等则报错
+        if (mathBlock.length !== tagsBlock.length) {
+          return false;
+        }
       }
 
       const urlArr = [];
@@ -45,7 +54,7 @@ class Copy extends Component {
         const math = mathBlock[i];
         let formula = math.split("$$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const ip = window.returnCitySN.cip.replace(/\./g, '-');
+        const ip = window.returnCitySN.cip.replace(/\./g, "-");
         const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
@@ -78,7 +87,15 @@ class Copy extends Component {
       const tagsInline = document.getElementsByClassName("katex");
 
       if (mathInline.length !== tagsInline.length) {
-        return false;
+        const codes = document.getElementsByTagName("code");
+        let text = "";
+        for (const code of codes) {
+          text += code.innerText;
+        }
+        mathInline = mathInline.filter(math => !text.includes(math));
+        if (mathInline.length !== tagsInline.length) {
+          return false;
+        }
       }
 
       const urlArr = [];
@@ -88,7 +105,7 @@ class Copy extends Component {
         const math = mathInline[i];
         let formula = math.split("$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const ip = window.returnCitySN.cip.replace(/\./g, '-');
+        const ip = window.returnCitySN.cip.replace(/\./g, "-");
         const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }

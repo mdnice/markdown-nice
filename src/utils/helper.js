@@ -6,6 +6,7 @@ import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
 import markdownItTableOfContents from "markdown-it-table-of-contents";
+import markdownItRuby from "markdown-it-ruby";
 import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
@@ -86,6 +87,7 @@ markdownParserWechat
     transformLink: () => "",
     includeLevel: [2, 3]
   }) // TOC仅支持二级和三级标题
+  .use(markdownItRuby)
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表
 
@@ -121,6 +123,7 @@ markdownParser
     transformLink: () => "",
     includeLevel: [2, 3]
   }) // TOC仅支持二级和三级标题
+  .use(markdownItRuby)
   .use(markdownItImplicitFigures, { figcaption: true }) // 图示
   .use(markdownItDeflist); // 定义列表
 
@@ -194,7 +197,6 @@ export const dateFormat = function(date, fmt) {
   return fmt;
 };
 
-
 // export const url2Blob = (imgUrl) => {
 //   window.URL = window.URL || window.webkitURL;
 //   var xhr = new XMLHttpRequest();
@@ -216,16 +218,37 @@ function getBase64Image(img) {
   canvas.height = img.height;
   var ctx = canvas.getContext("2d");
   ctx.drawImage(img, 0, 0, img.width, img.height);
-  var dataURL = canvas.toDataURL("image/png");  // 可选其他值 image/jpeg
+  var dataURL = canvas.toDataURL("image/png"); // 可选其他值 image/jpeg
   return dataURL;
 }
 
 export const url2Blob = (src, cb) => {
   var image = new Image();
-  image.src = src + '?v=' + Math.random(); // 处理缓存
-  image.crossOrigin = "Anonymous";  // 支持跨域图片
-  image.onload = function(){
-      var base64 = getBase64Image(image);
-      cb && cb(base64);
+  image.src = src + "?v=" + Math.random(); // 处理缓存
+  image.crossOrigin = "Anonymous"; // 支持跨域图片
+  image.onload = function() {
+    var base64 = getBase64Image(image);
+    cb && cb(base64);
+  };
+};
+
+// 是否为PC端
+export const isPC = () => {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = [
+    "Android",
+    "iPhone",
+    "SymbianOS",
+    "Windows Phone",
+    "iPad",
+    "iPod"
+  ];
+  var flag = true;
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
   }
-}
+  return flag;
+};
