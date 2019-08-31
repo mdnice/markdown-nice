@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import juice from "juice";
 import { observer, inject } from "mobx-react";
 import { Button, message, ConfigProvider } from "antd";
-import axios from "axios";
 
 import {
   BASIC_THEME_ID,
   CODE_THEME_ID,
   MARKDOWN_THEME_ID
 } from "../utils/constant";
+
+import { axiosMdnice } from "../utils/helper";
 
 @inject("content")
 @inject("navbar")
@@ -55,12 +56,12 @@ class Copy extends Component {
         let formula = math.split("$$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
         const ip = window.returnCitySN.cip.replace(/\./g, "-");
-        const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
+        const url = `/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
 
       // 使用promise并行发请求，增快公式转换速度
-      const promiseArr = urlArr.map(url => axios.get(url));
+      const promiseArr = urlArr.map(url => axiosMdnice.get(url));
 
       const resultArr = await Promise.all(promiseArr);
       resultArr.forEach((result, index) => {
@@ -106,11 +107,11 @@ class Copy extends Component {
         let formula = math.split("$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
         const ip = window.returnCitySN.cip.replace(/\./g, "-");
-        const url = `https://math.mdnice.com/${ip}/type/png/scale/${this.scale}/math/${formula}`;
+        const url = `/${ip}/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
       // 使用promise并行发请求，增快公式转换速度
-      const promiseArr = urlArr.map(url => axios.get(url));
+      const promiseArr = urlArr.map(url => axiosMdnice.get(url));
 
       const resultArr = await Promise.all(promiseArr);
       resultArr.forEach((result, index) => {
@@ -143,8 +144,8 @@ class Copy extends Component {
   // 拷贝流程 块级公式 => 行内公式 => 其他
   copy = async () => {
     try {
-      axios.get(
-        `https://math.mdnice.com/${window.returnCitySN.cip}/${window.returnCitySN.cname}`
+      axiosMdnice.get(
+        `/${window.returnCitySN.cip}/${window.returnCitySN.cname}`
       );
       this.setState({ loading: true });
       const flagBlock = await this.solveBlockMath();

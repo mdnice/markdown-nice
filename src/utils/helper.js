@@ -26,6 +26,10 @@ export const axiosJSON = axios.create({
   }
 });
 
+export const axiosMdnice = axios.create({
+  baseURL: process.env.NODE_ENV === "development" ? "http://localhost:8081" : "https://math.mdnice.com",
+});
+
 export const queryParse = (search = window.location.search) => {
   if (!search) return {};
   const queryString = search[0] === "?" ? search.substring(1) : search;
@@ -252,3 +256,18 @@ export const isPC = () => {
   }
   return flag;
 };
+
+export const getOSSName = (originName) => {
+  const names = originName.split(".");
+  let key = "";
+  if (names.length > 1) {
+    const suffix = names.pop();
+    key = `${names.join(".")}_${dateFormat(
+      new Date(),
+      "yyyyMMddhhmmss"
+    )}.${suffix}`;
+  } else {
+    key = originName + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
+  }
+  return key;
+}

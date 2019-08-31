@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING } from '../utils/constant'
+import { IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING } from '../utils/constant'
 
 class ImageHosting {
   @observable type= "SM.MS";
@@ -26,6 +26,17 @@ if (!window.localStorage.getItem(ALIOSS_IMAGE_HOSTING)) {
     bucket: ""
   });
   window.localStorage.setItem(ALIOSS_IMAGE_HOSTING, alioss);
+}
+
+// 如果为空先把数据放进去
+if (!window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING)) {
+  const qiniuoss = JSON.stringify({
+    region: "",
+    accessKey: "",
+    secretKey: "",
+    bucket: ""
+  });
+  window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);
 }
 
 store.type = window.localStorage.getItem(IMAGE_HOSTING_TYPE);

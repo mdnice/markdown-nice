@@ -20,10 +20,13 @@ export const CODE_NUM = "code_num";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
+export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
 export const IMAGE_HOSTING_TYPE_OPTIONS = [
+  { value: "mdnice", label: "mdnice" },
   { value: "SM.MS", label: "SM.MS" },
-  { value: "阿里云", label: "阿里云" }
+  { value: "阿里云", label: "阿里云" },
+  { value: "七牛云", label: "七牛云" }
 ];
 
 export const BASIC_THEME_ID = "basic-theme";
@@ -118,9 +121,9 @@ export const CODE_OPTIONS = [
 export const VERSION_NUM = "1.1.4";
 
 export const VERSION_TIMELINE = [
+  "2019-09-01 支持自定义「七牛云」做图床，同时提供mdnice自建免费图床，示例请重置后查看「第10条」，测试中...",
   "2019-08-31 支持注音符号，示例请重置后查看「第18条」",
   "2019-08-27 解决微信代码不对齐问题",
   "2019-08-26 完整支持公式处理，示例请重置后查看「第16条」",
   "2019-08-24 新增主题「红绯」",
-  "2019-08-23 支持自定义「阿里云OSS」做图床，示例请重置后查看「第10条」"
 ];

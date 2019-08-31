@@ -5,14 +5,17 @@ import axios from "axios";
 import OSS from "ali-oss";
 
 import AliOSS from "../ImageHosting/AliOSS";
+import QiniuOSS from "../ImageHosting/QiniuOSS";
 
-import { toBlob, dateFormat } from "../../utils/helper";
+import { toBlob, getOSSName, axiosMdnice } from "../../utils/helper";
 import {
   SM_MS_PROXY,
   ALIOSS_IMAGE_HOSTING,
+  QINIUOSS_IMAGE_HOSTING,
   IMAGE_HOSTING_TYPE,
   IMAGE_HOSTING_TYPE_OPTIONS
 } from "../../utils/constant";
+import * as qiniu from "qiniu-js";
 
 const Dragger = Upload.Dragger;
 const { TabPane } = Tabs;
@@ -69,10 +72,21 @@ class ImageDialog extends Component {
     }
     // 使用阿里云图床
     if (this.props.imageHosting.type === "阿里云") {
-      const config = JSON.parse(
+      const configAli = JSON.parse(
         window.localStorage.getItem(ALIOSS_IMAGE_HOSTING)
       );
-      this.aliOSSUpload(config, file, onSuccess, onError);
+      this.aliOSSUpload(configAli, file, onSuccess, onError);
+    }
+    // 使用七牛云图床
+    else if (this.props.imageHosting.type === "七牛云") {
+      const configQiniu = JSON.parse(
+        window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING)
+      );
+      this.qiniuOSSUpload(configQiniu, file, onSuccess, onError, onProgress);
+    }
+    // 使用七牛云免费图床
+    else if (this.props.imageHosting.type === "mdnice") {
+      this.qiniuFreeUpload(formData, file, onSuccess, onError);
     }
     // 使用SM.MS图床
     else {
@@ -95,6 +109,7 @@ class ImageDialog extends Component {
     };
   };
 
+  // SM.MS存储上传
   smmsUpload = (
     formData,
     file,
@@ -137,6 +152,7 @@ class ImageDialog extends Component {
       });
   };
 
+  // 阿里云对象存储上传
   aliOSSUpload = (config, file, onSuccess, onError) => {
     const base64Reader = new FileReader();
     base64Reader.readAsDataURL(file);
@@ -162,27 +178,20 @@ class ImageDialog extends Component {
     };
   };
 
+  // 阿里云对象存储上传
   aliOSSPutObject = (config, file, value, onSuccess, onError) => {
     let client;
-    try{
+    try {
       client = new OSS(config);
-    } catch(error) {
+    } catch (error) {
       message.error("OSS配置错误，请根据文档检查配置项");
       return;
     }
-    const names = file.name.split(".");
-    let key = "";
-    if (names.length > 1) {
-      const suffix = names.pop();
-      key = `${names.join(".")}_${dateFormat(
-        new Date(),
-        "yyyyMMddhhmmss"
-      )}.${suffix}`;
-    } else {
-      key = file.name + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
-    }
+
+    const OSSName = getOSSName(file.name);
+
     client
-      .put(key, value)
+      .put(OSSName, value)
       .then(response => {
         const names = file.name.split(".");
         names.pop();
@@ -198,6 +207,113 @@ class ImageDialog extends Component {
         message.error("请根据文档检查配置项");
         onError(error, error.toString());
       });
+  };
+
+  // 七牛云对象存储上传
+  qiniuOSSUpload = async (config, file, onSuccess, onError, onProgress) => {
+    try {
+      const result = await axiosMdnice.get(
+        `/qiniu/${config.bucket}/${config.accessKey}/${config.secretKey}`
+      );
+      const token = result.data;
+
+      const base64Reader = new FileReader();
+      base64Reader.readAsDataURL(file);
+      base64Reader.onload = e => {
+        const urlData = e.target.result;
+        const base64 = urlData.split(",").pop();
+        const fileType = urlData
+          .split(";")
+          .shift()
+          .split(":")
+          .pop();
+
+        // base64转blob
+        const blob = toBlob(base64, fileType);
+
+        const conf = {
+          useCdnDomain: true,
+          region: qiniu.region[config.region] // 区域
+        };
+
+        const putExtra = {
+          fname: "",
+          params: {},
+          mimeType: [] || null
+        };
+
+        const OSSName = getOSSName(file.name);
+
+        // 这里第一个参数的形式是blob
+        const observable = qiniu.upload(blob, OSSName, token, putExtra, conf);
+
+        // 上传成功后回调
+        const complete = response => {
+          console.log(response);
+          const names = file.name.split(".");
+          names.pop();
+          const filename = names.join(".");
+          const image = {
+            filename, // 名字不变并且去掉后缀
+            url: `http://qiniu.mdnice.com/${response.key}`
+          };
+          this.images.push(image);
+          onSuccess(response);
+        };
+
+        // 上传过程回调
+        const next = response => {
+          console.log(response);
+          onProgress(
+            {
+              percent: parseInt(Math.round(response.total.percent.toFixed(2)))
+            },
+            file
+          );
+        };
+
+        // 上传错误回调
+        const error = err => {
+          onError(err, err.toString());
+        };
+
+        const observer = {
+          next,
+          error,
+          complete
+        };
+        // 注册observer 对象
+        observable.subscribe(observer);
+      };
+    } catch (err) {
+      onError(err, err.toString());
+    }
+  };
+
+  // 七牛云免费上传图床
+  qiniuFreeUpload = async (formData, file, onSuccess, onError) => {
+    try {
+      formData.append("file", file);
+      const config = {
+        headers: { "Content-Type": "multipart/form-data" }
+      };
+      const result = await axiosMdnice.post(
+        `/qiniuFree`,
+        formData,
+        config
+      );
+      const names = file.name.split(".");
+      names.pop();
+      const filename = names.join(".");
+      const image = {
+        filename, // 名字不变并且去掉后缀
+        url: result.data
+      };
+      this.images.push(image);
+      onSuccess(result);
+    } catch (err) {
+      onError(err, err.toString());
+    }
   };
 
   typeChange = type => {
@@ -243,8 +359,11 @@ class ImageDialog extends Component {
               </p>
             </Dragger>
           </TabPane>
-          <TabPane tab="阿里云OSS" key="2">
+          <TabPane tab="阿里云" key="2">
             <AliOSS />
+          </TabPane>
+          <TabPane tab="七牛云" key="3">
+            <QiniuOSS />
           </TabPane>
         </Tabs>
       </Modal>
