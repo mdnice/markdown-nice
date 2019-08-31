@@ -16,7 +16,7 @@ class LinkDialog extends Component {
 
   handleMore = e => {
     const w = window.open("about:blank");
-    w.location.href = "https://github.com/zhning12/markdown-nice";
+    w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
   };
 
   render() {
