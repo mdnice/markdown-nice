@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { Modal, Timeline, Button } from "antd";
+import { Modal, Timeline, Button, Icon } from "antd";
 import { VERSION_TIMELINE } from "../../utils/constant";
 
 @inject("dialog")
@@ -16,7 +16,8 @@ class LinkDialog extends Component {
 
   handleMore = e => {
     const w = window.open("about:blank");
-    w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
+    w.location.href =
+      "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
   };
 
   render() {
@@ -27,7 +28,6 @@ class LinkDialog extends Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
         footer={[
-          <Button key="more" onClick={this.handleMore}>更多</Button>,
           <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
           </Button>
@@ -37,7 +37,10 @@ class LinkDialog extends Component {
           {VERSION_TIMELINE.map((version, index) => {
             if (index === 0) {
               return (
-                <Timeline.Item key={index}>
+                <Timeline.Item
+                  key={index}
+                  dot={<Icon type="environment" style={{ fontSize: "16px" }} />}
+                >
                   <strong>{version}</strong>
                 </Timeline.Item>
               );
@@ -45,6 +48,18 @@ class LinkDialog extends Component {
               return <Timeline.Item key={index}>{version}</Timeline.Item>;
             }
           })}
+          <Timeline.Item
+            dot={<Icon type="more" style={{ fontSize: "20px" }} />}
+          >
+            <a
+              alt=""
+              href="https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              更多
+            </a>
+          </Timeline.Item>
         </Timeline>
       </Modal>
     );

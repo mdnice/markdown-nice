@@ -18,8 +18,8 @@ export default
 /*段落*/
 p {
   font-size: 16px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   margin: 0;
   line-height: 26px;
   color: black;
@@ -59,8 +59,8 @@ h6 {
 /*列表*/
 ul,
 ol {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   padding-left: 20px;
   color: black;
 }
@@ -152,6 +152,8 @@ hr {
 /*代码块*/
 pre {
   overflow-x: scroll;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 pre code {
   display: -webkit-box !important;

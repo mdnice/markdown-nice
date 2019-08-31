@@ -44,6 +44,7 @@
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-implicit-figures": "^0.9.0",
     "markdown-it-katex": "^2.0.3",
+    "markdown-it-ruby": "^0.1.1",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
