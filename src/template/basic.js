@@ -247,6 +247,10 @@ table tr th {
   display: flex;
   line-height: 20px;
 }
+.code-snippet__fix pre {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
 .code-snippet__fix .code-snippet__line-index {
   counter-reset: line;
   flex-shrink: 0;
