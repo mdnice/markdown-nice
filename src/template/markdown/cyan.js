@@ -47,7 +47,6 @@ h2 span {
   font-size: 22px;
   display: inline-block;
   border-bottom: 2px solid rgb(89,89,89);
-
 }
 
 /* 二级标题修饰 请参考有实例的主题 */

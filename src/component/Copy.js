@@ -28,12 +28,11 @@ class Copy extends Component {
 
   // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
   solveBlockMath = async () => {
-    const mathReg = /\$\$([^]*?)\$\$/g;
+    const mathReg = /\$\$(((?!`)[^])*?)\$\$/g; // 中间不能包含`符号
     const content = this.props.content.content;
 
     let mathBlock = content.match(mathReg);
     const tagsBlock = document.getElementsByClassName("katex-display");
-
     if (mathBlock != null) {
       if (mathBlock.length !== tagsBlock.length) {
         const codes = document.getElementsByTagName("code");
@@ -41,6 +40,7 @@ class Copy extends Component {
         for (const code of codes) {
           text += code.innerText;
         }
+        console.log(mathBlock)
         mathBlock = mathBlock.filter(math => !text.includes(math));
         // 经过转换后依然不相等则报错
         if (mathBlock.length !== tagsBlock.length) {
@@ -147,13 +147,13 @@ class Copy extends Component {
       if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
       const flagInline = await this.solveInlineMath();
       if (!flagInline) throw new Error("行内公式格式错误，无法进行转换");
+    } catch (e) {
+      message.error(e.message);
+    } finally {
       this.solveHtml();
       document.addEventListener("copy", this.copyListener);
       document.execCommand("copy");
       document.removeEventListener("copy", this.copyListener);
-    } catch (e) {
-      message.error(e.message);
-    } finally {
       this.setState({ loading: false });
     }
   };
