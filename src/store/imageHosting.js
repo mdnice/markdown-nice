@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING } from '../utils/constant'
+import { IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMG_DOMAIN, IMG_NAMESPACE } from '../utils/constant'
 
 class ImageHosting {
   @observable type= "SM.MS";
@@ -34,10 +34,13 @@ if (!window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING)) {
     region: "",
     accessKey: "",
     secretKey: "",
-    bucket: ""
+    bucket: "",
+    domain: "",
+    namespace: "",
   });
   window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);
 }
+
 
 store.type = window.localStorage.getItem(IMAGE_HOSTING_TYPE);
 

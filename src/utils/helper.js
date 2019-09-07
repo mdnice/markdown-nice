@@ -257,7 +257,7 @@ export const isPC = () => {
   return flag;
 };
 
-export const getOSSName = (originName) => {
+export const getOSSName = (originName, namespace = '') => {
   const names = originName.split(".");
   let key = "";
   if (names.length > 1) {
@@ -269,5 +269,5 @@ export const getOSSName = (originName) => {
   } else {
     key = originName + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
   }
-  return key;
-}
+  return `${namespace}${key}`;
+};

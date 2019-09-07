@@ -55,8 +55,22 @@ class QiniuOSS extends Component {
     localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
+  handleImgDomainChange  = ({ target: { value } }) => {
+    const { imageHosting } = this.state;
+    imageHosting.domain = value;
+    this.setState({ imageHosting });
+    localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
+  };
+
+  handleImgNamespaceChange  = ({ target: { value } }) => {
+    const { imageHosting } = this.state;
+    imageHosting.namespace = value;
+    this.setState({ imageHosting });
+    localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
+  };
+
   render() {
-    const { region, accessKey, secretKey, bucket } = this.state.imageHosting;
+    const { region, accessKey, secretKey, bucket, domain, namespace } = this.state.imageHosting;
     return (
       <Form {...formItemLayout}>
         <Form.Item label="Bucket" style={style.formItem}>
@@ -91,6 +105,20 @@ class QiniuOSS extends Component {
             value={secretKey}
             onChange={this.secretKeyChange}
             placeholder="例如：qweASDF1234zxcvbqweASD"
+          />
+        </Form.Item>
+        <Form.Item label="自定义域名" style={style.formItem}>
+          <Input
+            placeholder="http://qiniu.mdnice.com/"
+            onChange={this.handleImgDomainChange}
+            value={domain}
+          />
+        </Form.Item>
+        <Form.Item label="自定义命名空间" style={style.formItem}>
+          <Input
+            placeholder="mdnice/"
+            onChange={this.handleImgNamespaceChange}
+            value={namespace}
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>

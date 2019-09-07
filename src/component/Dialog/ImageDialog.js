@@ -212,6 +212,7 @@ class ImageDialog extends Component {
   // 七牛云对象存储上传
   qiniuOSSUpload = async (config, file, onSuccess, onError, onProgress) => {
     try {
+      const { domain, namespace } = config;
       const result = await axiosMdnice.get(
         `/qiniu/${config.bucket}/${config.accessKey}/${config.secretKey}`
       );
@@ -242,7 +243,7 @@ class ImageDialog extends Component {
           mimeType: [] || null
         };
 
-        const OSSName = getOSSName(file.name);
+        const OSSName = getOSSName(file.name, namespace);
 
         // 这里第一个参数的形式是blob
         const observable = qiniu.upload(blob, OSSName, token, putExtra, conf);
@@ -255,7 +256,7 @@ class ImageDialog extends Component {
           const filename = names.join(".");
           const image = {
             filename, // 名字不变并且去掉后缀
-            url: `http://qiniu.mdnice.com/${response.key}`
+            url: `${domain}${response.key}`
           };
           this.images.push(image);
           onSuccess(response);
@@ -332,6 +333,8 @@ class ImageDialog extends Component {
         {columns}
       </Select>
     );
+    const { type } = this.props.imageHosting;
+
     return (
       <Modal
         title="本地上传"
@@ -355,7 +358,7 @@ class ImageDialog extends Component {
               </p>
               <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
               <p className="ant-upload-hint">
-                {"正在使用" + this.props.imageHosting.type + "图床"}
+                {"正在使用" + type + "图床"}
               </p>
             </Dragger>
           </TabPane>
