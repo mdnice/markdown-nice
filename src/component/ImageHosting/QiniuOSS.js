@@ -22,8 +22,11 @@ class QiniuOSS extends Component {
     const imageHosting = JSON.parse(
       localStorage.getItem(QINIUOSS_IMAGE_HOSTING)
     );
+    const [protocol, link] = imageHosting.domain.split("://");
     this.state = {
-      imageHosting
+      imageHosting,
+      protocol,
+      link
     };
   }
 
@@ -55,14 +58,25 @@ class QiniuOSS extends Component {
     localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
-  handleImgDomainChange  = ({ target: { value } }) => {
+  linkChange = e => {
+    this.setState({ link: e.target.value });
+
     const { imageHosting } = this.state;
-    imageHosting.domain = value;
+    imageHosting.domain = this.state.protocol + "://" + e.target.value;
     this.setState({ imageHosting });
     localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
-  handleImgNamespaceChange  = ({ target: { value } }) => {
+  protocolChange = protocol => {
+    this.setState({ protocol });
+
+    const { imageHosting } = this.state;
+    imageHosting.domain = protocol + "://" + this.state.link;
+    this.setState({ imageHosting });
+    localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
+  };
+
+  namespaceChange = ({ target: { value } }) => {
     const { imageHosting } = this.state;
     imageHosting.namespace = value;
     this.setState({ imageHosting });
@@ -70,7 +84,24 @@ class QiniuOSS extends Component {
   };
 
   render() {
-    const { region, accessKey, secretKey, bucket, domain, namespace } = this.state.imageHosting;
+    const {
+      region,
+      accessKey,
+      secretKey,
+      bucket,
+      namespace
+    } = this.state.imageHosting;
+    const { protocol, link } = this.state;
+    const prefixSelector = (
+      <Select
+        style={{ width: 80 }}
+        value={protocol}
+        onChange={this.protocolChange}
+      >
+        <Option value="http">http://</Option>
+        <Option value="https">https://</Option>
+      </Select>
+    );
     return (
       <Form {...formItemLayout}>
         <Form.Item label="Bucket" style={style.formItem}>
@@ -109,16 +140,17 @@ class QiniuOSS extends Component {
         </Form.Item>
         <Form.Item label="自定义域名" style={style.formItem}>
           <Input
-            placeholder="http://qiniu.mdnice.com/"
-            onChange={this.handleImgDomainChange}
-            value={domain}
+            value={link}
+            onChange={this.linkChange}
+            addonBefore={prefixSelector}
+            placeholder="例如：qiniu.mdnice.com"
           />
         </Form.Item>
         <Form.Item label="自定义命名空间" style={style.formItem}>
           <Input
-            placeholder="mdnice/"
-            onChange={this.handleImgNamespaceChange}
             value={namespace}
+            onChange={this.namespaceChange}
+            placeholder="例如：mdnice/"
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>

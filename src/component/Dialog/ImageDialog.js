@@ -84,7 +84,7 @@ class ImageDialog extends Component {
       );
       this.qiniuOSSUpload(configQiniu, file, onSuccess, onError, onProgress);
     }
-    // 使用七牛云免费图床
+    // 使用mdnice七牛云免费图床
     else if (this.props.imageHosting.type === "mdnice") {
       this.qiniuFreeUpload(formData, file, onSuccess, onError);
     }
@@ -212,7 +212,11 @@ class ImageDialog extends Component {
   // 七牛云对象存储上传
   qiniuOSSUpload = async (config, file, onSuccess, onError, onProgress) => {
     try {
-      const { domain, namespace } = config;
+      let { domain, namespace } = config;
+      // domain可能配置时末尾没有加‘/’
+      if(domain[domain.length - 1] !== '/') {
+        domain += '/';
+      }
       const result = await axiosMdnice.get(
         `/qiniu/${config.bucket}/${config.accessKey}/${config.secretKey}`
       );
