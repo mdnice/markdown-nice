@@ -29,14 +29,19 @@
 
 - 浏览器插件
 - Markdown 中文指北纠正器
+- 七牛云配置文档
+- 官网
 
 ## 关于
 
-如果你喜欢该工具，欢迎搜索公众号**牧码啦**，关注后获取更多开源资讯。
+目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎加入反馈意见，如果二维码史骁，欢迎搜索公众号**牧码啦**联系我拉你入群。
+
+<img width="250px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%E7%94%A8%E6%88%B7%E7%BE%A4_20190919223209.jpeg"/>
+
 
 欢迎打赏哟，您的支持是我最大的动力！
 
-<img width="250px" src="./wechat.png"/>
+<img width="250px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E6%89%93%E8%B5%8F%E4%BA%8C%E7%BB%B4%E7%A0%81_20190825201704.png"/>
 
 ## 参考资料
 

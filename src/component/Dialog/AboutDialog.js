@@ -90,7 +90,7 @@ class AboutDialog extends Component {
           <img
             alt="图片描述"
             style={style.imgWidth}
-            src="http://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%E7%94%A8%E6%88%B7%E7%BE%A4_20190919223209.jpeg"
+            src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%E7%94%A8%E6%88%B7%E7%BE%A4_20190919223209.jpeg"
           />
         </div>
       </Modal>
