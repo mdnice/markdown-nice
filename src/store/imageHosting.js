@@ -41,6 +41,20 @@ if (!window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING)) {
   window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);
 }
 
+/* 用于平滑升级，因为之前缺少两个字段，将来删除 */
+const temQiniu = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
+if(temQiniu.domain === undefined) {
+  const qiniuoss = JSON.stringify({
+    region: "",
+    accessKey: "",
+    secretKey: "",
+    bucket: "",
+    domain: "http://",
+    namespace: "",
+  });
+  window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);
+}
+/* 用于平滑升级，因为之前缺少两个字段，将来删除 */
 
 store.type = window.localStorage.getItem(IMAGE_HOSTING_TYPE);
 

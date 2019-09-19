@@ -77,14 +77,20 @@ class AboutDialog extends Component {
           >
             &nbsp;Markdown 简历
           </a>
-          ，愿意
+          ，同时我们也组建了「<strong style={style.strong}>微信群</strong>
+          」，右下角扫一扫，愿意
           <strong style={style.strong}>微信打赏</strong>就更好啦。
         </p>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <img
             alt="图片描述"
             style={style.imgWidth}
             src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E6%89%93%E8%B5%8F%E4%BA%8C%E7%BB%B4%E7%A0%81_20190825201704.png"
+          />
+          <img
+            alt="图片描述"
+            style={style.imgWidth}
+            src="http://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%E7%94%A8%E6%88%B7%E7%BE%A4_20190919223209.jpeg"
           />
         </div>
       </Modal>
