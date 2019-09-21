@@ -57,7 +57,7 @@ export default
 
 ## 6. 引用
 
-引用的格式是使用符号\`>\`后面书写文字，及可以使用引用。如下：
+引用的格式是在符号\`>\`后面书写文字。如下：
 
 > 读一本好书，就是在和高尚的人谈话。 ——歌德
 
@@ -120,14 +120,14 @@ export default
 |mdnice|图片只保存一天|
 |SM.MS|失败率高可用性很差|
 |阿里云|配置繁琐，费用昂贵|
-|七牛云|测试域名期限到了要换bucket|
+|七牛云|需要长期域名替代测试域名|
 
 **建议：一次性排版推荐使用mdnice，图片需要长期管理推荐使用七牛云**。
 
 配置文档如下：
 
 - [Markdown Nice新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
-- Markdown Nice新特性：七牛云图床（待添加）
+- [Markdown Nice新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
 
 注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失。
 

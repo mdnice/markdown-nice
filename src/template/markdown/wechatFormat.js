@@ -179,4 +179,20 @@ table tr td {
 .footnote-ref {
   color: #ff3502;
   font-weight: normal;
+}
+
+/* "参考资料"四个字 */
+.footnotes-sep {
+}
+
+/* 参考资料编号 */
+.footnote-num {
+}
+
+/* 参考资料文字 */
+.footnote-item p { 
+}
+
+/* 参考资料解释 */
+.footnote-item p em {
 }`

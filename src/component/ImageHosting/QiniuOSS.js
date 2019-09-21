@@ -104,14 +104,14 @@ class QiniuOSS extends Component {
     );
     return (
       <Form {...formItemLayout}>
-        <Form.Item label="Bucket" style={style.formItem}>
+        <Form.Item label="存储空间名称" style={style.formItem}>
           <Input
             value={bucket}
             onChange={this.bucketChange}
             placeholder="例如：my-wechat"
           />
         </Form.Item>
-        <Form.Item label="Region" style={style.formItem}>
+        <Form.Item label="存储区域" style={style.formItem}>
           <Select
             value={region}
             onChange={this.regionChange}
@@ -150,13 +150,13 @@ class QiniuOSS extends Component {
           <Input
             value={namespace}
             onChange={this.namespaceChange}
-            placeholder="例如：mdnice/"
+            placeholder="例如：image/"
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
           <span>配置好图床信息后请在右上角进行切换</span>
           <br />
-          {/* <a rel="noopener noreferrer" target="_blank" href="https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg">七牛云图床配置文档</a> */}
+          <a rel="noopener noreferrer" target="_blank" href="https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg">七牛云图床配置文档</a>
         </Form.Item>
       </Form>
     );

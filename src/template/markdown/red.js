@@ -230,5 +230,21 @@ table tr td {
 .footnote-item em {
   color:#6E1E51;
   font-size:12px;
+}
+
+/* "参考资料"四个字 */
+.footnotes-sep {
+}
+
+/* 参考资料编号 */
+.footnote-num {
+}
+
+/* 参考资料文字 */
+.footnote-item p { 
+}
+
+/* 参考资料解释 */
+.footnote-item p em {
 }`
   
