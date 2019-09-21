@@ -1,8 +1,13 @@
 {
   "name": "markdown-nice",
-  "version": "0.1.0",
+  "author": "markdown-nice",
+  "description": "a markdown editor with the function of style edition",
+  "version": "0.0.1",
   "private": true,
-  "dependencies": {
+  "main": "main.js",
+  "homepage": ".",
+  "license": "SEE LICENSE IN LICENSE",
+  "devDependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "^4.1.0",
     "@uiw/react-codemirror": "^1.0.19",
@@ -32,7 +37,6 @@
     "fs-extra": "7.0.1",
     "highlight.js": "^9.15.6",
     "html-webpack-plugin": "4.0.0-alpha.2",
-    "html2canvas": "^1.0.0-alpha.12",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.2",
@@ -72,13 +76,37 @@
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3"
+    "workbox-webpack-plugin": "3.6.3",
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "./deploy.sh"
+    "electron-start": "electron .",
+    "package": "rm -rf dist && electron-builder --x64"
+  },
+  "build": {
+    "productName": "Markdown Nice",
+    "appId": "com.mdnice.www",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "files": [
+      "build",
+      "main.js",
+      "package.json"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
