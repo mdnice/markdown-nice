@@ -10,7 +10,7 @@ import markdownItRuby from "markdown-it-ruby";
 import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
-import highlightjs from "highlight.js";
+import highlightjs from "./lang-highlight";
 
 export const axiosGithub = axios.create({
   baseURL: "https://api.github.com",
