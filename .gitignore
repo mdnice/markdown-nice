@@ -24,4 +24,3 @@ yarn-error.log*
 
 dist
 package-lock.json
-yarn.lock
