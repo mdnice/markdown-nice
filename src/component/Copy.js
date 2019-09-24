@@ -81,64 +81,64 @@ class Copy extends Component {
     const content = this.props.content.content;
 
     let mathInline = content.match(mathReg);
+    if (mathInline == null) mathInline = [];
+    mathInline = mathInline.filter(item => item !== "$$"); // 过滤掉匹配的$$没用符号
 
-    if (mathInline != null) {
-      mathInline = mathInline.filter(item => item !== "$$"); // 过滤掉匹配的$$没用符号
-      const tagsInline = document.getElementsByClassName("katex");
+    const tagsInline = document.getElementsByClassName("katex");
 
-      console.log(mathInline);
-      console.log(tagsInline);
+    if (mathInline.length !== tagsInline.length) {
+      const codes = document.getElementsByTagName("code");
+      let text = "";
+      for (const code of codes) {
+        text += code.innerText;
+      }
+      mathInline = mathInline.filter(math => !text.includes(math));
       if (mathInline.length !== tagsInline.length) {
-        const codes = document.getElementsByTagName("code");
-        let text = "";
-        for (const code of codes) {
-          text += code.innerText;
-        }
-        mathInline = mathInline.filter(math => !text.includes(math));
-        if (mathInline.length !== tagsInline.length) {
-          const args = {
-            message: "检测到的公式",
-            description: (
-              <div>
-                <p style={style.mathNotify}>提示：请检查行内公式是否包含空格或中文</p>
-                {mathInline.map(val => (
-                  <p style={style.mathNotify}>{val}</p>
-                ))}
-              </div>
-            ),
-            duration: 0
-          };
-          notification.open(args);
-          return false;
-        }
+        const args = {
+          message: "检测到的无问题公式",
+          description: (
+            <div>
+              {mathInline.map(val => (
+                <p style={style.mathNotify}>{val}</p>
+              ))}
+              <p style={style.mathNotify}>
+                提示：请检查其他行内公式是否包含空格或中文
+              </p>
+            </div>
+          ),
+          duration: 0
+        };
+        notification.open(args);
+        return false;
       }
-
-      const urlArr = [];
-      for (let i = 0; i < mathInline.length; i++) {
-        // 转换过的公式避免再次转换
-        if (tagsInline[i].firstChild.className === "math-img-inline") continue;
-        const math = mathInline[i];
-        let formula = math.split("$")[1];
-        formula = encodeURI(
-          formula.replace(/\s/g, "&space;").replace(/\//g, "&divide;")
-        );
-        const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
-        urlArr.push(url);
-      }
-      // 使用promise并行发请求，增快公式转换速度
-      const promiseArr = urlArr.map(url => axiosMdnice.get(url));
-
-      const resultArr = await Promise.all(promiseArr);
-      resultArr.forEach((result, index) => {
-        const img = new Image();
-        img.src = result.data;
-        img.onload = this.imgOnload;
-        img.className = "math-img-inline";
-        tagsInline[index].removeChild(tagsInline[index].firstChild);
-        tagsInline[index].removeChild(tagsInline[index].firstChild);
-        tagsInline[index].appendChild(img);
-      });
     }
+
+    const urlArr = [];
+    for (let i = 0; i < mathInline.length; i++) {
+      // 转换过的公式避免再次转换
+      if (tagsInline[i].firstChild.className === "math-img-inline") continue;
+      const math = mathInline[i];
+      let formula = math.split("$")[1];
+      formula = encodeURI(
+        formula.replace(/\s/g, "&space;").replace(/\//g, "&divide;")
+      );
+      const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
+      urlArr.push(url);
+    }
+    // 使用promise并行发请求，增快公式转换速度
+    const promiseArr = urlArr.map(url => axiosMdnice.get(url));
+
+    const resultArr = await Promise.all(promiseArr);
+    resultArr.forEach((result, index) => {
+      const img = new Image();
+      img.src = result.data;
+      img.onload = this.imgOnload;
+      img.className = "math-img-inline";
+      tagsInline[index].removeChild(tagsInline[index].firstChild);
+      tagsInline[index].removeChild(tagsInline[index].firstChild);
+      tagsInline[index].appendChild(img);
+    });
+
     return true;
   };
 
