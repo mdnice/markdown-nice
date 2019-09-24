@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import juice from "juice";
 import { observer, inject } from "mobx-react";
-import { Button, message, ConfigProvider } from "antd";
+import { Button, message, ConfigProvider, notification } from "antd";
 
 import {
   BASIC_THEME_ID,
@@ -40,7 +40,7 @@ class Copy extends Component {
         for (const code of codes) {
           text += code.innerText;
         }
-        console.log(mathBlock)
+        console.log(mathBlock);
         mathBlock = mathBlock.filter(math => !text.includes(math));
         // 经过转换后依然不相等则报错
         if (mathBlock.length !== tagsBlock.length) {
@@ -77,7 +77,7 @@ class Copy extends Component {
 
   // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
   solveInlineMath = async () => {
-    const mathReg = /\$(\S*?)\$/g;
+    const mathReg = /\$(\S*?)\$/g; // 这里的空格处理会导致问题？？？bug
     const content = this.props.content.content;
 
     let mathInline = content.match(mathReg);
@@ -86,6 +86,8 @@ class Copy extends Component {
       mathInline = mathInline.filter(item => item !== "$$"); // 过滤掉匹配的$$没用符号
       const tagsInline = document.getElementsByClassName("katex");
 
+      console.log(mathInline);
+      console.log(tagsInline);
       if (mathInline.length !== tagsInline.length) {
         const codes = document.getElementsByTagName("code");
         let text = "";
@@ -94,6 +96,19 @@ class Copy extends Component {
         }
         mathInline = mathInline.filter(math => !text.includes(math));
         if (mathInline.length !== tagsInline.length) {
+          const args = {
+            message: "检测到的公式",
+            description: (
+              <div>
+                <p style={style.mathNotify}>提示：请检查行内公式是否包含空格或中文</p>
+                {mathInline.map(val => (
+                  <p style={style.mathNotify}>{val}</p>
+                ))}
+              </div>
+            ),
+            duration: 0
+          };
+          notification.open(args);
           return false;
         }
       }
@@ -104,7 +119,9 @@ class Copy extends Component {
         if (tagsInline[i].firstChild.className === "math-img-inline") continue;
         const math = mathInline[i];
         let formula = math.split("$")[1];
-        formula = encodeURI(formula.replace(/\s/g, "&space;"));
+        formula = encodeURI(
+          formula.replace(/\s/g, "&space;").replace(/\//g, "&divide;")
+        );
         const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
@@ -186,6 +203,12 @@ class Copy extends Component {
 const style = {
   btnHeight: {
     height: "30px"
+  },
+  mathNotify: {
+    padding: 0,
+    fontSize: "14px",
+    lineHeight: "20px",
+    color: "rgba(0,0,0,0.65)"
   }
 };
 

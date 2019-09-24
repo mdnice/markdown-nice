@@ -118,9 +118,10 @@ export const CODE_OPTIONS = [
   }
 ];
 
-export const VERSION_NUM = "1.1.8";
+export const VERSION_NUM = "1.1.9";
 
 export const VERSION_TIMELINE = [
+  "2019-09-24 修复行内公式存在除号问题，增加行内公式报错提示",
   "2019-09-22 修复sup标签行高，减小应用体积",
   "2019-09-21 新增七牛云图床配置文档",
   "2019-09-19 建立mdnice用户群（点击关于加入），自定义七牛云图床新增自定义域名和命名空间字段，测试中...",
