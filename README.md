@@ -35,9 +35,9 @@
 
 ## 关于
 
-目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎加入反馈意见，如果二维码失效，欢迎搜索公众号**牧码啦**联系我拉你入群。
+目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，扫一扫二维码拉你入群。
 
-<img width="250px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%E7%94%A8%E6%88%B7%E7%BE%A4_20190919223209.jpeg"/>
+<img width="250px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E7%89%A7%E7%A0%81%E5%95%A6%E5%B0%8F%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81_20190929092055.JPG"/>
 
 
 欢迎打赏哟，您的支持是我最大的动力！

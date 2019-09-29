@@ -134,6 +134,19 @@ class App extends Component {
     }
   };
 
+  handleDrop = (instance,e) => {
+    // console.log(e.dataTransfer.files[0]);
+    if(!(e.dataTransfer&&e.dataTransfer.files)){
+      alert("该浏览器不支持操作");
+      return;
+    }
+    for(var i=0;i<e.dataTransfer.files.length;i++){
+        console.log(e.dataTransfer.files[i]);
+        // fileUpload(e.dataTransfer.files[i]);
+    }
+    e.preventDefault();
+  }
+
   render() {
     const { codeNum } = this.props.navbar;
     const parseHtml =
@@ -163,6 +176,7 @@ class App extends Component {
               onScroll={this.handleScroll}
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
+              onDrop={this.handleDrop}
               ref={this.getInstance}
             />
           </div>
