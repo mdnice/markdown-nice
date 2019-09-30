@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-
 import {Modal} from "antd";
-
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
@@ -15,6 +13,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat} from "./utils/helper";
+import {qiniuOSSUpload} from "./utils/imageHosting";
 
 @inject("content")
 @inject("navbar")
@@ -137,7 +136,18 @@ class App extends Component {
     }
     for (var i = 0; i < e.dataTransfer.files.length; i++) {
       // console.log(e.dataTransfer.files[i]);
-      // fileUpload(e.dataTransfer.files[i]);
+      qiniuOSSUpload({file: e.dataTransfer.files[i], content: this.props.content});
+    }
+    e.preventDefault();
+  };
+
+  handlePaste = (instance, e) => {
+    // console.log(e.dataTransfer.files[0]);
+    if (!(e.clipboardData && e.clipboardData.files)) {
+      return;
+    }
+    for (var i = 0; i < e.clipboardData.files.length; i++) {
+      qiniuOSSUpload({file: e.clipboardData.files[i], content: this.props.content});
     }
     e.preventDefault();
   };
@@ -169,6 +179,7 @@ class App extends Component {
               onFocus={this.handleFocus}
               onBlur={this.handleBlur}
               onDrop={this.handleDrop}
+              onPaste={this.handlePaste}
               ref={this.getInstance}
             />
           </div>
