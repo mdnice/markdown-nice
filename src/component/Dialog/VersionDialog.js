@@ -1,23 +1,22 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Modal, Timeline, Button, Icon } from "antd";
-import { VERSION_TIMELINE } from "../../utils/constant";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Modal, Timeline, Button, Icon} from "antd";
+import {VERSION_TIMELINE} from "../../utils/constant";
 
 @inject("dialog")
 @observer
 class LinkDialog extends Component {
-  handleOk = e => {
+  handleOk = (e) => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleCancel = e => {
+  handleCancel = (e) => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleMore = e => {
+  handleMore = (e) => {
     const w = window.open("about:blank");
-    w.location.href =
-      "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
+    w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
   };
 
   render() {
@@ -30,17 +29,14 @@ class LinkDialog extends Component {
         footer={[
           <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
-          </Button>
+          </Button>,
         ]}
       >
         <Timeline>
           {VERSION_TIMELINE.map((version, index) => {
             if (index === 0) {
               return (
-                <Timeline.Item
-                  key={index}
-                  dot={<Icon type="environment" style={{ fontSize: "16px" }} />}
-                >
+                <Timeline.Item key={index} dot={<Icon type="environment" style={{fontSize: "16px"}} />}>
                   <strong>{version}</strong>
                 </Timeline.Item>
               );
@@ -48,9 +44,7 @@ class LinkDialog extends Component {
               return <Timeline.Item key={index}>{version}</Timeline.Item>;
             }
           })}
-          <Timeline.Item
-            dot={<Icon type="more" style={{ fontSize: "20px" }} />}
-          >
+          <Timeline.Item dot={<Icon type="more" style={{fontSize: "20px"}} />}>
             <a
               alt=""
               href="https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md"

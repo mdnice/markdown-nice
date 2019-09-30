@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
 
 XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
 
@@ -102,4 +101,4 @@ XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
 
 .hljs-emphasis {
   font-style: italic;
-}`
+}`;

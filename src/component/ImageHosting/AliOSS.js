@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Form, Input } from "antd";
-import { ALIOSS_IMAGE_HOSTING } from "../../utils/constant";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Form, Input} from "antd";
+import {ALIOSS_IMAGE_HOSTING} from "../../utils/constant";
 
 const formItemLayout = {
   labelCol: {
-    xs: { span: 6 }
+    xs: {span: 6},
   },
   wrapperCol: {
-    xs: { span: 16 }
-  }
+    xs: {span: 16},
+  },
 };
 
 @inject("imageHosting")
@@ -20,55 +20,50 @@ class AliOSS extends Component {
     // 从localstorage里面读取
     const imageHosting = JSON.parse(localStorage.getItem(ALIOSS_IMAGE_HOSTING));
     this.state = {
-      imageHosting
+      imageHosting,
     };
   }
 
-  regionChange = e => {
-    const { imageHosting } = this.state;
+  regionChange = (e) => {
+    const {imageHosting} = this.state;
     imageHosting.region = e.target.value;
-    this.setState({ imageHosting });
+    this.setState({imageHosting});
     localStorage.setItem(ALIOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
-  accessKeyIdChange = e => {
-    const { imageHosting } = this.state;
+  accessKeyIdChange = (e) => {
+    const {imageHosting} = this.state;
     imageHosting.accessKeyId = e.target.value;
-    this.setState({ imageHosting });
+    this.setState({imageHosting});
     localStorage.setItem(ALIOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
-  accessKeySecretChange = e => {
-    const { imageHosting } = this.state;
+  accessKeySecretChange = (e) => {
+    const {imageHosting} = this.state;
     imageHosting.accessKeySecret = e.target.value;
-    this.setState({ imageHosting });
+    this.setState({imageHosting});
     localStorage.setItem(ALIOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
-  bucketChange = e => {
-    const { imageHosting } = this.state;
+  bucketChange = (e) => {
+    const {imageHosting} = this.state;
     imageHosting.bucket = e.target.value;
-    this.setState({ imageHosting });
+    this.setState({imageHosting});
     localStorage.setItem(ALIOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
 
   render() {
-    const {
-      region,
-      accessKeyId,
-      accessKeySecret,
-      bucket
-    } = this.state.imageHosting;
+    const {region, accessKeyId, accessKeySecret, bucket} = this.state.imageHosting;
     return (
       <Form {...formItemLayout}>
         <Form.Item label="Bucket" style={style.formItem}>
-          <Input value={bucket} onChange={this.bucketChange} placeholder="例如：my-wechat"/>
+          <Input value={bucket} onChange={this.bucketChange} placeholder="例如：my-wechat" />
         </Form.Item>
         <Form.Item label="Region" style={style.formItem}>
-          <Input value={region} onChange={this.regionChange} placeholder="例如：oss-cn-hangzhou"/>
+          <Input value={region} onChange={this.regionChange} placeholder="例如：oss-cn-hangzhou" />
         </Form.Item>
         <Form.Item label="AccessKey ID" style={style.formItem}>
-          <Input value={accessKeyId} onChange={this.accessKeyIdChange} placeholder="例如：qweASDF1234zxcvb"/>
+          <Input value={accessKeyId} onChange={this.accessKeyIdChange} placeholder="例如：qweASDF1234zxcvb" />
         </Form.Item>
         <Form.Item label="AccessKey Secret" style={style.formItem}>
           <Input
@@ -78,8 +73,11 @@ class AliOSS extends Component {
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
-          <span>配置好图床信息后请在右上角进行切换</span><br/>
-          <a rel="noopener noreferrer" target="_blank" href="https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg">阿里云图床配置文档</a>
+          <span>配置好图床信息后请在右上角进行切换</span>
+          <br />
+          <a rel="noopener noreferrer" target="_blank" href="https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg">
+            阿里云图床配置文档
+          </a>
         </Form.Item>
       </Form>
     );
@@ -88,8 +86,8 @@ class AliOSS extends Component {
 
 const style = {
   formItem: {
-    marginBottom: "10px"
-  }
+    marginBottom: "10px",
+  },
 };
 
 export default AliOSS;

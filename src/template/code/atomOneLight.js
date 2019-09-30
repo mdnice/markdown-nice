@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
 
 Atom One Light by Daniel Gamage
 Original One Light Syntax theme from https://github.com/atom/one-light-syntax
@@ -94,4 +93,4 @@ hue-6-2: #c18401
 
 .hljs-link {
   text-decoration: underline;
-}`
+}`;

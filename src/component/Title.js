@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Input } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Input} from "antd";
 
 @inject("title")
 @observer
@@ -11,7 +11,7 @@ class Title extends Component {
         <Input
           placeholder="标题"
           allowClear
-          style={{ margin: 8 }}
+          style={{margin: 8}}
           value={this.props.title.title}
           onChange={this.changeTitle}
         />
@@ -24,7 +24,7 @@ const style = {
   titleContainer: {
     width: "50%",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
 };
 

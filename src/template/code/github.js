@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
 
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
@@ -97,4 +96,4 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 .hljs-strong {
   font-weight: bold;
-}`
+}`;

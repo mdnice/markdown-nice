@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Button, ConfigProvider } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Button, ConfigProvider} from "antd";
 
 @inject("dialog")
 @observer
@@ -8,6 +8,7 @@ class About extends Component {
   handleClick = () => {
     this.props.dialog.setAboutOpen(true);
   };
+
   render() {
     return (
       <ConfigProvider autoInsertSpaceInButton={false}>
@@ -21,8 +22,8 @@ class About extends Component {
 
 const style = {
   btnHeight: {
-    marginLeft: "10px"
-  }
+    marginLeft: "10px",
+  },
 };
 
 export default About;

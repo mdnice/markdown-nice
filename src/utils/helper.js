@@ -1,5 +1,5 @@
 import axios from "axios";
-import markdownIt from "markdown-it";
+import MarkdownIt from "markdown-it";
 import markdownItSup from "markdown-it-sup";
 import markdownItKatex from "markdown-it-katex";
 import markdownItSub from "markdown-it-sub";
@@ -10,20 +10,20 @@ import markdownItRuby from "markdown-it-ruby";
 import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
-import highlightjs from "./lang-highlight";
+import highlightjs from "./langHighlight";
 
 export const axiosGithub = axios.create({
   baseURL: "https://api.github.com",
   headers: {
-    Accept: "application/json"
-  }
+    Accept: "application/json",
+  },
 });
 
 export const axiosJSON = axios.create({
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 
 export const axiosMdnice = axios.create({
@@ -35,7 +35,7 @@ export const queryParse = (search = window.location.search) => {
   if (!search) return {};
   const queryString = search[0] === "?" ? search.substring(1) : search;
   const query = {};
-  queryString.split("&").forEach(queryStr => {
+  queryString.split("&").forEach((queryStr) => {
     const [key, value] = queryStr.split("=");
     /* istanbul ignore else */
     if (key) query[decodeURIComponent(key)] = decodeURIComponent(value);
@@ -43,16 +43,16 @@ export const queryParse = (search = window.location.search) => {
   return query;
 };
 
-export const transCode = str => {
+export const transCode = (str) => {
   return window.btoa(unescape(encodeURIComponent(str)));
 };
 
-export const deCode = str => {
+export const deCode = (str) => {
   return decodeURIComponent(escape(window.atob(str)));
 };
 
 // 专门微信代码高亮的解析器
-export const markdownParserWechat = new markdownIt({
+export const markdownParserWechat = new MarkdownIt({
   html: true,
   highlight: (str, lang) => {
     const text = str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -60,11 +60,7 @@ export const markdownParserWechat = new markdownIt({
     const codeLines = [];
     const numbers = [];
     for (let i = 0; i < lines.length - 1; i++) {
-      codeLines.push(
-        '<code><span class="code-snippet_outer">' +
-          (lines[i] || "<br>") +
-          "</span></code>"
-      );
+      codeLines.push('<code><span class="code-snippet_outer">' + (lines[i] || "<br>") + "</span></code>");
       numbers.push("<li></li>");
     }
     return (
@@ -78,7 +74,7 @@ export const markdownParserWechat = new markdownIt({
       codeLines.join("") +
       "</pre></section>"
     );
-  }
+  },
 });
 
 markdownParserWechat
@@ -90,32 +86,28 @@ markdownParserWechat
   .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
     transformLink: () => "",
-    includeLevel: [2, 3]
+    includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby)
-  .use(markdownItImplicitFigures, { figcaption: true }) // 图示
+  .use(markdownItImplicitFigures, {figcaption: true}) // 图示
   .use(markdownItDeflist); // 定义列表
 
 // 普通解析器，代码高亮用highlight
-export const markdownParser = new markdownIt({
+export const markdownParser = new MarkdownIt({
   html: true,
   highlight: (str, lang) => {
     // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
     if (lang && highlightjs.getLanguage(lang)) {
       try {
         return (
-          '<pre class="custom"><code class="hljs">' +
-          highlightjs.highlight(lang, str, true).value +
-          "</code></pre>"
+          '<pre class="custom"><code class="hljs">' + highlightjs.highlight(lang, str, true).value + "</code></pre>"
         );
-      } catch (__) {}
+      } catch (e) {
+        console.log(e);
+      }
     }
-    return (
-      '<pre class="custom"><code class="hljs">' +
-      markdownParser.utils.escapeHtml(str) +
-      "</code></pre>"
-    );
-  }
+    return '<pre class="custom"><code class="hljs">' + markdownParser.utils.escapeHtml(str) + "</code></pre>";
+  },
 });
 
 markdownParser
@@ -126,10 +118,10 @@ markdownParser
   .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
     transformLink: () => "",
-    includeLevel: [2, 3]
+    includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby)
-  .use(markdownItImplicitFigures, { figcaption: true }) // 图示
+  .use(markdownItImplicitFigures, {figcaption: true}) // 图示
   .use(markdownItDeflist); // 定义列表
 
 export const replaceStyle = (id, css) => {
@@ -160,43 +152,37 @@ export const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
     byteArrays.push(byteArray);
   }
 
-  const blob = new Blob(byteArrays, { type: contentType });
+  const blob = new Blob(byteArrays, {type: contentType});
   return blob;
 };
 
 // base64转blob
 export const toBlob = (base64, fileType) => {
-  let bytes = window.atob(base64);
+  const bytes = window.atob(base64);
   let n = bytes.length;
-  let u8arr = new Uint8Array(n);
+  const u8arr = new Uint8Array(n);
   while (n--) {
     u8arr[n] = bytes.charCodeAt(n);
   }
-  return new Blob([u8arr], { type: fileType });
+  return new Blob([u8arr], {type: fileType});
 };
 
-export const dateFormat = function(date, fmt) {
+export const dateFormat = (date, fmt) => {
   var o = {
-    "M+": date.getMonth() + 1, //月份
-    "d+": date.getDate(), //日
-    "h+": date.getHours(), //小时
-    "m+": date.getMinutes(), //分
-    "s+": date.getSeconds(), //秒
-    "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-    S: date.getMilliseconds() //毫秒
+    "M+": date.getMonth() + 1, // 月份
+    "d+": date.getDate(), // 日
+    "h+": date.getHours(), // 小时
+    "m+": date.getMinutes(), // 分
+    "s+": date.getSeconds(), // 秒
+    "q+": Math.floor((date.getMonth() + 3) / 3), // 季度
+    S: date.getMilliseconds(), // 毫秒
   };
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(
-      RegExp.$1,
-      (date.getFullYear() + "").substr(4 - RegExp.$1.length)
-    );
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
   for (var k in o) {
     if (new RegExp("(" + k + ")").test(fmt)) {
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)
-      );
+      fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
     }
   }
   return fmt;
@@ -231,7 +217,7 @@ export const url2Blob = (src, cb) => {
   var image = new Image();
   image.src = src + "?v=" + Math.random(); // 处理缓存
   image.crossOrigin = "Anonymous"; // 支持跨域图片
-  image.onload = function() {
+  image.onload = () => {
     var base64 = getBase64Image(image);
     cb && cb(base64);
   };
@@ -240,14 +226,7 @@ export const url2Blob = (src, cb) => {
 // 是否为PC端
 export const isPC = () => {
   var userAgentInfo = navigator.userAgent;
-  var Agents = [
-    "Android",
-    "iPhone",
-    "SymbianOS",
-    "Windows Phone",
-    "iPad",
-    "iPod"
-  ];
+  var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
   var flag = true;
   for (var v = 0; v < Agents.length; v++) {
     if (userAgentInfo.indexOf(Agents[v]) > 0) {
@@ -258,15 +237,12 @@ export const isPC = () => {
   return flag;
 };
 
-export const getOSSName = (originName, namespace = '') => {
+export const getOSSName = (originName, namespace = "") => {
   const names = originName.split(".");
   let key = "";
   if (names.length > 1) {
     const suffix = names.pop();
-    key = `${names.join(".")}_${dateFormat(
-      new Date(),
-      "yyyyMMddhhmmss"
-    )}.${suffix}`;
+    key = `${names.join(".")}_${dateFormat(new Date(), "yyyyMMddhhmmss")}.${suffix}`;
   } else {
     key = originName + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
   }

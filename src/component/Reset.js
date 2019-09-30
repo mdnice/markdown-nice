@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Button, Icon, Tooltip, Modal } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Button, Icon, Tooltip, Modal} from "antd";
 import resetIcon from "../icon/reset.svg";
 
-import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
+import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 
 import TEMPLATE from "../template/index";
 
@@ -11,8 +11,6 @@ import TEMPLATE from "../template/index";
 @inject("navbar")
 @observer
 class Reset extends Component {
-  state = { visible: false };
-
   showConfirm = () => {
     Modal.confirm({
       title: "确认重置么?",
@@ -22,24 +20,19 @@ class Reset extends Component {
       cancelText: "取消",
       onOk: () => {
         this.props.content.setContent(TEMPLATE.content);
-        this.props.content.setStyle(TEMPLATE.style["normal"]);
-        this.props.content.setCustomStyle(TEMPLATE.style["custom"]);
+        this.props.content.setStyle(TEMPLATE.style.normal);
+        this.props.content.setCustomStyle(TEMPLATE.style.custom);
         this.props.navbar.setTemplateNum(0);
       },
-      onCancel() {}
+      onCancel() {},
     });
   };
 
   render() {
     return (
-      <Tooltip
-        placement="bottom"
-        mouseEnterDelay={ENTER_DELAY}
-        mouseLeaveDelay={LEAVE_DELAY}
-        title="重置"
-      >
+      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="重置">
         <Button onClick={this.showConfirm} style={style.btnPadding}>
-          <Icon component={resetIcon} style={style.iconSize}/>
+          <Icon component={resetIcon} style={style.iconSize} />
         </Button>
       </Tooltip>
     );
@@ -48,11 +41,11 @@ class Reset extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px"
+    padding: "0 8px",
   },
   iconSize: {
-    fontSize: "16px"
-  }
+    fontSize: "16px",
+  },
 };
 
 export default Reset;

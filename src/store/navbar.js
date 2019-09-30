@@ -1,43 +1,39 @@
-import { observable, action } from "mobx";
-import {
-  TEMPLATE_NUM,
-  CODE_NUM,
-  CODE_THEME_ID,
-  CODE_OPTIONS,
-  IS_PASTE_CHECK_OPEN
-} from "../utils/constant";
+import {observable, action} from "mobx";
+import {TEMPLATE_NUM, CODE_NUM, CODE_THEME_ID, CODE_OPTIONS, IS_PASTE_CHECK_OPEN} from "../utils/constant";
 import TEMPLATE from "../template/index";
-import { replaceStyle } from "../utils/helper";
+import {replaceStyle} from "../utils/helper";
 
 class Navbar {
   @observable isStyleEditorOpen = false;
+
   @observable isPasteCheckOpen = true;
 
   @observable templateNum;
+
   @observable codeNum;
 
   @action
-  setStyleEditorOpen = isStyleEditorOpen => {
+  setStyleEditorOpen = (isStyleEditorOpen) => {
     this.isStyleEditorOpen = isStyleEditorOpen;
   };
 
   @action
-  setAutoFootOpen = isPasteCheckOpen => {
+  setAutoFootOpen = (isPasteCheckOpen) => {
     this.isPasteCheckOpen = isPasteCheckOpen;
   };
 
   @action
-  setTemplateNum = templateNum => {
+  setTemplateNum = (templateNum) => {
     this.templateNum = templateNum;
     window.localStorage.setItem(TEMPLATE_NUM, templateNum);
   };
 
   @action
-  setCodeNum = codeNum => {
+  setCodeNum = (codeNum) => {
     this.codeNum = codeNum;
     window.localStorage.setItem(CODE_NUM, codeNum);
     // 更新style
-    const { id } = CODE_OPTIONS[codeNum];
+    const {id} = CODE_OPTIONS[codeNum];
     if (codeNum !== 0) {
       replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
     }
@@ -62,10 +58,9 @@ if (!window.localStorage.getItem(IS_PASTE_CHECK_OPEN)) {
 }
 
 // 获取之前选择的主题状态
-store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM));
-store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM));
-store.isPasteCheckOpen =
-  window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true" ? true : false;
+store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
+store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
+store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
 
 Atom One Dark by Daniel Gamage
 Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
@@ -94,4 +93,4 @@ hue-6-2: #e6c07b
 
 .hljs-link {
   text-decoration: underline;
-}`
+}`;

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
-import { Modal } from "antd";
+import {Modal} from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
-import { observer, inject } from "mobx-react";
+import {observer, inject} from "mobx-react";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
@@ -14,7 +14,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import { markdownParser, markdownParserWechat } from "./utils/helper";
+import {markdownParser, markdownParserWechat} from "./utils/helper";
 
 @inject("content")
 @inject("navbar")
@@ -30,22 +30,18 @@ class App extends Component {
     this.index = index;
   }
 
-  getInstance = instance => {
+  getInstance = (instance) => {
     if (instance) {
       this.props.content.setMarkdownEditor(instance.editor);
     }
   };
 
   handleScroll = () => {
-    const { markdownEditor } = this.props.content;
-    let cmData = markdownEditor.getScrollInfo();
-    let editorToTop = cmData.top;
-    let editorScrollHeight = cmData.height - cmData.clientHeight;
-    this.scale =
-      (this.previewWrap.offsetHeight -
-        this.previewContainer.offsetHeight +
-        55) /
-      editorScrollHeight;
+    const {markdownEditor} = this.props.content;
+    const cmData = markdownEditor.getScrollInfo();
+    const editorToTop = cmData.top;
+    const editorScrollHeight = cmData.height - cmData.clientHeight;
+    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 55) / editorScrollHeight;
     if (this.index === 1) {
       this.previewContainer.scrollTop = editorToTop * this.scale;
     } else {
@@ -56,19 +52,19 @@ class App extends Component {
 
   handleChange = (editor, changeObj) => {
     if (this.focus) {
-      let content = editor.getValue();
+      const content = editor.getValue();
       // 粘贴时检测
       if (this.props.navbar.isPasteCheckOpen && changeObj.origin === "paste") {
         const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
         const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
 
-        if(res === null) {
+        if (res === null) {
           this.props.content.setContent(content);
           return;
         }
 
         const footReg = /.*?\(.*?"(.*?)".*?\)/;
-        const filterRes = res.filter(val => {
+        const filterRes = res.filter((val) => {
           const comment = val.match(footReg);
           if (val[0] === "!") {
             return false;
@@ -97,7 +93,7 @@ class App extends Component {
       okText: "确定",
       cancelText: "取消",
       onOk: () => {
-        filterRes.forEach(val => {
+        filterRes.forEach((val) => {
           const linkReg = /\[(.*?)\]\((.*?)\)/; // 匹配链接中具体的值
           const matchValue = val.match(linkReg);
           const name = matchValue[1];
@@ -111,19 +107,19 @@ class App extends Component {
       },
       onCancel: () => {
         this.props.content.setContent(content);
-      }
+      },
     });
   };
 
-  handleFocus = e => {
+  handleFocus = (e) => {
     this.focus = true;
   };
 
-  handleBlur = e => {
+  handleBlur = (e) => {
     this.focus = false;
   };
 
-  getStyleInstance = instance => {
+  getStyleInstance = (instance) => {
     if (instance) {
       this.styleEditor = instance.editor;
       this.styleEditor.on("keyup", (cm, e) => {
@@ -134,21 +130,20 @@ class App extends Component {
     }
   };
 
-  handleDrop = (instance,e) => {
+  handleDrop = (instance, e) => {
     // console.log(e.dataTransfer.files[0]);
-    if(!(e.dataTransfer&&e.dataTransfer.files)){
-      alert("该浏览器不支持操作");
+    if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
     }
-    for(var i=0;i<e.dataTransfer.files.length;i++){
-        console.log(e.dataTransfer.files[i]);
-        // fileUpload(e.dataTransfer.files[i]);
+    for (var i = 0; i < e.dataTransfer.files.length; i++) {
+      // console.log(e.dataTransfer.files[i]);
+      // fileUpload(e.dataTransfer.files[i]);
     }
     e.preventDefault();
-  }
+  };
 
   render() {
-    const { codeNum } = this.props.navbar;
+    const {codeNum} = this.props.navbar;
     const parseHtml =
       codeNum === 0
         ? markdownParserWechat.render(this.props.content.content)
@@ -159,10 +154,7 @@ class App extends Component {
         <Navbar />
 
         <div className="text-container">
-          <div
-            className="text-box"
-            onMouseOver={e => this.setCurrentIndex(1, e)}
-          >
+          <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
             <CodeMirror
               value={this.props.content.content}
               options={{
@@ -170,7 +162,7 @@ class App extends Component {
                 keyMap: "sublime",
                 mode: "markdown",
                 lineWrapping: true,
-                lineNumbers: false
+                lineNumbers: false,
               }}
               onChange={this.handleChange}
               onScroll={this.handleScroll}
@@ -180,23 +172,23 @@ class App extends Component {
               ref={this.getInstance}
             />
           </div>
-          <div
-            id="marked-text"
-            className="text-box"
-            onMouseOver={e => this.setCurrentIndex(2, e)}
-          >
+          <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
             <div
               id="wx-box"
               className="wx-box"
               onScroll={this.handleScroll}
-              ref={node => (this.previewContainer = node)}
+              ref={(node) => {
+                this.previewContainer = node;
+              }}
             >
               <section
                 className="layout"
                 dangerouslySetInnerHTML={{
-                  __html: parseHtml
+                  __html: parseHtml,
                 }}
-                ref={node => (this.previewWrap = node)}
+                ref={(node) => {
+                  this.previewWrap = node;
+                }}
               />
             </div>
           </div>

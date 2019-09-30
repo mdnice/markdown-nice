@@ -1,6 +1,6 @@
-function render_footnote_anchor_name(tokens, idx, options, env /*, slf*/) {
-  var n = Number(tokens[idx].meta.id + 1).toString();
-  var prefix = "";
+function renderFootnoteAnchorName(tokens, idx, options, env) {
+  const n = Number(tokens[idx].meta.id + 1).toString();
+  let prefix = "";
 
   if (typeof env.docId === "string") {
     prefix = "-" + env.docId + "-";
@@ -9,8 +9,8 @@ function render_footnote_anchor_name(tokens, idx, options, env /*, slf*/) {
   return prefix + n;
 }
 
-function render_footnote_caption(tokens, idx /*, options, env, slf*/) {
-  var n = Number(tokens[idx].meta.id + 1).toString();
+function renderFootnoteCaption(tokens, idx) {
+  let n = Number(tokens[idx].meta.id + 1).toString();
 
   if (tokens[idx].meta.subId > 0) {
     n += ":" + tokens[idx].meta.subId;
@@ -19,41 +19,35 @@ function render_footnote_caption(tokens, idx /*, options, env, slf*/) {
   return "[" + n + "]";
 }
 
-function render_footnote_word(tokens, idx, options, env, slf) {
+function renderFootnoteWord(tokens, idx, options, env, slf) {
   return '<span class="footnote-word">' + tokens[idx].content + "</span>";
 }
 
-function render_footnote_ref(tokens, idx, options, env, slf) {
+function renderFootnoteRef(tokens, idx, options, env, slf) {
   // var id      = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
-  var caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
+  const caption = slf.rules.footnote_caption(tokens, idx, options, env, slf);
   return '<sup class="footnote-ref">' + caption + "</sup>";
 }
 
-function render_footnote_block_open(tokens, idx, options) {
+function renderFootnoteBlockOpen(tokens, idx, options) {
   return '<h3 class="footnotes-sep">参考资料</h3>\n<section class="footnotes">\n';
 }
 
-function render_footnote_block_close() {
+function renderFootnoteBlockClose() {
   return "</section>\n";
 }
 
-function render_footnote_open(tokens, idx, options, env, slf) {
-  var id = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
+function renderFootnoteOpen(tokens, idx, options, env, slf) {
+  let id = slf.rules.footnote_anchor_name(tokens, idx, options, env, slf);
 
   if (tokens[idx].meta.subId > 0) {
     id += ":" + tokens[idx].meta.subId;
   }
 
-  return (
-    '<span id="fn' +
-    id +
-    '" class="footnote-item"><span class="footnote-num">[' +
-    id +
-    "] </span>"
-  );
+  return '<span id="fn' + id + '" class="footnote-item"><span class="footnote-num">[' + id + "] </span>";
 }
 
-function render_footnote_close() {
+function renderFootnoteClose() {
   return "</span>\n";
 }
 
@@ -78,30 +72,28 @@ function normalizeReference(str) {
     .toUpperCase();
 }
 
-function link_foot(state, silent) {
-  var attrs,
+function linkFoot(state, silent) {
+  let attrs,
     code,
     label,
-    labelEnd,
-    labelStart,
     pos,
     res,
     ref,
     title,
     token,
     href = "",
-    oldPos = state.pos,
-    max = state.posMax,
     start = state.pos,
     footnoteContent,
     parseReference = true;
+  const oldPos = state.pos;
+  const max = state.posMax;
 
   if (state.src.charCodeAt(state.pos) !== 0x5b /* [ */) {
     return false;
   }
 
-  labelStart = state.pos + 1;
-  labelEnd = state.md.helpers.parseLinkLabel(state, state.pos, true);
+  const labelStart = state.pos + 1;
+  const labelEnd = state.md.helpers.parseLinkLabel(state, state.pos, true);
 
   // parser failed to find ']', so it's not a valid link
   if (labelEnd < 0) {
@@ -225,7 +217,7 @@ function link_foot(state, silent) {
       state.pos = labelStart;
       state.posMax = labelEnd;
 
-      let footnoteId, tokens;
+      let tokens;
 
       if (!state.env.footnotes) {
         state.env.footnotes = {};
@@ -233,23 +225,19 @@ function link_foot(state, silent) {
       if (!state.env.footnotes.list) {
         state.env.footnotes.list = [];
       }
-      footnoteId = state.env.footnotes.list.length;
+
+      const footnoteId = state.env.footnotes.list.length;
 
       // *用来让链接倾斜
-      state.md.inline.parse(
-        `${title}: *${footnoteContent}*`,
-        state.md,
-        state.env,
-        (tokens = [])
-      );
+      state.md.inline.parse(`${title}: *${footnoteContent}*`, state.md, state.env, (tokens = []));
 
       token = state.push("footnote_word", "", 0);
       token.content = state.src.slice(labelStart, labelEnd);
 
       token = state.push("footnote_ref", "", 0);
-      token.meta = { id: footnoteId };
+      token.meta = {id: footnoteId};
 
-      state.env.footnotes.list[footnoteId] = { tokens: tokens };
+      state.env.footnotes.list[footnoteId] = {tokens: tokens};
     }
     // 不存在标题则判断域名
     else {
@@ -258,7 +246,8 @@ function link_foot(state, silent) {
       state.posMax = labelEnd;
 
       token = state.push("link_open", "a", 1);
-      token.attrs = attrs = [["href", href]];
+      attrs = [["href", href]];
+      token.attrs = attrs;
       if (title) {
         attrs.push(["title", title]);
       }
@@ -276,7 +265,7 @@ function link_foot(state, silent) {
 }
 
 // Glue footnote tokens to end of token stream
-function footnote_tail(state) {
+function footnoteTail(state) {
   var i,
     l,
     lastParagraph,
@@ -292,7 +281,7 @@ function footnote_tail(state) {
     return;
   }
 
-  state.tokens = state.tokens.filter(function(tok) {
+  state.tokens = state.tokens.filter((tok) => {
     if (tok.type === "footnote_reference_open") {
       insideRef = true;
       current = [];
@@ -321,7 +310,7 @@ function footnote_tail(state) {
 
   for (i = 0, l = list.length; i < l; i++) {
     token = new state.Token("footnote_open", "", 1);
-    token.meta = { id: i, label: list[i].label };
+    token.meta = {id: i, label: list[i].label};
     state.tokens.push(token);
 
     if (list[i].tokens) {
@@ -362,18 +351,18 @@ function footnote_tail(state) {
   state.tokens.push(token);
 }
 
-export default md => {
-  md.renderer.rules.footnote_ref = render_footnote_ref;
-  md.renderer.rules.footnote_word = render_footnote_word;
-  md.renderer.rules.footnote_block_open = render_footnote_block_open;
-  md.renderer.rules.footnote_block_close = render_footnote_block_close;
-  md.renderer.rules.footnote_open = render_footnote_open;
-  md.renderer.rules.footnote_close = render_footnote_close;
+export default (md) => {
+  md.renderer.rules.footnote_ref = renderFootnoteRef;
+  md.renderer.rules.footnote_word = renderFootnoteWord;
+  md.renderer.rules.footnote_block_open = renderFootnoteBlockOpen;
+  md.renderer.rules.footnote_block_close = renderFootnoteBlockClose;
+  md.renderer.rules.footnote_open = renderFootnoteOpen;
+  md.renderer.rules.footnote_close = renderFootnoteClose;
 
   // helpers (only used in other rules, no tokens are attached to those)
-  md.renderer.rules.footnote_caption = render_footnote_caption;
-  md.renderer.rules.footnote_anchor_name = render_footnote_anchor_name;
+  md.renderer.rules.footnote_caption = renderFootnoteCaption;
+  md.renderer.rules.footnote_anchor_name = renderFootnoteAnchorName;
 
-  md.inline.ruler.at("link", link_foot);
-  md.core.ruler.after("inline", "footnote_tail", footnote_tail);
+  md.inline.ruler.at("link", linkFoot);
+  md.core.ruler.after("inline", "footnote_tail", footnoteTail);
 };

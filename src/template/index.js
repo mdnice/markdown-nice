@@ -16,7 +16,7 @@ import github from "./code/github";
 import monokai from "./code/monokai";
 import vs2015 from "./code/vs2015";
 import xcode from "./code/xcode";
-import basic from "./basic"
+import basic from "./basic";
 
 export default {
   basic,
@@ -29,7 +29,7 @@ export default {
     cyan,
     green,
     red,
-    wechatFormat
+    wechatFormat,
   },
   code: {
     atomOneDark,
@@ -37,7 +37,7 @@ export default {
     github,
     monokai,
     vs2015,
-    xcode
+    xcode,
   },
-  content
+  content,
 };

@@ -1,19 +1,12 @@
 import React from "react";
-import { Tooltip, Button, Icon } from "antd";
-import { observer, inject } from "mobx-react";
+import {Tooltip, Button, Icon} from "antd";
+import {observer, inject} from "mobx-react";
 import axios from "axios";
 
 import githubIcon from "../icon/github.svg";
 
-import {
-  CLIENT_ID,
-  CLIENT_SECRET,
-  PROXY,
-  ACCESS_TOKEN,
-  ENTER_DELAY,
-  LEAVE_DELAY
-} from "../utils/constant.js";
-import { queryParse, axiosJSON, axiosGithub } from "../utils/helper";
+import {CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN, ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
+import {queryParse, axiosJSON, axiosGithub} from "../utils/helper";
 
 @inject("userInfo")
 @observer
@@ -26,7 +19,7 @@ class LogIn extends React.Component {
     }
     const TOKEN = localStorage.getItem(ACCESS_TOKEN);
     if (TOKEN) {
-      axios.defaults.headers.common["Authorization"] = `token ${TOKEN}`;
+      axios.defaults.headers.common.Authorization = `token ${TOKEN}`;
       this.getUserInfo();
     }
   }
@@ -39,7 +32,7 @@ class LogIn extends React.Component {
     const res = await axiosJSON.post(PROXY, {
       code: this.code,
       client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET
+      client_secret: CLIENT_SECRET,
     });
     localStorage.setItem(ACCESS_TOKEN, res.data.access_token);
     window.location.href = "/";
@@ -56,12 +49,7 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <Tooltip
-        placement="bottom"
-        mouseEnterDelay={ENTER_DELAY}
-        mouseLeaveDelay={LEAVE_DELAY}
-        title="登录"
-      >
+      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="登录">
         <Button shape="circle" style={style.btnStyle} onClick={this.login}>
           <Icon component={githubIcon} style={style.iconSize} />
         </Button>
@@ -74,15 +62,15 @@ const style = {
   btnStyle: {
     border: "none",
     width: "24px",
-    height: "24px"
+    height: "24px",
   },
   iconSize: {
-    fontSize: "24px"
+    fontSize: "24px",
   },
   avatar: {
     background: "white",
-    color: "black"
-  }
+    color: "black",
+  },
 };
 
 export default LogIn;

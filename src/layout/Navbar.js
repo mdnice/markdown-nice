@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Button } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Button} from "antd";
 
 import ThemeSelect from "../component/ThemeSelect";
 import Copy from "../component/Copy";
@@ -74,31 +74,31 @@ const style = {
     display: "flex",
     justifyContent: "space-between",
     flex: "none",
-    padding: "20px"
+    padding: "20px",
   },
   leftNav: {
     flex: "1 1 50%",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   rightNav: {
     flex: "1 1 50%",
     display: "flex",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
   btnGroupMargin: {
-    marginRight: "10px"
+    marginRight: "10px",
   },
   btnGroupRight: {
-    marginRight: "20px"
+    marginRight: "20px",
   },
   title: {
     marginRight: "10px",
     fontWeight: "bold",
-    fontSize: "16px"
-  }
+    fontSize: "16px",
+  },
 };
 
 export default Navbar;

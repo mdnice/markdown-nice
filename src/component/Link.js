@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Button, Icon, Tooltip } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Button, Icon, Tooltip} from "antd";
 
-import { ENTER_DELAY, LEAVE_DELAY } from "../utils/constant";
+import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 import linkIcon from "../icon/link.svg";
 
 @inject("dialog")
@@ -14,12 +14,7 @@ class Link extends Component {
 
   render() {
     return (
-      <Tooltip
-        placement="bottom"
-        mouseEnterDelay={ENTER_DELAY}
-        mouseLeaveDelay={LEAVE_DELAY}
-        title="链接"
-      >
+      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="链接">
         <Button style={style.btnPadding} onClick={this.showModal}>
           <Icon component={linkIcon} style={style.iconSize} />
         </Button>
@@ -30,11 +25,11 @@ class Link extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px"
+    padding: "0 8px",
   },
   iconSize: {
-    fontSize: "17px"
-  }
+    fontSize: "17px",
+  },
 };
 
 export default Link;

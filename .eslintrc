@@ -1,0 +1,54 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"], // eslint扩展规则
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "parser": "babel-eslint",// 解决ES6 improt会报错
+  "env": { // eg如果不配置browser，window就会被eslint报undefined的错
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["react", "jsx-a11y", "import"],
+  "rules": {
+    "quotes": [0, "double"],
+    "class-methods-use-this": 0,
+    "import/no-named-as-default": 0,
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react/no-array-index-key": 0,
+    "no-use-before-define": 0,
+    "no-restricted-syntax": 0,
+    "no-var": 0,
+    "vars-on-top": 0,
+    "no-plusplus": 0,
+    "no-continue": 0,
+    "prefer-template": 0,
+    "object-shorthand": 0,
+    "no-else-return": 0,
+    "no-param-reassign": 0,
+    "no-unused-vars": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/order": 0,
+    "jsx-a11y/mouse-events-have-key-events": 0,
+    "no-lonely-if": 0,
+    "one-var": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-wrap-multilines": 0,
+    "no-unused-expressions": 0,
+    "react/no-danger": 0,
+    "no-console": 0
+  }
+}

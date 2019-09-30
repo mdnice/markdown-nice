@@ -1,5 +1,4 @@
-export default
-`/*默认样式，最佳实践*/
+export default `/*默认样式，最佳实践*/
 
 /*全局属性*/
 .layout {
@@ -360,4 +359,4 @@ table tr th {
 
 sub, sup {
   line-height: 0;
-}`
+}`;

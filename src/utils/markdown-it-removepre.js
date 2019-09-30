@@ -1,8 +1,8 @@
 // 用来移除微信自定义代码前方的 pre code
-export default md => {
-  const old_fence = md.renderer.rules.fence;
-  md.renderer.rules.fence = function(tokens, idx, options, env, slf) {
-    const old = old_fence(tokens, idx, options, env, slf);
+export default (md) => {
+  const oldFence = md.renderer.rules.fence;
+  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+    const old = oldFence(tokens, idx, options, env, slf);
     const preReg = /<pre><code[\w\s-="]*>/;
     // 微信专属
     if (preReg.exec(old)) {
@@ -10,7 +10,7 @@ export default md => {
       const post = `</code></pre>`;
       return old.replace(pre, "").replace(post, "");
     }
-    // 自定义 
+    // 自定义
     else {
       return old;
     }

@@ -1,9 +1,9 @@
 import React from "react";
-import { Menu, Dropdown, Avatar, Modal, message } from "antd";
-import { observer, inject } from "mobx-react";
+import {Menu, Dropdown, Avatar, Modal, message} from "antd";
+import {observer, inject} from "mobx-react";
 
-import { axiosGithub } from "../utils/helper";
-import { ACCESS_TOKEN } from "../utils/constant";
+import {axiosGithub} from "../utils/helper";
+import {ACCESS_TOKEN} from "../utils/constant";
 
 @inject("userInfo")
 @inject("dialog")
@@ -19,7 +19,7 @@ class LogIn extends React.Component {
         正在接收自定义主题，维护人员将会根据主题质量进行添加，是否确认将你的自定义CSS发送？
       </p>
     );
-    const successInfo = link => {
+    const successInfo = (link) => {
       return (
         <span>
           提交成功，
@@ -31,17 +31,14 @@ class LogIn extends React.Component {
     };
     Modal.confirm({
       title: "确认发送Issue？",
-      content: content,
+      content,
       okText: "确认",
       cancelText: "取消",
       onOk: async () => {
-        const res = await axiosGithub.post(
-          `/repos/zhning12/markdown-nice/issues`,
-          {
-            title: `自定义主题 by ${this.props.userInfo.userInfo.login}`,
-            body: "```\n" + this.props.content.style + "\n```"
-          }
-        );
+        const res = await axiosGithub.post(`/repos/zhning12/markdown-nice/issues`, {
+          title: `自定义主题 by ${this.props.userInfo.userInfo.login}`,
+          body: "```\n" + this.props.content.style + "\n```",
+        });
         if (res.status === 201) {
           message.success(successInfo(res.data.html_url), 5);
         } else {
@@ -50,7 +47,7 @@ class LogIn extends React.Component {
       },
       onCancel() {
         // console.log('Cancel');
-      }
+      },
     });
   };
 
@@ -60,15 +57,19 @@ class LogIn extends React.Component {
   };
 
   render() {
-    const hrefLink = '#';
+    const hrefLink = "#";
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a style={style.link} rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>提交主题</a>
+          <a style={style.link} rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>
+            提交主题
+          </a>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="1">
-          <a style={style.link} rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>退出登录</a>
+          <a style={style.link} rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>
+            退出登录
+          </a>
         </Menu.Item>
       </Menu>
     );
@@ -87,19 +88,19 @@ const style = {
   btnStyle: {
     border: "none",
     width: "24px",
-    height: "24px"
+    height: "24px",
   },
   iconSize: {
-    fontSize: "24px"
+    fontSize: "24px",
   },
   avatar: {
     background: "white",
     color: "#1e1e1e",
-    fontSize: "22px"
+    fontSize: "22px",
   },
   link: {
-    border: "none"
-  }
+    border: "none",
+  },
 };
 
 export default LogIn;

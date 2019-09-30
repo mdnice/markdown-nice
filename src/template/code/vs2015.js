@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
  * Visual Studio 2015 dark style
  * Author: Nicolas LLOBERA <nllobera@gmail.com>
  */
@@ -113,4 +112,4 @@ export default
   background-color: #600;
   display: inline-block;
   width: 100%;
-}`
+}`;

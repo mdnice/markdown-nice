@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Modal } from "antd";
+import React, {Component} from "react";
+import {Modal} from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
@@ -8,13 +8,10 @@ import "codemirror/addon/hint/show-hint";
 import "codemirror/addon/hint/show-hint.css";
 import "codemirror/addon/hint/css-hint";
 import "antd/dist/antd.css";
-import { observer, inject } from "mobx-react";
+import {observer, inject} from "mobx-react";
 
 import "../utils/styleMirror.css";
-import {
-  TEMPLATE_CUSTOM_NUM,
-  TEMPLATE_OPTIONS
-} from "../utils/constant";
+import {TEMPLATE_CUSTOM_NUM, TEMPLATE_OPTIONS} from "../utils/constant";
 import TEMPLATE from "../template/index";
 
 @inject("content")
@@ -26,7 +23,7 @@ class StyleEditor extends Component {
     this.focus = false;
   }
 
-  getStyleInstance = instance => {
+  getStyleInstance = (instance) => {
     if (instance) {
       this.styleEditor = instance.editor;
       this.styleEditor.on("keyup", (cm, e) => {
@@ -44,18 +41,18 @@ class StyleEditor extends Component {
       cancelText: "取消",
       okText: "确定",
       onOk: () => {
-        const { templateNum } = this.props.navbar;
-        const id = TEMPLATE_OPTIONS[templateNum].id;
+        const {templateNum} = this.props.navbar;
+        const {id} = TEMPLATE_OPTIONS[templateNum];
         const style = `/*自定义样式，实时生效*/\n\n` + TEMPLATE.style[id];
         this.props.content.setCustomStyle(style);
         this.props.navbar.setTemplateNum(TEMPLATE_CUSTOM_NUM);
       },
-      onCancel: () => {}
+      onCancel: () => {},
     });
   };
 
   changeStyle = (editor, changeObj) => {
-    const { templateNum } = this.props.navbar;
+    const {templateNum} = this.props.navbar;
     // focus状态很重要，初始化时被调用则不会进入条件
     if (this.focus && templateNum !== TEMPLATE_CUSTOM_NUM) {
       this.showConfirm();
@@ -65,11 +62,11 @@ class StyleEditor extends Component {
     }
   };
 
-  handleFocus = e => {
+  handleFocus = (e) => {
     this.focus = true;
   };
 
-  handleBlur = e => {
+  handleBlur = (e) => {
     this.focus = false;
   };
 
@@ -82,7 +79,7 @@ class StyleEditor extends Component {
           keyMap: "sublime",
           mode: "css",
           lineWrapping: true,
-          lineNumbers: false
+          lineNumbers: false,
         }}
         id="css-editor"
         onChange={this.changeStyle}

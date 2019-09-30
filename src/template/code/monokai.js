@@ -1,5 +1,4 @@
-export default
-`/*
+export default `/*
 Monokai style - ported by Luigi Maselli - http://grigio.org
 */
 
@@ -68,4 +67,4 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-type,
 .hljs-selector-id {
   font-weight: bold;
-}`
+}`;

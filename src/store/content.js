@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import {observable, action} from "mobx";
 import {
   CONTENT,
   STYLE,
@@ -6,29 +6,31 @@ import {
   TEMPLATE_NUM,
   TEMPLATE_CUSTOM_NUM,
   MARKDOWN_THEME_ID,
-  BASIC_THEME_ID
-} from "../utils/constant.js";
-import { replaceStyle } from "../utils/helper";
+  BASIC_THEME_ID,
+} from "../utils/constant";
+import {replaceStyle} from "../utils/helper";
 import TEMPLATE from "../template/index";
 
 class Content {
   @observable content;
+
   @observable style;
+
   @observable markdownEditor;
 
   @action
-  setMarkdownEditor = markdownEditor => {
+  setMarkdownEditor = (markdownEditor) => {
     this.markdownEditor = markdownEditor;
   };
 
   @action
-  setContent = content => {
+  setContent = (content) => {
     this.content = content;
     window.localStorage.setItem(CONTENT, content);
   };
 
   @action
-  setStyle = style => {
+  setStyle = (style) => {
     this.style = style;
     replaceStyle(MARKDOWN_THEME_ID, style);
   };
@@ -52,10 +54,10 @@ if (!window.localStorage.getItem(CONTENT)) {
   window.localStorage.setItem(CONTENT, TEMPLATE.content);
 }
 if (!window.localStorage.getItem(STYLE)) {
-  window.localStorage.setItem(STYLE, TEMPLATE.style["custom"]);
+  window.localStorage.setItem(STYLE, TEMPLATE.style.custom);
 }
 
-const templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM));
+const templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 
 // 用于处理刷新后的信息持久化
 // 属于自定义主题则从localstorage中读数据
@@ -63,10 +65,10 @@ if (templateNum === TEMPLATE_CUSTOM_NUM) {
   store.style = window.localStorage.getItem(STYLE);
 } else {
   if (templateNum) {
-    const id = TEMPLATE_OPTIONS[templateNum].id;
+    const {id} = TEMPLATE_OPTIONS[templateNum];
     store.style = TEMPLATE.style[id];
   } else {
-    store.style = TEMPLATE.style["normal"];
+    store.style = TEMPLATE.style.normal;
   }
 }
 

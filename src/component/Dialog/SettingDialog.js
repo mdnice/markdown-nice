@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Modal, Switch, Button } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Modal, Switch, Button} from "antd";
 
-import { IS_PASTE_CHECK_OPEN } from "../../utils/constant";
+import {IS_PASTE_CHECK_OPEN} from "../../utils/constant";
 
 @inject("dialog")
 @inject("navbar")
 @observer
 class LinkDialog extends Component {
-  handleOk = e => {
+  handleOk = () => {
     this.props.dialog.setSettingOpen(false);
   };
 
-  handleCancel = e => {
+  handleCancel = () => {
     this.props.dialog.setSettingOpen(false);
   };
 
-  toggleAutoFoot = checked => {
+  toggleAutoFoot = (checked) => {
     this.props.navbar.setAutoFootOpen(checked);
     localStorage.setItem(IS_PASTE_CHECK_OPEN, checked);
   };
@@ -31,7 +31,7 @@ class LinkDialog extends Component {
         footer={[
           <Button key="submit" type="primary" onClick={this.handleOk}>
             确认
-          </Button>
+          </Button>,
         ]}
       >
         <span>粘贴时语法检测：</span>
@@ -39,7 +39,7 @@ class LinkDialog extends Component {
           checked={this.props.navbar.isPasteCheckOpen}
           size="small"
           onChange={this.toggleAutoFoot}
-          style={{ marginRight: 8 }}
+          style={{marginRight: 8}}
         />
       </Modal>
     );

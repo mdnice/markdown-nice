@@ -1,5 +1,4 @@
-export default
-`/* 全局属性
+export default `/* 全局属性
  * 页边距 padding: 30px;
  * 全文字体 font-family: ptima-Regular;
  * 英文换行 word-break: break-all;
@@ -196,4 +195,4 @@ table tr th,
 
 /* 参考资料解释 */
 .footnote-item p em {
-}`
+}`;

@@ -1,37 +1,40 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { Modal, Input, Form } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {Modal, Input, Form} from "antd";
 
 @inject("dialog")
 @inject("content")
 @observer
 class LinkDialog extends Component {
-  state = {
-    link: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      link: "",
+    };
+  }
 
-  handleOk = e => {
-    const { markdownEditor } = this.props.content;
+  handleOk = (e) => {
+    const {markdownEditor} = this.props.content;
     const cursor = markdownEditor.getCursor();
     const selection = markdownEditor.getSelection();
-    const text = `[${selection}](${this.state.link})`
+    const text = `[${selection}](${this.state.link})`;
     markdownEditor.replaceSelection(text, cursor);
 
     // 上传后实时更新内容
     const content = markdownEditor.getValue();
     this.props.content.setContent(content);
-    
-    this.setState({link: ""})
+
+    this.setState({link: ""});
     this.props.dialog.setLinkOpen(false);
   };
 
-  handleCancel = e => {
-    this.setState({link: ""})
+  handleCancel = (e) => {
+    this.setState({link: ""});
     this.props.dialog.setLinkOpen(false);
   };
 
-  handleChange = e => {
-    this.setState({ link: e.target.value });
+  handleChange = (e) => {
+    this.setState({link: e.target.value});
   };
 
   render() {
@@ -45,11 +48,7 @@ class LinkDialog extends Component {
         onCancel={this.handleCancel}
       >
         <Form.Item label="链接地址">
-          <Input
-            placeholder="请输入链接地址"
-            value={this.state.link}
-            onChange={this.handleChange}
-          />
+          <Input placeholder="请输入链接地址" value={this.state.link} onChange={this.handleChange} />
         </Form.Item>
       </Modal>
     );

@@ -1,5 +1,5 @@
 // mobx
-import { observable, action } from "mobx";
+import {observable, action} from "mobx";
 
 class Title {
   // 观察值
@@ -7,8 +7,8 @@ class Title {
 
   @action
   setTitle = (title) => {
-    this.title = title
-  }
+    this.title = title;
+  };
 }
 
 const title = new Title();
