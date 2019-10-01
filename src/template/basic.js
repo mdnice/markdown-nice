@@ -150,7 +150,6 @@ hr {
 
 /*代码块*/
 pre {
-  overflow-x: scroll;
   margin-top: 10px;
   margin-bottom: 10px;
 }
