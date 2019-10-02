@@ -9,7 +9,10 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.19",
+    "antd": "^3.15.1",
     "axios": "^0.18.0",
+    "highlight.js": "^9.15.6",
+    "juice": "^5.2.0",
     "markdown-it": "^8.4.2",
     "markdown-it-deflist": "^2.0.3",
     "markdown-it-footnote": "^3.0.1",
@@ -19,13 +22,10 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
-    "antd": "^3.15.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "juice": "^5.2.0",
-    "highlight.js": "^9.15.6",
     "mobx": "^5.9.0",
-    "mobx-react": "^5.4.3"
+    "mobx-react": "^5.4.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",

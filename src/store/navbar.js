@@ -1,5 +1,12 @@
 import {observable, action} from "mobx";
-import {TEMPLATE_NUM, CODE_NUM, CODE_THEME_ID, CODE_OPTIONS, IS_PASTE_CHECK_OPEN} from "../utils/constant";
+import {
+  TEMPLATE_NUM,
+  CODE_NUM,
+  CODE_THEME_ID,
+  CODE_OPTIONS,
+  IS_PASTE_CHECK_OPEN,
+  IS_PRETTIER_OPEN,
+} from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
 
@@ -7,6 +14,8 @@ class Navbar {
   @observable isStyleEditorOpen = false;
 
   @observable isPasteCheckOpen = true;
+
+  @observable isPrettierOpen = true;
 
   @observable templateNum;
 
@@ -20,6 +29,11 @@ class Navbar {
   @action
   setAutoFootOpen = (isPasteCheckOpen) => {
     this.isPasteCheckOpen = isPasteCheckOpen;
+  };
+
+  @action
+  setPrettierOpen = (isPrettierOpen) => {
+    this.isPrettierOpen = isPrettierOpen;
   };
 
   @action
@@ -57,10 +71,16 @@ if (!window.localStorage.getItem(IS_PASTE_CHECK_OPEN)) {
   window.localStorage.setItem(IS_PASTE_CHECK_OPEN, true);
 }
 
+// 如果为空先把数据放进去
+if (!window.localStorage.getItem(IS_PRETTIER_OPEN)) {
+  window.localStorage.setItem(IS_PRETTIER_OPEN, true);
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
+store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

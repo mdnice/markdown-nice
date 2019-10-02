@@ -1,11 +1,14 @@
 import React, {Component} from "react";
 import juice from "juice";
 import {observer, inject} from "mobx-react";
-import {Button, message, ConfigProvider, notification} from "antd";
+import {Button, message, ConfigProvider, notification, Modal} from "antd";
 
-import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
+import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, IS_PRETTIER_OPEN} from "../utils/constant";
 
 import {axiosMdnice} from "../utils/helper";
+
+import prettier from "prettier/standalone";
+import prettierMarkdown from "prettier/parser-markdown";
 
 @inject("content")
 @inject("navbar")
@@ -147,7 +150,6 @@ class Copy extends Component {
   // 拷贝流程 块级公式 => 行内公式 => 其他
   copy = async () => {
     try {
-      this.setState({loading: true});
       const flagBlock = await this.solveBlockMath();
       if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
       const flagInline = await this.solveInlineMath();
@@ -163,6 +165,43 @@ class Copy extends Component {
     }
   };
 
+  prettierDoc = () => {
+    // 变更状态
+    this.setState({loading: true});
+    const {isPrettierOpen} = this.props.navbar;
+    if (isPrettierOpen) {
+      const {content} = this.props.content;
+      const prettierRes = prettier.format(content, {
+        parser: "markdown",
+        plugins: [prettierMarkdown],
+      });
+      // 当格式化之后和原文不同时才提示
+      if (prettierRes !== content) {
+        this.showConfirm(prettierRes);
+      } else {
+        this.copy();
+      }
+    } else {
+      this.copy();
+    }
+  };
+
+  showConfirm = (prettierRes) => {
+    Modal.confirm({
+      title: "检测到不规范排版",
+      content: "当前 markdown 文档排版不规范（比如中英文空格），是否一键排版后复制？",
+      okText: "确定",
+      cancelText: "取消",
+      onOk: () => {
+        this.props.content.setContent(prettierRes);
+        this.copy();
+      },
+      onCancel: () => {
+        this.copy();
+      },
+    });
+  };
+
   copyListener = (e) => {
     // 由于antd的message原因，有这行输出则每次都会进来，否则有问题，具体原因不明
     // console.log("clipboard");
@@ -175,7 +214,7 @@ class Copy extends Component {
   render() {
     return (
       <ConfigProvider autoInsertSpaceInButton={false}>
-        <Button type="primary" style={style.btnHeight} onClick={this.copy} loading={this.state.loading}>
+        <Button type="primary" style={style.btnHeight} onClick={this.prettierDoc} loading={this.state.loading}>
           复制
         </Button>
       </ConfigProvider>

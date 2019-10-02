@@ -8,7 +8,7 @@ export default `使用时请将内容替换为自己的内容。
 
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
-- 支持知乎、掘金、博客园和CSDN等平台
+- 支持知乎、掘金、博客园和 CSDN 等平台
 - 内容和自定义样式浏览器中实时保存
 - 欢迎登录 GitHub 账号，提交自定义主题
 
@@ -18,29 +18,32 @@ export default `使用时请将内容替换为自己的内容。
 - <span style="color:#773098;font-weight:bold;">姹紫：</span>[JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
 - <span style="color:#35b378;font-weight:bold;">绿意：</span>[前端硬核面试专题之 CSS 55 问](https://mp.weixin.qq.com/s/SVKMsQtOLNqYXeT_f95FUw)
 - <span style="color:rgb(248,57,41);font-weight:bold;">红绯：</span>[日常 | 我用什么工具写作？](https://mp.weixin.qq.com/s/DrvJBEWqH14atF_4O1IXFw)
-- <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
+- <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 
 ## 3. 标题
 
 在文字写书写不同数量的\`#\`可以完成不同的标题，如下：
+
 # 一级标题
+
 ## 二级标题
+
 ### 三级标题
 
 ## 4. 无序列表
 
 无序列表的使用，在符号\`-\`后加空格使用。如下：
 
-- 无序列表1
-- 无序列表2
+- 无序列表 1
+- 无序列表 2
 - 无序列表
 
 如果要控制列表的层级，则需要在符号\`-\`前使用空格。如下：
 
-- 无序列表1
-- 无序列表2
-  - 无序列表2.1
-  - 无序列表2.2
+- 无序列表 1
+- 无序列表 2
+  - 无序列表 2.1
+  - 无序列表 2.2
 
 最多支持到二级列表，粘贴到微信编辑器后后**无序列表整体样式与微信一致**。
 
@@ -48,9 +51,9 @@ export default `使用时请将内容替换为自己的内容。
 
 有序列表的使用，在数字及符号\`.\`后加空格后输入内容，如下：
 
-1. 有序列表1
-2. 有序列表2
-3. 有序列表3
+1. 有序列表 1
+2. 有序列表 2
+3. 有序列表 3
 
 粘贴到微信编辑器后后**有序列表整体样式与微信一致**。
 
@@ -72,9 +75,9 @@ export default `使用时请将内容替换为自己的内容。
 
 **这个是粗体**
 
-*这个是斜体*
+_这个是斜体_
 
-***这个是粗体加斜体***
+**_这个是粗体加斜体_**
 
 ## 8. 链接
 
@@ -103,30 +106,30 @@ export default `使用时请将内容替换为自己的内容。
 
 ![这里写图片描述](https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E4%BA%8C%E7%BB%B4%E7%A0%81_20190823124950.gif)
 
-可使用上方工具上传本地图片，目前共支持**4种图床**，主要特点如下：
+可使用上方工具上传本地图片，目前共支持**4 种图床**，主要特点如下：
 
-|图床|费用|有效期|失败率|
-|---|---|---|---|
-|mdnice|免费|1天|低|
-|SM.MS|免费|长期|高|
-|阿里云|[参考](https://cn.aliyun.com/product/oss "参考")|自定义|低|
-|七牛云|10G免费|自定义|低|
+| 图床   | 费用     | 有效期 | 失败率 |
+| ------ | -------- | ------ | ------ |
+| mdnice | 免费     | 1 天   | 低     |
+| SM.MS  | 免费     | 长期   | 高     |
+| 阿里云 | 付费     | 自定义 | 低     |
+| 七牛云 | 10G 免费 | 自定义 | 低     |
 
-4个图床的缺点：
+4 个图床的缺点：
 
-|图床|缺点|
-|---|---|
-|mdnice|图片只保存一天|
-|SM.MS|失败率高可用性很差|
-|阿里云|配置繁琐，费用昂贵|
-|七牛云|需要长期域名替代测试域名|
+| 图床   | 缺点                     |
+| ------ | ------------------------ |
+| mdnice | 图片只保存一天           |
+| SM.MS  | 失败率高可用性很差       |
+| 阿里云 | 配置繁琐，费用昂贵       |
+| 七牛云 | 需要长期域名替代测试域名 |
 
-**建议：一次性排版推荐使用mdnice，图片需要长期管理推荐使用七牛云**。
+**建议：一次性排版推荐使用 mdnice，图片需要长期管理推荐使用七牛云**。
 
 配置文档如下：
 
-- [Markdown Nice新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
-- [Markdown Nice新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
+- [Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
+- [Markdown Nice 新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
 
 注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失。
 
@@ -134,7 +137,7 @@ export default `使用时请将内容替换为自己的内容。
 
 如果在一个行内需要引用代码，只要用反引号引起来就好，如下：
 
-Use the \`printf()\`  function.
+Use the \`printf()\` function.
 
 在需要高亮的代码块的前一行及后一行使用三个反引号，同时**第一行反引号后面表面代码块所使用的语言**，如下：
 
@@ -186,8 +189,10 @@ yaml
 可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，同时需要在分隔线的上面空一行。如下：
 
 ---
-****
-___
+
+---
+
+---
 
 ## 13. 删除线
 
@@ -199,11 +204,11 @@ ___
 
 可以使用冒号来定义表格的对齐方式，如下：
 
-| 姓名 | 年龄 | 工作 |
-| :--- |:---:| ---:|
-| 小可爱 | 18 | 吃可爱多 |
-| 小勇敢 | 20 | 爬勇敢树 |
-| 小机智 | 22 | 看机智书 |
+| 姓名   | 年龄 |     工作 |
+| :----- | :--: | -------: |
+| 小可爱 |  18  | 吃可爱多 |
+| 小勇敢 |  20  | 爬勇敢树 |
+| 小机智 |  22  | 看机智书 |
 
 ## 15. 上标和下标
 
@@ -238,7 +243,7 @@ $$
 
 ## 17. TOC
 
-TOC全称为Table of Content，列出全部标题。由于示例标题过多，需要使用将下方代码段去除即可。
+TOC 全称为 Table of Content，列出全部标题。由于示例标题过多，需要使用将下方代码段去除即可。
 
 \`\`\`
 [[TOC]]
@@ -250,7 +255,7 @@ TOC全称为Table of Content，列出全部标题。由于示例标题过多，�
 
 支持注音符号，用法如下：
 
-Markdown Nice这么好用，简直是{喜大普奔|hē hē hē hē}呀！
+Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 
 ## 19. HTML
 
@@ -261,4 +266,6 @@ Markdown Nice这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 
 ## 20. UML
 
-不支持，推荐使用开源工具\`https://draw.io/\`制作后再导入图片`;
+不支持，推荐使用开源工具\`https://draw.io/\`制作后再导入图片
+`;
+// 要注意md结尾要有换行，否则会被认为排版有问题
