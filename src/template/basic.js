@@ -112,6 +112,7 @@ a {
   color: #1e6bb8;
   word-wrap: break-word;
   font-weight: bold;
+  border-bottom: 1px solid #1e6bb8;
 }
 
 /*加粗*/
@@ -150,7 +151,6 @@ hr {
 
 /*代码块*/
 pre {
-  overflow-x: scroll;
   margin-top: 10px;
   margin-bottom: 10px;
 }

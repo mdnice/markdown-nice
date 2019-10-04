@@ -27,13 +27,9 @@
 
 > 欢迎提供更多文章示例~~
 
-## TODO
+## 开发文档
 
-- 浏览器插件
-- 本地工具
-- Markdown 中文指北纠正器
-- 七牛云域名配置文档
-- 官网
+开发文档请参考本项目的[wiki](https://github.com/zhning12/markdown-nice/wiki/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
 
 ## 关于
 

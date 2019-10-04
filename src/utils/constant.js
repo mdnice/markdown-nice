@@ -14,6 +14,7 @@ export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
+export const IS_PRETTIER_OPEN = "is_prettier_open";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
@@ -113,13 +114,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.1.9";
+export const VERSION_NUM = "1.1.10";
 
 export const VERSION_TIMELINE = [
+  "2019-10-02 新增复制时排版检测功能，规范排版格式",
   "2019-09-24 修复行内公式存在除号问题，增加行内公式报错提示",
   "2019-09-22 修复sup标签行高，减小应用体积",
   "2019-09-21 新增七牛云图床配置文档",
   "2019-09-19 建立mdnice用户群（点击关于加入），自定义七牛云图床新增自定义域名和命名空间字段，测试中...",
-  "2019-09-01 支持自定义「七牛云」做图床，同时提供mdnice自建免费图床，示例请重置后查看「第10条」",
-  "2019-08-31 支持注音符号，示例请重置后查看「第18条」",
 ];

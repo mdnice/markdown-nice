@@ -73,7 +73,6 @@ blockquote p {
 
 /* 链接 */
 a {
-  border-bottom: 1px solid #1e6bb8;
 }
 
 /* 加粗 */
