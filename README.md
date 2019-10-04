@@ -6,9 +6,7 @@
 <h1 align="center">Markdown Nice</h1>
 <p align="center"><img src="https://api.travis-ci.org/zhning12/markdown-nice.svg?branch=master"></p>
 
-## 简 d 介
-
-## dasdasd
+## 简介
 
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
