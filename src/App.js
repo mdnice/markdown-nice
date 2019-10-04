@@ -174,7 +174,6 @@ class App extends Component {
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
             <CodeMirror
-              disable
               value={this.props.content.content}
               options={{
                 theme: "md-mirror",
