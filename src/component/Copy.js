@@ -33,6 +33,7 @@ class Copy extends Component {
       if (mathBlock.length !== tagsBlock.length) {
         const codes = document.getElementsByTagName("code");
         let text = "";
+        // eslint-disable-next-line
         for (const code of codes) {
           text += code.innerText;
         }
@@ -85,6 +86,7 @@ class Copy extends Component {
     if (mathInline.length !== tagsInline.length) {
       const codes = document.getElementsByTagName("code");
       let text = "";
+      // eslint-disable-next-line
       for (const code of codes) {
         text += code.innerText;
       }

@@ -1,24 +1,38 @@
 /**
  * 图片上传
  */
-/* eslint-disable */
 import * as qiniu from "qiniu-js";
-import QiniuOSS from "../component/ImageHosting/QiniuOSS";
-import {
-  SM_MS_PROXY,
-  ALIOSS_IMAGE_HOSTING,
-  QINIUOSS_IMAGE_HOSTING,
-  IMAGE_HOSTING_TYPE,
-  IMAGE_HOSTING_TYPE_OPTIONS,
-} from "./constant";
+import {notification, message} from "antd";
+import axios from "axios";
+import OSS from "ali-oss";
+
+import {SM_MS_PROXY, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMAGE_HOSTING_TYPE} from "./constant";
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
 
+function showUploadNoti() {
+  notification.info({
+    message: "提示",
+    description: "图片上传中",
+    duration: 10000,
+  });
+}
+
+function uploadError(description = "图片上传失败") {
+  notification.error({
+    message: "提示",
+    description,
+    duration: 3,
+  });
+}
+
+function hideUploadNoti() {
+  notification.destroy();
+}
+
 function writeToEditor({content, image}) {
-  let text = `\n![${image.filename}](${image.url})\n`;
+  const text = `\n![${image.filename}](${image.url})\n`;
   const {markdownEditor} = content;
   const cursor = markdownEditor.getCursor();
-  console.log("cursor", cursor);
-
   markdownEditor.replaceSelection(text, cursor);
   content.setContent(markdownEditor.getValue());
 }
@@ -30,8 +44,9 @@ export const qiniuOSSUpload = async ({
   onError = () => {},
   onProgress = () => {},
   images = [],
-  content = null, // 编辑器示例，粘贴的时候会用到
+  content = null, // store content
 }) => {
+  showUploadNoti();
   const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
   try {
     let {domain} = config;
@@ -91,6 +106,9 @@ export const qiniuOSSUpload = async ({
           writeToEditor({content, image});
         }
         onSuccess(response);
+        setTimeout(() => {
+          hideUploadNoti();
+        }, 500);
       };
 
       // 上传过程回调
@@ -107,6 +125,8 @@ export const qiniuOSSUpload = async ({
 
       // 上传错误回调
       const error = (err) => {
+        hideUploadNoti();
+        uploadError();
         onError(err, err.toString());
       };
 
@@ -123,6 +143,204 @@ export const qiniuOSSUpload = async ({
   }
 };
 
-export default {
-  qiniuOSSUpload,
+export const qiniuFreeUpload = async ({
+  formData = new FormData(),
+  file = {},
+  onSuccess = () => {},
+  onError = () => {},
+  images = [],
+  content = null, // store content
+}) => {
+  showUploadNoti();
+  try {
+    formData.append("file", file);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    const result = await axiosMdnice.post(`/qiniuFree`, formData, config);
+    const names = file.name.split(".");
+    names.pop();
+    const filename = names.join(".");
+    const image = {
+      filename, // 名字不变并且去掉后缀
+      url: result.data,
+    };
+    if (content) {
+      writeToEditor({content, image});
+    }
+    images.push(image);
+    onSuccess(result);
+    setTimeout(() => {
+      hideUploadNoti();
+    }, 500);
+  } catch (err) {
+    hideUploadNoti();
+    uploadError();
+    onError(err, err.toString());
+  }
+};
+
+// SM.MS存储上传
+export const smmsUpload = ({
+  formData = new FormData(),
+  file = {},
+  action = SM_MS_PROXY,
+  onProgress = () => {},
+  onSuccess = () => {},
+  onError = () => {},
+  headers = {},
+  withCredentials = false,
+  images = [],
+  content = null, // store content
+}) => {
+  showUploadNoti();
+  // SM.MS图床必须这里命名为smfile
+  formData.append("smfile", file);
+  axios
+    .post(action, formData, {
+      withCredentials,
+      headers,
+      onUploadProgress: ({total, loaded}) => {
+        onProgress(
+          {
+            percent: parseInt(Math.round((loaded / total) * 100).toFixed(2), 10),
+          },
+          file,
+        );
+      },
+    })
+    .then(({data: response}) => {
+      if (response.code === "exception") {
+        throw response.message;
+      }
+      const image = {
+        filename: response.data.filename,
+        url: response.data.url,
+      };
+      if (content) {
+        writeToEditor({content, image});
+      }
+      images.push(image);
+      onSuccess(response, file);
+      setTimeout(() => {
+        hideUploadNoti();
+      }, 500);
+    })
+    .catch((error) => {
+      hideUploadNoti();
+      uploadError(error.toString());
+      onError(error, error.toString());
+    });
+};
+
+// 阿里对象存储，上传部分
+const aliOSSPutObject = ({config, file, buffer, onSuccess, onError, images, content}) => {
+  let client;
+  try {
+    client = new OSS(config);
+  } catch (error) {
+    message.error("OSS配置错误，请根据文档检查配置项");
+    return;
+  }
+
+  const OSSName = getOSSName(file.name);
+
+  client
+    .put(OSSName, buffer)
+    .then((response) => {
+      const names = file.name.split(".");
+      names.pop();
+      const filename = names.join(".");
+      const image = {
+        filename, // 名字不变并且去掉后缀
+        url: response.url,
+      };
+      if (content) {
+        writeToEditor({content, image});
+      }
+      images.push(image);
+      onSuccess(response, file);
+      setTimeout(() => {
+        hideUploadNoti();
+      }, 500);
+    })
+    .catch((error) => {
+      console.log(error);
+
+      hideUploadNoti();
+      uploadError("请根据文档检查配置项");
+      onError(error, error.toString());
+    });
+};
+
+// 阿里云对象存储上传，处理部分
+export const aliOSSUpload = ({
+  file = {},
+  onSuccess = () => {},
+  onError = () => {},
+  images = [],
+  content = null, // store content
+}) => {
+  showUploadNoti();
+  const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
+  const base64Reader = new FileReader();
+  base64Reader.readAsDataURL(file);
+  base64Reader.onload = (e) => {
+    const urlData = e.target.result;
+    const base64 = urlData.split(",").pop();
+    const fileType = urlData
+      .split(";")
+      .shift()
+      .split(":")
+      .pop();
+
+    // base64转blob
+    const blob = toBlob(base64, fileType);
+
+    // blob转arrayBuffer
+    const bufferReader = new FileReader();
+    bufferReader.readAsArrayBuffer(blob);
+    bufferReader.onload = (event) => {
+      const buffer = new OSS.Buffer(event.target.result);
+      aliOSSPutObject({config, file, buffer, onSuccess, onError, images, content});
+    };
+  };
+};
+
+// 自动检测上传配置，进行上传
+export const uploadAdaptor = (...args) => {
+  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // mdnice | SM.MS | 阿里云 | 七牛云
+  if (type === "mdnice") {
+    return qiniuFreeUpload(...args);
+  } else if (type === "SM.MS") {
+    return smmsUpload(...args);
+  } else if (type === "七牛云") {
+    const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
+    if (
+      !config.region.length ||
+      !config.accessKey.length ||
+      !config.secretKey.length ||
+      !config.bucket.length ||
+      !config.domain.length
+    ) {
+      message.error("请先配置七牛云图床");
+      return false;
+    }
+    return qiniuOSSUpload(...args);
+  } else if (type === "阿里云") {
+    const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
+    if (
+      !config.region.length ||
+      !config.accessKeyId.length ||
+      !config.accessKeySecret.length ||
+      !config.bucket.length
+    ) {
+      message.error("请先配置阿里云图床");
+      return false;
+    }
+    return aliOSSUpload(...args);
+  }
+  return true;
 };

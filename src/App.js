@@ -13,7 +13,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat} from "./utils/helper";
-import {qiniuOSSUpload} from "./utils/imageHosting";
+import {qiniuOSSUpload, uploadAdaptor} from "./utils/imageHosting";
 
 @inject("content")
 @inject("navbar")
@@ -49,39 +49,10 @@ class App extends Component {
     }
   };
 
-  handleChange = (editor, changeObj) => {
+  handleChange = (editor) => {
     if (this.focus) {
       const content = editor.getValue();
-      // 粘贴时检测
-      if (this.props.navbar.isPasteCheckOpen && changeObj.origin === "paste") {
-        const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
-        const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
-
-        if (res === null) {
-          this.props.content.setContent(content);
-          return;
-        }
-
-        const footReg = /.*?\(.*?"(.*?)".*?\)/;
-        const filterRes = res.filter((val) => {
-          const comment = val.match(footReg);
-          if (val[0] === "!") {
-            return false;
-          }
-          if (comment && comment[1] !== "") {
-            return false;
-          }
-          return true;
-        }); // 过滤掉图片和脚注
-
-        if (filterRes.length > 0) {
-          this.showConfirm(filterRes, content);
-        } else {
-          this.props.content.setContent(content);
-        }
-      } else {
-        this.props.content.setContent(content);
-      }
+      this.props.content.setContent(content);
     }
   };
 
@@ -110,11 +81,11 @@ class App extends Component {
     });
   };
 
-  handleFocus = (e) => {
+  handleFocus = () => {
     this.focus = true;
   };
 
-  handleBlur = (e) => {
+  handleBlur = () => {
     this.focus = false;
   };
 
@@ -141,15 +112,52 @@ class App extends Component {
     e.preventDefault();
   };
 
+  handlePasteText = (content) => {
+    // 粘贴时检测
+    if (this.props.navbar.isPasteCheckOpen) {
+      const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
+      const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
+
+      if (res === null) {
+        this.props.content.setContent(content);
+        return;
+      }
+
+      const footReg = /.*?\(.*?"(.*?)".*?\)/;
+      const filterRes = res.filter((val) => {
+        const comment = val.match(footReg);
+        if (val[0] === "!") {
+          return false;
+        }
+        if (comment && comment[1] !== "") {
+          return false;
+        }
+        return true;
+      }); // 过滤掉图片和脚注
+
+      if (filterRes.length > 0) {
+        this.showConfirm(filterRes, content);
+      } else {
+        this;
+      }
+    }
+  };
+
   handlePaste = (instance, e) => {
-    // console.log(e.dataTransfer.files[0]);
-    if (!(e.clipboardData && e.clipboardData.files)) {
-      return;
-    }
-    for (var i = 0; i < e.clipboardData.files.length; i++) {
-      qiniuOSSUpload({file: e.clipboardData.files[i], content: this.props.content});
-    }
     e.preventDefault();
+
+    if (e.clipboardData) {
+      if (e.clipboardData.items) {
+        e.clipboardData.items[0].getAsString((t) => {
+          this.handlePasteText(t);
+        });
+      }
+      if (e.clipboardData.files) {
+        for (var i = 0; i < e.clipboardData.files.length; i++) {
+          uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
+        }
+      }
+    }
   };
 
   render() {
@@ -166,6 +174,7 @@ class App extends Component {
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
             <CodeMirror
+              disable
               value={this.props.content.content}
               options={{
                 theme: "md-mirror",

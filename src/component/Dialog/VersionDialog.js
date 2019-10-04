@@ -6,15 +6,15 @@ import {VERSION_TIMELINE} from "../../utils/constant";
 @inject("dialog")
 @observer
 class LinkDialog extends Component {
-  handleOk = (e) => {
+  handleOk = () => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleCancel = (e) => {
+  handleCancel = () => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleMore = (e) => {
+  handleMore = () => {
     const w = window.open("about:blank");
     w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
   };
