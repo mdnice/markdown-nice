@@ -101,15 +101,15 @@ class App extends Component {
   };
 
   handleDrop = (instance, e) => {
+    e.preventDefault();
     // console.log(e.dataTransfer.files[0]);
     if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
     }
     for (var i = 0; i < e.dataTransfer.files.length; i++) {
       // console.log(e.dataTransfer.files[i]);
-      qiniuOSSUpload({file: e.dataTransfer.files[i], content: this.props.content});
+      uploadAdaptor({file: e.dataTransfer.files[i], content: this.props.content});
     }
-    e.preventDefault();
   };
 
   handlePasteText = (content) => {
