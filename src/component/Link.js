@@ -3,7 +3,8 @@ import {observer, inject} from "mobx-react";
 import {Button, Icon, Tooltip} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import linkIcon from "../icon/link.svg";
+// import linkIcon from "../icon/link.svg";
+import SvgIcon from "../icon";
 
 @inject("dialog")
 @observer
@@ -16,7 +17,7 @@ class Link extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="链接">
         <Button style={style.btnPadding} onClick={this.showModal}>
-          <Icon component={linkIcon} style={style.iconSize} />
+          <SvgIcon name="link" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -25,10 +26,12 @@ class Link extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "17px",
+  svgIcon: {
+    padding: "6px 7px 10px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 

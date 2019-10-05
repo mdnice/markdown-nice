@@ -4,6 +4,7 @@ import {observer, inject} from "mobx-react";
 
 import {TEMPLATE_OPTIONS, CODE_OPTIONS, ENTER_DELAY, LEAVE_DELAY, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
 import TEMPLATE from "../template/index";
+import SvgIcon from "../icon";
 
 @inject("content")
 @inject("navbar")
@@ -60,17 +61,21 @@ class ThemeSelect extends React.Component {
     const mdMenuStyle = templateNum === TEMPLATE_CUSTOM_NUM ? style.mdCutomMenu : style.mdMenu;
 
     return (
-      <div>
+      <div style={style.layout}>
         <Dropdown overlay={mdMenu} placement="bottomCenter">
           <Button style={mdMenuStyle}>
             {TEMPLATE_OPTIONS[templateNum].name}
-            <Icon type="down" />
+            <i className="anticon anticon-down">
+              <SvgIcon name="down" style={style.svgIcon} />
+            </i>
           </Button>
         </Dropdown>
         <Dropdown overlay={codeMenu} placement="bottomCenter">
           <Button style={style.codeMenu}>
             {CODE_OPTIONS[codeNum].name}
-            <Icon type="down" />
+            <i className="anticon anticon-down">
+              <SvgIcon name="down" style={style.svgIcon} />
+            </i>
           </Button>
         </Dropdown>
         <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="样式编辑">
@@ -90,13 +95,19 @@ const style = {
   mdCutomMenu: {
     marginLeft: 8,
     border: "1px dashed #1890ff",
+    display: "flex",
+    paddingRight: "11px",
   },
   mdMenu: {
     marginLeft: 8,
+    display: "flex",
+    paddingRight: "11px",
   },
   codeMenu: {
     marginLeft: 8,
     marginRight: 8,
+    display: "flex",
+    paddingRight: "11px",
   },
   themeItem: {
     display: "flex",
@@ -107,6 +118,14 @@ const style = {
   },
   themeItemName: {
     marginRight: "10px",
+  },
+  svgIcon: {
+    width: "18px",
+    height: "18px",
+  },
+  layout: {
+    display: "flex",
+    alignItems: "center",
   },
 };
 

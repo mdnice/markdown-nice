@@ -60,7 +60,6 @@ class Navbar extends Component {
           <Copy />
           <About />
           <ThemeSelect />
-          {/* <Save /> */}
           {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Modal, Timeline, Button, Icon} from "antd";
 import {VERSION_TIMELINE} from "../../utils/constant";
+import SvgIcon from "../../icon";
 
 @inject("dialog")
 @observer
@@ -36,7 +37,7 @@ class LinkDialog extends Component {
           {VERSION_TIMELINE.map((version, index) => {
             if (index === 0) {
               return (
-                <Timeline.Item key={index} dot={<Icon type="environment" style={{fontSize: "16px"}} />}>
+                <Timeline.Item key={index} dot={<SvgIcon name="environment" style={style.svgIcon} />}>
                   <strong>{version}</strong>
                 </Timeline.Item>
               );
@@ -44,7 +45,7 @@ class LinkDialog extends Component {
               return <Timeline.Item key={index}>{version}</Timeline.Item>;
             }
           })}
-          <Timeline.Item dot={<Icon type="more" style={{fontSize: "20px"}} />}>
+          <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
             <a
               alt=""
               href="https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md"
@@ -59,5 +60,12 @@ class LinkDialog extends Component {
     );
   }
 }
+
+const style = {
+  svgIcon: {
+    width: "16px",
+    height: "16px",
+  },
+};
 
 export default LinkDialog;

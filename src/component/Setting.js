@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Icon, Tooltip} from "antd";
+import {Button, Tooltip} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import settingIcon from "../icon/setting.svg";
+import SvgIcon from "../icon";
 
 @inject("dialog")
 @observer
@@ -14,21 +14,26 @@ class Setting extends Component {
 
   render() {
     return (
-      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="设置">
-        <Button style={style.btnPadding} onClick={this.showModal}>
-          <Icon component={settingIcon} style={style.iconSize} />
-        </Button>
-      </Tooltip>
+      <div>
+        <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="设置">
+          <Button style={style.btnPadding} onClick={this.showModal}>
+            <SvgIcon name="setting" style={style.svgIcon} />
+          </Button>
+        </Tooltip>
+      </div>
     );
   }
 }
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
+    borderRadius: "4px",
   },
-  iconSize: {
-    fontSize: "17px",
+  svgIcon: {
+    padding: "6px 7px 10px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 

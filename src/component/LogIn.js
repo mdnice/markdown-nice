@@ -3,10 +3,9 @@ import {Tooltip, Button, Icon} from "antd";
 import {observer, inject} from "mobx-react";
 import axios from "axios";
 
-import githubIcon from "../icon/github.svg";
-
 import {CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN, ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 import {queryParse, axiosJSON, axiosGithub} from "../utils/helper";
+import SvgIcon from "../icon";
 
 @inject("userInfo")
 @observer
@@ -51,7 +50,7 @@ class LogIn extends React.Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="登录">
         <Button shape="circle" style={style.btnStyle} onClick={this.login}>
-          <Icon component={githubIcon} style={style.iconSize} />
+          <SvgIcon name="github" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -64,12 +63,13 @@ const style = {
     width: "24px",
     height: "24px",
   },
-  iconSize: {
-    fontSize: "24px",
-  },
   avatar: {
     background: "white",
     color: "black",
+  },
+  svgIcon: {
+    width: "24px",
+    height: "24px",
   },
 };
 
