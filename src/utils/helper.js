@@ -249,3 +249,13 @@ export const getOSSName = (originName, namespace = "") => {
   }
   return `${namespace}${key}`;
 };
+
+export const addStyleLabel = (styleLabels) => {
+  const add = (name) => {
+    const style = document.createElement("style");
+    style.id = name;
+    const head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
+  };
+  styleLabels.forEach((name) => add(name));
+};

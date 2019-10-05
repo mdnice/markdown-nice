@@ -30,6 +30,8 @@ export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
 
+export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
+
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
 

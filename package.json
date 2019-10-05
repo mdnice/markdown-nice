@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.19",
+    "ali-oss": "^6.1.1",
     "antd": "^3.15.1",
     "axios": "^0.18.0",
     "highlight.js": "^9.15.6",
@@ -38,11 +39,11 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "prettier": "^1.18.2",
+    "qiniu-js": "^2.5.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "ali-oss": "^6.1.1",
-    "prettier": "^1.18.2",
-    "qiniu-js": "^2.5.4"
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",

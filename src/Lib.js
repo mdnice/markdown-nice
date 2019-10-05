@@ -12,7 +12,7 @@ import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
 
 import {isPC} from "./utils/helper";
-import {Result, Icon} from "antd";
+import {Result} from "antd";
 import SvgIcon from "./icon";
 
 class Lib extends Component {

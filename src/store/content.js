@@ -7,8 +7,9 @@ import {
   TEMPLATE_CUSTOM_NUM,
   MARKDOWN_THEME_ID,
   BASIC_THEME_ID,
+  STYLE_LABELS,
 } from "../utils/constant";
-import {replaceStyle} from "../utils/helper";
+import {replaceStyle, addStyleLabel} from "../utils/helper";
 import TEMPLATE from "../template/index";
 
 class Content {
@@ -72,10 +73,14 @@ if (templateNum === TEMPLATE_CUSTOM_NUM) {
   }
 }
 
+// 在head中添加style标签
+addStyleLabel(STYLE_LABELS);
+
 // 初始化整体主题
 replaceStyle(BASIC_THEME_ID, TEMPLATE.basic);
 replaceStyle(MARKDOWN_THEME_ID, store.style);
 
 store.content = window.localStorage.getItem(CONTENT);
+console.log(2);
 
 export default store;
