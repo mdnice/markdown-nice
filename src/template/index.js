@@ -7,6 +7,9 @@ import purple from "./markdown/purple";
 import cyan from "./markdown/cyan";
 import green from "./markdown/green";
 import wechatFormat from "./markdown/wechatFormat";
+import blue from "./markdown/blue";
+import blueCyan from "./markdown/blueCyan";
+import scienceBlue from "./markdown/scienceBlue";
 
 import content from "./content";
 
@@ -30,6 +33,9 @@ export default {
     green,
     red,
     wechatFormat,
+    blue,
+    blueCyan,
+    scienceBlue,
   },
   code: {
     atomOneDark,
