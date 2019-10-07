@@ -243,7 +243,6 @@ function linkFoot(state, silent) {
     }
     // 不存在标题则判断域名
     else {
-      // if(href.includes('https://mp.weixin.qq.com/s/')) {
       state.pos = labelStart;
       state.posMax = labelEnd;
 

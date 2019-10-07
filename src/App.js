@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 
-import {Modal, Button} from "antd";
-
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
@@ -15,7 +13,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat} from "./utils/helper";
-import {qiniuOSSUpload, uploadAdaptor} from "./utils/imageHosting";
+import {uploadAdaptor} from "./utils/imageHosting";
 
 @inject("content")
 @inject("navbar")
@@ -59,46 +57,6 @@ class App extends Component {
     }
   };
 
-  showConfirm = (filterRes, content) => {
-    const modal = Modal.confirm({
-      title: "检测到微信之外链接",
-      content: (
-        <div className="ant-modal-confirm-content">
-          粘贴过程中检测到存在微信域名之外链接，是否自动转成脚注？
-          <br />
-          <Button
-            style={style.close}
-            type="link"
-            onClick={() => {
-              this.props.dialog.setSettingOpen(true);
-              modal.destroy();
-            }}
-          >
-            Tips: 关闭该提示
-          </Button>
-        </div>
-      ),
-      okText: "确定",
-      cancelText: "取消",
-      onOk: () => {
-        filterRes.forEach((val) => {
-          const linkReg = /\[(.*?)\]\((.*?)\)/; // 匹配链接中具体的值
-          const matchValue = val.match(linkReg);
-          const name = matchValue[1];
-          const url = matchValue[2].trim();
-
-          const newVal = `[${name}](${url} "${name}")`;
-          content = content.replace(val, newVal);
-        });
-
-        this.props.content.setContent(content);
-      },
-      onCancel: () => {
-        this.props.content.setContent(content);
-      },
-    });
-  };
-
   handleFocus = () => {
     this.focus = true;
   };
@@ -119,7 +77,7 @@ class App extends Component {
   };
 
   handleDrop = (instance, e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // console.log(e.dataTransfer.files[0]);
     if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
@@ -130,50 +88,10 @@ class App extends Component {
     }
   };
 
-  handlePasteText = (content) => {
-    // 粘贴时检测
-    if (this.props.navbar.isPasteCheckOpen) {
-      const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
-      const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
-
-      if (res === null) {
-        this.props.content.setContent(content);
-        return;
-      }
-
-      const footReg = /.*?\(.*?"(.*?)".*?\)/;
-      const filterRes = res.filter((val) => {
-        const comment = val.match(footReg);
-        if (val[0] === "!") {
-          return false;
-        }
-        if (comment && comment[1] !== "") {
-          return false;
-        }
-        return true;
-      }); // 过滤掉图片和脚注
-
-      if (filterRes.length > 0) {
-        this.showConfirm(filterRes, content);
-      } else {
-        this;
-      }
-    }
-  };
-
   handlePaste = (instance, e) => {
-    e.preventDefault();
-
-    if (e.clipboardData) {
-      if (e.clipboardData.items) {
-        e.clipboardData.items[0].getAsString((t) => {
-          this.handlePasteText(t);
-        });
-      }
-      if (e.clipboardData.files) {
-        for (var i = 0; i < e.clipboardData.files.length; i++) {
-          uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
-        }
+    if (e.clipboardData.files) {
+      for (var i = 0; i < e.clipboardData.files.length; i++) {
+        uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
       }
     }
   };
@@ -188,7 +106,6 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-
         <div className="text-container">
           <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
             <CodeMirror
@@ -242,11 +159,5 @@ class App extends Component {
     );
   }
 }
-
-const style = {
-  close: {
-    padding: 0,
-  },
-};
 
 export default App;

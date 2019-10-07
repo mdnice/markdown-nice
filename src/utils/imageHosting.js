@@ -2,7 +2,7 @@
  * 图片上传
  */
 import * as qiniu from "qiniu-js";
-import {notification, message} from "antd";
+import {message} from "antd";
 import axios from "axios";
 import OSS from "ali-oss";
 
@@ -10,27 +10,21 @@ import {SM_MS_PROXY, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMAGE_HOSTING
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
 
 function showUploadNoti() {
-  notification.info({
-    message: "提示",
-    description: "图片上传中",
-    duration: 10000,
-  });
+  message.loading("图片上传中", 0);
 }
 
 function uploadError(description = "图片上传失败") {
-  notification.error({
-    message: "提示",
-    description,
-    duration: 3,
-  });
+  message.error(description, 3);
 }
 
 function hideUploadNoti() {
-  notification.destroy();
+  message.destroy();
+  message.success("图片上传成功");
 }
 
 function writeToEditor({content, image}) {
-  const text = `\n![${image.filename}](${image.url})\n`;
+  // 此处图片名称可能存在空格，所以要encodeURI
+  const text = `\n![${image.filename}](${encodeURI(image.url)})\n`;
   const {markdownEditor} = content;
   const cursor = markdownEditor.getCursor();
   markdownEditor.replaceSelection(text, cursor);

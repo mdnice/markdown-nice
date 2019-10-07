@@ -1,8 +1,8 @@
 import React from "react";
-import {Button, Icon, Menu, Dropdown, Switch, Tooltip} from "antd";
+import {Button, Icon, Menu, Dropdown, Switch} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {TEMPLATE_OPTIONS, CODE_OPTIONS, ENTER_DELAY, LEAVE_DELAY, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
+import {TEMPLATE_OPTIONS, CODE_OPTIONS, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
 import TEMPLATE from "../template/index";
 
 @inject("content")
@@ -10,6 +10,7 @@ import TEMPLATE from "../template/index";
 @observer
 class ThemeSelect extends React.Component {
   changeTemplate = (item) => {
+    console.log(item);
     const index = parseInt(item.key, 10);
     const {id} = TEMPLATE_OPTIONS[index];
     this.props.navbar.setTemplateNum(index);
@@ -45,6 +46,16 @@ class ThemeSelect extends React.Component {
             </div>
           </Menu.Item>
         ))}
+        <Menu.Divider />
+        <div style={style.menuItem}>
+          <div style={style.themeItem}>
+            <span style={style.themeItemName}>查看主题 CSS</span>
+
+            <span style={style.themeItemAuthor}>
+              <Switch checked={this.props.navbar.isStyleEditorOpen} size="small" onChange={this.toggleStyleEditor} />
+            </span>
+          </div>
+        </div>
       </Menu>
     );
     const codeMenu = (
@@ -73,14 +84,6 @@ class ThemeSelect extends React.Component {
             <Icon type="down" />
           </Button>
         </Dropdown>
-        <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="样式编辑">
-          <Switch
-            checked={this.props.navbar.isStyleEditorOpen}
-            size="small"
-            onChange={this.toggleStyleEditor}
-            style={{marginRight: 8}}
-          />
-        </Tooltip>
       </div>
     );
   }
@@ -107,6 +110,17 @@ const style = {
   },
   themeItemName: {
     marginRight: "10px",
+  },
+  menuItem: {
+    clear: "both",
+    margin: 0,
+    padding: "5px 12px",
+    color: "rgba(0, 0, 0, 0.65)",
+    fontWeight: "normal",
+    fontSize: "14px",
+    lineHeight: "22px",
+    whiteSpace: "nowrap",
+    cursor: "pointer",
   },
 };
 

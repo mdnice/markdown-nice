@@ -79,12 +79,12 @@ class AboutDialog extends Component {
           <img
             alt="图片描述"
             style={style.imgWidth}
-            src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E6%89%93%E8%B5%8F%E4%BA%8C%E7%BB%B4%E7%A0%81_20190825201704.png"
+            src="http://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"
           />
           <img
             alt="图片描述"
             style={style.imgWidth}
-            src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E7%89%A7%E7%A0%81%E5%95%A6%E5%B0%8F%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81_20190929092055.JPG"
+            src="http://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"
           />
         </div>
       </Modal>
