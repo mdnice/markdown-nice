@@ -53,7 +53,7 @@ class Copy extends Component {
         const math = mathBlock[i];
         let formula = math.split("$$")[1];
         formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
+        const url = `/math/type/svg/scale/${this.scale}/math/${formula}`;
         urlArr.push(url);
       }
 
@@ -62,12 +62,13 @@ class Copy extends Component {
 
       const resultArr = await Promise.all(promiseArr);
       resultArr.forEach((result, index) => {
-        const img = new Image();
-        img.src = result.data;
-        img.onload = this.imgOnload;
-        img.className = "math-img-block";
-        tagsBlock[index].removeChild(tagsBlock[index].firstChild);
-        tagsBlock[index].appendChild(img);
+        tagsBlock[index].innerHTML = result.data;
+        // const img = new Image();
+        // img.src = result.data;
+        // img.onload = this.imgOnload;
+        // img.className = "math-img-block";
+        // tagsBlock[index].removeChild(tagsBlock[index].firstChild);
+        // tagsBlock[index].appendChild(result);
       });
     }
     return true;
@@ -117,7 +118,7 @@ class Copy extends Component {
       const math = mathInline[i];
       let formula = math.split("$")[1];
       formula = encodeURI(formula.replace(/\s/g, "&space;").replace(/\//g, "&divide;"));
-      const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
+      const url = `/math/type/svg/scale/${this.scale}/math/${formula}`;
       urlArr.push(url);
     }
     // 使用promise并行发请求，增快公式转换速度
@@ -125,13 +126,14 @@ class Copy extends Component {
 
     const resultArr = await Promise.all(promiseArr);
     resultArr.forEach((result, index) => {
-      const img = new Image();
-      img.src = result.data;
-      img.onload = this.imgOnload;
-      img.className = "math-img-inline";
-      tagsInline[index].removeChild(tagsInline[index].firstChild);
-      tagsInline[index].removeChild(tagsInline[index].firstChild);
-      tagsInline[index].appendChild(img);
+      tagsInline[index].innerHTML = result.data;
+      // const img = new Image();
+      // img.src = result.data;
+      // img.onload = this.imgOnload;
+      // img.className = "math-img-inline";
+      // tagsInline[index].removeChild(tagsInline[index].firstChild);
+      // tagsInline[index].removeChild(tagsInline[index].firstChild);
+      // tagsInline[index].appendChild(img);
     });
 
     return true;
