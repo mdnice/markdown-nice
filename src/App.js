@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import {Modal} from "antd";
+import {Modal, Button} from "antd";
 
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
@@ -18,6 +18,7 @@ import {markdownParser, markdownParserWechat} from "./utils/helper";
 
 @inject("content")
 @inject("navbar")
+@inject("dialog")
 @observer
 class App extends Component {
   constructor(props) {
@@ -87,9 +88,24 @@ class App extends Component {
   };
 
   showConfirm = (filterRes, content) => {
-    Modal.confirm({
-      title: "微信之外链接",
-      content: "粘贴过程中检测到存在微信域名之外链接，是否自动转成脚注？",
+    const modal = Modal.confirm({
+      title: "检测到微信之外链接",
+      content: (
+        <div className="ant-modal-confirm-content">
+          粘贴过程中检测到存在微信域名之外链接，是否自动转成脚注？
+          <br />
+          <Button
+            style={style.close}
+            type="link"
+            onClick={() => {
+              this.props.dialog.setSettingOpen(true);
+              modal.destroy();
+            }}
+          >
+            Tips: 关闭该提示
+          </Button>
+        </div>
+      ),
       okText: "确定",
       cancelText: "取消",
       onOk: () => {
@@ -205,5 +221,11 @@ class App extends Component {
     );
   }
 }
+
+const style = {
+  close: {
+    padding: 0,
+  },
+};
 
 export default App;

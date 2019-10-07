@@ -76,7 +76,7 @@ export const TEMPLATE_OPTIONS = [
   },
   {
     id: "blue",
-    name: "蓝蓝",
+    name: "蓝莹",
     author: "谭淞宸",
   },
   {
@@ -132,7 +132,7 @@ export const CODE_OPTIONS = [
 export const VERSION_NUM = "1.1.11";
 
 export const VERSION_TIMELINE = [
-  "2019-10-06 新增蓝蓝、科技蓝、兰青主题",
+  "2019-10-06 新增蓝莹、科技蓝、兰青主题",
   "2019-10-02 新增复制时排版检测功能，规范排版格式",
   "2019-09-24 修复行内公式存在除号问题，增加行内公式报错提示",
   "2019-09-22 修复 sup 标签行高，减小应用体积",

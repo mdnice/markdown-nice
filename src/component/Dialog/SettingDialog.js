@@ -40,7 +40,7 @@ class LinkDialog extends Component {
         ]}
       >
         <div>
-          <span style={style.marginWord}>粘贴时语法检测：</span>
+          <span style={style.marginWord}>粘贴时外链检测：</span>
           <Switch checked={this.props.navbar.isPasteCheckOpen} size="small" onChange={this.toggleAutoFoot} />
         </div>
         <div style={style.marginParagraph}>

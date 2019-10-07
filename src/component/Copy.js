@@ -13,6 +13,7 @@ import prettierMarkdown from "prettier/parser-markdown";
 @inject("content")
 @inject("navbar")
 @inject("imageHosting")
+@inject("dialog")
 @observer
 class Copy extends Component {
   constructor(props) {
@@ -187,9 +188,25 @@ class Copy extends Component {
   };
 
   showConfirm = (prettierRes) => {
-    Modal.confirm({
+    const modal = Modal.confirm({
       title: "检测到不规范排版",
-      content: "当前 markdown 文档排版不规范（比如中英文空格），是否一键排版后复制？",
+      content: (
+        <div className="ant-modal-confirm-content">
+          当前 markdown 文档排版不规范（遗漏中英文空格、换行等），是否一键排版后复制？
+          <br />
+          <Button
+            style={style.close}
+            type="link"
+            onClick={() => {
+              this.props.dialog.setSettingOpen(true);
+              modal.destroy();
+              this.setState({loading: false});
+            }}
+          >
+            Tips: 关闭该提示
+          </Button>
+        </div>
+      ),
       okText: "确定",
       cancelText: "取消",
       onOk: () => {
@@ -231,6 +248,9 @@ const style = {
     fontSize: "14px",
     lineHeight: "20px",
     color: "rgba(0,0,0,0.65)",
+  },
+  close: {
+    padding: 0,
   },
 };
 
