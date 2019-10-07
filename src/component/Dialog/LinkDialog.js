@@ -13,7 +13,7 @@ class LinkDialog extends Component {
     };
   }
 
-  handleOk = (e) => {
+  handleOk = () => {
     const {markdownEditor} = this.props.content;
     const cursor = markdownEditor.getCursor();
     const selection = markdownEditor.getSelection();
@@ -28,7 +28,7 @@ class LinkDialog extends Component {
     this.props.dialog.setLinkOpen(false);
   };
 
-  handleCancel = (e) => {
+  handleCancel = () => {
     this.setState({link: ""});
     this.props.dialog.setLinkOpen(false);
   };

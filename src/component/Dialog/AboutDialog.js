@@ -5,15 +5,15 @@ import {Modal, Button} from "antd";
 @inject("dialog")
 @observer
 class AboutDialog extends Component {
-  handleOk = (e) => {
+  handleOk = () => {
     this.props.dialog.setAboutOpen(false);
   };
 
-  handleCancel = (e) => {
+  handleCancel = () => {
     this.props.dialog.setAboutOpen(false);
   };
 
-  handleVersion = (e) => {
+  handleVersion = () => {
     this.props.dialog.setAboutOpen(false);
     this.props.dialog.setVersionOpen(true);
   };

@@ -51,7 +51,7 @@ class StyleEditor extends Component {
     });
   };
 
-  changeStyle = (editor, changeObj) => {
+  changeStyle = (editor) => {
     const {templateNum} = this.props.navbar;
     // focus状态很重要，初始化时被调用则不会进入条件
     if (this.focus && templateNum !== TEMPLATE_CUSTOM_NUM) {
@@ -62,11 +62,11 @@ class StyleEditor extends Component {
     }
   };
 
-  handleFocus = (e) => {
+  handleFocus = () => {
     this.focus = true;
   };
 
-  handleBlur = (e) => {
+  handleBlur = () => {
     this.focus = false;
   };
 

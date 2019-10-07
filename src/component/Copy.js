@@ -3,7 +3,7 @@ import juice from "juice";
 import {observer, inject} from "mobx-react";
 import {Button, message, ConfigProvider, notification, Modal} from "antd";
 
-import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, IS_PRETTIER_OPEN} from "../utils/constant";
+import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
 
 import {axiosMdnice} from "../utils/helper";
 
@@ -37,6 +37,7 @@ class Copy extends Component {
       if (mathBlock.length !== tagsBlock.length) {
         const codes = document.getElementsByTagName("code");
         let text = "";
+        // eslint-disable-next-line
         for (const code of codes) {
           text += code.innerText;
         }
@@ -89,6 +90,7 @@ class Copy extends Component {
     if (mathInline.length !== tagsInline.length) {
       const codes = document.getElementsByTagName("code");
       let text = "";
+      // eslint-disable-next-line
       for (const code of codes) {
         text += code.innerText;
       }
