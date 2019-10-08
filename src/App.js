@@ -53,13 +53,16 @@ class App extends Component {
   handleChange = (editor) => {
     if (this.focus) {
       const content = editor.getValue();
-      this.props.content.setContent(content);
 
-      console.log(window.MathJax.Hub);
       window.MathJax.Hub.Queue(() => {
-        var math = window.MathJax.Hub.getAllJax("MathDiv")[0];
+        var math = window.MathJax.Hub.getAllJax()[0];
+        // console.log(window.MathJax.Hub.getAllJax("layout"));
+        console.log(math);
         window.MathJax.Hub.Queue(["Text", math, content]);
+        window.location.hash = content;
       });
+
+      this.props.content.setContent(content);
     }
   };
 
@@ -142,6 +145,7 @@ class App extends Component {
               }}
             >
               <section
+                id="layout"
                 className="layout"
                 dangerouslySetInnerHTML={{
                   __html: parseHtml,
