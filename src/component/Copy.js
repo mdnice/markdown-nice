@@ -26,6 +26,7 @@ class Copy extends Component {
   // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
   solveBlockMath = async () => {
     const mathReg = /\$\$(((?!`)[^])*?)\$\$/g; // 中间不能包含`符号
+
     const {content} = this.props.content;
 
     let mathBlock = content.match(mathReg);
@@ -62,7 +63,17 @@ class Copy extends Component {
 
       const resultArr = await Promise.all(promiseArr);
       resultArr.forEach((result, index) => {
-        tagsBlock[index].innerHTML = result.data;
+        var svg = result.data;
+        var newStyle = "";
+        const style = /width="(.+?)"\s+?height="(.+?)"\s+?style="(.+?)"/g;
+        var r = style.exec(svg);
+        try {
+          newStyle = 'style="width:' + r[1] + "; height:" + r[2] + "; " + r[3] + '"';
+          svg = svg.replace(r[0], newStyle);
+        } catch (err) {
+          notification.open(err);
+        }
+        tagsBlock[index].innerHTML = svg;
         // const img = new Image();
         // img.src = result.data;
         // img.onload = this.imgOnload;
@@ -76,10 +87,11 @@ class Copy extends Component {
 
   // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
   solveInlineMath = async () => {
-    const mathReg = /\$(\S*?)\$/g; // 这里的空格处理会导致问题？？？bug
+    const mathReg = /\$([\S\s]+?)\$/g; // 这里的空格处理会导致问题？？？bug
+    const mathRegD = /\$\$(((?!`)[^])*?)\$\$/g; // 中间不能包含`符号
     const {content} = this.props.content;
-
-    let mathInline = content.match(mathReg);
+    var newContent = content.replace(mathRegD, "");
+    let mathInline = newContent.match(mathReg);
     if (mathInline == null) mathInline = [];
     mathInline = mathInline.filter((item) => item !== "$$"); // 过滤掉匹配的$$没用符号
 
@@ -126,7 +138,17 @@ class Copy extends Component {
 
     const resultArr = await Promise.all(promiseArr);
     resultArr.forEach((result, index) => {
-      tagsInline[index].innerHTML = result.data;
+      var svg = result.data;
+      var newStyle = "";
+      const style = /width="(.+?)"\s+?height="(.+?)"\s+?style="(.+?)"/g;
+      var r = style.exec(svg);
+      try {
+        newStyle = 'style="width:' + r[1] + "; height:" + r[2] + "; " + r[3] + '"';
+        svg = svg.replace(r[0], newStyle);
+      } catch (err) {
+        notification.open(err);
+      }
+      tagsInline[index].innerHTML = svg;
       // const img = new Image();
       // img.src = result.data;
       // img.onload = this.imgOnload;
