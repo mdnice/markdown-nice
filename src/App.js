@@ -54,6 +54,12 @@ class App extends Component {
     if (this.focus) {
       const content = editor.getValue();
       this.props.content.setContent(content);
+
+      console.log(window.MathJax.Hub);
+      window.MathJax.Hub.Queue(() => {
+        var math = window.MathJax.Hub.getAllJax("MathDiv")[0];
+        window.MathJax.Hub.Queue(["Text", math, content]);
+      });
     }
   };
 
