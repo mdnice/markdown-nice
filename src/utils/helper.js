@@ -1,7 +1,8 @@
 import axios from "axios";
 import MarkdownIt from "markdown-it";
 import markdownItSup from "markdown-it-sup";
-import markdownItKatex from "markdown-it-katex";
+// import markdownItKatex from "markdown-it-katex";
+// import markdownItKatex from "./markdown-it-math";
 import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
@@ -81,7 +82,7 @@ markdownParserWechat
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItRemovepre) // 移除代码段中的 pre code
   .use(markdownItSup) // 上标
-  .use(markdownItKatex) // 数学公式
+  // .use(markdownItKatex) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
@@ -113,7 +114,7 @@ export const markdownParser = new MarkdownIt({
 markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItSup) // 上标
-  .use(markdownItKatex) // 数学公式
+  // .use(markdownItKatex) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
   .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
