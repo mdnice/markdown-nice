@@ -53,16 +53,10 @@ class App extends Component {
   handleChange = (editor) => {
     if (this.focus) {
       const content = editor.getValue();
-
-      window.MathJax.Hub.Queue(() => {
-        var math = window.MathJax.Hub.getAllJax()[0];
-        // console.log(window.MathJax.Hub.getAllJax("layout"));
-        console.log(math);
-        window.MathJax.Hub.Queue(["Text", math, content]);
-        window.location.hash = content;
-      });
-
       this.props.content.setContent(content);
+      // window.MathJax.texReset();
+      // window.MathJax.typesetClear();
+      window.MathJax.typesetPromise();
     }
   };
 
