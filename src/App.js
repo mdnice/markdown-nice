@@ -54,25 +54,27 @@ class App extends Component {
     if (this.focus) {
       const content = editor.getValue();
       this.props.content.setContent(content);
-      // window.MathJax.texReset();
-      // window.MathJax.typesetClear();
-      window.MathJax.typesetPromise().then(() => {
-        var element = document.getElementById("wx-box");
-        var formulas = element.getElementsByTagName("mjx-container");
-        for (let index = 0; index < formulas.length; index++) {
-          var mjx = formulas[index];
-          if (mjx.hasAttribute("display")) {
-            var parent = mjx.parentNode;
-            var svgContainer = document.createElement("section");
-            svgContainer.innerHTML = mjx.innerHTML;
-            svgContainer.className = "block-equation";
-            parent.removeChild(mjx);
-            parent.appendChild(svgContainer);
-          } else {
-            mjx.outerHTML = mjx.innerHTML;
+      window.MathJax.texReset();
+      window.MathJax.typesetClear();
+      window.MathJax.typesetPromise()
+        .then(() => {
+          var element = document.getElementById("wx-box");
+          var formulas = element.getElementsByTagName("mjx-container");
+          for (let index = 0; index < formulas.length; index++) {
+            var mjx = formulas[index];
+            if (mjx.hasAttribute("display")) {
+              var parent = mjx.parentNode;
+              var svgContainer = document.createElement("section");
+              svgContainer.innerHTML = mjx.innerHTML;
+              svgContainer.className = "block-equation";
+              parent.removeChild(mjx);
+              parent.appendChild(svgContainer);
+            } else {
+              mjx.outerHTML = mjx.innerHTML;
+            }
           }
-        }
-      });
+        })
+        .catch((err) => console.log(err.message));
     }
   };
 
