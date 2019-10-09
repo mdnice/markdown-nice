@@ -23,30 +23,13 @@ class Copy extends Component {
     };
   }
 
-  // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
-  solveBlockMath = async () => {
-    const tagsBlock = document.getElementsByClassName("block-equation");
-    for (let i = 0; i < tagsBlock.length; i++) {
-      var svg = tagsBlock[i].firstChild;
-      const width = svg.getAttribute("width");
-      if (width === null) {
-        break;
-      }
-      const height = svg.getAttribute("height");
-      svg.removeAttribute("width");
-      svg.removeAttribute("height");
-      svg.style.width = width;
-      svg.style.height = height;
-    }
-  };
-
-  solveMath = async () => {
+  solveMath = () => {
     const svgArr = document.getElementsByTagName("svg");
     for (let i = 0; i < svgArr.length; i++) {
-      if (!svgArr.hasAttribute("style")) {
+      const svg = svgArr[i];
+      if (!svg.hasAttribute("style")) {
         continue;
       }
-      var svg = svgArr[i];
       const width = svg.getAttribute("width");
       if (width === null) {
         break;
@@ -70,7 +53,7 @@ class Copy extends Component {
   };
 
   // 拷贝流程 块级公式 => 行内公式 => 其他
-  copy = async () => {
+  copy = () => {
     try {
       this.setState({loading: true});
       this.solveMath();
