@@ -59,9 +59,9 @@ class App extends Component {
       window.MathJax.typesetPromise()
         .then(() => {
           var element = document.getElementById("wx-box");
-          var formulas = element.getElementsByTagName("mjx-container");
-          for (let index = 0; index < formulas.length; index++) {
-            var mjx = formulas[index];
+          const formulas = element.getElementsByTagName("mjx-container");
+          while (formulas.length > 0) {
+            var mjx = formulas[0];
             if (mjx.hasAttribute("display")) {
               var parent = mjx.parentNode;
               var svgContainer = document.createElement("section");
