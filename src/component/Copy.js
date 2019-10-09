@@ -24,16 +24,19 @@ class Copy extends Component {
   }
 
   // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
-  solveBlockMath = async () => {
+  solveBlockMath = () => {
     const tagsBlock = document.getElementsByClassName("block-equation");
     for (let i = 0; i < tagsBlock.length; i++) {
       var svg = tagsBlock[i].firstChild;
       const width = svg.getAttribute("width");
+      if (width === null) {
+        break;
+      }
       const height = svg.getAttribute("height");
       svg.removeAttribute("width");
       svg.removeAttribute("height");
-      svg.style = `vertical-align: bottom; width: ${width}; height: ${height};`;
-      console.log(svg);
+      svg.style.width = width;
+      svg.style.height = height;
     }
     return true;
   };
@@ -116,10 +119,10 @@ class Copy extends Component {
   copy = async () => {
     try {
       this.setState({loading: true});
-      const flagBlock = await this.solveBlockMath();
-      if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
-      const flagInline = await this.solveInlineMath();
-      if (!flagInline) throw new Error("行内公式格式错误，无法进行转换");
+      this.solveBlockMath();
+      // if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
+      // const flagInline = await this.solveInlineMath();
+      // if (!flagInline) throw new Error("行内公式格式错误，无法进行转换");
     } catch (e) {
       message.error(e.message);
     } finally {
