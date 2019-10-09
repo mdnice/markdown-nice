@@ -45,8 +45,8 @@ class Copy extends Component {
   solveHtml = () => {
     const element = document.getElementById("wx-box");
     var html = element.innerHTML;
-    html = html.replace(" <svg style", "&nbsp;<svg style");
-    html = html.replace("</svg> ", "</svg>&nbsp;");
+    html = html.replace(/\s<svg style/g, "&nbsp;<svg style");
+    html = html.replace(/<\/svg>\s/g, "</svg>&nbsp;");
     element.innerHTML = html;
     const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
     const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
