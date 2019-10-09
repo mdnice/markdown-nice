@@ -192,7 +192,7 @@ export default (md, options) => {
   var katexInline = function(latex) {
     options.displayMode = false;
     try {
-      return latex;
+      return "$" + latex + "$";
       // return katex.renderToString(latex, options);
     } catch (error) {
       if (options.throwOnError) {
@@ -210,7 +210,7 @@ export default (md, options) => {
     options.displayMode = true;
     try {
       console.log(latex);
-      return latex;
+      return "$$" + latex + "$$";
       // return "<p>" + katex.renderToString(latex, options) + "</p>";
     } catch (error) {
       if (options.throwOnError) {
