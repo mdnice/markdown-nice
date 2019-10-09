@@ -67,8 +67,7 @@ class App extends Component {
               var svgContainer = document.createElement("section");
               svgContainer.innerHTML = mjx.innerHTML;
               svgContainer.className = "block-equation";
-              parent.removeChild(mjx);
-              parent.appendChild(svgContainer);
+              parent.replaceChild(svgContainer, mjx);
             } else {
               mjx.outerHTML = mjx.innerHTML;
             }
