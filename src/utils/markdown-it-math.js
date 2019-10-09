@@ -192,8 +192,8 @@ export default (md, options) => {
   var katexInline = function(latex) {
     options.displayMode = false;
     try {
-      return MathJax.tex2svg("$a+b$");
-      return katex.renderToString(latex, options);
+      return latex;
+      // return katex.renderToString(latex, options);
     } catch (error) {
       if (options.throwOnError) {
         console.log(error);
@@ -209,7 +209,9 @@ export default (md, options) => {
   var katexBlock = function(latex) {
     options.displayMode = true;
     try {
-      return "<p>" + katex.renderToString(latex, options) + "</p>";
+      console.log(latex);
+      return latex;
+      // return "<p>" + katex.renderToString(latex, options) + "</p>";
     } catch (error) {
       if (options.throwOnError) {
         console.log(error);
