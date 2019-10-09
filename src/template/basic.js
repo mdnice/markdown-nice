@@ -359,4 +359,8 @@ table tr th {
 
 sub, sup {
   line-height: 0;
+}
+
+.block-equation {
+  text-align: center;
 }`;

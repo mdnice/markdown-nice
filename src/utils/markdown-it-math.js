@@ -209,7 +209,7 @@ export default (md, options) => {
   var katexBlock = function(latex) {
     options.displayMode = true;
     try {
-      console.log(latex);
+      // console.log(latex);
       return "$$" + latex + "$$";
       // return "<p>" + katex.renderToString(latex, options) + "</p>";
     } catch (error) {

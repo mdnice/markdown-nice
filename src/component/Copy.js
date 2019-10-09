@@ -25,50 +25,15 @@ class Copy extends Component {
 
   // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
   solveBlockMath = async () => {
-    const mathReg = /\$\$(((?!`)[^])*?)\$\$/g; // 中间不能包含`符号
-    const {content} = this.props.content;
-
-    let mathBlock = content.match(mathReg);
-    const tagsBlock = document.getElementsByClassName("katex-display");
-    if (mathBlock != null) {
-      if (mathBlock.length !== tagsBlock.length) {
-        const codes = document.getElementsByTagName("code");
-        let text = "";
-        // eslint-disable-next-line
-        for (const code of codes) {
-          text += code.innerText;
-        }
-        // console.log(mathBlock);
-        mathBlock = mathBlock.filter((math) => !text.includes(math));
-        // 经过转换后依然不相等则报错
-        if (mathBlock.length !== tagsBlock.length) {
-          return false;
-        }
-      }
-
-      const urlArr = [];
-      for (let i = 0; i < mathBlock.length; i++) {
-        // 转换过的公式避免再次转换
-        if (tagsBlock[i].firstChild.className === "math-img-block") continue;
-        const math = mathBlock[i];
-        let formula = math.split("$$")[1];
-        formula = encodeURI(formula.replace(/\s/g, "&space;"));
-        const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
-        urlArr.push(url);
-      }
-
-      // 使用promise并行发请求，增快公式转换速度
-      const promiseArr = urlArr.map((url) => axiosMdnice.get(url));
-
-      const resultArr = await Promise.all(promiseArr);
-      resultArr.forEach((result, index) => {
-        const img = new Image();
-        img.src = result.data;
-        img.onload = this.imgOnload;
-        img.className = "math-img-block";
-        tagsBlock[index].removeChild(tagsBlock[index].firstChild);
-        tagsBlock[index].appendChild(img);
-      });
+    const tagsBlock = document.getElementsByClassName("block-equation");
+    for (let i = 0; i < tagsBlock.length; i++) {
+      var svg = tagsBlock[i].firstChild;
+      const width = svg.getAttribute("width");
+      const height = svg.getAttribute("height");
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      svg.style = `vertical-align: bottom; width: ${width}; height: ${height};`;
+      console.log(svg);
     }
     return true;
   };
