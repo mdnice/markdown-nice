@@ -24,7 +24,7 @@ class Copy extends Component {
   }
 
   // 形成结果 <div class="katex-display"><img class="math-img-block"/></div>
-  solveBlockMath = () => {
+  solveBlockMath = async () => {
     const tagsBlock = document.getElementsByClassName("block-equation");
     for (let i = 0; i < tagsBlock.length; i++) {
       var svg = tagsBlock[i].firstChild;
@@ -38,71 +38,22 @@ class Copy extends Component {
       svg.style.width = width;
       svg.style.height = height;
     }
-    return true;
   };
 
-  // 形成结果 <span class="katex"><img class="math-img-inline"/></span>
-  solveInlineMath = async () => {
-    const mathReg = /\$(\S*?)\$/g; // 这里的空格处理会导致问题？？？bug
-    const {content} = this.props.content;
-
-    let mathInline = content.match(mathReg);
-    if (mathInline == null) mathInline = [];
-    mathInline = mathInline.filter((item) => item !== "$$"); // 过滤掉匹配的$$没用符号
-
-    const tagsInline = document.getElementsByClassName("katex");
-
-    if (mathInline.length !== tagsInline.length) {
-      const codes = document.getElementsByTagName("code");
-      let text = "";
-      // eslint-disable-next-line
-      for (const code of codes) {
-        text += code.innerText;
+  solveMath = async () => {
+    const svgArr = document.getElementsByTagName("svg");
+    for (let i = 0; i < svgArr.length; i++) {
+      var svg = svgArr[i];
+      const width = svg.getAttribute("width");
+      if (width === null) {
+        break;
       }
-      mathInline = mathInline.filter((math) => !text.includes(math));
-      if (mathInline.length !== tagsInline.length) {
-        const args = {
-          message: "检测到的无问题公式",
-          description: (
-            <div>
-              {mathInline.map((val) => (
-                <p style={style.mathNotify}>{val}</p>
-              ))}
-              <p style={style.mathNotify}>提示：请检查其他行内公式是否包含空格或中文</p>
-            </div>
-          ),
-          duration: 0,
-        };
-        notification.open(args);
-        return false;
-      }
+      const height = svg.getAttribute("height");
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      svg.style.width = width;
+      svg.style.height = height;
     }
-
-    const urlArr = [];
-    for (let i = 0; i < mathInline.length; i++) {
-      // 转换过的公式避免再次转换
-      if (tagsInline[i].firstChild.className === "math-img-inline") continue;
-      const math = mathInline[i];
-      let formula = math.split("$")[1];
-      formula = encodeURI(formula.replace(/\s/g, "&space;").replace(/\//g, "&divide;"));
-      const url = `/math/type/png/scale/${this.scale}/math/${formula}`;
-      urlArr.push(url);
-    }
-    // 使用promise并行发请求，增快公式转换速度
-    const promiseArr = urlArr.map((url) => axiosMdnice.get(url));
-
-    const resultArr = await Promise.all(promiseArr);
-    resultArr.forEach((result, index) => {
-      const img = new Image();
-      img.src = result.data;
-      img.onload = this.imgOnload;
-      img.className = "math-img-inline";
-      tagsInline[index].removeChild(tagsInline[index].firstChild);
-      tagsInline[index].removeChild(tagsInline[index].firstChild);
-      tagsInline[index].appendChild(img);
-    });
-
-    return true;
   };
 
   solveHtml = () => {
@@ -119,10 +70,7 @@ class Copy extends Component {
   copy = async () => {
     try {
       this.setState({loading: true});
-      this.solveBlockMath();
-      // if (!flagBlock) throw new Error("块级公式格式错误，无法进行转换");
-      // const flagInline = await this.solveInlineMath();
-      // if (!flagInline) throw new Error("行内公式格式错误，无法进行转换");
+      this.solveMath();
     } catch (e) {
       message.error(e.message);
     } finally {
