@@ -43,6 +43,9 @@ class Copy extends Component {
   solveMath = async () => {
     const svgArr = document.getElementsByTagName("svg");
     for (let i = 0; i < svgArr.length; i++) {
+      if (!svgArr.hasAttribute("style")) {
+        continue;
+      }
       var svg = svgArr[i];
       const width = svg.getAttribute("width");
       if (width === null) {
