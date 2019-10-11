@@ -13,7 +13,7 @@ class LogIn extends React.Component {
   showConfirm = () => {
     const content = (
       <p>
-        <a rel="noopener noreferrer" target="_blank" href="https://github.com/zhning12/markdown-nice">
+        <a rel="noopener noreferrer" target="_blank" href="https://github.com/mdnice/markdown-nice">
           markdown-nice
         </a>
         正在接收自定义主题，维护人员将会根据主题质量进行添加，是否确认将你的自定义CSS发送？
@@ -35,7 +35,7 @@ class LogIn extends React.Component {
       okText: "确认",
       cancelText: "取消",
       onOk: async () => {
-        const res = await axiosGithub.post(`/repos/zhning12/markdown-nice/issues`, {
+        const res = await axiosGithub.post(`/repos/mdnice/markdown-nice/issues`, {
           title: `自定义主题 by ${this.props.userInfo.userInfo.login}`,
           body: "```\n" + this.props.content.style + "\n```",
         });

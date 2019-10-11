@@ -4,7 +4,6 @@
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
-<p align="center"><img src="https://api.travis-ci.org/zhning12/markdown-nice.svg?branch=master"></p>
 
 ## 简介
 
@@ -37,11 +36,10 @@
 
 <img width="250px" src="https://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"/>
 
+同样组建了钉钉群，欢迎使用钉钉直接扫描加入。
+
+<img width="250px" src="https://my-wechat.mdnice.com/mdnice/mdnice_dingding_group.JPG"/>
+
 欢迎打赏哟，您的支持是我最大的动力！
 
 <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>
-
-## 参考资料
-
-- [md2all](https://md.aclickall.com/)
-- [wechat-format](https://github.com/lyricat/wechat-format)

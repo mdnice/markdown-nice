@@ -16,7 +16,7 @@ class LinkDialog extends Component {
 
   handleMore = () => {
     const w = window.open("about:blank");
-    w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
+    w.location.href = "https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md";
   };
 
   render() {
@@ -47,7 +47,7 @@ class LinkDialog extends Component {
           <Timeline.Item dot={<Icon type="more" style={{fontSize: "20px"}} />}>
             <a
               alt=""
-              href="https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md"
+              href="https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md"
               rel="noopener noreferrer"
               target="_blank"
             >

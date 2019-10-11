@@ -24,7 +24,7 @@ function hideUploadNoti() {
 
 function writeToEditor({content, image}) {
   // 此处图片名称可能存在空格，所以要encodeURI
-  const text = `\n![${image.filename}](${encodeURI(image.url)})\n`;
+  const text = `\n![${image.filename}](${image.url})\n`;
   const {markdownEditor} = content;
   const cursor = markdownEditor.getCursor();
   markdownEditor.replaceSelection(text, cursor);
@@ -92,7 +92,7 @@ export const qiniuOSSUpload = async ({
         const filename = names.join(".");
         const image = {
           filename, // 名字不变并且去掉后缀
-          url: `${domain}${response.key}`,
+          url: encodeURI(`${domain}${response.key}`),
         };
         images.push(image);
 
@@ -159,7 +159,7 @@ export const qiniuFreeUpload = async ({
     const filename = names.join(".");
     const image = {
       filename, // 名字不变并且去掉后缀
-      url: result.data,
+      url: encodeURI(result.data),
     };
     if (content) {
       writeToEditor({content, image});

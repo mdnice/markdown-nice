@@ -44,10 +44,10 @@ class AboutDialog extends Component {
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href="https://github.com/zhning12/markdown-nice"
+            href="https://github.com/mdnice/markdown-nice"
             style={style.noBorder}
           >
-            <img alt="" style={style.img} src="https://badgen.net/github/stars/zhning12/markdown-nice" />
+            <img alt="" style={style.img} src="https://badgen.net/github/stars/mdnice/markdown-nice" />
           </a>
         </h3>
 
@@ -57,7 +57,7 @@ class AboutDialog extends Component {
         <h3 style={style.headerMargin}>我们</h3>
         <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注
-          <a rel="noopener noreferrer" target="_blank" href="https://github.com/zhning12/markdown-nice">
+          <a rel="noopener noreferrer" target="_blank" href="https://github.com/mdnice/markdown-nice">
             &nbsp;GitHub&nbsp;
           </a>
           和新项目
