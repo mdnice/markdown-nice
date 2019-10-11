@@ -35,11 +35,11 @@
 
 目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，扫一扫二维码拉你入群。
 
-<img width="250px" src="http://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"/>
+<img width="250px" src="https://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"/>
 
 欢迎打赏哟，您的支持是我最大的动力！
 
-<img width="250px" src="http://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>
+<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>
 
 ## 参考资料
 

@@ -1,11 +1,9 @@
 import React, {Component} from "react";
 import juice from "juice";
 import {observer, inject} from "mobx-react";
-import {Button, message, ConfigProvider, notification} from "antd";
+import {Button, message, ConfigProvider} from "antd";
 
 import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
-
-import {axiosMdnice} from "../utils/helper";
 
 @inject("content")
 @inject("navbar")
@@ -52,20 +50,14 @@ class Copy extends Component {
     });
   };
 
-  // 拷贝流程 块级公式 => 行内公式 => 其他
   copy = () => {
-    try {
-      this.setState({loading: true});
-      this.solveMath();
-    } catch (e) {
-      message.error(e.message);
-    } finally {
-      this.solveHtml();
-      document.addEventListener("copy", this.copyListener);
-      document.execCommand("copy");
-      document.removeEventListener("copy", this.copyListener);
-      this.setState({loading: false});
-    }
+    this.setState({loading: true});
+    this.solveMath();
+    this.solveHtml();
+    document.addEventListener("copy", this.copyListener);
+    document.execCommand("copy");
+    document.removeEventListener("copy", this.copyListener);
+    this.setState({loading: false});
   };
 
   copyListener = (e) => {

@@ -2,7 +2,7 @@ export default `使用时请将内容替换为自己的内容。
 
 请阅读下方文本熟悉工具使用方法。
 
-<img style="width: 120px" src="http://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
+<img style="width: 120px" src="https://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
 
 ## 1. Markdown Nice 简介
 
@@ -106,7 +106,7 @@ _这个是斜体_
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
-![这里写图片描述](http://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
+![这里写图片描述](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
 
 可使用上方工具上传本地图片，目前共支持**4 种图床**，主要特点如下：
 
