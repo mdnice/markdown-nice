@@ -105,7 +105,7 @@ class App extends Component {
     if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
     }
-    for (var i = 0; i < e.dataTransfer.files.length; i++) {
+    for (let i = 0; i < e.dataTransfer.files.length; i++) {
       // console.log(e.dataTransfer.files[i]);
       uploadAdaptor({file: e.dataTransfer.files[i], content: this.props.content});
     }
@@ -113,7 +113,7 @@ class App extends Component {
 
   handlePaste = (instance, e) => {
     if (e.clipboardData.files) {
-      for (var i = 0; i < e.clipboardData.files.length; i++) {
+      for (let i = 0; i < e.clipboardData.files.length; i++) {
         uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
       }
     }
