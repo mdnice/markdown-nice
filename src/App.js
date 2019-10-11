@@ -26,6 +26,29 @@ class App extends Component {
     this.scale = 1;
   }
 
+  componentDidUpdate() {
+    window.MathJax.texReset();
+    window.MathJax.typesetClear();
+    window.MathJax.typesetPromise()
+      .then(() => {
+        var element = document.getElementById("wx-box");
+        const formulas = element.getElementsByTagName("mjx-container");
+        while (formulas.length > 0) {
+          var mjx = formulas[0];
+          if (mjx.hasAttribute("display")) {
+            var parent = mjx.parentNode;
+            var svgContainer = document.createElement("section");
+            svgContainer.innerHTML = mjx.innerHTML;
+            svgContainer.className = "block-equation";
+            parent.replaceChild(svgContainer, mjx);
+          } else {
+            mjx.outerHTML = mjx.innerHTML;
+          }
+        }
+      })
+      .catch((err) => console.log(err.message));
+  }
+
   setCurrentIndex(index) {
     this.index = index;
   }
@@ -54,26 +77,6 @@ class App extends Component {
     if (this.focus) {
       const content = editor.getValue();
       this.props.content.setContent(content);
-      window.MathJax.texReset();
-      window.MathJax.typesetClear();
-      window.MathJax.typesetPromise()
-        .then(() => {
-          var element = document.getElementById("wx-box");
-          const formulas = element.getElementsByTagName("mjx-container");
-          while (formulas.length > 0) {
-            var mjx = formulas[0];
-            if (mjx.hasAttribute("display")) {
-              var parent = mjx.parentNode;
-              var svgContainer = document.createElement("section");
-              svgContainer.innerHTML = mjx.innerHTML;
-              svgContainer.className = "block-equation";
-              parent.replaceChild(svgContainer, mjx);
-            } else {
-              mjx.outerHTML = mjx.innerHTML;
-            }
-          }
-        })
-        .catch((err) => console.log(err.message));
     }
   };
 
