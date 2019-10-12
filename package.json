@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "watch": "node ./watch.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "electron-start": "electron .",
@@ -57,6 +58,7 @@
     "babel-preset-react-app": "^7.0.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "chokidar": "^3.2.1",
     "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
     "dotenv": "6.0.0",
@@ -97,6 +99,7 @@
     "react-dev-utils": "^7.0.3",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
+    "shelljs": "^0.8.3",
     "source-map-explorer": "^2.0.1",
     "style-loader": "0.23.1",
     "styled-jsx": "^3.2.1",
