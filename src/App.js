@@ -15,6 +15,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat} from "./utils/helper";
+import appContext from "./utils/appContext";
 
 @inject("content")
 @inject("navbar")
@@ -150,58 +151,62 @@ class App extends Component {
         : markdownParser.render(this.props.content.content);
 
     return (
-      <div className="App">
-        <Navbar />
+      <appContext.Consumer>
+        {({previewType, title, onTitleChange}) => (
+          <div className="App">
+            <Navbar title={title} onTitleChange={onTitleChange} />
+            <div className="text-container">
+              <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+                <CodeMirror
+                  value={this.props.content.content}
+                  options={{
+                    theme: "md-mirror",
+                    keyMap: "sublime",
+                    mode: "markdown",
+                    lineWrapping: true,
+                    lineNumbers: false,
+                  }}
+                  onChange={this.handleChange}
+                  onScroll={this.handleScroll}
+                  onFocus={this.handleFocus}
+                  onBlur={this.handleBlur}
+                  onDrop={this.handleDrop}
+                  ref={this.getInstance}
+                />
+              </div>
+              <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
+                <div
+                  id="wx-box"
+                  className="wx-box"
+                  onScroll={this.handleScroll}
+                  style={{width: previewType === "pc" ? "100%" : 375}}
+                  ref={(node) => {
+                    this.previewContainer = node;
+                  }}
+                >
+                  <section
+                    className="layout"
+                    dangerouslySetInnerHTML={{
+                      __html: parseHtml,
+                    }}
+                    ref={(node) => {
+                      this.previewWrap = node;
+                    }}
+                  />
+                </div>
+              </div>
 
-        <div className="text-container">
-          <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
-            <CodeMirror
-              value={this.props.content.content}
-              options={{
-                theme: "md-mirror",
-                keyMap: "sublime",
-                mode: "markdown",
-                lineWrapping: true,
-                lineNumbers: false,
-              }}
-              onChange={this.handleChange}
-              onScroll={this.handleScroll}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              onDrop={this.handleDrop}
-              ref={this.getInstance}
-            />
-          </div>
-          <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
-            <div
-              id="wx-box"
-              className="wx-box"
-              onScroll={this.handleScroll}
-              ref={(node) => {
-                this.previewContainer = node;
-              }}
-            >
-              <section
-                className="layout"
-                dangerouslySetInnerHTML={{
-                  __html: parseHtml,
-                }}
-                ref={(node) => {
-                  this.previewWrap = node;
-                }}
-              />
+              {this.props.navbar.isStyleEditorOpen ? (
+                <div className="text-box">
+                  <StyleEditor />
+                </div>
+              ) : null}
+
+              <Dialog />
             </div>
           </div>
-
-          {this.props.navbar.isStyleEditorOpen ? (
-            <div className="text-box">
-              <StyleEditor />
-            </div>
-          ) : null}
-
-          <Dialog />
-        </div>
-      </div>
+        )}
+      </appContext.Consumer>
     );
   }
 }

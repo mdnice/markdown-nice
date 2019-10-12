@@ -1,17 +1,18 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import "./index.css";
 
 import App from "./App";
 
 import {Provider} from "mobx-react";
 import content from "./store/content";
-import title from "./store/title";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
 import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
 
 import {isPC} from "./utils/helper";
+import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
@@ -33,6 +34,13 @@ class Lib extends Component {
   }
 
   render() {
+    const {previewType, title, onTitleChange} = this.props;
+    const appCtx = {
+      previewType,
+      title,
+      onTitleChange,
+    };
+
     return (
       <Provider
         content={content}
@@ -43,7 +51,9 @@ class Lib extends Component {
         imageHosting={imageHosting}
       >
         {isPC() ? (
-          <App />
+          <appContext.Provider value={appCtx}>
+            <App />
+          </appContext.Provider>
         ) : (
           <Result
             icon={<SvgIcon name="smile" style={style.svgIcon} />}
@@ -67,6 +77,17 @@ const style = {
     width: "72px",
     height: "72px",
   },
+};
+
+Lib.defaultProps = {
+  title: "Markdown Nice",
+  previewType: "mobile",
+  onTitleChange: () => {},
+};
+Lib.propTypes = {
+  title: PropTypes.node,
+  previewType: PropTypes.oneOf(["mobile", "pc"]),
+  onTitleChange: PropTypes.func,
 };
 
 export default Lib;
