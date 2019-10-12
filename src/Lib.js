@@ -15,7 +15,23 @@ import {isPC} from "./utils/helper";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
+// 在 head 中注入标签
+function createStyles() {
+  // <link href="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css" rel="stylesheet" />
+  const katex = document.createElement("link");
+  katex.href = "https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css";
+  katex.rel = "stylesheet";
+  const head = document.querySelector("head");
+  const styles = document.createDocumentFragment();
+  styles.appendChild(katex);
+  head.appendChild(styles);
+}
+
 class Lib extends Component {
+  componentDidMount() {
+    createStyles();
+  }
+
   render() {
     return (
       <Provider

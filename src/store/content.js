@@ -81,6 +81,5 @@ replaceStyle(BASIC_THEME_ID, TEMPLATE.basic);
 replaceStyle(MARKDOWN_THEME_ID, store.style);
 
 store.content = window.localStorage.getItem(CONTENT);
-console.log(2);
 
 export default store;
