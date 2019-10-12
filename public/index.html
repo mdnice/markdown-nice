@@ -28,12 +28,32 @@
         svg: {
           fontCache: "none",
         },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+            MathJax.startup.promise.then(() => {
+              var element = document.getElementById("wx-box");
+              const formulas = element.getElementsByTagName("mjx-container");
+              while (formulas.length > 0) {
+                var mjx = formulas[0];
+                if (mjx.hasAttribute("display")) {
+                  var parent = mjx.parentNode;
+                  var svgContainer = document.createElement("section");
+                  svgContainer.innerHTML = mjx.innerHTML;
+                  svgContainer.className = "block-equation";
+                  parent.replaceChild(svgContainer, mjx);
+                } else {
+                  mjx.outerHTML = mjx.innerHTML;
+                }
+              }
+            });
+          },
+        },
       };
     </script>
     <script
       type="text/javascript"
-      id="MathJax-script"
-      async
+      id="MathJax-script"      
       src="https://my-wechat.mdnice.com/mdnice/mathjax@3.0.0_es5_tex-svg.js"
     ></script>
 
