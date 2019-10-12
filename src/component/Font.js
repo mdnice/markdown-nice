@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Tooltip, Button, Icon} from "antd";
+import {Tooltip, Button} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY, FONT_THEME_ID} from "../utils/constant";
 import {replaceStyle} from "../utils/helper";

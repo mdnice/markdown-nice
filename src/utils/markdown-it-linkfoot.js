@@ -19,6 +19,7 @@ function renderFootnoteCaption(tokens, idx) {
   return "[" + n + "]";
 }
 
+// eslint-disable-next-line
 function renderFootnoteWord(tokens, idx, options, env, slf) {
   return '<span class="footnote-word">' + tokens[idx].content + "</span>";
 }
@@ -29,6 +30,7 @@ function renderFootnoteRef(tokens, idx, options, env, slf) {
   return '<sup class="footnote-ref">' + caption + "</sup>";
 }
 
+// eslint-disable-next-line
 function renderFootnoteBlockOpen(tokens, idx, options) {
   return '<h3 class="footnotes-sep">参考资料</h3>\n<section class="footnotes">\n';
 }
@@ -241,7 +243,6 @@ function linkFoot(state, silent) {
     }
     // 不存在标题则判断域名
     else {
-      // if(href.includes('https://mp.weixin.qq.com/s/')) {
       state.pos = labelStart;
       state.posMax = labelEnd;
 

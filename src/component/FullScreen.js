@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Tooltip, Button, Icon} from "antd";
+import {Tooltip, Button} from "antd";
 
 // import fullscreenIcon from "../icon/fullscreen.svg";
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";

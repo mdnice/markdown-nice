@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 
-import {Modal} from "antd";
-
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
@@ -16,15 +14,40 @@ import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat} from "./utils/helper";
 import appContext from "./utils/appContext";
+import {uploadAdaptor} from "./utils/imageHosting";
 
 @inject("content")
 @inject("navbar")
+@inject("dialog")
 @observer
 class App extends Component {
   constructor(props) {
     super(props);
     this.focus = false;
     this.scale = 1;
+  }
+
+  componentDidUpdate() {
+    window.MathJax.texReset();
+    window.MathJax.typesetClear();
+    window.MathJax.typesetPromise()
+      .then(() => {
+        var element = document.getElementById("wx-box");
+        const formulas = element.getElementsByTagName("mjx-container");
+        while (formulas.length > 0) {
+          var mjx = formulas[0];
+          if (mjx.hasAttribute("display")) {
+            var parent = mjx.parentNode;
+            var svgContainer = document.createElement("section");
+            svgContainer.innerHTML = mjx.innerHTML;
+            svgContainer.className = "block-equation";
+            parent.replaceChild(svgContainer, mjx);
+          } else {
+            mjx.outerHTML = mjx.innerHTML;
+          }
+        }
+      })
+      .catch((err) => console.log(err.message));
   }
 
   setCurrentIndex(index) {
@@ -51,72 +74,18 @@ class App extends Component {
     }
   };
 
-  handleChange = (editor, changeObj) => {
+  handleChange = (editor) => {
     if (this.focus) {
       const content = editor.getValue();
-      // 粘贴时检测
-      if (this.props.navbar.isPasteCheckOpen && changeObj.origin === "paste") {
-        const linkImgReg = /(!)*\[.*?\]\(((?!mp.weixin.qq.com).)*?\)/g;
-        const res = content.match(linkImgReg); // 匹配到图片、链接和脚注
-
-        if (res === null) {
-          this.props.content.setContent(content);
-          return;
-        }
-
-        const footReg = /.*?\(.*?"(.*?)".*?\)/;
-        const filterRes = res.filter((val) => {
-          const comment = val.match(footReg);
-          if (val[0] === "!") {
-            return false;
-          }
-          if (comment && comment[1] !== "") {
-            return false;
-          }
-          return true;
-        }); // 过滤掉图片和脚注
-
-        if (filterRes.length > 0) {
-          this.showConfirm(filterRes, content);
-        } else {
-          this.props.content.setContent(content);
-        }
-      } else {
-        this.props.content.setContent(content);
-      }
+      this.props.content.setContent(content);
     }
   };
 
-  showConfirm = (filterRes, content) => {
-    Modal.confirm({
-      title: "微信之外链接",
-      content: "粘贴过程中检测到存在微信域名之外链接，是否自动转成脚注？",
-      okText: "确定",
-      cancelText: "取消",
-      onOk: () => {
-        filterRes.forEach((val) => {
-          const linkReg = /\[(.*?)\]\((.*?)\)/; // 匹配链接中具体的值
-          const matchValue = val.match(linkReg);
-          const name = matchValue[1];
-          const url = matchValue[2].trim();
-
-          const newVal = `[${name}](${url} "${name}")`;
-          content = content.replace(val, newVal);
-        });
-
-        this.props.content.setContent(content);
-      },
-      onCancel: () => {
-        this.props.content.setContent(content);
-      },
-    });
-  };
-
-  handleFocus = (e) => {
+  handleFocus = () => {
     this.focus = true;
   };
 
-  handleBlur = (e) => {
+  handleBlur = () => {
     this.focus = false;
   };
 
@@ -132,15 +101,23 @@ class App extends Component {
   };
 
   handleDrop = (instance, e) => {
+    // e.preventDefault();
     // console.log(e.dataTransfer.files[0]);
     if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
     }
-    for (var i = 0; i < e.dataTransfer.files.length; i++) {
+    for (let i = 0; i < e.dataTransfer.files.length; i++) {
       // console.log(e.dataTransfer.files[i]);
-      // fileUpload(e.dataTransfer.files[i]);
+      uploadAdaptor({file: e.dataTransfer.files[i], content: this.props.content});
     }
-    e.preventDefault();
+  };
+
+  handlePaste = (instance, e) => {
+    if (e.clipboardData.files) {
+      for (let i = 0; i < e.clipboardData.files.length; i++) {
+        uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
+      }
+    }
   };
 
   render() {
@@ -171,6 +148,7 @@ class App extends Component {
                   onFocus={this.handleFocus}
                   onBlur={this.handleBlur}
                   onDrop={this.handleDrop}
+                  onPaste={this.handlePaste}
                   ref={this.getInstance}
                 />
               </div>
@@ -185,6 +163,7 @@ class App extends Component {
                   }}
                 >
                   <section
+                    id="layout"
                     className="layout"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,

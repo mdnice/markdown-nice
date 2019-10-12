@@ -1,23 +1,23 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Modal, Timeline, Button, Icon} from "antd";
+import {Modal, Timeline, Button} from "antd";
 import {VERSION_TIMELINE} from "../../utils/constant";
 import SvgIcon from "../../icon";
 
 @inject("dialog")
 @observer
 class LinkDialog extends Component {
-  handleOk = (e) => {
+  handleOk = () => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleCancel = (e) => {
+  handleCancel = () => {
     this.props.dialog.setVersionOpen(false);
   };
 
-  handleMore = (e) => {
+  handleMore = () => {
     const w = window.open("about:blank");
-    w.location.href = "https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md";
+    w.location.href = "https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md";
   };
 
   render() {
@@ -48,7 +48,7 @@ class LinkDialog extends Component {
           <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
             <a
               alt=""
-              href="https://github.com/zhning12/markdown-nice/blob/master/CHANGELOG.md"
+              href="https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md"
               rel="noopener noreferrer"
               target="_blank"
             >

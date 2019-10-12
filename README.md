@@ -43,7 +43,7 @@ export default App;
 
 ## todo
 
-- [ x ] 自动注入 style 文件
-- [ x ] 提供对外的 props 配置
+- [x] 自动注入 style 文件
+- [x] 提供对外的 props 配置
 - [ ] 压缩代码
 - [ ] 提供 ts types

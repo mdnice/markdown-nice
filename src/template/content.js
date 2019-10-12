@@ -2,7 +2,7 @@ export default `使用时请将内容替换为自己的内容。
 
 请阅读下方文本熟悉工具使用方法。
 
-<img style="width: 120px" src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/mdnice%20logo_20190823192027.png"/>
+<img style="width: 120px" src="https://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
 
 ## 1. Markdown Nice 简介
 
@@ -19,6 +19,8 @@ export default `使用时请将内容替换为自己的内容。
 - <span style="color:#35b378;font-weight:bold;">绿意：</span>[前端硬核面试专题之 CSS 55 问](https://mp.weixin.qq.com/s/SVKMsQtOLNqYXeT_f95FUw)
 - <span style="color:rgb(248,57,41);font-weight:bold;">红绯：</span>[日常 | 我用什么工具写作？](https://mp.weixin.qq.com/s/DrvJBEWqH14atF_4O1IXFw)
 - <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
+- <span style="color:#0e88eb;font-weight:bold;">科技蓝</span>：[2019 前端秋季社招面试经历总结（二年多经验）](https://mp.weixin.qq.com/s/eDIDOESem_s93liccYK-qw)
+- <span style="color:#009688;font-weight:bold;">兰青</span>：[兰青 Demo](https://mp.weixin.qq.com/s/iL8xlH0I3yOEOrhcBqc0kg)
 
 ## 3. 标题
 
@@ -71,13 +73,13 @@ export default `使用时请将内容替换为自己的内容。
 
 而斜体的使用则是在需要斜体的文字前后各加一个\`_\`。
 
-如果要使用粗体和斜体，那么就是在需要操作的文字前后各加两个\`*\`和一个\`_\`。如下：
+如果要使用粗体和斜体，那么就是在需要操作的文字前后加三个\`*\`。如下：
 
 **这个是粗体**
 
-_这个是斜体_
+*这个是斜体*
 
-**_这个是粗体加斜体_**
+***这个是粗体加斜体***
 
 ## 8. 链接
 
@@ -104,7 +106,7 @@ _这个是斜体_
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
-![这里写图片描述](https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E4%BA%8C%E7%BB%B4%E7%A0%81_20190823124950.gif)
+![这里写图片描述](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
 
 可使用上方工具上传本地图片，目前共支持**4 种图床**，主要特点如下：
 
@@ -218,7 +220,7 @@ yaml
 
 块公式使用方法如下：
 
-$$H(D_2) = -(\\frac{2}{4}\\ log_2 \\frac{2}{4} + \\frac{2}{4}\\ log_2 \\frac{2}{4}) = 1$$
+$$H(D_2) = -\\left(\\frac{2}{4}\\log_2 \\frac{2}{4} + \\frac{2}{4}\\log_2 \\frac{2}{4}\\right) = 1$$
 
 矩阵：
 
@@ -231,11 +233,9 @@ $$
   \\end{pmatrix}
 $$
 
-公式由于微信不支持，目前的解决方案就是转成图片放到微信中，**公式图片目前存于工具作者的阿里云图床中，一天后自动删除，无法二次使用**。
+公式由于微信不支持，目前的解决方案是转成 svg 放到微信中，无需调整，矢量不失真。
 
-由于图片大小不固定，目前没有办法强制添加公式图片长度和宽度，所以拷贝过后需要在微信中调整公式大小。
-
-**注：公式内不要有中文，行内公式不要有空格！**
+目前测试如果公式量过大，在 Chrome 下会存在粘贴后无响应，但是在 Firefox 中始终能够成功。
 
 ## 17. TOC
 

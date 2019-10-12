@@ -28,9 +28,22 @@ function createStyles() {
   head.appendChild(styles);
 }
 
+function injectMathJax() {
+  window.MathJax = {
+    tex: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]],
+      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+    },
+    svg: {
+      fontCache: "none",
+    },
+  };
+}
+
 class Lib extends Component {
   componentDidMount() {
-    createStyles();
+    // createStyles();
+    injectMathJax();
   }
 
   render() {

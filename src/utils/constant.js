@@ -77,6 +77,21 @@ export const TEMPLATE_OPTIONS = [
     author: "画手",
   },
   {
+    id: "blue",
+    name: "蓝莹",
+    author: "谭淞宸",
+  },
+  {
+    id: "scienceBlue",
+    name: "科技蓝",
+    author: "夜尽天明",
+  },
+  {
+    id: "blueCyan",
+    name: "兰青",
+    author: "Krahets",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
@@ -116,12 +131,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.1.10";
+export const VERSION_NUM = "1.2.2";
 
 export const VERSION_TIMELINE = [
+  "2019-10-11 公式编写渲染为svg，彻底解决微信公众号不支持公式的问题，组建钉钉用户群，解决阿里云图床中文多编码一次的问题",
+  "2019-10-07 支持图片粘贴和拖拽上传，格式化由用户手动操作",
+  "2019-10-06 新增蓝莹、科技蓝、兰青主题",
   "2019-10-02 新增复制时排版检测功能，规范排版格式",
   "2019-09-24 修复行内公式存在除号问题，增加行内公式报错提示",
-  "2019-09-22 修复sup标签行高，减小应用体积",
-  "2019-09-21 新增七牛云图床配置文档",
-  "2019-09-19 建立mdnice用户群（点击关于加入），自定义七牛云图床新增自定义域名和命名空间字段，测试中...",
 ];

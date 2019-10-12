@@ -1,5 +1,5 @@
 import React from "react";
-import {Tooltip, Button, Icon} from "antd";
+import {Tooltip, Button} from "antd";
 import {observer, inject} from "mobx-react";
 import axios from "axios";
 

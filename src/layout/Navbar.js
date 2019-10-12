@@ -3,6 +3,7 @@ import {observer, inject} from "mobx-react";
 import {Button, Input} from "antd";
 
 import ThemeSelect from "../component/ThemeSelect";
+import Format from "../component/Format";
 import Copy from "../component/Copy";
 import Reset from "../component/Reset";
 import Image from "../component/Image";
@@ -16,7 +17,6 @@ import LogIn from "../component/LogIn";
 import User from "../component/User";
 import About from "../component/About";
 import Font from "../component/Font";
-import Setting from "../component/Setting";
 
 const ButtonGroup = Button.Group;
 
@@ -38,9 +38,6 @@ class Navbar extends Component {
         <div style={style.rightNav}>
           <div style={style.iconBar}>
             <ButtonGroup style={style.btnGroupMargin}>
-              <Setting />
-            </ButtonGroup>
-            <ButtonGroup style={style.btnGroupMargin}>
               <Del />
               <Bold />
               <Italic />
@@ -59,6 +56,7 @@ class Navbar extends Component {
           <Copy />
           <About />
           <ThemeSelect />
+          <Format />
           {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
         </div>
       </div>

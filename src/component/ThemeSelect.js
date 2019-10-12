@@ -1,8 +1,8 @@
 import React from "react";
-import {Button, Icon, Menu, Dropdown, Switch, Tooltip} from "antd";
+import {Button, Menu, Dropdown, Switch} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {TEMPLATE_OPTIONS, CODE_OPTIONS, ENTER_DELAY, LEAVE_DELAY, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
+import {TEMPLATE_OPTIONS, CODE_OPTIONS, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
 import TEMPLATE from "../template/index";
 import SvgIcon from "../icon";
 
@@ -11,6 +11,7 @@ import SvgIcon from "../icon";
 @observer
 class ThemeSelect extends React.Component {
   changeTemplate = (item) => {
+    console.log(item);
     const index = parseInt(item.key, 10);
     const {id} = TEMPLATE_OPTIONS[index];
     this.props.navbar.setTemplateNum(index);
@@ -46,6 +47,16 @@ class ThemeSelect extends React.Component {
             </div>
           </Menu.Item>
         ))}
+        <Menu.Divider />
+        <div style={style.menuItem}>
+          <div style={style.themeItem}>
+            <span style={style.themeItemName}>查看主题 CSS</span>
+
+            <span style={style.themeItemAuthor}>
+              <Switch checked={this.props.navbar.isStyleEditorOpen} size="small" onChange={this.toggleStyleEditor} />
+            </span>
+          </div>
+        </div>
       </Menu>
     );
     const codeMenu = (
@@ -61,7 +72,7 @@ class ThemeSelect extends React.Component {
     const mdMenuStyle = templateNum === TEMPLATE_CUSTOM_NUM ? style.mdCutomMenu : style.mdMenu;
 
     return (
-      <div style={style.layout}>
+      <div>
         <Dropdown overlay={mdMenu} placement="bottomCenter">
           <Button style={mdMenuStyle}>
             {TEMPLATE_OPTIONS[templateNum].name}
@@ -78,14 +89,6 @@ class ThemeSelect extends React.Component {
             </i>
           </Button>
         </Dropdown>
-        <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="样式编辑">
-          <Switch
-            checked={this.props.navbar.isStyleEditorOpen}
-            size="small"
-            onChange={this.toggleStyleEditor}
-            style={{marginRight: 8}}
-          />
-        </Tooltip>
       </div>
     );
   }
@@ -95,19 +98,13 @@ const style = {
   mdCutomMenu: {
     marginLeft: 8,
     border: "1px dashed #1890ff",
-    display: "flex",
-    paddingRight: "11px",
   },
   mdMenu: {
     marginLeft: 8,
-    display: "flex",
-    paddingRight: "11px",
   },
   codeMenu: {
     marginLeft: 8,
     marginRight: 8,
-    display: "flex",
-    paddingRight: "11px",
   },
   themeItem: {
     display: "flex",
@@ -126,6 +123,17 @@ const style = {
   layout: {
     display: "flex",
     alignItems: "center",
+  },
+  menuItem: {
+    clear: "both",
+    margin: 0,
+    padding: "5px 12px",
+    color: "rgba(0, 0, 0, 0.65)",
+    fontWeight: "normal",
+    fontSize: "14px",
+    lineHeight: "22px",
+    whiteSpace: "nowrap",
+    cursor: "pointer",
   },
 };
 

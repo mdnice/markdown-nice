@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Icon, Tooltip} from "antd";
+import {Button, Tooltip} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 import SvgIcon from "../icon";
