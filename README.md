@@ -16,16 +16,6 @@ $ yarn add markdown-nice
 $ npm install markdown-nice --save
 ```
 
-2、在 index.html 文件中添加下面代码
-
-```html
-<link href="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css" rel="stylesheet" />
-<style id="basic-theme" type="text/css"></style>
-<style id="markdown-theme" type="text/css"></style>
-<style id="code-theme" type="text/css"></style>
-<style id="font-theme" type="text/css"></style>
-```
-
 3、示例代码
 
 ```jsx
