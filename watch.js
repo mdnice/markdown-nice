@@ -29,10 +29,10 @@ function debounce(func, wait, immediate) {
   return debounced;
 }
 
-function build(config, name, callback) {
+function build() {
   console.log();
   console.log(chalk.green("-> building"));
-  shelljs.exec("yarn publish:npm");
+  shelljs.exec("cross-env NODE_ENV=production && npx babel src --out-dir lib --copy-files");
   console.log(chalk.green("-> build finished"));
 }
 
