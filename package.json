@@ -19,7 +19,7 @@
     "electron-start": "electron .",
     "package": "rm -rf dist && electron-builder --x64",
     "analyze": "source-map-explorer build/static/js/*.js",
-    "publish:npm": "NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
+    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
   },
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.19",
@@ -57,6 +57,7 @@
     "babel-preset-react-app": "^7.0.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
