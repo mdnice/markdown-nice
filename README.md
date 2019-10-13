@@ -32,13 +32,13 @@
 
 ## 关于
 
-目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，扫一扫二维码拉你入群。
+目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
 
-<img width="250px" src="https://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"/>
+<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>
 
-同样组建了钉钉群，欢迎使用钉钉直接扫描加入。
+同样组建了钉钉群，欢迎使用钉钉直接扫码加入。
 
-<img width="250px" src="https://my-wechat.mdnice.com/mdnice/mdnice_dingding_group.JPG"/>
+<img width="250px" src="https://my-wechat.mdnice.com/mdnice/mdnice_dingding_group_20191013223327.png"/>
 
 欢迎打赏哟，您的支持是我最大的动力！
 
