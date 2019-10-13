@@ -12,7 +12,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {markdownParser, markdownParserWechat} from "./utils/helper";
+import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import {uploadAdaptor} from "./utils/imageHosting";
 
 @inject("content")
@@ -27,26 +27,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    window.MathJax.texReset();
-    window.MathJax.typesetClear();
-    window.MathJax.typesetPromise()
-      .then(() => {
-        var element = document.getElementById("wx-box");
-        const formulas = element.getElementsByTagName("mjx-container");
-        while (formulas.length > 0) {
-          var mjx = formulas[0];
-          if (mjx.hasAttribute("display")) {
-            var parent = mjx.parentNode;
-            var svgContainer = document.createElement("section");
-            svgContainer.innerHTML = mjx.innerHTML;
-            svgContainer.className = "block-equation";
-            parent.replaceChild(svgContainer, mjx);
-          } else {
-            mjx.outerHTML = mjx.innerHTML;
-          }
-        }
-      })
-      .catch((err) => console.log(err.message));
+    updateMathjax();
   }
 
   setCurrentIndex(index) {
