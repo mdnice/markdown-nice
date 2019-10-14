@@ -27,9 +27,27 @@ class App extends Component {
     this.scale = 1;
   }
 
-  componentDidUpdate() {
-    updateMathjax();
+  componentDidMount() {
+    this.setEditorContent();
   }
+
+  componentDidUpdate() {
+    // @todo maybe a better way to remove timer
+    this.mathjaxTimer = setTimeout(() => {
+      updateMathjax();
+    }, 2000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.mathjaxTimer);
+  }
+
+  setEditorContent = () => {
+    const {text} = this.props;
+    if (text) {
+      this.props.content.setContent(text);
+    }
+  };
 
   setCurrentIndex(index) {
     this.index = index;
@@ -59,6 +77,7 @@ class App extends Component {
     if (this.focus) {
       const content = editor.getValue();
       this.props.content.setContent(content);
+      this.props.onTextChange && this.props.onTextChange(content);
     }
   };
 
@@ -94,7 +113,7 @@ class App extends Component {
   };
 
   handlePaste = (instance, e) => {
-    if (e.clipboardData.files) {
+    if (e.clipboardData && e.clipboardData.files) {
       for (let i = 0; i < e.clipboardData.files.length; i++) {
         uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
       }
@@ -102,7 +121,8 @@ class App extends Component {
   };
 
   render() {
-    const {codeNum} = this.props.navbar;
+    const {codeNum, isStyleEditorOpen} = this.props.navbar;
+
     const parseHtml =
       codeNum === 0
         ? markdownParserWechat.render(this.props.content.content)
@@ -116,7 +136,7 @@ class App extends Component {
             <div className="text-container">
               <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror
-                  value={this.props.content.content}
+                  value={this.props.text || this.props.content.content}
                   options={{
                     theme: "md-mirror",
                     keyMap: "sublime",
@@ -156,7 +176,7 @@ class App extends Component {
                 </div>
               </div>
 
-              {this.props.navbar.isStyleEditorOpen ? (
+              {isStyleEditorOpen ? (
                 <div className="text-box">
                   <StyleEditor />
                 </div>

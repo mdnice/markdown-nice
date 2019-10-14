@@ -56,9 +56,7 @@ MathJax = {
     const mathJaxDep = document.createElement("script");
     mathJaxDep.type = "text/javascript";
     mathJaxDep.id = "MathJax-script";
-    mathJaxDep.async = true;
     mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@3.0.0_es5_tex-svg.js";
-
     document.head.appendChild(mathJaxCfgScript);
     document.head.appendChild(mathJaxDep);
     hasMathJax = true;
@@ -67,12 +65,11 @@ MathJax = {
 
 class Lib extends Component {
   componentDidMount() {
-    // createStyles();
     injectMathJax();
   }
 
   render() {
-    const {previewType, title, onTitleChange} = this.props;
+    const {previewType, title, onTitleChange, text, onTextChange} = this.props;
     const appCtx = {
       previewType,
       title,
@@ -90,7 +87,7 @@ class Lib extends Component {
       >
         {isPC() ? (
           <appContext.Provider value={appCtx}>
-            <App />
+            <App text={text} onTextChange={onTextChange} />
           </appContext.Provider>
         ) : (
           <Result
@@ -121,11 +118,15 @@ Lib.defaultProps = {
   title: "Markdown Nice",
   previewType: "mobile",
   onTitleChange: () => {},
+  text: "",
+  onTextChange: () => {},
 };
 Lib.propTypes = {
   title: PropTypes.node,
   previewType: PropTypes.oneOf(["mobile", "pc"]),
   onTitleChange: PropTypes.func,
+  text: PropTypes.string,
+  onTextChange: PropTypes.func,
 };
 
 export default Lib;
