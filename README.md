@@ -25,7 +25,13 @@ import MarkdownNice from "markdown-nice";
 function App() {
   return (
     <div>
-      <MarkdownNice title="Markdown Nice" previewType="pc" />
+      <MarkdownNice
+        previewType="pc"
+        title="Markdown Nice"
+        onTitleChange={(t) => console.log("title => ", t)}
+        text={t}
+        onTextChange={(t) => console.log("text => ", t)}
+      />
     </div>
   );
 }
