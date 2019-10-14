@@ -369,6 +369,12 @@ sub, sup {
   display: block;
 }
 
-svg {
+.block-equation svg {
   max-width: 300% !important;
+}
+
+.inline-equation {
+}
+
+.inline-equation svg {
 }`;
