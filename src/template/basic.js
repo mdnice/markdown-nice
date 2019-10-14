@@ -361,6 +361,13 @@ sub, sup {
   line-height: 0;
 }
 
+/* 解决公式问题 */
 .block-equation {
   text-align: center;
+  overflow: auto;
+  display: block;
+}
+
+svg {
+  max-width: 300% !important;
 }`;

@@ -50,6 +50,7 @@ class Copy extends Component {
     const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
     this.html = juice.inlineContent(html, basicStyle + markdownStyle + codeStyle, {
       inlinePseudoElements: true,
+      preserveImportant: true,
     });
   };
 
