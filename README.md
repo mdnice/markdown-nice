@@ -27,9 +27,9 @@ function App() {
     <div>
       <MarkdownNice
         previewType="pc"
-        title="Markdown Nice"
+        defaultTitle="Markdown Nice"
         onTitleChange={(t) => console.log("title => ", t)}
-        text={t}
+        defaultText={t}
         onTextChange={(t) => console.log("text => ", t)}
       />
     </div>
