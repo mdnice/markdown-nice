@@ -16,6 +16,16 @@ $ yarn add markdown-nice
 $ npm install markdown-nice --save
 ```
 
+2、在 `index.html` 中插入以下代码
+
+```html
+<script
+  type="text/javascript"
+  id="MathJax-script"
+  src="https://my-wechat.mdnice.com/wechat/mathjax@852340cc_es5_tex-svg_20191014010745.js"
+></script>
+```
+
 3、示例代码
 
 ```jsx
