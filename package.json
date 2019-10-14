@@ -8,6 +8,7 @@
   "module": "lib/Lib.js",
   "homepage": "https://mdnice.com",
   "license": "GPL-3.0",
+  "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/zhning12/markdown-nice"

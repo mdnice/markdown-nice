@@ -51,5 +51,6 @@ export default App;
 
 - [x] 自动注入 style 文件
 - [x] 提供对外的 props 配置
+- [x] 提供 ts types
 - [ ] 压缩代码
-- [ ] 提供 ts types
+- [ ] MathJax 更新优化

@@ -43,9 +43,9 @@ class App extends Component {
   }
 
   setEditorContent = () => {
-    const {text} = this.props;
-    if (text) {
-      this.props.content.setContent(text);
+    const {defaultText} = this.props;
+    if (defaultText) {
+      this.props.content.setContent(defaultText);
     }
   };
 
@@ -130,13 +130,13 @@ class App extends Component {
 
     return (
       <appContext.Consumer>
-        {({previewType, title, onTitleChange}) => (
+        {({previewType, defaultTitle, onTitleChange}) => (
           <div className="App">
-            <Navbar title={title} onTitleChange={onTitleChange} />
+            <Navbar title={defaultTitle} onTitleChange={onTitleChange} />
             <div className="text-container">
               <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror
-                  value={this.props.text || this.props.content.content}
+                  value={this.props.content.content}
                   options={{
                     theme: "md-mirror",
                     keyMap: "sublime",

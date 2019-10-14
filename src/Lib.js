@@ -69,25 +69,18 @@ class Lib extends Component {
   }
 
   render() {
-    const {previewType, title, onTitleChange, text, onTextChange} = this.props;
+    const {previewType, defaultTitle, onTitleChange, defaultText, onTextChange} = this.props;
     const appCtx = {
       previewType,
-      title,
+      defaultTitle,
       onTitleChange,
     };
 
     return (
-      <Provider
-        content={content}
-        title={title}
-        userInfo={userInfo}
-        navbar={navbar}
-        dialog={dialog}
-        imageHosting={imageHosting}
-      >
+      <Provider content={content} userInfo={userInfo} navbar={navbar} dialog={dialog} imageHosting={imageHosting}>
         {isPC() ? (
           <appContext.Provider value={appCtx}>
-            <App text={text} onTextChange={onTextChange} />
+            <App defaultText={defaultText} onTextChange={onTextChange} />
           </appContext.Provider>
         ) : (
           <Result
@@ -115,17 +108,17 @@ const style = {
 };
 
 Lib.defaultProps = {
-  title: "Markdown Nice",
+  defaultTitle: "Markdown Nice",
   previewType: "mobile",
   onTitleChange: () => {},
-  text: "",
+  defaultText: "",
   onTextChange: () => {},
 };
 Lib.propTypes = {
-  title: PropTypes.node,
+  defaultTitle: PropTypes.node,
   previewType: PropTypes.oneOf(["mobile", "pc"]),
   onTitleChange: PropTypes.func,
-  text: PropTypes.string,
+  defaultText: PropTypes.string,
   onTextChange: PropTypes.func,
 };
 
