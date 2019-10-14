@@ -254,20 +254,14 @@ export const updateMathjax = () => {
   window.MathJax.typesetClear();
   window.MathJax.typesetPromise()
     .then(() => {
-      const element = document.getElementById("wx-box");
-      const formulas = element.getElementsByTagName("mjx-container");
-      while (formulas.length > 0) {
-        const mjx = formulas[0];
-        if (mjx.hasAttribute("display")) {
-          const parent = mjx.parentNode;
-          const svgContainer = document.createElement("section");
-          svgContainer.innerHTML = mjx.innerHTML;
-          svgContainer.className = "block-equation";
-          parent.replaceChild(svgContainer, mjx);
-        } else {
-          mjx.outerHTML = mjx.innerHTML;
-        }
-      }
+      const element = document.getElementById("layout");
+      let html = element.innerHTML;
+      html = html.replace(
+        /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
+        '<span class="block-equation">$1</span>',
+      );
+      html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
+      element.innerHTML = html;
     })
     .catch((err) => console.log(err.message));
 };

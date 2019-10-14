@@ -362,5 +362,6 @@ sub, sup {
 }
 
 .block-equation {
+  display:block;
   text-align: center;
 }`;
