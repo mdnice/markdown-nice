@@ -28,24 +28,23 @@
         svg: {
           fontCache: "none",
         },
+        options: {
+          renderActions: {
+            addMenu: [0, '', '']
+          }
+        },
         startup: {
           ready: () => {
             MathJax.startup.defaultReady();
             MathJax.startup.promise.then(() => {
-              var element = document.getElementById("wx-box");
-              const formulas = element.getElementsByTagName("mjx-container");
-              while (formulas.length > 0) {
-                var mjx = formulas[0];
-                if (mjx.hasAttribute("display")) {
-                  var parent = mjx.parentNode;
-                  var svgContainer = document.createElement("section");
-                  svgContainer.innerHTML = mjx.innerHTML;
-                  svgContainer.className = "block-equation";
-                  parent.replaceChild(svgContainer, mjx);
-                } else {
-                  mjx.outerHTML = mjx.innerHTML;
-                }
-              }
+              const element = document.getElementById("layout");
+              let html = element.innerHTML;
+              html = html.replace(
+                /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
+                '<span class="block-equation">$1</span>',
+              );
+              html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
+              element.innerHTML = html;
             });
           },
         },
@@ -53,7 +52,7 @@
     </script>
     <script
       type="text/javascript"
-      id="MathJax-script"   
+      id="MathJax-script"
       src="https://my-wechat.mdnice.com/wechat/mathjax@852340cc_es5_tex-svg_20191014010745.js"
     ></script>
 

@@ -363,6 +363,7 @@ sub, sup {
 
 /* 解决公式问题 */
 .block-equation {
+  display:block;
   text-align: center;
   overflow: auto;
   display: block;
