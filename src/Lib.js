@@ -16,28 +16,53 @@ import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
-// 在 head 中注入标签
-function createStyles() {
-  // <link href="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css" rel="stylesheet" />
-  const katex = document.createElement("link");
-  katex.href = "https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css";
-  katex.rel = "stylesheet";
-  const head = document.querySelector("head");
-  const styles = document.createDocumentFragment();
-  styles.appendChild(katex);
-  head.appendChild(styles);
-}
+let hasMathJax = false;
 
 function injectMathJax() {
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-    },
-    svg: {
-      fontCache: "none",
-    },
-  };
+  if (!hasMathJax) {
+    const mathJaxCfgScript = document.createElement("script");
+    mathJaxCfgScript.innerHTML = `
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'none'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        var element = document.getElementById('wx-box');
+        const formulas = element.getElementsByTagName('mjx-container');
+        while (formulas.length > 0) {
+          var mjx = formulas[0];
+          if (mjx.hasAttribute('display')) {
+            var parent = mjx.parentNode;
+            var svgContainer = document.createElement('section');
+            svgContainer.innerHTML = mjx.innerHTML;
+            svgContainer.className = 'block-equation';
+            parent.replaceChild(svgContainer, mjx);
+          } else {
+            mjx.outerHTML = mjx.innerHTML;
+          }
+        }
+      });
+    }
+  }
+};
+    `;
+    const mathJaxDep = document.createElement("script");
+    mathJaxDep.type = "text/javascript";
+    mathJaxDep.id = "MathJax-script";
+    mathJaxDep.async = true;
+    mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@3.0.0_es5_tex-svg.js";
+
+    document.head.appendChild(mathJaxCfgScript);
+    document.head.appendChild(mathJaxDep);
+    hasMathJax = true;
+  }
 }
 
 class Lib extends Component {
