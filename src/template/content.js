@@ -80,6 +80,12 @@ export default `使用时请将内容替换为自己的内容。
 
 ***这个是粗体加斜体***
 
+注：由于 commonmark 标准，可能会导致加粗与想象不一致，如下
+
+**今天天气好晴朗，**处处好风光。
+
+这个是正常现象，请参考[加粗 Issue](https://github.com/markdown-it/markdown-it/issues/410 "加粗 Issue")。
+
 ## 8. 链接
 
 微信公众号仅支持公众号文章链接，即域名为\`https://mp.weixin.qq.com/\`的合法链接。使用方法如下所示：
@@ -127,12 +133,12 @@ export default `使用时请将内容替换为自己的内容。
 
 **建议：一次性排版推荐使用 mdnice，图片需要长期管理推荐使用七牛云**。
 
+**注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失**。
+
 配置文档如下：
 
 - [Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 - [Markdown Nice 新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
-
-注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失。
 
 ## 11. 代码块
 

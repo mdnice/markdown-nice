@@ -88,7 +88,9 @@ blockquote {
 blockquote p {
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: rgb(239, 112, 96);
   border-bottom: 1px solid rgb(239, 112, 96);

@@ -119,8 +119,6 @@ blockquote p {
   padding: 3px 0;
 }
 
-/* 行内元素 */
-
 a {
   color: hsl(187, 100%, 45%);
   font-weight: normal;

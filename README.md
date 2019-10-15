@@ -35,10 +35,6 @@
 
 <img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>
 
-同样组建了钉钉群，欢迎使用钉钉直接扫码加入。
-
-<img width="250px" src="https://my-wechat.mdnice.com/mdnice/mdnice_dingding_group_20191013223327.png"/>
-
 欢迎打赏哟，您的支持是我最大的动力！
 
 <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>

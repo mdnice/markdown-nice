@@ -106,7 +106,9 @@ blockquote {
 blockquote p {
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: #35b378;
   border-bottom: 1px solid #35b378;

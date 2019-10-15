@@ -48,10 +48,14 @@ class Copy extends Component {
     const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
     const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
     const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
-    this.html = juice.inlineContent(html, basicStyle + markdownStyle + codeStyle, {
-      inlinePseudoElements: true,
-      preserveImportant: true,
-    });
+    try {
+      this.html = juice.inlineContent(html, basicStyle + markdownStyle + codeStyle, {
+        inlinePseudoElements: true,
+        preserveImportant: true,
+      });
+    } catch (e) {
+      message.error("请检查 CSS 文件是否编写正确！");
+    }
   };
 
   copy = () => {
