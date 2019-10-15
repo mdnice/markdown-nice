@@ -41,7 +41,7 @@
               let html = element.innerHTML;
               html = html.replace(
                 /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-                '<span class="block-equation">$1</span>',
+                '<section class="block-equation">$1</section>',
               );
               html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
               element.innerHTML = html;
