@@ -22,17 +22,20 @@ $ npm install markdown-nice --save
 import React from "react";
 import MarkdownNice from "markdown-nice";
 
+// 编辑器默认的内容
+const defaultText = `编辑器默认的内容`;
+// 标题，是一个字符串
+const defaultTitle = "mdnice";
+
 function App() {
   return (
-    <div>
-      <MarkdownNice
-        previewType="pc"
-        defaultTitle="Markdown Nice"
-        onTitleChange={(t) => console.log("title => ", t)}
-        defaultText={t}
-        onTextChange={(t) => console.log("text => ", t)}
-      />
-    </div>
+    <MarkdownNice
+      defaultTitle={defaultTitle}
+      previewType="mobile"
+      onTitleChange={(t) => console.log("title => ", t)}
+      defaultText={defaultText}
+      onTextChange={(t) => console.log("text => ", t)}
+    />
   );
 }
 

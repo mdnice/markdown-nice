@@ -8,7 +8,7 @@ export interface MarkdownNiceProps {
   /**
    * 默认标题
    */
-  defaultTitle?: React.ReactNode;
+  defaultTitle?: String;
   /**
    * 右侧预览类型 pc 或者 mobile
    */

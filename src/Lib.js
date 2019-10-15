@@ -115,7 +115,7 @@ Lib.defaultProps = {
   onTextChange: () => {},
 };
 Lib.propTypes = {
-  defaultTitle: PropTypes.node,
+  defaultTitle: PropTypes.string,
   previewType: PropTypes.oneOf(["mobile", "pc"]),
   onTitleChange: PropTypes.func,
   defaultText: PropTypes.string,
