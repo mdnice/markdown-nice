@@ -128,7 +128,9 @@ blockquote:after {
   font-weight:500;
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color:rgb(248,57,41);
   border-bottom: 1px solid #ff3502;
@@ -245,4 +247,15 @@ table tr td {
 
 /* 参考资料解释 */
 .footnote-item p em {
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;

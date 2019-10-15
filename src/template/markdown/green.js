@@ -106,7 +106,9 @@ blockquote {
 blockquote p {
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: #35b378;
   border-bottom: 1px solid #35b378;
@@ -195,4 +197,15 @@ table tr th,
 
 /* 参考资料解释 */
 .footnote-item p em {
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;
