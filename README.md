@@ -16,17 +16,26 @@ $ yarn add markdown-nice
 $ npm install markdown-nice --save
 ```
 
-3、示例代码
+2、愉快使用
 
 ```jsx
 import React from "react";
 import MarkdownNice from "markdown-nice";
 
+// 编辑器默认的内容
+const defaultText = `编辑器默认的内容`;
+// 标题，是一个字符串
+const defaultTitle = "mdnice";
+
 function App() {
   return (
-    <div>
-      <MarkdownNice />
-    </div>
+    <MarkdownNice
+      defaultTitle={defaultTitle}
+      previewType="mobile"
+      onTitleChange={(t) => console.log("title => ", t)}
+      defaultText={defaultText}
+      onTextChange={(t) => console.log("text => ", t)}
+    />
   );
 }
 
@@ -45,5 +54,6 @@ export default App;
 
 - [x] 自动注入 style 文件
 - [x] 提供对外的 props 配置
+- [x] 提供 ts types
 - [ ] 压缩代码
-- [ ] 提供 ts types
+- [ ] MathJax 更新优化

@@ -71,7 +71,7 @@ class AboutDialog extends Component {
           </a>
           ，同时我们也组建了「
           <strong style={style.strong}>微信群</strong>
-          」，右下角扫一扫拉你入群，愿意
+          」，右下角关注公众号回复「排版」拉你入群，愿意
           <strong style={style.strong}>微信打赏</strong>
           就更好啦。
         </p>
@@ -84,7 +84,7 @@ class AboutDialog extends Component {
           <img
             alt="图片描述"
             style={style.imgWidth}
-            src="https://my-wechat.mdnice.com/mdnice/friend_20191007150639.jpeg"
+            src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"
           />
         </div>
       </Modal>

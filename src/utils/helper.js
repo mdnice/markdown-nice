@@ -259,3 +259,26 @@ export const addStyleLabel = (styleLabels) => {
   };
   styleLabels.forEach((name) => add(name));
 };
+
+export const updateMathjax = () => {
+  window.MathJax.texReset();
+  window.MathJax.typesetClear();
+  window.MathJax.typesetPromise()
+    .then(() => {
+      const element = document.getElementById("wx-box");
+      const formulas = element.getElementsByTagName("mjx-container");
+      while (formulas.length > 0) {
+        const mjx = formulas[0];
+        if (mjx.hasAttribute("display")) {
+          const parent = mjx.parentNode;
+          const svgContainer = document.createElement("section");
+          svgContainer.innerHTML = mjx.innerHTML;
+          svgContainer.className = "block-equation";
+          parent.replaceChild(svgContainer, mjx);
+        } else {
+          mjx.outerHTML = mjx.innerHTML;
+        }
+      }
+    })
+    .catch((err) => console.log(err.message));
+};

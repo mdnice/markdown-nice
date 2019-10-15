@@ -16,56 +16,71 @@ import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
-// 在 head 中注入标签
-function createStyles() {
-  // <link href="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css" rel="stylesheet" />
-  const katex = document.createElement("link");
-  katex.href = "https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/KaTeX/0.5.1/katex.min.css";
-  katex.rel = "stylesheet";
-  const head = document.querySelector("head");
-  const styles = document.createDocumentFragment();
-  styles.appendChild(katex);
-  head.appendChild(styles);
-}
+let hasMathJax = false;
 
 function injectMathJax() {
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-    },
-    svg: {
-      fontCache: "none",
-    },
-  };
+  if (!hasMathJax) {
+    const mathJaxCfgScript = document.createElement("script");
+    mathJaxCfgScript.innerHTML = `
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'none'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        var element = document.getElementById('wx-box');
+        const formulas = element.getElementsByTagName('mjx-container');
+        while (formulas.length > 0) {
+          var mjx = formulas[0];
+          if (mjx.hasAttribute('display')) {
+            var parent = mjx.parentNode;
+            var svgContainer = document.createElement('section');
+            svgContainer.innerHTML = mjx.innerHTML;
+            svgContainer.className = 'block-equation';
+            parent.replaceChild(svgContainer, mjx);
+          } else {
+            mjx.outerHTML = mjx.innerHTML;
+          }
+        }
+      });
+    }
+  }
+};
+    `;
+    const mathJaxDep = document.createElement("script");
+    mathJaxDep.type = "text/javascript";
+    mathJaxDep.id = "MathJax-script";
+    mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@3.0.0_es5_tex-svg.js";
+    document.head.appendChild(mathJaxCfgScript);
+    document.head.appendChild(mathJaxDep);
+    hasMathJax = true;
+  }
 }
 
 class Lib extends Component {
   componentDidMount() {
-    // createStyles();
     injectMathJax();
   }
 
   render() {
-    const {previewType, title, onTitleChange} = this.props;
+    const {previewType, defaultTitle, onTitleChange, defaultText, onTextChange} = this.props;
     const appCtx = {
       previewType,
-      title,
+      defaultTitle,
       onTitleChange,
     };
 
     return (
-      <Provider
-        content={content}
-        title={title}
-        userInfo={userInfo}
-        navbar={navbar}
-        dialog={dialog}
-        imageHosting={imageHosting}
-      >
+      <Provider content={content} userInfo={userInfo} navbar={navbar} dialog={dialog} imageHosting={imageHosting}>
         {isPC() ? (
           <appContext.Provider value={appCtx}>
-            <App />
+            <App defaultText={defaultText} onTextChange={onTextChange} />
           </appContext.Provider>
         ) : (
           <Result
@@ -93,14 +108,18 @@ const style = {
 };
 
 Lib.defaultProps = {
-  title: "Markdown Nice",
+  defaultTitle: "Markdown Nice",
   previewType: "mobile",
   onTitleChange: () => {},
+  defaultText: "",
+  onTextChange: () => {},
 };
 Lib.propTypes = {
-  title: PropTypes.node,
+  defaultTitle: PropTypes.string,
   previewType: PropTypes.oneOf(["mobile", "pc"]),
   onTitleChange: PropTypes.func,
+  defaultText: PropTypes.string,
+  onTextChange: PropTypes.func,
 };
 
 export default Lib;

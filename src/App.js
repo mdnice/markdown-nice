@@ -12,7 +12,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {markdownParser, markdownParserWechat} from "./utils/helper";
+import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
 
@@ -27,28 +27,24 @@ class App extends Component {
     this.scale = 1;
   }
 
-  componentDidUpdate() {
-    window.MathJax.texReset();
-    window.MathJax.typesetClear();
-    window.MathJax.typesetPromise()
-      .then(() => {
-        var element = document.getElementById("wx-box");
-        const formulas = element.getElementsByTagName("mjx-container");
-        while (formulas.length > 0) {
-          var mjx = formulas[0];
-          if (mjx.hasAttribute("display")) {
-            var parent = mjx.parentNode;
-            var svgContainer = document.createElement("section");
-            svgContainer.innerHTML = mjx.innerHTML;
-            svgContainer.className = "block-equation";
-            parent.replaceChild(svgContainer, mjx);
-          } else {
-            mjx.outerHTML = mjx.innerHTML;
-          }
-        }
-      })
-      .catch((err) => console.log(err.message));
+  componentDidMount() {
+    this.setEditorContent();
   }
+
+  componentDidUpdate() {
+    updateMathjax();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.mathjaxTimer);
+  }
+
+  setEditorContent = () => {
+    const {defaultText} = this.props;
+    if (defaultText) {
+      this.props.content.setContent(defaultText);
+    }
+  };
 
   setCurrentIndex(index) {
     this.index = index;
@@ -78,6 +74,7 @@ class App extends Component {
     if (this.focus) {
       const content = editor.getValue();
       this.props.content.setContent(content);
+      this.props.onTextChange && this.props.onTextChange(content);
     }
   };
 
@@ -113,7 +110,7 @@ class App extends Component {
   };
 
   handlePaste = (instance, e) => {
-    if (e.clipboardData.files) {
+    if (e.clipboardData && e.clipboardData.files) {
       for (let i = 0; i < e.clipboardData.files.length; i++) {
         uploadAdaptor({file: e.clipboardData.files[i], content: this.props.content});
       }
@@ -121,7 +118,8 @@ class App extends Component {
   };
 
   render() {
-    const {codeNum} = this.props.navbar;
+    const {codeNum, isStyleEditorOpen} = this.props.navbar;
+
     const parseHtml =
       codeNum === 0
         ? markdownParserWechat.render(this.props.content.content)
@@ -129,9 +127,9 @@ class App extends Component {
 
     return (
       <appContext.Consumer>
-        {({previewType, title, onTitleChange}) => (
+        {({previewType, defaultTitle, onTitleChange}) => (
           <div className="App">
-            <Navbar title={title} onTitleChange={onTitleChange} />
+            <Navbar title={defaultTitle} onTitleChange={onTitleChange} />
             <div className="text-container">
               <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror
@@ -175,7 +173,7 @@ class App extends Component {
                 </div>
               </div>
 
-              {this.props.navbar.isStyleEditorOpen ? (
+              {isStyleEditorOpen ? (
                 <div className="text-box">
                   <StyleEditor />
                 </div>
