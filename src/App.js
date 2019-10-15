@@ -32,10 +32,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    // @todo maybe a better way to remove timer
-    this.mathjaxTimer = setTimeout(() => {
-      updateMathjax();
-    }, 2000);
+    updateMathjax();
   }
 
   componentWillUnmount() {
