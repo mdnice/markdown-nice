@@ -18,8 +18,6 @@
     "watch": "node ./watch.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "electron-start": "electron .",
-    "package": "rm -rf dist && electron-builder --x64",
     "analyze": "source-map-explorer build/static/js/*.js",
     "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
   },
@@ -64,8 +62,6 @@
     "css-loader": "^2.1.1",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "electron": "^6.0.10",
-    "electron-builder": "^21.2.0",
     "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
