@@ -40,6 +40,20 @@ class Copy extends Component {
     }
   };
 
+  solveCount = (html) => {
+    const ci = /\s?counter-increment:\s\S+?;/g;
+    html = html.replace(ci, "");
+    const counter = /"counter(\S+?)"/g;
+    const dict = {};
+    html = html.replace(counter, (matched, key) => {
+      let value = dict[key];
+      value = value ? value + 1 : 1;
+      dict[key] = value;
+      return value;
+    });
+    return html;
+  };
+
   solveHtml = () => {
     const element = document.getElementById("wx-box");
     let html = element.innerHTML;
@@ -53,6 +67,7 @@ class Copy extends Component {
         inlinePseudoElements: true,
         preserveImportant: true,
       });
+      this.html = this.solveCount(this.html);
     } catch (e) {
       message.error("请检查 CSS 文件是否编写正确！");
     }
