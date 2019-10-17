@@ -21,9 +21,11 @@
     -->
     <script>
       MathJax = {
+        loader: {load: ['[tex]/mhchem']},
         tex: {
           inlineMath: [["$", "$"], ["\\(", "\\)"]],
           displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+          packages: {"[+]": ["mhchem"]}
         },
         svg: {
           fontCache: "none",
