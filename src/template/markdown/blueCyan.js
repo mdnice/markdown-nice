@@ -95,8 +95,21 @@ h6 {
   border-left: 1px dotted #009688;
 }
 
-/* 列表内容 */
-li {
+/* 无序列表整体样式
+ * list-style-type: square|circle|disc;
+ */
+ul {
+}
+
+/* 无序列表整体样式
+ * list-style-type: upper-roman|lower-greek|lower-alpha;
+ */
+ol {
+}
+
+/* 列表内容，不要设置li
+ */
+li section {
 }
 
 /* 引用

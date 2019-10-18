@@ -21,19 +21,17 @@
     -->
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mhchem']},
         tex: {
           inlineMath: [["$", "$"], ["\\(", "\\)"]],
           displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-          packages: {"[+]": ["mhchem"]}
         },
         svg: {
           fontCache: "none",
         },
         options: {
           renderActions: {
-            addMenu: [0, '', '']
-          }
+            addMenu: [0, "", ""],
+          },
         },
         startup: {
           ready: () => {
@@ -45,7 +43,10 @@
                 /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
                 '<section class="block-equation">$1</section>',
               );
-              html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
+              html = html.replace(
+                /<mjx-container.+?>(.+?)<\/mjx-container>/g,
+                '<span class="inline-equation">$1</span>',
+              );
               element.innerHTML = html;
             });
           },
@@ -55,7 +56,7 @@
     <script
       type="text/javascript"
       id="MathJax-script"
-      src="https://my-wechat.mdnice.com/wechat/mathjax@852340cc_es5_tex-svg_20191014010745.js"
+      src="https://my-wechat.mdnice.com/mdnice/mathjax@852340cc_es5_tex-svg-full_20191018204835.js"
     ></script>
 
     <style id="basic-theme" type="text/css"></style>

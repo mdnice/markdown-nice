@@ -1,10 +1,10 @@
 function makeRule(md) {
   return function replaceListItem() {
     md.renderer.rules.list_item_open = function replaceOpen() {
-      return "<li><p>";
+      return "<li><section>";
     };
     md.renderer.rules.list_item_close = function replaceClose() {
-      return "</p></li>";
+      return "</section></li>";
     };
   };
 }
