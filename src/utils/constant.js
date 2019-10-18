@@ -134,7 +134,7 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.2.5";
+export const VERSION_NUM = "1.2.6";
 
 export const VERSION_TIMELINE = [
   "2019-10-18 解决 li 和 ol 渲染问题，支持化学物理等公式，加入新主题山吹",
