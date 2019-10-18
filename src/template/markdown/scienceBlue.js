@@ -136,7 +136,9 @@ blockquote:after {
   font-weight:500;
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: #0e88eb;
   border-bottom: 0px solid #ff3502;
@@ -273,4 +275,15 @@ table tr td {
 .footnote-item em {
   color: #082a71;
   font-size:12px;
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;
