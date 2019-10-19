@@ -1192,10 +1192,10 @@
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
   integrity sha512-42zEJkBpNfMEAvWR5WlwtTH22oDzcMjFsL9gDGExwF8X8WvAiw7Vwop7hPw03QT8TKfec83LwbHj6SvpqM4ELQ==
 
-"@uiw/react-codemirror@^1.0.19":
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-1.0.27.tgz#751db12bebc202603262133bd07ab893035e2a59"
-  integrity sha512-sqK7rK+UceGiZzlRAX9hse3G3v6mYIxEf0G0ywip30FfZgvFxgdD6aYCnddwyTswV9pIeAk7Ev7mXHbi7FT1/A==
+"@uiw/react-codemirror@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-1.0.28.tgz#5a7430c7350f1854cfa2f7d1ec9e3a29ea835b1c"
+  integrity sha512-jRXBcrEwGe2Iv1LpCEwmkSRzEHmJroFCPGgV39fsgd8CBZ1XsxeyE3u43hzj5q3WQNuWxO0Y0gR59U+JSUpJpw==
   dependencies:
     codemirror "^5.41.0"
     prop-types "^15.6.2"
@@ -7745,11 +7745,6 @@ markdown-it-katex@^2.0.3:
   integrity sha1-17hqGuoLnWSW+rTnkZoY/e9YnDk=
   dependencies:
     katex "^0.6.0"
-
-markdown-it-mathjax@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-mathjax/-/markdown-it-mathjax-2.0.0.tgz#ae2b4f4c5c719a03f9e475c664f7b2685231d9e9"
-  integrity sha1-ritPTFxxmgP55HXGZPeyaFIx2ek=
 
 markdown-it-ruby@^0.1.1:
   version "0.1.1"

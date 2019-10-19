@@ -14,6 +14,7 @@ import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import {uploadAdaptor} from "./utils/imageHosting";
+import bindHotkeys from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
@@ -120,6 +121,7 @@ class App extends Component {
                 mode: "markdown",
                 lineWrapping: true,
                 lineNumbers: false,
+                extraKeys: bindHotkeys(this.props.content, this.props.dialog),
               }}
               onChange={this.handleChange}
               onScroll={this.handleScroll}
