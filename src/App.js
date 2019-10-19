@@ -14,6 +14,7 @@ import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import {uploadAdaptor} from "./utils/imageHosting";
+import {message} from "antd";
 
 @inject("content")
 @inject("navbar")
@@ -24,6 +25,9 @@ class App extends Component {
     super(props);
     this.focus = false;
     this.scale = 1;
+    this.state = {
+      isDragOver: false,
+    };
   }
 
   componentDidUpdate() {
@@ -81,14 +85,23 @@ class App extends Component {
   };
 
   handleDrop = (instance, e) => {
+    this.setState({isDragOver: false});
     // e.preventDefault();
-    // console.log(e.dataTransfer.files[0]);
+    console.log(e.dataTransfer.files[0]);
     if (!(e.dataTransfer && e.dataTransfer.files)) {
       return;
     }
-    for (let i = 0; i < e.dataTransfer.files.length; i++) {
-      // console.log(e.dataTransfer.files[i]);
-      uploadAdaptor({file: e.dataTransfer.files[i], content: this.props.content});
+    const {files} = e.dataTransfer;
+    for (let i = 0; i < files.length; i++) {
+      console.log(files[i]);
+      if (files[i].size > 1024 * 1024 * 5) {
+        message.error("文件大小超过 5 M！");
+        continue;
+      }
+      if (!files[i].type.includes("image")) {
+        message.warning("上传文件类型不是图片！");
+      }
+      uploadAdaptor({file: files[i], content: this.props.content});
     }
   };
 
@@ -100,18 +113,28 @@ class App extends Component {
     }
   };
 
+  handleDragOver = () => {
+    this.setState({isDragOver: true});
+  };
+
+  handleDragLeave = () => {
+    this.setState({isDragOver: false});
+  };
+
   render() {
     const {codeNum} = this.props.navbar;
     const parseHtml =
       codeNum === 0
         ? markdownParserWechat.render(this.props.content.content)
         : markdownParser.render(this.props.content.content);
-
     return (
       <div className="App">
         <Navbar />
         <div className="text-container">
-          <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+          <div
+            className={`text-box  ${this.state.isDragOver ? "codemirror-ext" : null}`}
+            onMouseOver={(e) => this.setCurrentIndex(1, e)}
+          >
             <CodeMirror
               value={this.props.content.content}
               options={{
@@ -127,6 +150,8 @@ class App extends Component {
               onBlur={this.handleBlur}
               onDrop={this.handleDrop}
               onPaste={this.handlePaste}
+              onDragOver={this.handleDragOver}
+              onDragLeave={this.handleDragLeave}
               ref={this.getInstance}
             />
           </div>

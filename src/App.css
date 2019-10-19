@@ -2,8 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: "PingFang SC", BlinkMacSystemFont, Roboto, "Helvetica Neue",
-    sans-serifhtml, body;
+  font-family: "PingFang SC", BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serifhtml, body;
   font-size: 16px;
 }
 
@@ -14,10 +13,11 @@
 }
 /* 编辑器最多会被分成三份width:33.3%，当两份时根据flex-grow:1伸展 */
 .text-box {
-  width:33.3%;
-  flex-grow:1;
-  padding: 0 20px 20px 20px;
+  width: 33.3%;
+  flex-grow: 1;
+  margin: 0 20px 20px 20px;
   word-wrap: break-word;
+  border-radius: 5px;
 }
 
 #marked-text {
@@ -31,6 +31,10 @@
   width: 375px;
   height: 100%;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.codemirror-ext {
+  border: 1.5px dashed #1890ff;
 }
 
 ::-webkit-scrollbar {

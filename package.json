@@ -8,7 +8,7 @@
   "homepage": ".",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "@uiw/react-codemirror": "^1.0.19",
+    "@uiw/react-codemirror": "^1.0.28",
     "antd": "^3.15.1",
     "axios": "^0.18.0",
     "highlight.js": "^9.15.6",
@@ -42,8 +42,6 @@
     "css-loader": "^2.1.1",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "electron": "^6.0.10",
-    "electron-builder": "^21.2.0",
     "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
@@ -95,8 +93,6 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "electron-start": "electron .",
-    "package": "rm -rf dist && electron-builder --x64",
     "analyze": "source-map-explorer build/static/js/*.js"
   },
   "build": {
@@ -200,7 +196,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{jsx,txs,ts,js,json,css,md}": [
+    "src/**/*.{jsx,txs,ts,js,json,md}": [
       "prettier --write",
       "eslint --fix",
       "git add"
