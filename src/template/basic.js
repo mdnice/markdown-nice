@@ -83,6 +83,15 @@ li section {
   font-weight: 500;
 }
 
+/*微信代码样式*/
+.code-snippet__fix .code-snippet__line-index li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 26px;
+  text-align: left;
+  color: black;
+}
+
 /*引用*/
 blockquote {
   display: block;
