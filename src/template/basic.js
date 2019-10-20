@@ -175,6 +175,7 @@ pre code {
   border-radius: 0px;
   font-size: 12px;
   padding: 2px;
+  -webkit-overflow-scrolling: touch;
 }
 pre code span {
   line-height: 26px;
