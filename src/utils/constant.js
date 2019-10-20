@@ -90,6 +90,11 @@ export const TEMPLATE_OPTIONS = [
     author: "Krahets",
   },
   {
+    id: "serialize",
+    name: "序列化",
+    author: "ZQ-jhon",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
