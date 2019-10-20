@@ -13,9 +13,7 @@ import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constan
 class Copy extends Component {
   constructor(props) {
     super(props);
-    this.mathNums = 0;
     this.html = "";
-    this.scale = 2;
     this.state = {
       loading: false,
     };
