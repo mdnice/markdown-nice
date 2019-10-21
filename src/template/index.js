@@ -10,6 +10,7 @@ import wechatFormat from "./markdown/wechatFormat";
 import blue from "./markdown/blue";
 import blueCyan from "./markdown/blueCyan";
 import scienceBlue from "./markdown/scienceBlue";
+import shanchui from "./markdown/shanchui";
 
 import content from "./content";
 
@@ -36,6 +37,7 @@ export default {
     blue,
     blueCyan,
     scienceBlue,
+    shanchui,
   },
   code: {
     atomOneDark,

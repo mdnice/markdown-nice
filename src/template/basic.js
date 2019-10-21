@@ -60,16 +60,31 @@ ul,
 ol {
   margin-top: 8px;
   margin-bottom: 8px;
-  padding-left: 20px;
+  padding-left: 25px;
   color: black;
 }
 ul {
   list-style-type: disc;
 }
+ul ul {
+  list-style-type: square;
+}
+
 ol {
   list-style-type: decimal;
 }
-li {
+
+li section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 26px;
+  text-align: left;
+  color: rgb(1,1,1); // 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。
+  font-weight: 500;
+}
+
+/*微信代码样式*/
+.code-snippet__fix .code-snippet__line-index li {
   margin-top: 5px;
   margin-bottom: 5px;
   line-height: 26px;
@@ -160,6 +175,7 @@ pre code {
   border-radius: 0px;
   font-size: 12px;
   padding: 2px;
+  -webkit-overflow-scrolling: touch;
 }
 pre code span {
   line-height: 26px;

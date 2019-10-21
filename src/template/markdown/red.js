@@ -82,8 +82,23 @@ h3 span {
 h3:after {
 }
 
-/* 列表内容 */
-li {
+/* 无序列表整体样式
+ * list-style-type: square|circle|disc;
+ */
+ul {
+  font-size: 14px;
+}
+
+/* 无序列表整体样式
+ * list-style-type: upper-roman|lower-greek|lower-alpha;
+ */
+ol {
+  font-size: 14px;
+}
+
+/* 列表内容，不要设置li
+ */
+li section {
   font-size:13px;
 }
 

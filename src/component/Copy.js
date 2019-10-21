@@ -13,9 +13,7 @@ import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constan
 class Copy extends Component {
   constructor(props) {
     super(props);
-    this.mathNums = 0;
     this.html = "";
-    this.scale = 2;
     this.state = {
       loading: false,
     };
@@ -43,7 +41,7 @@ class Copy extends Component {
   solveHtml = () => {
     const element = document.getElementById("wx-box");
     let html = element.innerHTML;
-    html = html.replace(/\s<span class="inline>/g, '&nbsp;<span class="inline>');
+    html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
     html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
     const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
     const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
