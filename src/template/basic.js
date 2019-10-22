@@ -25,13 +25,14 @@ pre,
 section,
 figure,
 hr {
-  margin: 0 0 1em;
+  margin: 1em 0;
 }
 
 /*段落*/
 p {
-  font-size: 16px;
-  line-height: 26px;
+  /* font-size: 16px; */
+  /* 26/16 = 1.625 fix: 字体变大不会重叠 */
+  line-height: 1.625;
   color: black;
 }
 
@@ -48,22 +49,26 @@ h6 {
   color: black;
 }
 h1 {
-  font-size: 28px;
+  /* 28/16 = 1.75 */
+  font-size: 1.75em;
 }
 h2 {
-  font-size: 24px;
+  /* 24/16 = 1.5 */
+  font-size: 1.5em;
 }
 h3 {
-  font-size: 20px;
+  /* 20/16 = 1.25 */
+  font-size: 1.25em;
 }
 h4 {
-  font-size: 18px;
+  /* 18/16 = 1.125 */
+  font-size: 1.125em;
 }
 h5 {
-  font-size: 16px;
+  font-size: 1em;
 }
 h6 {
-  font-size: 16px;
+  font-size: 1em;
 }
 
 /*列表*/
@@ -84,9 +89,10 @@ ol {
 }
 
 li section {
+  /* 行高会默认继承 */
+  /* line-height: 26px; */
   margin-top: 5px;
   margin-bottom: 5px;
-  line-height: 26px;
   text-align: left;
   color: rgb(1,1,1); // 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。
   font-weight: 500;
@@ -94,9 +100,9 @@ li section {
 
 /*微信代码样式*/
 .code-snippet__fix .code-snippet__line-index li {
+  /* line-height: 26px; */
   margin-top: 5px;
   margin-bottom: 5px;
-  line-height: 26px;
   text-align: left;
   color: black;
 }
@@ -119,7 +125,7 @@ blockquote {
 blockquote p {
   margin: 0px;
   color: black;
-  line-height: 26px;
+  /* line-height: 26px; */
 }
 
 .table-of-contents a {
@@ -164,7 +170,6 @@ del {
 /*分隔线*/
 hr {
   height: 1px;
-  marign-top: 1em;
   border: none;
   border-top: 1px solid black;
 }
@@ -174,17 +179,19 @@ pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
-  font-size: 12px;
+  /* 12/16 = 0.75 */
+  font-size: 0.75em;
   padding: 2px;
   -webkit-overflow-scrolling: touch;
 }
 pre code span {
-  line-height: 26px;
+  /* line-height: 26px; */
 }
 
 /*行内代码*/
 p code, li code{
-  font-size: 14px;
+  /* 14/16 = 0.875 */
+  font-size: 0.875em;
   word-wrap: break-word;
   padding: 2px 4px;
   border-radius: 4px;
@@ -231,7 +238,7 @@ table tr:nth-child(2n) {
 
 table tr th,
 table tr td {
-  font-size: 16px;
+  font-size: 1em;
   border: 1px solid #ccc;
   padding: 5px 10px;
   text-align: left;
@@ -245,7 +252,8 @@ table tr th {
 /* 微信代码块 */
 .code-snippet__fix {
   word-wrap: break-word !important;
-  font-size: 14px;
+  /* font-size: 14px; */
+  /* line-height: 20px; */
   display: block;
   color: #333;
   position: relative;
@@ -253,18 +261,14 @@ table tr th {
   border: 1px solid #f0f0f0;
   border-radius: 2px;
   display: flex;
-  line-height: 20px;
 }
 .code-snippet__fix pre {
   margin-bottom: 0px;
   margin-top: 0px;
 }
 .code-snippet__fix .code-snippet__line-index {
+  font-size: 0.75em;
   counter-reset: line;
-  flex-shrink: 0;
-  height: 100%;
-  padding: 1em;
-  list-style-type: none;
   padding: 16px;
   margin: 0;
 }
@@ -276,7 +280,6 @@ table tr th {
 .code-snippet__fix .code-snippet__line-index li::before {
   min-width: 1.5em;
   text-align: right;
-  left: -2.5em;
   counter-increment: line;
   content: counter(line);
   display: inline;
@@ -291,8 +294,8 @@ table tr th {
   -webkit-overflow-scrolling: touch;
 }
 .code-snippet__fix code {
+  /* font-size: 14px; */
   text-align: left;
-  font-size: 14px;
   display: block;
   white-space: pre;
   display: flex;
@@ -342,28 +345,31 @@ table tr th {
 
 .footnote-item {
   display: flex;
+  /* 14/16 = 0.875 */
+  font-size: 0.875em;
 }
 
 .footnote-num {
-  display: inline;
-  width: 10%; /*神奇，50px就不可以*/
+  /* display: inline; */
+  /* width: 10%; 神奇，50px就不可以*/
+  /* 容器是 flex 用 flex 定义 50px 有点宽 */
+  // line-height: 26px;
+  flex: 0 0 auto;
+  margin-right: 10px;
   background: none;
-  font-size: 80%;
   opacity: 0.6;
-  line-height: 26px;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .footnote-item p {
-  display: inline;
-  font-size: 14px;
-  width: 90%;
-  padding: 0px;
+  /* display: inline; */
+  /* width: 90%; */
+  /* line-height: 26px; */
+  /* width: calc(100%-50) */
+  flex: auto;
   margin: 0;
-  line-height: 26px;
   color: black;
   word-break:break-all;
-  width: calc(100%-50)
 }
 
 sub, sup {
