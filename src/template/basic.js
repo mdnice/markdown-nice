@@ -23,9 +23,9 @@ blockquote,
 table,
 pre,
 section,
-figure {
-  margin-bottom: 1em;
-  margin-top: 0;
+figure,
+hr {
+  margin: 0 0 1em;
 }
 
 /*段落*/
@@ -164,9 +164,7 @@ del {
 /*分隔线*/
 hr {
   height: 1px;
-  margin: 0;
-  margin-top: .5em;
-  margin-bottom: .5em;
+  marign-top: 1em;
   border: none;
   border-top: 1px solid black;
 }
