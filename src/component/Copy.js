@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import juice from "juice";
 import {observer, inject} from "mobx-react";
 import {Button, message, ConfigProvider} from "antd";
-
+import cssAST from "css-tree";
 import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
 
 @inject("content")
@@ -40,7 +40,24 @@ class Copy extends Component {
     }
   };
 
-  solveCount = (html) => {
+  deepFind = (list, target) => {
+    // TODO: 补全递归
+  };
+
+  solveCssCounter = (html) => {
+    const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
+    const cssNodeList = cssAST.parse(markdownStyle).children;
+    // 递归链表 找出 preset 的 value
+    // 特征： children.head.data.block.children.head.data.property = "conter-reset"
+    //       children.head.data.block.children.tail.data.value = "0"
+    const resetValue = this.deepFind(cssNodeList, "counter-reset");
+
+    // 特征 children.head.next.data.block.children.head.data.property = "counter-increcement"
+    //      children.head.next.data.block.children.head.data.value.value = "第 counter(c) 个"
+    const incrcement = this.deepFind(cssNodeList, "counter-increment");
+
+    // parseHTML 找到 所有 h1 标签，然后遍历，增加对应的 index 值
+    // console.log(increment);
     const ci = /\s?counter-increment:\s\S+?;/g;
     html = html.replace(ci, "");
     const counter = /"counter(\S+?)"/g;
@@ -67,7 +84,7 @@ class Copy extends Component {
         inlinePseudoElements: true,
         preserveImportant: true,
       });
-      this.html = this.solveCount(this.html);
+      this.html = this.solveCssCounter(this.html);
     } catch (e) {
       message.error("请检查 CSS 文件是否编写正确！");
     }

@@ -1,4 +1,6 @@
-export default `/* 自定义样式，实时生效，浏览器实时缓存 */
+export default `/*自定义样式，实时生效*/
+
+/* 自定义样式，实时生效，浏览器实时缓存 */
 
 /* 全局属性
  * 页边距 padding: 30px;
@@ -6,6 +8,7 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
  * 英文换行 word-break: break-all;
  */
 .layout {
+counter-reset: slz;
 }
 
 /* 段落，下方未标注标签参数均同此处
@@ -24,7 +27,7 @@ p {
 
 /* 一级标题 */
 h1 {
-    counter-reset:h1Serialize;
+    color: red;
 }
 /* 一级标题内容 */
 h1 span {
@@ -36,8 +39,8 @@ h1:after {
 
 /* 一级标题序列化 */
 h1::before {
-    counter-increment:h1Serialize;
-    content:"counter(h1Serialize)". ";
+    counter-increment: slz;
+    content: counter(slz) ". ";
 }
 
 /* 二级标题 */
