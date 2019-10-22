@@ -1,9 +1,3 @@
-/**
- * 通过调研，实现思路如下：
- * 1. 从 markdown-it 解析出来的 tokens 里面拿到 h1的 tokens
- * 2. 检查当前是否为序列化的主题，如果有，则进行序列化的插入
- * 3. check counter style code and serialize it.
- */
 export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 
 /* 全局属性
