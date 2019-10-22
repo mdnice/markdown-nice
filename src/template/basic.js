@@ -14,12 +14,23 @@ export default `/*默认样式，最佳实践*/
   font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+/* 除标题外的块状统一间距 */
+p,
+ul,
+ol,
+dl,
+blockquote,
+table,
+pre,
+section,
+figure {
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
 /*段落*/
 p {
   font-size: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin: 0;
   line-height: 26px;
   color: black;
 }
@@ -58,8 +69,6 @@ h6 {
 /*列表*/
 ul,
 ol {
-  margin-top: 8px;
-  margin-bottom: 8px;
   padding-left: 25px;
   color: black;
 }
@@ -105,8 +114,6 @@ blockquote {
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 blockquote p {
@@ -158,17 +165,13 @@ del {
 hr {
   height: 1px;
   margin: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: .5em;
+  margin-bottom: .5em;
   border: none;
   border-top: 1px solid black;
 }
 
 /*代码块*/
-pre {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
@@ -199,13 +202,6 @@ img {
   display: block;
   margin: 0 auto;
   width: 100%;
-}
-
-/*图片*/
-figure {
-  margin: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 /*图片描述文字*/
@@ -252,7 +248,6 @@ table tr th {
 .code-snippet__fix {
   word-wrap: break-word !important;
   font-size: 14px;
-  margin: 10px 0;
   display: block;
   color: #333;
   position: relative;
@@ -263,7 +258,7 @@ table tr th {
   line-height: 20px;
 }
 .code-snippet__fix pre {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   margin-top: 0px;
 }
 .code-snippet__fix .code-snippet__line-index {
