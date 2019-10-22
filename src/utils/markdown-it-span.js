@@ -6,7 +6,6 @@ function slugify(s, md) {
 
 function makeRule(md, options) {
   return function addHeadingAnchors(state) {
-    console.log(state);
     // Go to length-2 because we're going to be peeking ahead.
     for (var i = 0; i < state.tokens.length - 1; i++) {
       if (state.tokens[i].type !== "heading_open" || state.tokens[i + 1].type !== "inline") {

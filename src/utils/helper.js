@@ -10,6 +10,7 @@ import markdownItRuby from "markdown-it-ruby";
 import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
+import markdownItHeaderCounter from "./markdown-it-header-counter";
 import highlightjs from "./langHighlight";
 
 export const axiosGithub = axios.create({
@@ -90,7 +91,8 @@ markdownParserWechat
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby)
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
-  .use(markdownItDeflist); // 定义列表
+  .use(markdownItDeflist) // 定义列表
+  .use(markdownItHeaderCounter); // 标题序列化
 
 // 普通解析器，代码高亮用highlight
 export const markdownParser = new MarkdownIt({
@@ -122,7 +124,8 @@ markdownParser
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby)
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
-  .use(markdownItDeflist); // 定义列表
+  .use(markdownItDeflist) // 定义列表
+  .use(markdownItHeaderCounter); // 标题序列化
 
 export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
