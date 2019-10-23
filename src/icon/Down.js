@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-export default ({fill = "rgba(0,0,0,0.65)", style = {}, className = "icon", viewBox = "0 0 1024 1024"}) => (
+export default ({style = {}, className = "icon", viewBox = "0 0 1024 1024"}) => (
   <svg
     style={style}
     viewBox={viewBox}

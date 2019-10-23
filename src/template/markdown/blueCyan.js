@@ -95,8 +95,21 @@ h6 {
   border-left: 1px dotted #009688;
 }
 
-/* 列表内容 */
-li {
+/* 无序列表整体样式
+ * list-style-type: square|circle|disc;
+ */
+ul {
+}
+
+/* 无序列表整体样式
+ * list-style-type: upper-roman|lower-greek|lower-alpha;
+ */
+ol {
+}
+
+/* 列表内容，不要设置li
+ */
+li section {
 }
 
 /* 引用
@@ -114,7 +127,9 @@ blockquote {
 blockquote p {
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: #009688;
   border-bottom: 1px solid #009688;
@@ -211,4 +226,15 @@ table tr:nth-child(2n){
 
 /* 参考资料解释 */
 .footnote-item p em {
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;

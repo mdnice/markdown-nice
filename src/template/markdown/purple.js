@@ -89,15 +89,28 @@ h3 span {
 h3:after {
 }
 
-/* 列表内容 */
-li {
-  margin: 10px;
+/* 无序列表整体样式
+ * list-style-type: square|circle|disc;
+ */
+ul {
+}
+
+/* 无序列表整体样式
+ * list-style-type: upper-roman|lower-greek|lower-alpha;
+ */
+ol {
+}
+
+/* 列表内容，不要设置li
+ */
+li section {
+  margin: 10px 0;
 }
 
 /* 引用
-* 左边缘颜色 border-left-color: black;
-* 背景色 background: gray;
-*/
+ * 左边缘颜色 border-left-color: black;
+ * 背景色 background: gray;
+ */
 blockquote {
   margin: 10px 5px;
   border-left: 3px solid #9654B5;
@@ -111,7 +124,9 @@ blockquote {
 blockquote p {
 }
 
-/* 链接 */
+/* 链接 
+ * border-bottom: 1px solid #009688;
+ */
 a {
   color: #773098;
   border-bottom: 1px solid #773098;
@@ -197,4 +212,15 @@ table tr td {
 
 /* 参考资料解释 */
 .footnote-item p em {
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;

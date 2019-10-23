@@ -11,6 +11,7 @@ import markdownItSpan from "./markdown-it-span";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import highlightjs from "./langHighlight";
+import markdownLiReplacer from "./markdown-it-li";
 
 export const axiosGithub = axios.create({
   baseURL: "https://api.github.com",
@@ -88,9 +89,10 @@ markdownParserWechat
     transformLink: () => "",
     includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
-  .use(markdownItRuby)
+  .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
-  .use(markdownItDeflist); // 定义列表
+  .use(markdownItDeflist) // 定义列表
+  .use(markdownLiReplacer); // li 标签中加入 p 标签
 
 // 普通解析器，代码高亮用highlight
 export const markdownParser = new MarkdownIt({
@@ -120,9 +122,10 @@ markdownParser
     transformLink: () => "",
     includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
-  .use(markdownItRuby)
+  .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
-  .use(markdownItDeflist); // 定义列表
+  .use(markdownItDeflist) // 定义列表
+  .use(markdownLiReplacer); // li 标签中加入 p 标签
 
 export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
@@ -265,20 +268,14 @@ export const updateMathjax = () => {
   window.MathJax.typesetClear();
   window.MathJax.typesetPromise()
     .then(() => {
-      const element = document.getElementById("wx-box");
-      const formulas = element.getElementsByTagName("mjx-container");
-      while (formulas.length > 0) {
-        const mjx = formulas[0];
-        if (mjx.hasAttribute("display")) {
-          const parent = mjx.parentNode;
-          const svgContainer = document.createElement("section");
-          svgContainer.innerHTML = mjx.innerHTML;
-          svgContainer.className = "block-equation";
-          parent.replaceChild(svgContainer, mjx);
-        } else {
-          mjx.outerHTML = mjx.innerHTML;
-        }
-      }
+      const element = document.getElementById("layout");
+      let html = element.innerHTML;
+      html = html.replace(
+        /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
+        '<section class="block-equation">$1</section>',
+      );
+      html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
+      element.innerHTML = html;
     })
     .catch((err) => console.log(err.message));
 };

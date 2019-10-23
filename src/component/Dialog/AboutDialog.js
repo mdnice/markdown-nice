@@ -53,12 +53,16 @@ class AboutDialog extends Component {
 
         <p style={style.lineHeight}>支持自定义样式的 Markdown 编辑器；</p>
         <p style={style.lineHeight}>支持微信公众号排版；</p>
-        <p style={style.lineHeight}>支持知乎、掘金、博客园和CSDN等平台；</p>
+        <p style={style.lineHeight}>支持开源中国、知乎、掘金、博客园和CSDN等平台；</p>
         <h3 style={style.headerMargin}>我们</h3>
         <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注
           <a rel="noopener noreferrer" target="_blank" href="https://github.com/mdnice/markdown-nice">
             &nbsp;GitHub&nbsp;
+          </a>
+          、
+          <a rel="noopener noreferrer" target="_blank" href="https://gitee.com/zhning12/markdown-nice">
+            &nbsp;Gitee&nbsp;
           </a>
           和新项目
           <a

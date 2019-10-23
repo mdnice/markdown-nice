@@ -92,6 +92,11 @@ export const TEMPLATE_OPTIONS = [
     author: "Krahets",
   },
   {
+    id: "shanchui",
+    name: "山吹",
+    author: "ElyhG",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
@@ -131,12 +136,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.2.3";
+export const VERSION_NUM = "1.2.7";
 
 export const VERSION_TIMELINE = [
+  "2019-10-20 修复公式、微信代码行、代码滚动手感等问题",
+  "2019-10-18 解决 li 和 ol 渲染问题，支持化学物理等公式，加入新主题山吹",
+  "2019-10-15 添加 CSS 编写错误提示，添加 a 标签提示",
+  "2019-10-14 行间公式过长后可拉伸，开放公式配置css",
   "2019-10-13 修复公式 bug",
-  "2019-10-11 公式编写渲染为svg，彻底解决微信公众号不支持公式的问题，组建钉钉用户群，解决阿里云图床中文多编码一次的问题",
-  "2019-10-07 支持图片粘贴和拖拽上传，格式化由用户手动操作",
-  "2019-10-06 新增蓝莹、科技蓝、兰青主题",
-  "2019-10-02 新增复制时排版检测功能，规范排版格式",
 ];

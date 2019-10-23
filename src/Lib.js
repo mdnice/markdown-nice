@@ -24,30 +24,32 @@ function injectMathJax() {
     mathJaxCfgScript.innerHTML = `
 MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
   },
   svg: {
     fontCache: 'none'
+  },
+  options: {
+    renderActions: {
+      addMenu: [0, "", ""],
+    },
   },
   startup: {
     ready: () => {
       MathJax.startup.defaultReady();
       MathJax.startup.promise.then(() => {
-        var element = document.getElementById('wx-box');
-        const formulas = element.getElementsByTagName('mjx-container');
-        while (formulas.length > 0) {
-          var mjx = formulas[0];
-          if (mjx.hasAttribute('display')) {
-            var parent = mjx.parentNode;
-            var svgContainer = document.createElement('section');
-            svgContainer.innerHTML = mjx.innerHTML;
-            svgContainer.className = 'block-equation';
-            parent.replaceChild(svgContainer, mjx);
-          } else {
-            mjx.outerHTML = mjx.innerHTML;
-          }
-        }
+        const element = document.getElementById("layout");
+        let html = element.innerHTML;
+        html = html.replace(
+          /<mjx-container.+?display.+?>(.+?)<\\/mjx-container>/g,
+          '<section class="block-equation">$1</section>',
+        );
+        html = html.replace(
+          /<mjx-container.+?>(.+?)<\\/mjx-container>/g,
+          '<span class="inline-equation">$1</span>',
+        );
+        element.innerHTML = html;
       });
     }
   }
@@ -56,7 +58,7 @@ MathJax = {
     const mathJaxDep = document.createElement("script");
     mathJaxDep.type = "text/javascript";
     mathJaxDep.id = "MathJax-script";
-    mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@3.0.0_es5_tex-svg.js";
+    mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@852340cc_es5_tex-svg-full_20191018204835.js";
     document.head.appendChild(mathJaxCfgScript);
     document.head.appendChild(mathJaxDep);
     hasMathJax = true;

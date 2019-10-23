@@ -8,7 +8,7 @@ export default `使用时请将内容替换为自己的内容。
 
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号排版
-- 支持知乎、掘金、博客园和 CSDN 等平台
+- 支持开源中国、知乎、掘金、博客园和 CSDN 等平台
 - 内容和自定义样式浏览器中实时保存
 - 欢迎登录 GitHub 账号，提交自定义主题
 
@@ -20,7 +20,6 @@ export default `使用时请将内容替换为自己的内容。
 - <span style="color:rgb(248,57,41);font-weight:bold;">红绯：</span>[日常 | 我用什么工具写作？](https://mp.weixin.qq.com/s/DrvJBEWqH14atF_4O1IXFw)
 - <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 - <span style="color:#0e88eb;font-weight:bold;">科技蓝</span>：[2019 前端秋季社招面试经历总结（二年多经验）](https://mp.weixin.qq.com/s/eDIDOESem_s93liccYK-qw)
-- <span style="color:#009688;font-weight:bold;">兰青</span>：[兰青 Demo](https://mp.weixin.qq.com/s/iL8xlH0I3yOEOrhcBqc0kg)
 
 ## 3. 标题
 
@@ -47,7 +46,7 @@ export default `使用时请将内容替换为自己的内容。
   - 无序列表 2.1
   - 无序列表 2.2
 
-最多支持到二级列表，粘贴到微信编辑器后后**无序列表整体样式与微信一致**。
+**由于微信原因，最多支持到二级列表**。
 
 ## 5. 有序列表
 
@@ -56,8 +55,6 @@ export default `使用时请将内容替换为自己的内容。
 1. 有序列表 1
 2. 有序列表 2
 3. 有序列表 3
-
-粘贴到微信编辑器后后**有序列表整体样式与微信一致**。
 
 ## 6. 引用
 
@@ -80,6 +77,12 @@ export default `使用时请将内容替换为自己的内容。
 *这个是斜体*
 
 ***这个是粗体加斜体***
+
+注：由于 commonmark 标准，可能会导致加粗与想象不一致，如下
+
+**今天天气好晴朗，**处处好风光。
+
+这个是正常现象，请参考[加粗 Issue](https://github.com/markdown-it/markdown-it/issues/410 "加粗 Issue")。
 
 ## 8. 链接
 
@@ -128,12 +131,12 @@ export default `使用时请将内容替换为自己的内容。
 
 **建议：一次性排版推荐使用 mdnice，图片需要长期管理推荐使用七牛云**。
 
+**注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失**。
+
 配置文档如下：
 
 - [Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 - [Markdown Nice 新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
-
-注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失。
 
 ## 11. 代码块
 

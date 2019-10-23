@@ -119,8 +119,6 @@ blockquote p {
   padding: 3px 0;
 }
 
-/* 行内元素 */
-
 a {
   color: hsl(187, 100%, 45%);
   font-weight: normal;
@@ -179,4 +177,15 @@ sup {
 .footnote-item p em {
   color: #999;
   background: transparent;
+}
+
+/* 行间公式
+ * 最大宽度 max-width: 300% !important;
+ */
+.block-equation svg {
+}
+
+/* 行内公式
+ */
+.inline-equation svg {  
 }`;
