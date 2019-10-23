@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import juice from "juice";
 import {observer, inject} from "mobx-react";
 import {Button, message, ConfigProvider} from "antd";
-import cssAST from "css-tree";
 import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
+import cssom from "cssom";
 
 @inject("content")
 @inject("navbar")
@@ -40,34 +40,24 @@ class Copy extends Component {
     }
   };
 
-  deepFind = (list, target) => {
-    // TODO: 补全递归
-  };
-
   solveCssCounter = (html) => {
-    const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
-    const cssNodeList = cssAST.parse(markdownStyle).children;
-    // 递归链表 找出 preset 的 value
-    // 特征： children.head.data.block.children.head.data.property = "conter-reset"
-    //       children.head.data.block.children.tail.data.value = "0"
-    const resetValue = this.deepFind(cssNodeList, "counter-reset");
-
-    // 特征 children.head.next.data.block.children.head.data.property = "counter-increcement"
-    //      children.head.next.data.block.children.head.data.value.value = "第 counter(c) 个"
-    const incrcement = this.deepFind(cssNodeList, "counter-increment");
-
-    // parseHTML 找到 所有 h1 标签，然后遍历，增加对应的 index 值
-    // console.log(increment);
-    const ci = /\s?counter-increment:\s\S+?;/g;
-    html = html.replace(ci, "");
-    const counter = /"counter(\S+?)"/g;
-    const dict = {};
-    html = html.replace(counter, (matched, key) => {
-      let value = dict[key];
-      value = value ? value + 1 : 1;
-      dict[key] = value;
-      return value;
-    });
+    const markdownStyle = window.localStorage.getItem("style");
+    // expected result like [".layout {↵counter-reset: slz 123123;↵}"]
+    const matchResult = markdownStyle.match(/.+\s+\{{1}\s?counter-reset:.+;\s}/g);
+    let counterName, counterInitValue;
+    if (Array.isArray(matchResult) && matchResult.length !== 0) {
+      const ast = cssom.parse(matchResult[0]);
+      if (ast.cssRules.length !== 0) {
+        const propertyToken = ast.cssRules[0].style[0];
+        [counterName, counterInitValue] = ast.cssRules[0].style[propertyToken].split(/\s+/);
+        console.log(propertyToken);
+        console.log(counterName, counterInitValue);
+      }
+    }
+    if (counterName) {
+      // TODO: parse HTML and find all of h1 tags, and parse css increment
+      // TODO: parse increment value, and analyze ::before or ::after for append position
+    }
     return html;
   };
 

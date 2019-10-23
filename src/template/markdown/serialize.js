@@ -8,7 +8,7 @@ export default `/*自定义样式，实时生效*/
  * 英文换行 word-break: break-all;
  */
 .layout {
-counter-reset: slz;
+counter-reset: slz 100;
 }
 
 /* 段落，下方未标注标签参数均同此处
