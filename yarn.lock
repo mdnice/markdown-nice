@@ -7746,6 +7746,11 @@ markdown-it-katex@^2.0.3:
   dependencies:
     katex "^0.6.0"
 
+markdown-it-mathjax@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-mathjax/-/markdown-it-mathjax-2.0.0.tgz#ae2b4f4c5c719a03f9e475c664f7b2685231d9e9"
+  integrity sha1-ritPTFxxmgP55HXGZPeyaFIx2ek=
+
 markdown-it-ruby@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/markdown-it-ruby/-/markdown-it-ruby-0.1.1.tgz#6e2050a9b2c3275afc2844920d53cdffbbe12f78"
