@@ -134,7 +134,7 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.2.7";
+export const VERSION_NUM = "1.2.8";
 
 export const VERSION_TIMELINE = [
   "2019-10-23 支持 PWA、图片 svg 示例",
