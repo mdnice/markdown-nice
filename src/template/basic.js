@@ -5,7 +5,7 @@ export default `/*默认样式，最佳实践*/
   font-size: 16px;
   color: black;
   padding: 10px;
-  line-height: 1.6;
+  line-height: 1.625;
   word-spacing: 0px;
   letter-spacing: 0px;
   word-break: break-word;
@@ -180,7 +180,7 @@ pre code {
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   /* 12/16 = 0.75 */
-  font-size: 0.75em;
+  /* font-size: 0.75em; */
   padding: 2px;
   -webkit-overflow-scrolling: touch;
 }
@@ -252,8 +252,8 @@ table tr th {
 /* 微信代码块 */
 .code-snippet__fix {
   word-wrap: break-word !important;
-  /* font-size: 14px; */
-  /* line-height: 20px; */
+  font-size: 14px;
+  margin: 10px 0;
   display: block;
   color: #333;
   position: relative;
@@ -261,14 +261,18 @@ table tr th {
   border: 1px solid #f0f0f0;
   border-radius: 2px;
   display: flex;
+  line-height: 20px;
 }
 .code-snippet__fix pre {
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   margin-top: 0px;
 }
 .code-snippet__fix .code-snippet__line-index {
-  font-size: 0.75em;
   counter-reset: line;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 1em;
+  list-style-type: none;
   padding: 16px;
   margin: 0;
 }
@@ -280,6 +284,7 @@ table tr th {
 .code-snippet__fix .code-snippet__line-index li::before {
   min-width: 1.5em;
   text-align: right;
+  left: -2.5em;
   counter-increment: line;
   content: counter(line);
   display: inline;
@@ -294,8 +299,8 @@ table tr th {
   -webkit-overflow-scrolling: touch;
 }
 .code-snippet__fix code {
-  /* font-size: 14px; */
   text-align: left;
+  font-size: 14px;
   display: block;
   white-space: pre;
   display: flex;
@@ -354,11 +359,14 @@ table tr th {
   /* width: 10%; 神奇，50px就不可以*/
   /* 容器是 flex 用 flex 定义 50px 有点宽 */
   // line-height: 26px;
-  flex: 0 0 auto;
-  margin-right: 10px;
+  flex: 0 0 40px;
+  text-align: right;
+  padding-right:10px;
   background: none;
   opacity: 0.6;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1em;
+  line-height: 1.625;
 }
 
 .footnote-item p {
@@ -370,6 +378,8 @@ table tr th {
   margin: 0;
   color: black;
   word-break:break-all;
+  font-size: 1em;
+  line-height: 1.625;
 }
 
 sub, sup {
