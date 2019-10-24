@@ -5,6 +5,8 @@ export default `/*默认样式，最佳实践*/
   font-size: 16px;
   color: black;
   padding: 10px;
+  /* 解决，首行的 margin-top 不应该有 */
+  margin-top: -1em;
   line-height: 1.625;
   word-spacing: 0px;
   letter-spacing: 0px;
@@ -100,9 +102,9 @@ li section {
 
 /*微信代码样式*/
 .code-snippet__fix .code-snippet__line-index li {
-  /* line-height: 26px; */
   margin-top: 5px;
   margin-bottom: 5px;
+  line-height: 26px;
   text-align: left;
   color: black;
 }
@@ -179,13 +181,10 @@ pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
-  /* 12/16 = 0.75 */
-  /* font-size: 0.75em; */
+  /* 14/16 = 0.875 */
+  font-size: 0.875em;
   padding: 2px;
   -webkit-overflow-scrolling: touch;
-}
-pre code span {
-  /* line-height: 26px; */
 }
 
 /*行内代码*/
@@ -358,10 +357,10 @@ table tr th {
   /* display: inline; */
   /* width: 10%; 神奇，50px就不可以*/
   /* 容器是 flex 用 flex 定义 50px 有点宽 */
-  // line-height: 26px;
+  /* line-height: 26px; */
   flex: 0 0 40px;
   text-align: right;
-  padding-right:10px;
+  padding-right: 10px;
   background: none;
   opacity: 0.6;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
