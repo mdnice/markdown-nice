@@ -137,6 +137,7 @@ export const CODE_OPTIONS = [
 export const VERSION_NUM = "1.2.7";
 
 export const VERSION_TIMELINE = [
+  "2019-10-23 支持 PWA、图片 svg 示例",
   "2019-10-20 修复公式、微信代码行、代码滚动手感等问题",
   "2019-10-18 解决 li 和 ol 渲染问题，支持化学物理等公式，加入新主题山吹",
   "2019-10-15 添加 CSS 编写错误提示，添加 a 标签提示",

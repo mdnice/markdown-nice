@@ -1,6 +1,6 @@
-export default `使用时请将内容替换为自己的内容。
+export default `建议使用 **Chrome** 浏览器。
 
-请阅读下方文本熟悉工具使用方法。
+请阅读下方文本熟悉工具使用方法，本文可直接拷贝到微信中预览。
 
 <img style="width: 120px" src="https://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
 
@@ -111,7 +111,13 @@ export default `使用时请将内容替换为自己的内容。
 
 ![这里写图片描述](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
 
-可使用上方工具上传本地图片，目前共支持**4 种图床**，主要特点如下：
+支持 jpg、png、gif、svg 等图片格式，svg 文件示例如下：
+
+![](https://my-wechat.mdnice.com/mdnice/i_am_svg_20191024083453.svg)
+
+支持图片**拖拽和截图粘贴**到编辑器中上传，上传时使用当前选择的图床。
+
+可使用**上方图片按钮**上传本地图片，目前共支持**4 种图床**，主要特点如下：
 
 | 图床   | 费用     | 有效期 | 失败率 |
 | ------ | -------- | ------ | ------ |

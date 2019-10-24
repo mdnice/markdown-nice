@@ -383,10 +383,12 @@ sub, sup {
   text-align: center;
   overflow: auto;
   display: block;
+  -webkit-overflow-scrolling: touch;
 }
 
 .block-equation svg {
   max-width: 300% !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .inline-equation {

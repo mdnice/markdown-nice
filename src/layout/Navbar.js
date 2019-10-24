@@ -95,6 +95,7 @@ const style = {
     marginRight: "10px",
     fontWeight: "bold",
     fontSize: "16px",
+    fontFamily: "Apple Chancery, cursive",
   },
 };
 
