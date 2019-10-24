@@ -79,7 +79,7 @@ li section {
   margin-bottom: 5px;
   line-height: 26px;
   text-align: left;
-  color: rgb(1,1,1); // 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。
+  color: rgb(1,1,1); /* 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。*/
   font-weight: 500;
 }
 
