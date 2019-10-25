@@ -37,6 +37,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
+    "mathjax": "^3.0.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "prettier": "^1.18.2",

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
@@ -33,10 +32,6 @@ class App extends Component {
 
   componentDidUpdate() {
     updateMathjax();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.mathjaxTimer);
   }
 
   setEditorContent = () => {

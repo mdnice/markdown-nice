@@ -16,19 +16,13 @@ import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
-let hasMathJax = false;
-
-function injectMathJax() {
-  if (!hasMathJax) {
-    const mathJaxCfgScript = document.createElement("script");
-    mathJaxCfgScript.innerHTML = `
-MathJax = {
+window.MathJax = {
   tex: {
-    inlineMath: [['$', '$']],
-    displayMath: [['$$', '$$']]
+    inlineMath: [["$", "$"]],
+    displayMath: [["$$", "$$"]],
   },
   svg: {
-    fontCache: 'none'
+    fontCache: "none",
   },
   options: {
     renderActions: {
@@ -37,39 +31,24 @@ MathJax = {
   },
   startup: {
     ready: () => {
-      MathJax.startup.defaultReady();
-      MathJax.startup.promise.then(() => {
+      window.MathJax.startup.defaultReady();
+      window.MathJax.startup.promise.then(() => {
         const element = document.getElementById("layout");
         let html = element.innerHTML;
         html = html.replace(
-          /<mjx-container.+?display.+?>(.+?)<\\/mjx-container>/g,
+          /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
           '<section class="block-equation">$1</section>',
         );
-        html = html.replace(
-          /<mjx-container.+?>(.+?)<\\/mjx-container>/g,
-          '<span class="inline-equation">$1</span>',
-        );
+        html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
         element.innerHTML = html;
       });
-    }
-  }
+    },
+  },
 };
-    `;
-    const mathJaxDep = document.createElement("script");
-    mathJaxDep.type = "text/javascript";
-    mathJaxDep.id = "MathJax-script";
-    mathJaxDep.src = "https://my-wechat.mdnice.com/mdnice/mathjax@852340cc_es5_tex-svg-full_20191018204835.js";
-    document.head.appendChild(mathJaxCfgScript);
-    document.head.appendChild(mathJaxDep);
-    hasMathJax = true;
-  }
-}
+
+require("mathjax/es5/tex-svg");
 
 class Lib extends Component {
-  componentDidMount() {
-    injectMathJax();
-  }
-
   render() {
     const {previewType, defaultTitle, onTitleChange, defaultText, onTextChange} = this.props;
     const appCtx = {
