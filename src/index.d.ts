@@ -8,7 +8,7 @@ export interface MarkdownNiceProps {
   /**
    * 默认标题
    */
-  defaultTitle?: String;
+  defaultTitle?: string;
   /**
    * 右侧预览类型 pc 或者 mobile
    */
@@ -16,15 +16,15 @@ export interface MarkdownNiceProps {
   /**
    * 标题变化监听函数
    */
-  onTitleChange?: (title: React.ReactNode) => void;
+  onTitleChange?: (title: string) => void;
   /**
    * 默认编辑器内容
    */
-  defaultText?: String;
+  defaultText?: string;
   /**
    * 编辑器内容监听函数
    */
-  onTextChange?: (text: String) => void;
+  onTextChange?: (text: string) => void;
 }
 
 declare class MarkdownNice extends React.Component<MarkdownNiceProps, any> {}
