@@ -16,43 +16,6 @@ import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
 
-try {
-  window.MathJax = {
-    tex: {
-      inlineMath: [["$", "$"]],
-      displayMath: [["$$", "$$"]],
-    },
-    svg: {
-      fontCache: "none",
-    },
-    options: {
-      renderActions: {
-        addMenu: [0, "", ""],
-      },
-    },
-    startup: {
-      ready: () => {
-        window.MathJax.startup.defaultReady();
-        window.MathJax.startup.promise.then(() => {
-          const element = document.getElementById("layout");
-          let html = element.innerHTML;
-          html = html.replace(
-            /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-            '<section class="block-equation">$1</section>',
-          );
-          html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
-          element.innerHTML = html;
-        });
-      },
-    },
-  };
-
-  // eslint-disable-next-line global-require
-  require("mathjax/es5/tex-svg");
-} catch (e) {
-  // console.log(e);
-}
-
 class Lib extends Component {
   render() {
     const {previewType, defaultTitle, onTitleChange, defaultText, onTextChange} = this.props;

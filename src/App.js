@@ -12,6 +12,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
+import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
 
@@ -27,11 +28,62 @@ class App extends Component {
   }
 
   componentDidMount() {
+    try {
+      window.MathJax = {
+        tex: {
+          inlineMath: [["$", "$"]],
+          displayMath: [["$$", "$$"]],
+        },
+        svg: {
+          fontCache: "none",
+        },
+        options: {
+          renderActions: {
+            addMenu: [0, "", ""],
+          },
+        },
+        startup: {
+          ready: () => {
+            window.MathJax.startup.defaultReady();
+            window.MathJax.startup.promise.then(() => {
+              const element = document.getElementById("layout");
+              let html = element.innerHTML;
+              html = html.replace(
+                /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
+                '<section class="block-equation">$1</section>',
+              );
+              html = html.replace(
+                /<mjx-container.+?>(.+?)<\/mjx-container>/g,
+                '<span class="inline-equation">$1</span>',
+              );
+              element.innerHTML = html;
+            });
+          },
+        },
+      };
+      // eslint-disable-next-line
+      require("mathjax/es5/tex-svg");
+      pluginCenter.mathjax = true;
+    } catch (e) {
+      console.log(e);
+    }
     this.setEditorContent();
   }
 
   componentDidUpdate() {
-    updateMathjax();
+    if (pluginCenter.mathjax) {
+      try {
+        updateMathjax();
+      } catch (e) {
+        this.mathJaxTimer = setTimeout(() => {
+          updateMathjax();
+        }, 1000);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
 
   setEditorContent = () => {
