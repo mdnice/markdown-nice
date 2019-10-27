@@ -27,17 +27,7 @@
 
 ## 开发文档
 
-开发文档请参考本项目的[wiki](https://github.com/zhning12/markdown-nice/wiki/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
-
-## 关于
-
-目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
-
-<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>
-
-欢迎打赏哟，您的支持是我最大的动力！
-
-<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>
+开发文档请参考本项目的[wiki](https://github.com/mdnice/markdown-nice/wiki/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
 
 ## 组件使用
 
@@ -70,7 +60,6 @@ function App() {
   return (
     <MarkdownNice
       defaultTitle={defaultTitle}
-      previewType="mobile"
       defaultText={defaultText}
       onTextChange={(t) => console.log("text => ", t)}
     />
@@ -80,18 +69,14 @@ function App() {
 export default App;
 ```
 
-## 组件化分支开发流程
+其中 defaultTitle 属性不添加则左上角不显示，defaultText 属性不添加则默认每次从 localStorage 中获取值。
 
-1. 初始化一个新项目
-2. 在本项目下执行 `yarn link`
-3. 在本项目内运行 `yarn watch`，将会自动监听 `src` 下的文件变动，自动将新代码编译到 `lib`
-4. 在新项目中执行 `yarn link markdown-nice`
-5. 启动新项目 `yarn start`
+## 关于
 
-## todo
+目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
 
-- [x] 自动注入 style 文件
-- [x] 提供对外的 props 配置
-- [x] 提供 ts types
-- [x] MathJax 更新优化
-- [ ] 切换预览模式的按钮
+<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>
+
+欢迎打赏哟，您的支持是我最大的动力！
+
+<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>

@@ -20,12 +20,14 @@ class Copy extends Component {
   }
 
   solveMath = () => {
-    const svgArr = document.getElementsByTagName("svg");
+    const layout = document.getElementById("layout");
+    const svgArr = layout.getElementsByTagName("svg");
     for (let i = 0; i < svgArr.length; i++) {
       const svg = svgArr[i];
       if (!svg.hasAttribute("style")) {
         continue;
       }
+
       const width = svg.getAttribute("width");
       if (width === null) {
         break;

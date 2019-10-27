@@ -2,7 +2,7 @@
   "name": "markdown-nice",
   "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "main": "lib/Lib.js",
   "module": "lib/Lib.js",
@@ -11,7 +11,7 @@
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhning12/markdown-nice"
+    "url": "https://github.com/mdnice/markdown-nice"
   },
   "scripts": {
     "start": "node scripts/start.js",
