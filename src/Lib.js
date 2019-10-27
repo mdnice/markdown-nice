@@ -18,11 +18,10 @@ import SvgIcon from "./icon";
 
 class Lib extends Component {
   render() {
-    const {previewType, defaultTitle, onTitleChange, defaultText, onTextChange} = this.props;
+    const {previewType, defaultTitle, defaultText, onTextChange} = this.props;
     const appCtx = {
       previewType,
       defaultTitle,
-      onTitleChange,
     };
 
     return (
@@ -57,16 +56,14 @@ const style = {
 };
 
 Lib.defaultProps = {
-  defaultTitle: "Markdown Nice",
+  defaultTitle: "",
   previewType: "mobile",
-  onTitleChange: () => {},
   defaultText: "",
   onTextChange: () => {},
 };
 Lib.propTypes = {
   defaultTitle: PropTypes.string,
   previewType: PropTypes.oneOf(["mobile", "pc"]),
-  onTitleChange: PropTypes.func,
   defaultText: PropTypes.string,
   onTextChange: PropTypes.func,
 };

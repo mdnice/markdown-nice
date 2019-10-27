@@ -1,5 +1,6 @@
 import React from "react";
 
+import About from "./About";
 import Bold from "./Bold";
 import Code from "./Code";
 import Copy from "./Copy";
@@ -21,6 +22,8 @@ import Smile from "./Smile";
 
 export default (props) => {
   switch (props.name) {
+    case "about":
+      return <About {...props} />;
     case "bold":
       return <Bold {...props} />;
     case "code":

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Input} from "antd";
+import {Button} from "antd";
 
 import ThemeSelect from "../component/ThemeSelect";
 import Format from "../component/Format";
@@ -13,29 +13,22 @@ import Italic from "../component/Italic";
 import Bold from "../component/Bold";
 import Del from "../component/Del";
 import FullScreen from "../component/FullScreen";
-import LogIn from "../component/LogIn";
-import User from "../component/User";
+// import LogIn from "../component/LogIn";
+// import User from "../component/User";
 import About from "../component/About";
 import Font from "../component/Font";
 
 const ButtonGroup = Button.Group;
 
-@inject("userInfo")
-@observer
+// @inject("userInfo")
+// @observer
 class Navbar extends Component {
-  // changeTitle = event => {
-  //   this.props.title.setTitle(event.target.value);
-  // };
-
   render() {
-    const {title, onTitleChange} = this.props;
+    const {title} = this.props;
     return (
-      <div style={style.navBar} className="mdnice-navbar">
+      <div style={style.navBar}>
         <div style={style.leftNav}>
-          {/* <Title /> */}
-          <Input style={style.title} defaultValue={title} onChange={({target: {value}}) => onTitleChange(value)} />
-        </div>
-        <div style={style.rightNav}>
+          {title === "" ? null : <section style={style.title}>{title}</section>}
           <div style={style.iconBar}>
             <ButtonGroup style={style.btnGroupMargin}>
               <Del />
@@ -51,13 +44,15 @@ class Navbar extends Component {
               <Reset />
               <FullScreen />
               <Font />
+              <About />
             </ButtonGroup>
           </div>
+        </div>
+        <div style={style.rightNav}>
           <Copy />
-          <About />
           <ThemeSelect />
           <Format />
-          {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
+          {/* {this.props.userInfo.userInfo.login ? <User /> : <LogIn />} */}
         </div>
       </div>
     );
@@ -75,7 +70,7 @@ const style = {
   leftNav: {
     display: "flex",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   rightNav: {
@@ -93,14 +88,10 @@ const style = {
     marginTop: 5,
   },
   title: {
-    paddingBottom: 3,
-    marginRight: 10,
+    marginRight: "30px",
     fontWeight: "bold",
-    fontSize: 26,
-    minWidth: "50%",
-    maxWidth: "80%",
-    border: 0,
-    borderBottom: "1px solid #d9d9d9",
+    fontSize: "16px",
+    fontFamily: "Apple Chancery, cursive",
   },
 };
 

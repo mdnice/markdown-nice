@@ -174,9 +174,9 @@ class App extends Component {
 
     return (
       <appContext.Consumer>
-        {({previewType, defaultTitle, onTitleChange}) => (
+        {({previewType, defaultTitle}) => (
           <div className="App">
-            <Navbar title={defaultTitle} onTitleChange={onTitleChange} />
+            <Navbar title={defaultTitle} />
             <div className="text-container">
               <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror

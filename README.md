@@ -64,14 +64,13 @@ import MarkdownNice from "markdown-nice";
 // 编辑器默认的内容
 const defaultText = `编辑器默认的内容`;
 // 标题，是一个字符串
-const defaultTitle = "mdnice";
+const defaultTitle = "Markdown Nice";
 
 function App() {
   return (
     <MarkdownNice
       defaultTitle={defaultTitle}
       previewType="mobile"
-      onTitleChange={(t) => console.log("title => ", t)}
       defaultText={defaultText}
       onTextChange={(t) => console.log("text => ", t)}
     />
