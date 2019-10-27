@@ -165,7 +165,7 @@ class App extends Component {
   };
 
   render() {
-    const {codeNum, isStyleEditorOpen} = this.props.navbar;
+    const {codeNum, isStyleEditorOpen, previewType} = this.props.navbar;
 
     const parseHtml =
       codeNum === 0
@@ -174,7 +174,7 @@ class App extends Component {
 
     return (
       <appContext.Consumer>
-        {({previewType, defaultTitle}) => (
+        {({defaultTitle}) => (
           <div className="App">
             <Navbar title={defaultTitle} />
             <div className="text-container">

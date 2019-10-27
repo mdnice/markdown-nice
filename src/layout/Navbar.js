@@ -12,6 +12,7 @@ import Code from "../component/Code";
 import Italic from "../component/Italic";
 import Bold from "../component/Bold";
 import Del from "../component/Del";
+import PreviewType from "../component/PreviewType";
 import FullScreen from "../component/FullScreen";
 // import LogIn from "../component/LogIn";
 // import User from "../component/User";
@@ -52,6 +53,8 @@ class Navbar extends Component {
           <Copy />
           <ThemeSelect />
           <Format />
+          <PreviewType />
+
           {/* {this.props.userInfo.userInfo.login ? <User /> : <LogIn />} */}
         </div>
       </div>

@@ -19,6 +19,8 @@ import Rabbit from "./Rabbit";
 import Reset from "./Reset";
 import Setting from "./Setting";
 import Smile from "./Smile";
+import Mobile from "./Mobile";
+import PC from "./PC";
 
 export default (props) => {
   switch (props.name) {
@@ -60,6 +62,10 @@ export default (props) => {
       return <Setting {...props} />;
     case "smile":
       return <Smile {...props} />;
+    case "pc":
+      return <PC {...props} />;
+    case "mobile":
+      return <Mobile {...props} />;
     default:
       return <svg />;
   }

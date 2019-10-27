@@ -6,6 +6,7 @@ import {
   CODE_OPTIONS,
   IS_PASTE_CHECK_OPEN,
   IS_PRETTIER_OPEN,
+  PREVIEW_TYPE,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
@@ -20,6 +21,8 @@ class Navbar {
   @observable templateNum;
 
   @observable codeNum;
+
+  @observable previewType;
 
   @action
   setStyleEditorOpen = (isStyleEditorOpen) => {
@@ -52,6 +55,12 @@ class Navbar {
       replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
     }
   };
+
+  @action
+  setPreviewType = (previewType) => {
+    this.previewType = previewType;
+    window.localStorage.setItem(PREVIEW_TYPE, previewType);
+  };
 }
 
 const store = new Navbar();
@@ -76,11 +85,16 @@ if (!window.localStorage.getItem(IS_PRETTIER_OPEN)) {
   window.localStorage.setItem(IS_PRETTIER_OPEN, true);
 }
 
+if (!window.localStorage.getItem(PREVIEW_TYPE)) {
+  window.localStorage.setItem(PREVIEW_TYPE, "mobile");
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
 store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
+store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

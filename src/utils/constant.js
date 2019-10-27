@@ -12,6 +12,7 @@ export const CONTENT = "content";
 export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
+export const PREVIEW_TYPE = "preview_type";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const IS_PRETTIER_OPEN = "is_prettier_open";
