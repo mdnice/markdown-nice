@@ -20,7 +20,7 @@
 - 姹紫：[JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
 - 绿意：[前端硬核面试专题之 CSS 55 问](https://mp.weixin.qq.com/s/SVKMsQtOLNqYXeT_f95FUw)
 - 红绯：[日常 | 我用什么工具写作？](https://mp.weixin.qq.com/s/DrvJBEWqH14atF_4O1IXFw)
-- Wechat-Format：[Markdown Nice新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
+- Wechat-Format：[Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 - 科技蓝：[2019 前端秋季社招面试经历总结（二年多经验）](https://mp.weixin.qq.com/s/eDIDOESem_s93liccYK-qw)
 
 > 欢迎提供更多文章示例~~
@@ -93,5 +93,5 @@ export default App;
 - [x] 自动注入 style 文件
 - [x] 提供对外的 props 配置
 - [x] 提供 ts types
-- [ ] 压缩代码
-- [ ] MathJax 更新优化
+- [x] MathJax 更新优化
+- [ ] 切换预览模式的按钮
