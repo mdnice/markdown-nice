@@ -41,6 +41,7 @@ class Copy extends Component {
   };
 
   solveCssCounter = (html) => {
+    // get real-time style setting
     const markdownStyle = window.localStorage.getItem("style");
     // expected result like [".layout {↵counter-reset: slz 123123;↵}"]
     const matchResult = markdownStyle.match(/.+\s+\{{1}\s?counter-reset:.+;\s}/g);
@@ -48,15 +49,27 @@ class Copy extends Component {
     if (Array.isArray(matchResult) && matchResult.length !== 0) {
       const ast = cssom.parse(matchResult[0]);
       if (ast.cssRules.length !== 0) {
+        // "counter-reset"
         const propertyToken = ast.cssRules[0].style[0];
         [counterName, counterInitValue] = ast.cssRules[0].style[propertyToken].split(/\s+/);
-        console.log(propertyToken);
+        // counterName 必需, initValue 非必需
         console.log(counterName, counterInitValue);
       }
     }
     if (counterName) {
-      // TODO: parse HTML and find all of h1 tags, and parse css increment
-      // TODO: parse increment value, and analyze ::before or ::after for append position
+      const fragment = document.createElement("div");
+      fragment.innerHTML = html;
+      const sectionTag = fragment.children[0];
+      sectionTag.children = Array.from(sectionTag.children).map((child, index) => {
+        console.log(child, index);
+        if (child.nodeName === "H1") {
+          if (child.firstChild.innerHTML.includes(`ounter(${counterName}`)) {
+            child.firstChild.innerHTML = `${index + counterInitValue}`;
+          }
+        }
+        return child;
+      });
+      html = sectionTag.innerHTML;
     }
     return html;
   };
