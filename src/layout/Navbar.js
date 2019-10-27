@@ -88,7 +88,7 @@ const style = {
     marginTop: 5,
   },
   title: {
-    marginRight: "30px",
+    marginRight: "20px",
     fontWeight: "bold",
     fontSize: "16px",
     fontFamily: "Apple Chancery, cursive",

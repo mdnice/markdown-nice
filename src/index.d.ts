@@ -14,10 +14,6 @@ export interface MarkdownNiceProps {
    */
   previewType?: PreviewType;
   /**
-   * 标题变化监听函数
-   */
-  onTitleChange?: (title: string) => void;
-  /**
    * 默认编辑器内容
    */
   defaultText?: string;
