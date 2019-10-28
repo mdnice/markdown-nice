@@ -1,9 +1,10 @@
 import React from "react";
-import {Menu, Dropdown, Avatar, Modal, message} from "antd";
+import {Menu, Dropdown, Modal, message} from "antd";
 import {observer, inject} from "mobx-react";
 
 import {axiosGithub} from "../utils/helper";
 import {ACCESS_TOKEN} from "../utils/constant";
+import SvgIcon from "../icon";
 
 @inject("userInfo")
 @inject("dialog")
@@ -77,7 +78,7 @@ class LogIn extends React.Component {
     return (
       <Dropdown overlay={menu}>
         <a style={style.link} rel="noopener noreferrer" className="ant-dropdown-link" href={hrefLink}>
-          <Avatar style={style.avatar} icon="user" shape="square" />
+          <SvgIcon name="rabbit" style={style.svgIcon} />
         </a>
       </Dropdown>
     );
@@ -100,6 +101,10 @@ const style = {
   },
   link: {
     border: "none",
+  },
+  svgIcon: {
+    width: "30px",
+    height: "30px",
   },
 };
 

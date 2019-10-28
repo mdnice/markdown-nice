@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Icon, Tooltip, Modal} from "antd";
-import resetIcon from "../icon/reset.svg";
+import {Button, Tooltip, Modal} from "antd";
+// import resetIcon from "../icon/reset.svg";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 
 import TEMPLATE from "../template/index";
+import SvgIcon from "../icon";
 
 @inject("content")
 @inject("navbar")
@@ -32,7 +33,7 @@ class Reset extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="重置">
         <Button onClick={this.showConfirm} style={style.btnPadding}>
-          <Icon component={resetIcon} style={style.iconSize} />
+          <SvgIcon name="reset" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -41,10 +42,12 @@ class Reset extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "16px",
+  svgIcon: {
+    padding: "8px 5px 12px 0px",
+    width: "34px",
+    height: "33px",
   },
 };
 

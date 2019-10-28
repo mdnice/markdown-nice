@@ -89,10 +89,10 @@ markdownParserWechat
     transformLink: () => "",
     includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
-  .use(markdownItRuby)
+  .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
   .use(markdownItDeflist) // 定义列表
-  .use(markdownLiReplacer);
+  .use(markdownLiReplacer); // li 标签中加入 p 标签
 
 // 普通解析器，代码高亮用highlight
 export const markdownParser = new MarkdownIt({
@@ -122,15 +122,17 @@ markdownParser
     transformLink: () => "",
     includeLevel: [2, 3],
   }) // TOC仅支持二级和三级标题
-  .use(markdownItRuby)
+  .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
-  .use(markdownItDeflist); // 定义列表
+  .use(markdownItDeflist) // 定义列表
+  .use(markdownLiReplacer); // li 标签中加入 p 标签
 
 export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
   try {
     style.innerHTML = css;
-  } catch (ex) {
+  } catch (e) {
+    console.log(e);
     style.styleSheet.cssText = css;
   }
   const head = document.getElementsByTagName("head")[0];
@@ -249,6 +251,16 @@ export const getOSSName = (originName, namespace = "") => {
     key = originName + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
   }
   return `${namespace}${key}`;
+};
+
+export const addStyleLabel = (styleLabels) => {
+  const add = (name) => {
+    const style = document.createElement("style");
+    style.id = name;
+    const head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
+  };
+  styleLabels.forEach((name) => add(name));
 };
 
 export const updateMathjax = () => {

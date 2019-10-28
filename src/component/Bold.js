@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Icon, Tooltip} from "antd";
-import boldIcon from "../icon/bold.svg";
+import {Button, Tooltip} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
+import SvgIcon from "../icon";
 
 @inject("content")
 @observer
@@ -24,7 +24,7 @@ class Bold extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="加粗">
         <Button onClick={this.handleClick} style={style.btnPadding}>
-          <Icon component={boldIcon} style={style.iconSize} />
+          <SvgIcon name="bold" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -33,10 +33,12 @@ class Bold extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "18px",
+  svgIcon: {
+    padding: "6px 7px 10px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 

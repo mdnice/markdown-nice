@@ -1,9 +1,10 @@
 import React from "react";
-import {Button, Icon, Menu, Dropdown, Switch} from "antd";
+import {Button, Menu, Dropdown, Switch} from "antd";
 import {observer, inject} from "mobx-react";
 
 import {TEMPLATE_OPTIONS, CODE_OPTIONS, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
 import TEMPLATE from "../template/index";
+import SvgIcon from "../icon";
 
 @inject("content")
 @inject("navbar")
@@ -75,13 +76,17 @@ class ThemeSelect extends React.Component {
         <Dropdown overlay={mdMenu} placement="bottomCenter">
           <Button style={mdMenuStyle}>
             {TEMPLATE_OPTIONS[templateNum].name}
-            <Icon type="down" />
+            <i className="anticon anticon-down">
+              <SvgIcon name="down" style={style.svgIcon} />
+            </i>
           </Button>
         </Dropdown>
         <Dropdown overlay={codeMenu} placement="bottomCenter">
           <Button style={style.codeMenu}>
             {CODE_OPTIONS[codeNum].name}
-            <Icon type="down" />
+            <i className="anticon anticon-down">
+              <SvgIcon name="down" style={style.svgIcon} />
+            </i>
           </Button>
         </Dropdown>
       </div>
@@ -110,6 +115,14 @@ const style = {
   },
   themeItemName: {
     marginRight: "10px",
+  },
+  svgIcon: {
+    width: "18px",
+    height: "18px",
+  },
+  layout: {
+    display: "flex",
+    alignItems: "center",
   },
   menuItem: {
     clear: "both",

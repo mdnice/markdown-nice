@@ -12,6 +12,7 @@ export const CONTENT = "content";
 export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
+export const PREVIEW_TYPE = "preview_type";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const IS_PRETTIER_OPEN = "is_prettier_open";
@@ -29,6 +30,8 @@ export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
+
+export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
@@ -90,6 +93,11 @@ export const TEMPLATE_OPTIONS = [
     author: "Krahets",
   },
   {
+    id: "shanchui",
+    name: "山吹",
+    author: "ElyhG",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
@@ -129,12 +137,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.2.5";
+export const VERSION_NUM = "1.3.0";
 
 export const VERSION_TIMELINE = [
-  "2019-10-15 添加 CSS 编写错误提示，添加 a 标签提示",
-  "2019-10-14 行间公式过长后可拉伸，开放公式配置css",
-  "2019-10-13 修复公式 bug",
-  "2019-10-11 公式编写渲染为svg，彻底解决微信公众号不支持公式的问题，组建钉钉用户群，解决阿里云图床中文多编码一次的问题",
-  "2019-10-07 支持图片粘贴和拖拽上传，格式化由用户手动操作",
+  "2019-10-27 组件化，新增预览模式，修改导航栏布局",
+  "2019-10-24 修复 PWA 中的 mdnice 图床 https 问题，添加图片拖拽提示",
+  "2019-10-23 支持 PWA、图片 svg 示例",
+  "2019-10-20 修复公式、微信代码行、代码滚动手感等问题",
+  "2019-10-18 解决 li 和 ol 渲染问题，支持化学物理等公式，加入新主题山吹",
 ];
