@@ -1,22 +1,22 @@
 export default `/*初始化格式*/
 body, h1, h2, h3, h4, h5, p, ul, ol, dl, dd, fieldset, textarea {
-    margin: 0;
-    font-family: "Avenir" -apple-system-font, "软雅黑";
+  margin: 0;
+  font-family: "Avenir" -apple-system-font, "微软雅黑";
 }
 
 /*默认样式*/
 .layout{
-    line-height: 1.6;
-    letter-spacing: .034em;
-    color: rgb(63, 63, 63);
-    font-size: 16px;
-    word-break:all;
+  line-height: 1.6;
+  letter-spacing: .034em;
+  color: rgb(63, 63, 63);
+  font-size: 16px;
+  word-break:all;
 }
 
 p {
-    padding-top: 23px;
-    color: rgb(74,74,74);
-    line-height: 1.75em;
+  padding-top: 23px;
+  color: rgb(74,74,74);
+  line-height: 1.75em;
 }
 
 /* 一级标题 */
@@ -63,20 +63,20 @@ h2:before{
 
 /* 二级标题内容 */
 h2 span {
-    text-align:center;
-    display: inline-block;
-    height: 38px;
-    line-height: 42px;
-    color: rgb(60, 112, 198);
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-size: 63px;
-    margin-top: 38px;
-    font-size:18px;
-    margin-bottom: 10px;
+  text-align:center;
+  display: inline-block;
+  height: 38px;
+  line-height: 42px;
+  color: rgb(60, 112, 198);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-size: 63px;
+  margin-top: 38px;
+  font-size:18px;
+  margin-bottom: 10px;
 }
 
 /* 三级标题 */
@@ -92,7 +92,6 @@ h3:before{
 }
 
 h3 {
-  
 }
 
 /* 三级标题内容 */
@@ -111,7 +110,6 @@ h3:after {
 
 /* 列表内容 */
 li {
-  font-size:13px;
 }
 
 /* 引用
@@ -119,13 +117,13 @@ li {
  * 背景色 background:gray;
  */
 blockquote {
-    line-height: 27px;
-    background-color: rgb(239, 239, 239);
-    margin-top: 40px;
-    margin-right: 8px;
-    margin-left: 8px;
-    border-left:none;
-    display:block;
+  line-height: 27px;
+  background-color: rgb(239, 239, 239);
+  margin-top: 40px;
+  margin-right: 8px;
+  margin-left: 8px;
+  border-left:none;
+  display:block;
 }
 
 /* 引用文字 */
@@ -150,7 +148,6 @@ strong {
 
 /* 斜体 */
 em {
-	
 }
 
 /* 加粗斜体 */
@@ -161,7 +158,6 @@ strong em {
 
 /* 删除线 */
 del {
-  
 }
  
 /* 分割线 */
@@ -169,7 +165,7 @@ hr {
   height:1px;
   padding:0;
   border:none;
-  border-top:medium solidid #333;
+  border-top:medium solid #333;
   text-align:center;
   background-image:linear-gradient(to right,rgba(60,122,198,0),rgba(60,122,198,0.75),rgba(60,122,198,0));
 }
@@ -188,7 +184,7 @@ figcaption {
 }
 
 /* 行内代码 */
-p code,li code {
+p code, li code {
 	color: rgb(60, 112, 198);;
 }
 
@@ -210,12 +206,11 @@ table tr td {
   font-size: 14px;
 }
 .footnotes{
-    padding-top: 8px;
+  padding-top: 8px;
 }
 /* 脚注文字 */
 .footnote-word {
   color: rgb(60, 112, 198);
-  
 }
 
 /* 脚注上标 */
