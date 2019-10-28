@@ -33,7 +33,8 @@ h1 {
 
 /* 一级标题内容 */
 h1 span {
-    color: rgb(60, 112, 198);   
+  color: rgb(60, 112, 198);
+  border-bottom:2px solid #3C7076;
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
