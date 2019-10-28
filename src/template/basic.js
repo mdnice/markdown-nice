@@ -16,25 +16,13 @@ export default `/*默认样式，最佳实践*/
   font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* 除标题外的块状统一间距 */
-p,
-ul,
-ol,
-dl,
-blockquote,
-table,
-pre,
-section,
-figure,
-hr {
-  margin: 1em 0;
-}
-
 /*段落*/
 p {
-  /* font-size: 16px; */
-  /* 26/16 = 1.625 fix: 字体变大不会重叠 */
-  line-height: 1.625;
+  font-size: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0;
+  line-height: 26px;
   color: black;
 }
 
@@ -51,31 +39,29 @@ h6 {
   color: black;
 }
 h1 {
-  /* 28/16 = 1.75 */
-  font-size: 1.75em;
+  font-size: 28px;
 }
 h2 {
-  /* 24/16 = 1.5 */
-  font-size: 1.5em;
+  font-size: 24px;
 }
 h3 {
-  /* 20/16 = 1.25 */
-  font-size: 1.25em;
+  font-size: 20px;
 }
 h4 {
-  /* 18/16 = 1.125 */
-  font-size: 1.125em;
+  font-size: 18px;
 }
 h5 {
-  font-size: 1em;
+  font-size: 16px;
 }
 h6 {
-  font-size: 1em;
+  font-size: 16px;
 }
 
 /*列表*/
 ul,
 ol {
+  margin-top: 8px;
+  margin-bottom: 8px;
   padding-left: 25px;
   color: black;
 }
@@ -91,12 +77,11 @@ ol {
 }
 
 li section {
-  /* 行高会默认继承 */
-  /* line-height: 26px; */
   margin-top: 5px;
   margin-bottom: 5px;
+  line-height: 26px;
   text-align: left;
-  color: rgb(1,1,1); // 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。
+  color: rgb(1,1,1); /* 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。*/
   font-weight: 500;
 }
 
@@ -122,12 +107,14 @@ blockquote {
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 blockquote p {
   margin: 0px;
   color: black;
-  /* line-height: 26px; */
+  line-height: 26px;
 }
 
 .table-of-contents a {
@@ -172,11 +159,18 @@ del {
 /*分隔线*/
 hr {
   height: 1px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: none;
   border-top: 1px solid black;
 }
 
 /*代码块*/
+pre {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
@@ -189,8 +183,7 @@ pre code {
 
 /*行内代码*/
 p code, li code{
-  /* 14/16 = 0.875 */
-  font-size: 0.875em;
+  font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;
   border-radius: 4px;
@@ -206,6 +199,13 @@ img {
   display: block;
   margin: 0 auto;
   width: 100%;
+}
+
+/*图片*/
+figure {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /*图片描述文字*/
@@ -237,7 +237,7 @@ table tr:nth-child(2n) {
 
 table tr th,
 table tr td {
-  font-size: 1em;
+  font-size: 16px;
   border: 1px solid #ccc;
   padding: 5px 10px;
   text-align: left;
@@ -349,8 +349,6 @@ table tr th {
 
 .footnote-item {
   display: flex;
-  /* 14/16 = 0.875 */
-  font-size: 0.875em;
 }
 
 .footnote-num {
@@ -362,19 +360,21 @@ table tr th {
   text-align: right;
   padding-right: 10px;
   background: none;
+  font-size: 80%;
   opacity: 0.6;
+  line-height: 26px;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 1em;
   line-height: 1.625;
 }
 
 .footnote-item p {
-  /* display: inline; */
-  /* width: 90%; */
-  /* line-height: 26px; */
-  /* width: calc(100%-50) */
-  flex: auto;
+  display: inline;
+  font-size: 14px;
+  width: 90%;
+  padding: 0px;
   margin: 0;
+  line-height: 26px;
   color: black;
   word-break:break-all;
   font-size: 1em;
@@ -391,10 +391,12 @@ sub, sup {
   text-align: center;
   overflow: auto;
   display: block;
+  -webkit-overflow-scrolling: touch;
 }
 
 .block-equation svg {
   max-width: 300% !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .inline-equation {

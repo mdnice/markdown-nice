@@ -1,0 +1,16 @@
+build
+config
+dist
+node_modules
+public
+scripts
+src
+.eslintrc
+.gitignore
+.prettierrc
+logo.png
+main.js
+package.json
+package-lock.json
+yarn.lock
+.npmignore

@@ -12,30 +12,25 @@ import Code from "../component/Code";
 import Italic from "../component/Italic";
 import Bold from "../component/Bold";
 import Del from "../component/Del";
+import PreviewType from "../component/PreviewType";
 import FullScreen from "../component/FullScreen";
-// import Title from "../component/Title";
-import LogIn from "../component/LogIn";
-import User from "../component/User";
+// import LogIn from "../component/LogIn";
+// import User from "../component/User";
 import About from "../component/About";
 import Font from "../component/Font";
 
 const ButtonGroup = Button.Group;
 
-@inject("title")
-@inject("userInfo")
-@observer
+// @inject("userInfo")
+// @observer
 class Navbar extends Component {
-  // changeTitle = event => {
-  //   this.props.title.setTitle(event.target.value);
-  // };
-
   render() {
+    const {title} = this.props;
     return (
       <div style={style.navBar}>
         <div style={style.leftNav}>
-          {/* <Title /> */}
-          <section style={style.title}>Markdown Nice</section>
-          <div>
+          {title === "" ? null : <section style={style.title}>{title}</section>}
+          <div style={style.iconBar}>
             <ButtonGroup style={style.btnGroupMargin}>
               <Del />
               <Bold />
@@ -50,15 +45,17 @@ class Navbar extends Component {
               <Reset />
               <FullScreen />
               <Font />
+              <About />
             </ButtonGroup>
           </div>
         </div>
         <div style={style.rightNav}>
           <Copy />
-          <About />
           <ThemeSelect />
           <Format />
-          {this.props.userInfo.userInfo.login ? <User /> : <LogIn />}
+          <PreviewType />
+
+          {/* {this.props.userInfo.userInfo.login ? <User /> : <LogIn />} */}
         </div>
       </div>
     );
@@ -74,13 +71,12 @@ const style = {
     padding: "20px",
   },
   leftNav: {
-    flex: "1 1 50%",
     display: "flex",
-    justifyContent: "space-between",
+    flex: 1,
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   rightNav: {
-    flex: "1 1 50%",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
@@ -91,10 +87,14 @@ const style = {
   btnGroupRight: {
     marginRight: "20px",
   },
+  iconBar: {
+    marginTop: 5,
+  },
   title: {
-    marginRight: "10px",
+    marginRight: "20px",
     fontWeight: "bold",
     fontSize: "16px",
+    fontFamily: "Apple Chancery, cursive",
   },
 };
 

@@ -131,7 +131,8 @@ export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
   try {
     style.innerHTML = css;
-  } catch (ex) {
+  } catch (e) {
+    console.log(e);
     style.styleSheet.cssText = css;
   }
   const head = document.getElementsByTagName("head")[0];
@@ -250,6 +251,16 @@ export const getOSSName = (originName, namespace = "") => {
     key = originName + "_" + dateFormat(new Date(), "yyyyMMddhhmmss");
   }
   return `${namespace}${key}`;
+};
+
+export const addStyleLabel = (styleLabels) => {
+  const add = (name) => {
+    const style = document.createElement("style");
+    style.id = name;
+    const head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
+  };
+  styleLabels.forEach((name) => add(name));
 };
 
 export const updateMathjax = () => {

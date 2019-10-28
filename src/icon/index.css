@@ -1,0 +1,7 @@
+.icon {
+  transition: fill 0.5s;
+}
+
+.icon:hover {
+  fill: #40a9ff;
+}
