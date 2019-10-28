@@ -98,6 +98,11 @@ export const TEMPLATE_OPTIONS = [
     author: "ElyhG",
   },
   {
+    id: "blueMountain",
+    name: "蓝山",
+    author: "HeyRain",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
@@ -137,12 +142,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.3.0";
+export const VERSION_NUM = "1.3.1";
 
 export const VERSION_TIMELINE = [
+  "2019-10-28 修复公式 bug，新增主题「蓝山」，请重置看查看效果",
   "2019-10-27 组件化，新增预览模式，修改导航栏布局",
   "2019-10-24 修复 PWA 中的 mdnice 图床 https 问题，添加图片拖拽提示",
   "2019-10-23 支持 PWA、图片 svg 示例",
   "2019-10-20 修复公式、微信代码行、代码滚动手感等问题",
-  "2019-10-18 解决 li 和 ol 渲染问题，支持化学物理等公式，加入新主题山吹",
 ];

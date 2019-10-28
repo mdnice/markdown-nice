@@ -8,6 +8,7 @@ import cyan from "./markdown/cyan";
 import green from "./markdown/green";
 import wechatFormat from "./markdown/wechatFormat";
 import blue from "./markdown/blue";
+import blueMountain from "./markdown/blueMountain";
 import blueCyan from "./markdown/blueCyan";
 import scienceBlue from "./markdown/scienceBlue";
 import shanchui from "./markdown/shanchui";
@@ -35,6 +36,7 @@ export default {
     red,
     wechatFormat,
     blue,
+    blueMountain,
     blueCyan,
     scienceBlue,
     shanchui,
