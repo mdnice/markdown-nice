@@ -62,7 +62,7 @@ class App extends Component {
         },
       };
       // eslint-disable-next-line
-      require("mathjax/es5/tex-svg");
+      require("mathjax/es5/tex-svg-full");
       pluginCenter.mathjax = true;
     } catch (e) {
       console.log(e);
