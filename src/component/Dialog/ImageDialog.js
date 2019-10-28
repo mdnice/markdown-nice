@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Icon, Modal, Upload, Tabs, Select} from "antd";
+import {Modal, Upload, Tabs, Select} from "antd";
+
+import SvgIcon from "../../icon";
 
 import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
@@ -169,7 +171,7 @@ class ImageDialog extends Component {
           <TabPane tab="图片上传" key="1">
             <Dragger name="file" multiple action={SM_MS_PROXY} customRequest={this.customRequest}>
               <p className="ant-upload-drag-icon">
-                <Icon type="inbox" />
+                <SvgIcon name="inbox" style={style.svgIcon} fill="#40a9ff" />
               </p>
               <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
               <p className="ant-upload-hint">{"正在使用" + type + "图床"}</p>
@@ -186,5 +188,12 @@ class ImageDialog extends Component {
     );
   }
 }
+
+const style = {
+  svgIcon: {
+    width: "48px",
+    height: "48px",
+  },
+};
 
 export default ImageDialog;

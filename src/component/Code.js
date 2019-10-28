@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, Icon, Tooltip} from "antd";
-import codeIcon from "../icon/code.svg";
+import {Button, Tooltip} from "antd";
 
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
+import SvgIcon from "../icon";
 
 @inject("content")
 @observer
@@ -24,7 +24,7 @@ class Code extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="代码段">
         <Button onClick={this.handleClick} style={style.btnPadding}>
-          <Icon component={codeIcon} style={style.iconSize} />
+          <SvgIcon name="code" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -33,10 +33,12 @@ class Code extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "17px",
+  svgIcon: {
+    padding: "7px 7px 11px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 

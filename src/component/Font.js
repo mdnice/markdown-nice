@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import {Tooltip, Button, Icon} from "antd";
+import {Tooltip, Button} from "antd";
 
-import fontIcon from "../icon/font.svg";
 import {ENTER_DELAY, LEAVE_DELAY, FONT_THEME_ID} from "../utils/constant";
 import {replaceStyle} from "../utils/helper";
+import SvgIcon from "../icon";
 
 class Font extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Font extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="字体">
         <Button style={style.btnPadding} onClick={this.toggleFont}>
-          <Icon component={fontIcon} style={style.iconSize} />
+          <SvgIcon name="font" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -40,10 +40,12 @@ class Font extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "16px",
+  svgIcon: {
+    padding: "6px 7px 10px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 
