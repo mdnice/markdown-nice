@@ -5,6 +5,33 @@ import {Button, message, ConfigProvider} from "antd";
 
 import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID} from "../utils/constant";
 
+const copy = (text) => {
+  // 获取 input
+  let input = document.getElementById("copy-input");
+  if (!input) {
+    // input 不能用 CSS 隐藏，必须在页面内存在。
+    input = document.createElement("input");
+    input.id = "copy-input";
+    input.style.position = "absolute";
+    input.style.left = "-1000px";
+    input.style.zIndex = "-1000";
+    document.body.appendChild(input);
+  }
+  // 让 input 选中一个字符，无所谓那个字符
+  input.value = "NOTHING";
+  input.setSelectionRange(0, 1);
+  input.focus();
+
+  // 复制触发
+  document.addEventListener("copy", function copyCall(e) {
+    e.preventDefault();
+    e.clipboardData.setData("text/html", text);
+    e.clipboardData.setData("text/plain", text);
+    document.removeEventListener("copy", copyCall);
+  });
+  document.execCommand("copy");
+};
+
 @inject("content")
 @inject("navbar")
 @inject("imageHosting")
@@ -62,19 +89,10 @@ class Copy extends Component {
     this.setState({loading: true});
     this.solveMath();
     this.solveHtml();
-    document.addEventListener("copy", this.copyListener);
-    document.execCommand("copy");
-    document.removeEventListener("copy", this.copyListener);
-    this.setState({loading: false});
-  };
-
-  copyListener = (e) => {
-    // 由于antd的message原因，有这行输出则每次都会进来，否则有问题，具体原因不明
-    // console.log("clipboard");
+    // FIXED: safari 复制问题
+    copy(this.html);
     message.success("已复制，请到微信公众平台粘贴");
-    e.clipboardData.setData("text/html", this.html);
-    e.clipboardData.setData("text/plain", this.html);
-    e.preventDefault();
+    this.setState({loading: false});
   };
 
   render() {
