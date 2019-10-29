@@ -153,13 +153,11 @@ class App extends Component {
               />
             </div>
           </div>
-
           {this.props.navbar.isStyleEditorOpen ? (
             <div className="text-box">
               <StyleEditor />
             </div>
           ) : null}
-
           <Dialog />
         </div>
       </div>

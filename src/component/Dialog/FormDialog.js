@@ -1,6 +1,6 @@
 import React from "react";
 import {observer, inject} from "mobx-react";
-import {Modal, Input, Form} from "antd";
+import {Modal, Input, Form, message} from "antd";
 
 @inject("dialog")
 @inject("content")
@@ -26,7 +26,7 @@ class FormDialog extends React.Component {
         appendText += "     |";
       }
     }
-    return appendText + (/macintosh|mac os x/i.test(navigator.userAgent) ? "\n" : "\r\n");
+    return appendText + (/macintosh|mac\sos\sx+/i.test(navigator.userAgent) ? "\n" : "\r\n");
   };
 
   buildFormFormat = (rowNum, columnNum) => {
@@ -41,16 +41,19 @@ class FormDialog extends React.Component {
   };
 
   handleOk = () => {
-    const {markdownEditor} = this.props.content;
-    const cursor = markdownEditor.getCursor();
-    const text = this.buildFormFormat(this.state.rowNum, this.state.columnNum);
-    markdownEditor.replaceSelection(text, cursor);
+    const columnCheck = this.state.columnNum <= 10;
+    const rowCheck = this.state.rowNum <= 10;
+    if (columnCheck && rowCheck) {
+      const {markdownEditor} = this.props.content;
+      const cursor = markdownEditor.getCursor();
+      const text = this.buildFormFormat(this.state.rowNum, this.state.columnNum);
+      markdownEditor.replaceSelection(text, cursor);
 
-    const content = markdownEditor.getValue();
-    this.props.content.setContent(content);
+      const content = markdownEditor.getValue();
+      this.props.content.setContent(content);
+    } else message.error(`${rowCheck ? "" : "行数"}${columnCheck ? "" : "列数"}不能大于10`);
 
-    this.setState(initialState);
-    this.props.dialog.setFormOpen(false);
+    this.handleCancel();
   };
 
   handleCancel = () => {

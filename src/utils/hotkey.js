@@ -39,7 +39,7 @@ const handlePressHotkey = (type, content) => {
 };
 
 const bindHotkeys = (content, dialog) =>
-  /macintosh|mac os x/i.test(navigator.userAgent)
+  /macintosh|mac\sos\s+x/i.test(navigator.userAgent)
     ? {
         "Cmd-B": () => {
           handlePressHotkey("Bold", content);
