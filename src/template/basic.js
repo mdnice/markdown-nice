@@ -5,7 +5,9 @@ export default `/*默认样式，最佳实践*/
   font-size: 16px;
   color: black;
   padding: 10px;
-  line-height: 1.6;
+  /* 解决，首行的 margin-top 不应该有 */
+  margin-top: -1em;
+  line-height: 1.625;
   word-spacing: 0px;
   letter-spacing: 0px;
   word-break: break-word;
@@ -173,12 +175,10 @@ pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
-  font-size: 12px;
+  /* 14/16 = 0.875 */
+  font-size: 0.875em;
   padding: 2px;
   -webkit-overflow-scrolling: touch;
-}
-pre code span {
-  line-height: 26px;
 }
 
 /*行内代码*/
@@ -352,13 +352,20 @@ table tr th {
 }
 
 .footnote-num {
-  display: inline;
-  width: 10%; /*神奇，50px就不可以*/
+  /* display: inline; */
+  /* width: 10%; 神奇，50px就不可以*/
+  /* 容器是 flex 用 flex 定义 50px 有点宽 */
+  /* line-height: 26px; */
+  flex: 0 0 40px;
+  text-align: right;
+  padding-right: 10px;
   background: none;
   font-size: 80%;
   opacity: 0.6;
   line-height: 26px;
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1em;
+  line-height: 1.625;
 }
 
 .footnote-item p {
@@ -370,7 +377,8 @@ table tr th {
   line-height: 26px;
   color: black;
   word-break:break-all;
-  width: calc(100%-50)
+  font-size: 1em;
+  line-height: 1.625;
 }
 
 sub, sup {
