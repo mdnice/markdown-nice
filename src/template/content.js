@@ -139,6 +139,8 @@ export default `建议使用 **Chrome** 浏览器。
 
 **注：图片粘贴到微信时会自动上传微信服务器，不必担心使用上述图床会导致微信内图片丢失**。
 
+**目前图床仅支持 https**。
+
 配置文档如下：
 
 - [Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
