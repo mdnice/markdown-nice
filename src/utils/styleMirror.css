@@ -98,6 +98,25 @@
   background: #dddcdc;
 }
 .cm-s-style-mirror .CodeMirror-matchingbracket {
-  color: rgb(32,32,32) !important;
-  background-color: rgba(0,0,0,0.1) !important;
+  color: rgb(32, 32, 32) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.CodeMirror-hints {
+  background-color: rgb(245, 245, 245);
+  font-size: 14px;
+  font-family: 'source-code-pro', Menlo, 'Courier New', Consolas, monospace;
+}
+
+.CodeMirror-hints li {
+  line-height: 20px;
+}
+
+li.CodeMirror-hint-active  {
+  color: black;
+  background-color: rgb(202,222,185);
+}
+
+.CodeMirror-hints li:hover {
+  background-color: rgb(224, 224, 224);
 }
