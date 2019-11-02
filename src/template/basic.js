@@ -165,7 +165,6 @@ ol {
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   font-size: 12px;
-  padding: 2px;
   -webkit-overflow-scrolling: touch;
 }
 #nice pre code span {
