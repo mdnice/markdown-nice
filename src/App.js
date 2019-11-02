@@ -212,7 +212,6 @@ class App extends Component {
                 >
                   <section
                     id={LAYOUT_ID}
-                    className="layout"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
                     }}

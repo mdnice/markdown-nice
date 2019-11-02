@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Modal, Button} from "antd";
-import "./AboutDialog.css";
 
 @inject("dialog")
 @observer
@@ -40,23 +39,23 @@ class AboutDialog extends Component {
           paddingTop: "5px",
         }}
       >
-        <h3 className="header-margin">
+        <h3 style={style.headerMargin}>
           Markdown Nice
           <a
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/mdnice/markdown-nice"
-            className="no-border"
+            style={style.noBorder}
           >
-            <img alt="" className="img" src="https://badgen.net/github/stars/mdnice/markdown-nice" />
+            <img alt="" style={style.img} src="https://badgen.net/github/stars/mdnice/markdown-nice" />
           </a>
         </h3>
 
-        <p className="line-height">支持自定义样式的 Markdown 编辑器；</p>
-        <p className="line-height">支持微信公众号排版；</p>
-        <p className="line-height">支持开源中国、知乎、掘金、博客园和CSDN等平台；</p>
-        <h3 className="line-height">我们</h3>
-        <p className="line-height">
+        <p style={style.lineHeight}>支持自定义样式的 Markdown 编辑器；</p>
+        <p style={style.lineHeight}>支持微信公众号排版；</p>
+        <p style={style.lineHeight}>支持开源中国、知乎、掘金、博客园和CSDN等平台；</p>
+        <h3 style={style.headerMargin}>我们</h3>
+        <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注
           <a rel="noopener noreferrer" target="_blank" href="https://github.com/mdnice/markdown-nice">
             &nbsp;GitHub&nbsp;
@@ -66,24 +65,29 @@ class AboutDialog extends Component {
             &nbsp;Gitee&nbsp;
           </a>
           和新项目
-          <a rel="noopener noreferrer" target="_blank" href="https://github.com/guanpengchn/markdown-resume">
+          <a
+            style={style.a}
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/guanpengchn/markdown-resume"
+          >
             &nbsp;Markdown 简历
           </a>
           ，同时我们也组建了「
-          <strong>微信群</strong>
+          <strong style={style.strong}>微信群</strong>
           」，右下角关注公众号回复「排版」拉你入群，愿意
-          <strong>微信打赏</strong>
+          <strong style={style.strong}>微信打赏</strong>
           就更好啦。
         </p>
         <div style={{display: "flex", alignItems: "center"}}>
           <img
             alt="图片描述"
-            className="img-width"
+            style={style.imgWidth}
             src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"
           />
           <img
             alt="图片描述"
-            className="img-width"
+            style={style.imgWidth}
             src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"
           />
         </div>
@@ -91,5 +95,31 @@ class AboutDialog extends Component {
     );
   }
 }
+
+const style = {
+  imgWidth: {
+    width: "50%",
+    height: "100%",
+  },
+  headerMargin: {
+    marginTop: "5px",
+    marginBottom: "5px",
+    color: "black",
+  },
+  lineHeight: {
+    lineHeight: "26px",
+    color: "black",
+    padding: 0,
+    margin: 0,
+  },
+  img: {
+    width: "70px",
+    marginLeft: "10px",
+    display: "inline-block",
+  },
+  noBorder: {
+    border: "none",
+  },
+};
 
 export default AboutDialog;
