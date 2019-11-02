@@ -30,6 +30,7 @@ export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
+export const LAYOUT_ID = "nice";
 
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
@@ -142,12 +143,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.3.1";
+export const VERSION_NUM = "1.4.0";
 
 export const VERSION_TIMELINE = [
+  "2019-11-02 新增 id 选择器 nice，防止全局 CSS 污染，break change！请将所有的自定义标签前面加上 #nice，否则将失效，可参考其他主题！新增 ref 函数 getHtml 获取富文本，“参考资料”四个字支持自定义修改内容，调整阅读文档",
   "2019-10-28 修复公式 bug，新增主题「蓝山」，请重置看查看效果",
   "2019-10-27 组件化，新增预览模式，修改导航栏布局",
   "2019-10-24 修复 PWA 中的 mdnice 图床 https 问题，添加图片拖拽提示",
   "2019-10-23 支持 PWA、图片 svg 示例",
-  "2019-10-20 修复公式、微信代码行、代码滚动手感等问题",
 ];

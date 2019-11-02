@@ -1,11 +1,6 @@
 export default `/*初始化格式*/
-body, h1, h2, h3, h4, h5, p, ul, ol, dl, dd, fieldset, textarea {
-  margin: 0;
-  font-family: "Avenir" -apple-system-font, "微软雅黑";
-}
 
-/*默认样式*/
-.layout{
+#nice {
   line-height: 1.6;
   letter-spacing: .034em;
   color: rgb(63, 63, 63);
@@ -13,14 +8,14 @@ body, h1, h2, h3, h4, h5, p, ul, ol, dl, dd, fieldset, textarea {
   word-break:all;
 }
 
-p {
+#nice p {
   padding-top: 23px;
   color: rgb(74,74,74);
   line-height: 1.75em;
 }
 
 /* 一级标题 */
-h1 {
+#nice h1 {
   text-align:center;
   background-image: url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png); 
   background-position: center top;
@@ -32,17 +27,17 @@ h1 {
 }
 
 /* 一级标题内容 */
-h1 span {
+#nice h1 span {
   color: rgb(60, 112, 198);
   border-bottom:2px solid #3C7076;
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-h1:after {
+#nice h1:after {
 }
  
 /* 二级标题 */
-h2 {
+#nice h2 {
   display:block;
   text-align:center;
   background-image: 
@@ -58,11 +53,11 @@ url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png);
 }
 
 /*二级标题伪元素*/
-h2:before{
+#nice h2:before {
 }
 
 /* 二级标题内容 */
-h2 span {
+#nice h2 span {
   text-align:center;
   display: inline-block;
   height: 38px;
@@ -80,7 +75,7 @@ h2 span {
 }
 
 /* 三级标题 */
-h3:before{
+#nice h3:before {
   content: "";
   background-image:url(https://my-wechat.mdnice.com/mdnice/mountain_1_20191028221337.png);
   background-size:15px 15px;
@@ -91,11 +86,11 @@ h3:before{
   margin-bottom:-1px;
 }
 
-h3 {
+#nice h3 {
 }
 
 /* 三级标题内容 */
-h3 span {
+#nice h3 span {
   font-size:15px;
   font-weight:bold;
   display:inline-block;
@@ -105,18 +100,18 @@ h3 span {
 }
 
 /* 三级标题修饰 请参考有实例的主题 */
-h3:after {
+#nice h3:after {
 }
 
 /* 列表内容 */
-li {
+#nice li {
 }
 
 /* 引用
  * 左边缘颜色 border-left-color:black;
  * 背景色 background:gray;
  */
-blockquote {
+#nice blockquote {
   line-height: 27px;
   background-color: rgb(239, 239, 239);
   margin-top: 40px;
@@ -127,64 +122,63 @@ blockquote {
 }
 
 /* 引用文字 */
-blockquote p {
+#nice blockquote p {
   font-size:15px;
   padding:2px;
   color:rgb(89,89,89);
 }
 
 /* 链接 */
-a {
+#nice a {
   color: rgb(60, 112, 198);
   text-decoration:none;
   border-bottom: 1px solid rgb(60, 112, 198);
 }
 
 /* 加粗 */
-strong {
+#nice strong {
     line-height: 1.75em;
   	color: rgb(74,74,74);
 }
 
 /* 斜体 */
-em {
+#nice em {
 }
 
 /* 加粗斜体 */
-strong em {
+#nice strong em {
   color:rgb(248,57,41);
   letter-spacing:0.3em;
 }
 
 /* 删除线 */
-del {
+#nice del {
 }
  
 /* 分割线 */
-hr {
+#nice hr {
   height:1px;
   padding:0;
   border:none;
-  border-top:medium solid #333;
   text-align:center;
   background-image:linear-gradient(to right,rgba(60,122,198,0),rgba(60,122,198,0.75),rgba(60,122,198,0));
 }
 
 /*图片*/
-img {
+#nice img {
     border-radius:4px;
     margin-bottom:25px;
 }
 
 /* 图片描述文字 */
-figcaption {
+#nice figcaption {
   display:block;
   font-size:12px;
   font-family:PingFangSC-Light;
 }
 
 /* 行内代码 */
-p code, li code {
+#nice p code, li code {
 	color: rgb(60, 112, 198);;
 }
 
@@ -192,70 +186,69 @@ p code, li code {
  * 代码块不换行 display:-webkit-box !important;
  * 代码块换行 display:block;
  */
-pre code {
+#nice pre code {
 }
 
-/*
- * 表格内的单元格
+/* 表格内的单元格
  * 字体大小 font-size: 16px;
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-table tr th,
+#nice table tr th,
 table tr td {
   font-size: 14px;
 }
 .footnotes{
   padding-top: 8px;
 }
+
 /* 脚注文字 */
-.footnote-word {
+#nice .footnote-word {
   color: rgb(60, 112, 198);
 }
 
 /* 脚注上标 */
-.footnote-ref {
+#nice .footnote-ref {
   color: rgb(60, 112, 198);
 }
 
 /*脚注超链接样式*/
-.footnote-item em {
+#nice .footnote-item em {
   color: rgb(60, 112, 198);
   font-size:13px;
   font-style:normal;
   border-bottom-color:1px dashed rgb(60, 112, 198); 
 }
 
-/*参考资料去除伪元素图片*/
-.footnotes-sep:before {
-  content:none;
-  display:inline;
-}
-
-/* "参考资料"四个字 */
-.footnotes-sep {
-  display:inline;
-  color: rgb(60, 112, 198);
+/* "参考资料"四个字 
+ * 内容 content: "参考资料";
+ */
+#nice .footnotes-sep:before {
+  background-image: none;
+  background-size: none;
+  display: block;
+  width: auto;
+  height: auto;
 }
 
 /* 参考资料编号 */
-.footnote-num {
+#nice .footnote-num {
   color: rgb(60, 112, 198);
 }
 
 /* 参考资料文字 */
-.footnote-item p {
+#nice .footnote-item p {
   color: rgb(60, 112, 198);
   font-weight:bold;
 }
 
 /* 参考资料超链接 */
-.footnote-item a {
+#nice .footnote-item a {
   color:rgb(60, 112, 198);
 }
 
 /* 参考资料解释 */
-.footnote-item p em {
+#nice .footnote-item p em {
   font-size:14px;
   font-weight:normal;
   border-bottom:1px dashed rgb(60, 112, 198);
@@ -264,10 +257,10 @@ table tr td {
 /* 行间公式
  * 最大宽度 max-width: 300% !important;
  */
-.block-equation svg {
+#nice .block-equation svg {
   
 }
 
 /* 行内公式*/
-.inline-equation svg {  
+#nice .inline-equation svg {  
 }`;

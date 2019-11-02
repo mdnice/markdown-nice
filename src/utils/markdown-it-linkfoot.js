@@ -32,7 +32,7 @@ function renderFootnoteRef(tokens, idx, options, env, slf) {
 
 // eslint-disable-next-line
 function renderFootnoteBlockOpen(tokens, idx, options) {
-  return '<h3 class="footnotes-sep">参考资料</h3>\n<section class="footnotes">\n';
+  return '<h3 class="footnotes-sep"></h3>\n<section class="footnotes">\n';
 }
 
 function renderFootnoteBlockClose() {

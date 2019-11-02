@@ -11,7 +11,6 @@ import SvgIcon from "../icon";
 @observer
 class ThemeSelect extends React.Component {
   changeTemplate = (item) => {
-    console.log(item);
     const index = parseInt(item.key, 10);
     const {id} = TEMPLATE_OPTIONS[index];
     this.props.navbar.setTemplateNum(index);

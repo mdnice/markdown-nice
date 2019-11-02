@@ -1,7 +1,7 @@
 export default `/*默认样式，最佳实践*/
 
 /*全局属性*/
-.layout {
+#nice {
   font-size: 16px;
   color: black;
   padding: 10px;
@@ -15,7 +15,7 @@ export default `/*默认样式，最佳实践*/
 }
 
 /*段落*/
-p {
+#nice p {
   font-size: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -25,7 +25,7 @@ p {
 }
 
 /*标题*/
-h1,
+#nice h1,
 h2,
 h3,
 h4,
@@ -36,45 +36,45 @@ h6 {
   font-weight: bold;
   color: black;
 }
-h1 {
+#nice h1 {
   font-size: 28px;
 }
-h2 {
+#nice h2 {
   font-size: 24px;
 }
-h3 {
+#nice h3 {
   font-size: 20px;
 }
-h4 {
+#nice h4 {
   font-size: 18px;
 }
-h5 {
+#nice h5 {
   font-size: 16px;
 }
-h6 {
+#nice h6 {
   font-size: 16px;
 }
 
 /*列表*/
-ul,
+#nice ul,
 ol {
   margin-top: 8px;
   margin-bottom: 8px;
   padding-left: 25px;
   color: black;
 }
-ul {
+#nice ul {
   list-style-type: disc;
 }
-ul ul {
+#nice ul ul {
   list-style-type: square;
 }
 
-ol {
+#nice ol {
   list-style-type: decimal;
 }
 
-li section {
+#nice li section {
   margin-top: 5px;
   margin-bottom: 5px;
   line-height: 26px;
@@ -83,17 +83,8 @@ li section {
   font-weight: 500;
 }
 
-/*微信代码样式*/
-.code-snippet__fix .code-snippet__line-index li {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  line-height: 26px;
-  text-align: left;
-  color: black;
-}
-
 /*引用*/
-blockquote {
+#nice blockquote {
   display: block;
   font-size: 0.9em;
   overflow: auto;
@@ -109,20 +100,20 @@ blockquote {
   margin-top: 20px;
 }
 
-blockquote p {
+#nice blockquote p {
   margin: 0px;
   color: black;
   line-height: 26px;
 }
 
-.table-of-contents a {
+#nice .table-of-contents a {
   border: none;
   color: black;
   font-weight: normal;
 }
 
 /*链接*/
-a {
+#nice a {
   text-decoration: none;
   color: #1e6bb8;
   word-wrap: break-word;
@@ -131,31 +122,31 @@ a {
 }
 
 /*加粗*/
-strong {
+#nice strong {
   font-weight: bold;
   color: black;
 }
 
 /*斜体*/
-em {
+#nice em {
   font-style: italic;
   color: black;
 }
 
 /*加粗斜体*/
-strong em {
+#nice strong em {
   font-weight: bold;
   color: black;
 }
 
 /*删除线*/
-del {
+#nice del {
   font-style: italic;
   color: black;
 }
 
 /*分隔线*/
-hr {
+#nice hr {
   height: 1px;
   margin: 0;
   margin-top: 10px;
@@ -165,11 +156,11 @@ hr {
 }
 
 /*代码块*/
-pre {
+#nice pre {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-pre code {
+#nice pre code {
   display: -webkit-box !important;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
@@ -177,12 +168,12 @@ pre code {
   padding: 2px;
   -webkit-overflow-scrolling: touch;
 }
-pre code span {
+#nice pre code span {
   line-height: 26px;
 }
 
 /*行内代码*/
-p code, li code{
+#nice p code, li code{
   font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;
@@ -195,21 +186,21 @@ p code, li code{
 }
 
 /*图片*/
-img {
+#nice img {
   display: block;
   margin: 0 auto;
   width: 100%;
 }
 
 /*图片*/
-figure {
+#nice figure {
   margin: 0;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 /*图片描述文字*/
-figcaption {
+#nice figcaption {
   margin-top: 5px;
   text-align: center;
   color: #888;
@@ -217,25 +208,25 @@ figcaption {
 }
 
 /*表格*/
-table {
+#nice table {
   display: table;
   text-align: left;
 }
-tbody {
+#nice tbody {
   border: 0;
 }
 
-table tr {
+#nice table tr {
   border: 0;
   border-top: 1px solid #ccc;
   background-color: white;
 }
 
-table tr:nth-child(2n) {
+#nice table tr:nth-child(2n) {
   background-color: #F8F8F8;
 }
 
-table tr th,
+#nice table tr th,
 table tr td {
   font-size: 16px;
   border: 1px solid #ccc;
@@ -243,13 +234,13 @@ table tr td {
   text-align: left;
 }
 
-table tr th {
+#nice table tr th {
   font-weight: bold;
   background-color: #f0f0f0;
 }
 
 /* 微信代码块 */
-.code-snippet__fix {
+#nice .code-snippet__fix {
   word-wrap: break-word !important;
   font-size: 14px;
   margin: 10px 0;
@@ -262,11 +253,11 @@ table tr th {
   display: flex;
   line-height: 20px;
 }
-.code-snippet__fix pre {
+#nice .code-snippet__fix pre {
   margin-bottom: 10px;
   margin-top: 0px;
 }
-.code-snippet__fix .code-snippet__line-index {
+#nice .code-snippet__fix .code-snippet__line-index {
   counter-reset: line;
   flex-shrink: 0;
   height: 100%;
@@ -275,12 +266,14 @@ table tr th {
   padding: 16px;
   margin: 0;
 }
-.code-snippet__fix .code-snippet__line-index li {
+#nice .code-snippet__fix .code-snippet__line-index li {
   list-style-type: none;
   text-align: right;
+  line-height: 26px;
+  color: black;
   margin: 0;
 }
-.code-snippet__fix .code-snippet__line-index li::before {
+#nice .code-snippet__fix .code-snippet__line-index li::before {
   min-width: 1.5em;
   text-align: right;
   left: -2.5em;
@@ -289,7 +282,7 @@ table tr th {
   display: inline;
   color: rgba(0,0,0,0.3);
 }
-.code-snippet__fix pre {
+#nice .code-snippet__fix pre {
   overflow-x: auto;
   padding: 16px;
   padding-left: 0;
@@ -297,7 +290,7 @@ table tr th {
   flex: 1;
   -webkit-overflow-scrolling: touch;
 }
-.code-snippet__fix code {
+#nice .code-snippet__fix code {
   text-align: left;
   font-size: 14px;
   display: block;
@@ -308,50 +301,21 @@ table tr th {
   padding: 0px;
 }
 
-
-/* 公式注释 */
-.katex-mathml {
-  display: none;
-}
-
-.katex {
-  display: inline-block;
-  line-height: 28px;
-}
-
-.katex-inline {
-  display: inline;
-}
-
-.math-img-inline {
-  display: inline-block;
-  line-height: inherit;
-  height: 18px;
-  width: auto;
-  max-width: 100%;
-  vertical-align: middle
-}
-
-.math-img-block {
-  max-width: 100%;
-  width: auto;
-}
-
-.footnote-word {
+#nice .footnote-word {
   color: #1e6bb8;
   font-weight: bold;
 }
 
-.footnote-ref {
+#nice .footnote-ref {
   color: #1e6bb8;
   font-weight: bold;
 }
 
-.footnote-item {
+#nice .footnote-item {
   display: flex;
 }
 
-.footnote-num {
+#nice .footnote-num {
   display: inline;
   width: 10%; /*神奇，50px就不可以*/
   background: none;
@@ -361,7 +325,7 @@ table tr th {
   font-family: ptima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.footnote-item p {
+#nice .footnote-item p {
   display: inline;
   font-size: 14px;
   width: 90%;
@@ -373,12 +337,17 @@ table tr th {
   width: calc(100%-50)
 }
 
-sub, sup {
+#nice sub, sup {
   line-height: 0;
 }
 
+#nice .footnotes-sep:before {
+  content: "参考资料";
+  display: block;
+}
+
 /* 解决公式问题 */
-.block-equation {
+#nice .block-equation {
   display:block;
   text-align: center;
   overflow: auto;
@@ -386,13 +355,13 @@ sub, sup {
   -webkit-overflow-scrolling: touch;
 }
 
-.block-equation svg {
+#nice .block-equation svg {
   max-width: 300% !important;
   -webkit-overflow-scrolling: touch;
 }
 
-.inline-equation {
+#nice .inline-equation {
 }
 
-.inline-equation svg {
+#nice .inline-equation svg {
 }`;

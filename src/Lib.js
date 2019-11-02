@@ -15,8 +15,14 @@ import {isPC} from "./utils/helper";
 import appContext from "./utils/appContext";
 import {Result} from "antd";
 import SvgIcon from "./icon";
+import {solveMath, solveHtml} from "./utils/converter";
 
 class Lib extends Component {
+  getHtml() {
+    solveMath();
+    return solveHtml();
+  }
+
   render() {
     const {defaultTitle, defaultText, onTextChange} = this.props;
     const appCtx = {

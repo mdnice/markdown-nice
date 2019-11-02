@@ -5,7 +5,7 @@ export default `/*自定义样式，实时生效*/
  * 全文字体 font-family: ptima-Regular;
  * 英文换行 word-break: break-all;
  */
-.layout {
+#nice {
 }
 
 /* 段落，下方未标注标签参数均同此处
@@ -19,7 +19,7 @@ export default `/*自定义样式，实时生效*/
  * 字体大小 font-size: 16px;
  * 首行缩进 text-indent: 2em;
  */
-p {
+#nice p {
   box-sizing: border-box;
   margin-bottom: 16px;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
@@ -31,7 +31,7 @@ p {
 }
 
 /* 一级标题 */
-h1 {
+#nice h1 {
   margin-top: -0.46em;
   margin-bottom: 0.1em;
   border-bottom: 2px solid rgb(198, 196, 196);
@@ -39,7 +39,7 @@ h1 {
 }
 
 /* 一级标题内容 */
-h1 span {
+#nice h1 span {
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgb(160, 160, 160);
@@ -49,11 +49,11 @@ h1 span {
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-h1:after {
+#nice h1:after {
 }
 
 /* 二级标题 */
-h2 {
+#nice h2 {
   margin: 10px auto;
   height: 40px;
   background-color: rgb(251, 251, 251);
@@ -63,7 +63,7 @@ h2 {
 }
 
 /* 二级标题内容 */
-h2 span {
+#nice h2 span {
   margin-left: -10px;
   display: inline-block;
   width: auto;
@@ -78,19 +78,18 @@ h2 span {
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
-h2:after {
-  
+#nice h2:after {
 }
 
 /* 三级标题 */
-h3 {
+#nice h3 {
   margin: 20px auto 5px;
   border-top: 1px solid rgb(221, 221, 221);
   box-sizing: border-box;
 }
 
 /* 三级标题内容 */
-h3 span {
+#nice h3 span {
   margin-top: -1px;
   padding-top: 6px;
   padding-right: 5px;
@@ -102,16 +101,16 @@ h3 span {
 }
 
 /* 三级标题修饰 请参考有实例的主题 */
-h3:after {
+#nice h3:after {
 }
 
-h4 {
+#nice h4 {
   margin: 10px auto -1px;
   border-top: 1px solid rgb(221, 221, 221);
   box-sizing: border-box;
 }
 
-h4 span {
+#nice h4 span {
   margin-top: -1px;
   padding-top: 6px;
   padding-right: 5px;
@@ -125,18 +124,18 @@ h4 span {
 /* 无序列表整体样式
  * list-style-type: square|circle|disc;
  */
-ul {
+#nice ul {
 }
 
 /* 无序列表整体样式
  * list-style-type: upper-roman|lower-greek|lower-alpha;
  */
-ol {
+#nice ol {
 }
 
 /* 列表内容，不要设置li
  */
-li section {
+#nice li section {
   font-size: 15px;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
 }
@@ -145,7 +144,7 @@ li section {
  * 左边缘颜色 border-left-color: black;
  * 背景色 background: gray;
  */
-blockquote {
+#nice blockquote {
   border-left-color: rgb(221, 221, 221);
   margin-top: 1.2em;
   margin-bottom: 1.2em;
@@ -157,7 +156,7 @@ blockquote {
 }
 
 /* 引用文字 */
-blockquote p {
+#nice blockquote p {
   font-size: 15px;
   font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
   color: rgb(119, 119, 119);
@@ -167,32 +166,32 @@ blockquote p {
 /* 链接 
  * border-bottom: 1px solid #009688;
  */
-a {
+#nice a {
   color: rgb(239, 112, 96);
   border-bottom: 1px solid rgb(239, 112, 96);
 }
 
 /* 加粗 */
-strong {
+#nice strong {
 }
 
 /* 斜体 */
-em {
+#nice em {
 }
 
 /* 加粗斜体 */
-strong em {
+#nice strong em {
 }
 
 /* 删除线 */
-del {
+#nice del {
 }
 
 /* 分隔线
  * 粗细、样式和颜色
  * border-top: 1px solid #3e3e3e;
  */
-hr {
+#nice hr {
 }
 
 /* 图片
@@ -200,15 +199,15 @@ hr {
  * 居中 margin: 0 auto;
  * 居左 margin: 0 0;
  */
-img {
+#nice img {
 }
 
 /* 图片描述文字 */
-figcaption {
+#nice figcaption {
 }
 
 /* 行内代码 */
-p code, li code {
+#nice p code, li code {
   color: rgb(239, 112, 96);
 }
 
@@ -216,7 +215,7 @@ p code, li code {
  * 代码块不换行 display: -webkit-box !important;
  * 代码块换行 display: block;
  */
-pre code {
+#nice pre code {
 }
 
 /*
@@ -225,43 +224,45 @@ pre code {
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-table tr th,
+#nice table tr th,
 table tr td {
 }
 
 /* 脚注文字 */
-.footnote-word {
+#nice .footnote-word {
   color: #ff3502;
 }
 
 /* 脚注上标 */
-.footnote-ref {
+#nice .footnote-ref {
   color: rgb(239, 112, 96);
 }
 
-/* "参考资料"四个字 */
-.footnotes-sep {
+/* "参考资料"四个字 
+ * 内容 content: "参考资料";
+ */
+#nice .footnotes-sep:before {
 }
 
 /* 参考资料编号 */
-.footnote-num {
+#nice .footnote-num {
 }
 
 /* 参考资料文字 */
-.footnote-item p { 
+#nice .footnote-item p { 
 }
 
 /* 参考资料解释 */
-.footnote-item p em {
+#nice .footnote-item p em {
 }
 
 /* 行间公式
  * 最大宽度 max-width: 300% !important;
  */
-.block-equation svg {
+#nice .block-equation svg {
 }
 
 /* 行内公式
  */
-.inline-equation svg {  
+#nice .inline-equation svg {  
 }`;

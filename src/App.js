@@ -11,6 +11,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
+import {LAYOUT_ID} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -46,7 +47,7 @@ class App extends Component {
           ready: () => {
             window.MathJax.startup.defaultReady();
             window.MathJax.startup.promise.then(() => {
-              const element = document.getElementById("layout");
+              const element = document.getElementById(LAYOUT_ID);
               let html = element.innerHTML;
               html = html.replace(
                 /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
@@ -208,7 +209,7 @@ class App extends Component {
                   }}
                 >
                   <section
-                    id="layout"
+                    id={LAYOUT_ID}
                     className="layout"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
