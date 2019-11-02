@@ -188,6 +188,7 @@ class App extends Component {
                     mode: "markdown",
                     lineWrapping: true,
                     lineNumbers: false,
+                    extraKeys: bindHotkeys(this.props.content, this.props.dialog),
                   }}
                   onChange={this.handleChange}
                   onScroll={this.handleScroll}
