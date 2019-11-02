@@ -1,17 +1,19 @@
+import blue from "./markdown/blue";
+import blueCyan from "./markdown/blueCyan";
+import blueMountain from "./markdown/blueMountain";
+import custom from "./markdown/custom";
+import cyan from "./markdown/cyan";
+import geekBlack from "./markdown/geekBlack";
+import green from "./markdown/green";
+import ink from "./markdown/ink";
 import normal from "./markdown/normal";
 import orangeHeart from "./markdown/orangeHeart";
 import red from "./markdown/red";
-import custom from "./markdown/custom";
-import ink from "./markdown/ink";
 import purple from "./markdown/purple";
-import cyan from "./markdown/cyan";
-import green from "./markdown/green";
-import wechatFormat from "./markdown/wechatFormat";
-import blue from "./markdown/blue";
-import blueMountain from "./markdown/blueMountain";
-import blueCyan from "./markdown/blueCyan";
 import scienceBlue from "./markdown/scienceBlue";
 import shanchui from "./markdown/shanchui";
+import simple from "./markdown/simple";
+import wechatFormat from "./markdown/wechatFormat";
 
 import content from "./content";
 
@@ -26,20 +28,22 @@ import basic from "./basic";
 export default {
   basic,
   style: {
-    normal,
-    orangeHeart,
-    custom,
-    ink,
-    purple,
-    cyan,
-    green,
-    red,
-    wechatFormat,
     blue,
     blueMountain,
     blueCyan,
+    normal,
+    custom,
+    cyan,
+    geekBlack,
+    green,
+    ink,
+    orangeHeart,
+    purple,
+    red,
     scienceBlue,
     shanchui,
+    simple,
+    wechatFormat,
   },
   code: {
     atomOneDark,

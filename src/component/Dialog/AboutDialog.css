@@ -1,0 +1,27 @@
+.img-width {
+  width: 50%;
+  height: 100%;
+}
+
+.header-margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.line-height {
+  line-height: 26px;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+
+.img {
+  width: 70px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.no-border {
+  border: none;
+}

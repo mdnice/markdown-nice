@@ -100,8 +100,18 @@ export const TEMPLATE_OPTIONS = [
   },
   {
     id: "blueMountain",
-    name: "蓝山",
+    name: "前端之巅同款",
     author: "HeyRain",
+  },
+  {
+    id: "geekBlack",
+    name: "极客黑",
+    author: "hyper-xx",
+  },
+  {
+    id: "simple",
+    name: "简",
+    author: "aco",
   },
   {
     id: "custom",
