@@ -11,14 +11,14 @@ export const solveMath = () => {
       continue;
     }
 
-    const width = svg.getAttribute("width");
-    if (width === null) {
+    const height = svg.getAttribute("height");
+    if (height === null) {
       break;
     }
-    const height = svg.getAttribute("height");
-    svg.removeAttribute("width");
+    // const height = svg.getAttribute("height");
+    // svg.removeAttribute("width");
     svg.removeAttribute("height");
-    svg.style.width = width;
+    // svg.style.width = width;
     svg.style.height = height;
   }
 };
