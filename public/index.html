@@ -19,47 +19,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [["$", "$"], ["\\(", "\\)"]],
-          displayMath: [["$$", "$$"], ["\\[", "\\]"]],
-        },
-        svg: {
-          fontCache: "none",
-        },
-        options: {
-          renderActions: {
-            addMenu: [0, '', '']
-          }
-        },
-        startup: {
-          ready: () => {
-            MathJax.startup.defaultReady();
-            MathJax.startup.promise.then(() => {
-              const element = document.getElementById("layout");
-              let html = element.innerHTML;
-              html = html.replace(
-                /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-                '<section class="block-equation">$1</section>',
-              );
-              html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
-              element.innerHTML = html;
-            });
-          },
-        },
-      };
-    </script>
-    <script
-      type="text/javascript"
-      id="MathJax-script"
-      src="https://my-wechat.mdnice.com/wechat/mathjax@852340cc_es5_tex-svg_20191014010745.js"
-    ></script>
 
-    <style id="basic-theme" type="text/css"></style>
-    <style id="markdown-theme" type="text/css"></style>
-    <style id="code-theme" type="text/css"></style>
-    <style id="font-theme" type="text/css"></style>
     <title>让微信排版变Nice</title>
   </head>
 

@@ -1,14 +1,29 @@
 {
   "name": "markdown-nice",
-  "author": "markdown-nice",
+  "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "0.0.1",
-  "private": true,
-  "main": "main.js",
-  "homepage": ".",
-  "license": "SEE LICENSE IN LICENSE",
+  "version": "0.1.3",
+  "private": false,
+  "main": "lib/Lib.js",
+  "module": "lib/Lib.js",
+  "homepage": "https://mdnice.com",
+  "license": "GPL-3.0",
+  "typings": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdnice/markdown-nice"
+  },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "watch": "node ./watch.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "analyze": "source-map-explorer build/static/js/*.js",
+    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
+  },
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.28",
+    "ali-oss": "^6.1.1",
     "antd": "^3.15.1",
     "axios": "^0.18.0",
     "highlight.js": "^9.15.6",
@@ -22,15 +37,19 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
+    "mathjax": "^3.0.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "prettier": "^1.18.2",
+    "qiniu-js": "^2.5.4",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.2",
     "@babel/core": "7.2.2",
     "@svgr/webpack": "^4.1.0",
-    "ali-oss": "^6.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
@@ -39,11 +58,11 @@
     "babel-preset-react-app": "^7.0.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "chokidar": "^3.2.1",
+    "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "electron": "^6.0.10",
-    "electron-builder": "^21.2.0",
     "eslint": "^6.5.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
@@ -73,31 +92,23 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
-    "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "qiniu-js": "^2.5.4",
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
+    "shelljs": "^0.8.3",
     "source-map-explorer": "^2.0.1",
     "style-loader": "0.23.1",
     "styled-jsx": "^3.2.1",
     "terser-webpack-plugin": "1.2.2",
+    "thread-loader": "^2.1.3",
     "to-string-loader": "^1.1.5",
     "url-loader": "1.1.2",
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "electron-start": "electron .",
-    "package": "rm -rf dist && electron-builder --x64",
-    "analyze": "source-map-explorer build/static/js/*.js"
   },
   "build": {
     "productName": "Markdown Nice",
@@ -176,8 +187,7 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env",
-      "react-app"
+      "@babel/react"
     ],
     "plugins": [
       [
@@ -200,7 +210,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{jsx,txs,ts,js,json,css,md}": [
+    "src/**/*.{jsx,txs,ts,js,json,md}": [
       "prettier --write",
       "eslint --fix",
       "git add"

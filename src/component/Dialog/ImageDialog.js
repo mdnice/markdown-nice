@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Icon, Modal, Upload, Tabs, Select} from "antd";
+import {Modal, Upload, Tabs, Select} from "antd";
+
+import SvgIcon from "../../icon";
 
 import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
@@ -80,63 +82,6 @@ class ImageDialog extends Component {
     };
   };
 
-  // // 阿里云对象存储上传
-  // aliOSSUpload = (config, file, onSuccess, onError) => {
-  //   const base64Reader = new FileReader();
-  //   base64Reader.readAsDataURL(file);
-  //   base64Reader.onload = (e) => {
-  //     const urlData = e.target.result;
-  //     const base64 = urlData.split(",").pop();
-  //     const fileType = urlData
-  //       .split(";")
-  //       .shift()
-  //       .split(":")
-  //       .pop();
-
-  //     // base64转blob
-  //     const blob = toBlob(base64, fileType);
-
-  //     // blob转arrayBuffer
-  //     const bufferReader = new FileReader();
-  //     bufferReader.readAsArrayBuffer(blob);
-  //     bufferReader.onload = (event) => {
-  //       const buffer = new OSS.Buffer(event.target.result);
-  //       this.aliOSSPutObject(config, file, buffer, onSuccess, onError);
-  //     };
-  //   };
-  // };
-
-  // 阿里云对象存储上传
-  // aliOSSPutObject = (config, file, value, onSuccess, onError) => {
-  //   let client;
-  //   try {
-  //     client = new OSS(config);
-  //   } catch (error) {
-  //     message.error("OSS配置错误，请根据文档检查配置项");
-  //     return;
-  //   }
-
-  //   const OSSName = getOSSName(file.name);
-
-  //   client
-  //     .put(OSSName, value)
-  //     .then((response) => {
-  //       const names = file.name.split(".");
-  //       names.pop();
-  //       const filename = names.join(".");
-  //       const image = {
-  //         filename, // 名字不变并且去掉后缀
-  //         url: response.url,
-  //       };
-  //       this.images.push(image);
-  //       onSuccess(response, file);
-  //     })
-  //     .catch((error) => {
-  //       message.error("请根据文档检查配置项");
-  //       onError(error, error.toString());
-  //     });
-  // };
-
   typeChange = (type) => {
     this.props.imageHosting.setType(type);
     localStorage.setItem(IMAGE_HOSTING_TYPE, type);
@@ -169,7 +114,7 @@ class ImageDialog extends Component {
           <TabPane tab="图片上传" key="1">
             <Dragger name="file" multiple action={SM_MS_PROXY} customRequest={this.customRequest}>
               <p className="ant-upload-drag-icon">
-                <Icon type="inbox" />
+                <SvgIcon name="inbox" style={style.svgIcon} fill="#40a9ff" />
               </p>
               <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
               <p className="ant-upload-hint">{"正在使用" + type + "图床"}</p>
@@ -186,5 +131,12 @@ class ImageDialog extends Component {
     );
   }
 }
+
+const style = {
+  svgIcon: {
+    width: "48px",
+    height: "48px",
+  },
+};
 
 export default ImageDialog;

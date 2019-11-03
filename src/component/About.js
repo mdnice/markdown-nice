@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Button, ConfigProvider} from "antd";
+import SvgIcon from "../icon";
 
 @inject("dialog")
 @observer
@@ -12,8 +13,8 @@ class About extends Component {
   render() {
     return (
       <ConfigProvider autoInsertSpaceInButton={false}>
-        <Button style={style.btnHeight} onClick={this.handleClick}>
-          关于
+        <Button style={style.btnPadding} onClick={this.handleClick}>
+          <SvgIcon name="about" style={style.svgIcon} />
         </Button>
       </ConfigProvider>
     );
@@ -21,8 +22,13 @@ class About extends Component {
 }
 
 const style = {
-  btnHeight: {
-    marginLeft: "10px",
+  btnPadding: {
+    padding: "0",
+  },
+  svgIcon: {
+    padding: "6px 7px 10px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 

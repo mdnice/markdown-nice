@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import {Tooltip, Button, Icon} from "antd";
+import {Tooltip, Button} from "antd";
 
-import fullscreenIcon from "../icon/fullscreen.svg";
+// import fullscreenIcon from "../icon/fullscreen.svg";
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
+import SvgIcon from "../icon";
 
 class FullScreen extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class FullScreen extends Component {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="全屏">
         <Button style={style.btnPadding} onClick={this.toggleFullScreen}>
-          <Icon component={fullscreenIcon} style={style.iconSize} />
+          <SvgIcon name="fullscreen" style={style.svgIcon} />
         </Button>
       </Tooltip>
     );
@@ -54,10 +55,12 @@ class FullScreen extends Component {
 
 const style = {
   btnPadding: {
-    padding: "0 8px",
+    padding: "0",
   },
-  iconSize: {
-    fontSize: "16px",
+  svgIcon: {
+    padding: "7px 7px 11px 7px",
+    width: "33px",
+    height: "33px",
   },
 };
 
