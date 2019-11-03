@@ -145,6 +145,32 @@ table tr th,
 #nice table tr td {
 }
 
+/*
+ * 表格 border-radius 设置
+ * 如果要设置表格 border-radius, 请反注释如下代码
+ */
+#nice table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+/* 表格左上角 radius */
+#nice table tr:first-child th:first-child {
+  border-top-left-radius: 12px;
+}
+/* 表格右上角 radius */
+#nice table tr:first-child th:last-child {
+  border-top-right-radius: 12px;
+}
+/* 表格左下角 radius */
+#nice table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+/* 表格右下角 radius */
+#nice table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+
 /* 脚注文字 */
 #nice .footnote-word {
 }
