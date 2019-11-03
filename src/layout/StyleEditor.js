@@ -26,9 +26,9 @@ class StyleEditor extends Component {
   getStyleInstance = (instance) => {
     if (instance) {
       this.styleEditor = instance.editor;
-      this.styleEditor.on("keyup", (cm, e) => {
-        if ((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 189) {
-          cm.showHint(e);
+      this.styleEditor.on("keyup", (cm, event) => {
+        if ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode === 189) {
+          cm.showHint({completeSingle: false});
         }
       });
     }

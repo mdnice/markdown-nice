@@ -18,6 +18,11 @@
 .cm-s-md-mirror div.CodeMirror-selected {
   background: #e0e0e0;
 }
+
+.cm-s-md-mirror pre.CodeMirror-line {
+  word-break: break-all;
+}
+
 .cm-s-md-mirror .CodeMirror-line::selection,
 .cm-s-md-mirror .CodeMirror-line > span::selection,
 .cm-s-md-mirror .CodeMirror-line > span > span::selection {
