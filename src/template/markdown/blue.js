@@ -1,19 +1,18 @@
 export default `/* 全局属性 */
 
-.layout {
+#nice {
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   word-break: break-all;
 }
 
 /* 标题 */
-
-h1 {
+#nice h1 {
   font-size: 1.7em;
   font-weight: normal;
   border-bottom: 2px solid hsl(216, 100%, 68%);
 }
 
-h1 span {
+#nice h1 span {
   background: hsl(216, 100%, 68%);
   color: white;
   padding: 3px 10px;
@@ -22,18 +21,18 @@ h1 span {
   margin-right: 3px;
 }
 
-h2 {
+#nice h2 {
   font-weight: normal;
   color: #333;
   font-size: 1.4em;
   border-bottom: 1px solid hsl(216, 100%, 68%);
 }
 
-h2 span {
+#nice h2 span {
   border-bottom: 1px solid hsl(216, 100%, 68%);
 }
 
-h3 {
+#nice h3 {
   font-weight: normal;
   color: #333;
   font-size: 1.2em;
@@ -46,7 +45,7 @@ h3 {
  * em → 高亮
  */
 
-h4 {
+#nice h4 {
   font-weight: normal;
   font-size: 1em;
   width: 80%;
@@ -57,7 +56,7 @@ h4 {
   color: #333;
 }
 
-h5 {
+#nice h5 {
   font-weight: normal;
   font-size: 1.3em;
   text-align: center;
@@ -69,14 +68,14 @@ h5 {
   color: #fff;
 }
 
-h6 {
+#nice h6 {
   font-size: 1.5em;
   font-weight: normal;
   color: hsl(216, 100%, 68%);
   border-bottom: 1px solid hsl(216, 100%, 68%);
 }
 
-em {
+#nice em {
   font-style: normal;
   font-weight: normal;
   color: white;
@@ -87,54 +86,54 @@ em {
 
 /* 其他块元素 */
 
-ol,
+#nice ol,
 ul {
   padding-left: 2em;
 }
 
-hr {
+#nice hr {
   width: 90%;
   margin: 1.5em auto;
   border-top: 2px dashed hsl(216, 100%, 68%);
 }
 
-table {
+#nice table {
   margin: 1.5em auto;
   width: auto;
 }
 
-img {
+#nice img {
   width: 90%;
   margin: 0 auto;
   box-shadow: #CCC 0 10px 15px;
 }
 
-blockquote {
+#nice blockquote {
   background: #f9f9f9;
   border-left-color: hsl(216, 100%, 68%);
 }
 
-blockquote p {
+#nice blockquote p {
   color: #999;
   padding: 3px 0;
 }
 
-a {
+#nice a {
   color: hsl(187, 100%, 45%);
   font-weight: normal;
   border-bottom-color: hsl(187, 100%, 45%);
 }
 
-strong {
+#nice strong {
   color: hsl(216, 80%, 44%);
 }
 
-s,
+#nice s,
 del {
   color: #999;
 }
 
-p,
+#nice p,
 li,
 li span,
 h4,
@@ -142,39 +141,39 @@ table tr td {
   color: #666;
 }
 
-table tr th {
+#nice table tr th {
   color: #333;
   font-weight: normal;
 }
 
-p code,
+#nice p code,
 li code {
   color: hsl(216, 100%, 68%);
 }
 
-sup {
+#nice sup {
   line-height: 0;
 }
 
-.footnote-word,
+#nice .footnote-word,
 .footnote-ref {
   font-weight: normal;
   color: hsl(187, 100%, 45%);
 }
 
-.footnotes-sep {
+#nice .footnotes-sep {
   font-family: inherit;
 }
 
-.footnote-num {
+#nice .footnote-num {
   font-family: inherit;
 }
 
-.footnote-item p {
+#nice .footnote-item p {
   color: #666;
 }
 
-.footnote-item p em {
+#nice .footnote-item p em {
   color: #999;
   background: transparent;
 }
@@ -182,10 +181,10 @@ sup {
 /* 行间公式
  * 最大宽度 max-width: 300% !important;
  */
-.block-equation svg {
+#nice .block-equation svg {
 }
 
 /* 行内公式
  */
-.inline-equation svg {  
+#nice .inline-equation svg {  
 }`;

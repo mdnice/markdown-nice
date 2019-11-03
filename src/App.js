@@ -11,10 +11,12 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
+import {LAYOUT_ID} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
+import bindHotkeys from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
@@ -46,7 +48,7 @@ class App extends Component {
           ready: () => {
             window.MathJax.startup.defaultReady();
             window.MathJax.startup.promise.then(() => {
-              const element = document.getElementById("layout");
+              const element = document.getElementById(LAYOUT_ID);
               let html = element.innerHTML;
               html = html.replace(
                 /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
@@ -62,7 +64,7 @@ class App extends Component {
         },
       };
       // eslint-disable-next-line
-      require("mathjax/es5/tex-svg");
+      require("mathjax/es5/tex-svg-full");
       pluginCenter.mathjax = true;
     } catch (e) {
       console.log(e);
@@ -187,6 +189,7 @@ class App extends Component {
                     mode: "markdown",
                     lineWrapping: true,
                     lineNumbers: false,
+                    extraKeys: bindHotkeys(this.props.content, this.props.dialog),
                   }}
                   onChange={this.handleChange}
                   onScroll={this.handleScroll}
@@ -208,8 +211,7 @@ class App extends Component {
                   }}
                 >
                   <section
-                    id="layout"
-                    className="layout"
+                    id={LAYOUT_ID}
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
                     }}

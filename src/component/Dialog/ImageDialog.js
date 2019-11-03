@@ -82,63 +82,6 @@ class ImageDialog extends Component {
     };
   };
 
-  // // 阿里云对象存储上传
-  // aliOSSUpload = (config, file, onSuccess, onError) => {
-  //   const base64Reader = new FileReader();
-  //   base64Reader.readAsDataURL(file);
-  //   base64Reader.onload = (e) => {
-  //     const urlData = e.target.result;
-  //     const base64 = urlData.split(",").pop();
-  //     const fileType = urlData
-  //       .split(";")
-  //       .shift()
-  //       .split(":")
-  //       .pop();
-
-  //     // base64转blob
-  //     const blob = toBlob(base64, fileType);
-
-  //     // blob转arrayBuffer
-  //     const bufferReader = new FileReader();
-  //     bufferReader.readAsArrayBuffer(blob);
-  //     bufferReader.onload = (event) => {
-  //       const buffer = new OSS.Buffer(event.target.result);
-  //       this.aliOSSPutObject(config, file, buffer, onSuccess, onError);
-  //     };
-  //   };
-  // };
-
-  // 阿里云对象存储上传
-  // aliOSSPutObject = (config, file, value, onSuccess, onError) => {
-  //   let client;
-  //   try {
-  //     client = new OSS(config);
-  //   } catch (error) {
-  //     message.error("OSS配置错误，请根据文档检查配置项");
-  //     return;
-  //   }
-
-  //   const OSSName = getOSSName(file.name);
-
-  //   client
-  //     .put(OSSName, value)
-  //     .then((response) => {
-  //       const names = file.name.split(".");
-  //       names.pop();
-  //       const filename = names.join(".");
-  //       const image = {
-  //         filename, // 名字不变并且去掉后缀
-  //         url: response.url,
-  //       };
-  //       this.images.push(image);
-  //       onSuccess(response, file);
-  //     })
-  //     .catch((error) => {
-  //       message.error("请根据文档检查配置项");
-  //       onError(error, error.toString());
-  //     });
-  // };
-
   typeChange = (type) => {
     this.props.imageHosting.setType(type);
     localStorage.setItem(IMAGE_HOSTING_TYPE, type);

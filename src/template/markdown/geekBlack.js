@@ -20,20 +20,32 @@ export default `/*自定义样式，实时生效*/
  * 首行缩进 text-indent: 2em;
  */
 #nice p {
-  text-align: justify;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 15px;
+  text-align: start;
+  white-space: normal;
+  text-size-adjust: auto;
+  line-height: 1.75em;
 }
 
 /* 一级标题 */
 #nice h1 {
-  font-size: 1.8em;
-  color: #009688;
- 	margin: 1.2em auto;
-  text-align: center;
-  border-bottom: 1px solid #009688;
+  margin-top: -0.46em;
+  margin-bottom: 0.1em;
+  border-bottom: 2px solid rgb(198, 196, 196);
+  box-sizing: border-box;
 }
 
 /* 一级标题内容 */
 #nice h1 span {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(160, 160, 160);
+  font-size: 13px;
+  line-height: 2;
+  box-sizing: border-box;
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
@@ -42,14 +54,27 @@ export default `/*自定义样式，实时生效*/
 
 /* 二级标题 */
 #nice h2 {
-  color: #009688;
-  padding-left: 10px;
-  margin: 1em auto;
-  border-left: 3px solid #009688;
+  margin: 10px auto;
+  height: 40px;
+  background-color: rgb(251, 251, 251);
+  border-bottom: 1px solid rgb(246, 246, 246);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* 二级标题内容 */
 #nice h2 span {
+  margin-left: -10px;
+  display: inline-block;
+  width: auto;
+  height: 40px;
+  background-color: rgb(33, 33, 34);
+  border-bottom-right-radius:100px;
+  color: rgb(255, 255, 255);
+  padding-right: 30px;
+  padding-left: 30px;
+  line-height: 40px;
+  font-size: 16px;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
@@ -58,41 +83,42 @@ export default `/*自定义样式，实时生效*/
 
 /* 三级标题 */
 #nice h3 {
-  margin: 0.6em auto;
-  padding-left: 10px;
-  border-left: 2px solid #009688;
+  margin: 20px auto 5px;
+  border-top: 1px solid rgb(221, 221, 221);
+  box-sizing: border-box;
 }
 
 /* 三级标题内容 */
 #nice h3 span {
+  margin-top: -1px;
+  padding-top: 6px;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 17px;
+  border-top: 2px solid rgb(33, 33, 34);
+  display: inline-block;
+  line-height: 1.1;
 }
 
 /* 三级标题修饰 请参考有实例的主题 */
 #nice h3:after {
 }
 
-/* 四级标题 */
 #nice h4 {
-  margin: 0.6em auto;
-  font-size: 1.2em;
-  padding-left: 10px;
-  border-left: 2px dashed #009688;
+  margin: 10px auto -1px;
+  border-top: 1px solid rgb(221, 221, 221);
+  box-sizing: border-box;
 }
 
-/* 五级标题 */
-#nice h5 {
-  margin: 0.6em auto;
-  font-size: 1.1em;
-  padding-left: 10px;
-  border-left: 1px dashed #009688;
-}
-
-/* 六级标题 */
-#nice h6 {
-  margin: 0.6em auto;
-  font-size: 1em;
-  padding-left: 10px;
-  border-left: 1px dotted #009688;
+#nice h4 span {
+  margin-top: -1px;
+  padding-top: 6px;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 16px;
+  border-top: 2px solid rgb(33, 33, 34);
+  display: inline-block;
+  line-height: 1.1;
 }
 
 /* 无序列表整体样式
@@ -110,6 +136,8 @@ export default `/*自定义样式，实时生效*/
 /* 列表内容，不要设置li
  */
 #nice li section {
+  font-size: 15px;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
 }
 
 /* 引用
@@ -117,22 +145,30 @@ export default `/*自定义样式，实时生效*/
  * 背景色 background: gray;
  */
 #nice blockquote {
-  border-left: 2px solid #888;
-  border-right: 2px solid #888;
+  border-left-color: rgb(221, 221, 221);
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  padding-right: 1em;
   padding-left: 1em;
-  color: #777;
+  border-left-width: 4px;
+  color: rgb(119, 119, 119);
+  quotes: none;
 }
 
 /* 引用文字 */
 #nice blockquote p {
+  font-size: 15px;
+  font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  color: rgb(119, 119, 119);
+  line-height: 1.75em;
 }
 
 /* 链接 
  * border-bottom: 1px solid #009688;
  */
 #nice a {
-  color: #009688;
-  border-bottom: 1px solid #009688;
+  color: rgb(239, 112, 96);
+  border-bottom: 1px solid rgb(239, 112, 96);
 }
 
 /* 加粗 */
@@ -156,7 +192,6 @@ export default `/*自定义样式，实时生效*/
  * border-top: 1px solid #3e3e3e;
  */
 #nice hr {
-  margin: 20px 0;
 }
 
 /* 图片
@@ -173,7 +208,7 @@ export default `/*自定义样式，实时生效*/
 
 /* 行内代码 */
 #nice p code, li code {
-  color: #009688;
+  color: rgb(239, 112, 96);
 }
 
 /* 非微信代码块
@@ -183,32 +218,24 @@ export default `/*自定义样式，实时生效*/
 #nice pre code {
 }
 
-/* 表格内的单元格
+/*
+ * 表格内的单元格
  * 字体大小 font-size: 16px;
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-#nice table tr th {
-  border: 1px solid #009688;
-  background-color: #009688;
-  color: #f8f8f8;
-  border-bottom: 0;
-}
-#nice table tr td {
-  border: 1px solid #009688;
-}
-table tr:nth-child(2n){
-  background-color: #f8f8f8;
+#nice table tr th,
+table tr td {
 }
 
 /* 脚注文字 */
 #nice .footnote-word {
-  color: #009688;
+  color: #ff3502;
 }
 
 /* 脚注上标 */
 #nice .footnote-ref {
-  color: #009688;
+  color: rgb(239, 112, 96);
 }
 
 /* "参考资料"四个字 

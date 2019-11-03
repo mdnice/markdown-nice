@@ -35,7 +35,7 @@ if (!window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING)) {
     accessKey: "",
     secretKey: "",
     bucket: "",
-    domain: "http://",
+    domain: "https://",
     namespace: "",
   });
   window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);
@@ -49,7 +49,7 @@ if (temQiniu.domain === undefined) {
     accessKey: "",
     secretKey: "",
     bucket: "",
-    domain: "http://",
+    domain: "https://",
     namespace: "",
   });
   window.localStorage.setItem(QINIUOSS_IMAGE_HOSTING, qiniuoss);

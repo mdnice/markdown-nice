@@ -12,6 +12,7 @@ import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import highlightjs from "./langHighlight";
 import markdownLiReplacer from "./markdown-it-li";
+import {LAYOUT_ID} from "./constant";
 
 export const axiosGithub = axios.create({
   baseURL: "https://api.github.com",
@@ -268,7 +269,7 @@ export const updateMathjax = () => {
   window.MathJax.typesetClear();
   window.MathJax.typesetPromise()
     .then(() => {
-      const element = document.getElementById("layout");
+      const element = document.getElementById(LAYOUT_ID);
       let html = element.innerHTML;
       html = html.replace(
         /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,

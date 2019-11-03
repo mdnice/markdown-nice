@@ -2,7 +2,7 @@
   "name": "markdown-nice",
   "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "0.0.7",
+  "version": "0.1.3",
   "private": false,
   "main": "lib/Lib.js",
   "module": "lib/Lib.js",
@@ -22,7 +22,7 @@
     "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
   },
   "dependencies": {
-    "@uiw/react-codemirror": "^1.0.19",
+    "@uiw/react-codemirror": "^1.0.28",
     "ali-oss": "^6.1.1",
     "antd": "^3.15.1",
     "axios": "^0.18.0",

@@ -20,10 +20,9 @@ class QiniuOSS extends Component {
     super(props);
     // 从localstorage里面读取
     const imageHosting = JSON.parse(localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
-    const [protocol, link] = imageHosting.domain.split("://");
+    const link = imageHosting.domain.split("://")[1];
     this.state = {
       imageHosting,
-      protocol,
       link,
     };
   }
@@ -60,16 +59,7 @@ class QiniuOSS extends Component {
     this.setState({link: e.target.value});
 
     const {imageHosting} = this.state;
-    imageHosting.domain = this.state.protocol + "://" + e.target.value;
-    this.setState({imageHosting});
-    localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
-  };
-
-  protocolChange = (protocol) => {
-    this.setState({protocol});
-
-    const {imageHosting} = this.state;
-    imageHosting.domain = protocol + "://" + this.state.link;
+    imageHosting.domain = "https://" + e.target.value;
     this.setState({imageHosting});
     localStorage.setItem(QINIUOSS_IMAGE_HOSTING, JSON.stringify(imageHosting));
   };
@@ -83,13 +73,7 @@ class QiniuOSS extends Component {
 
   render() {
     const {region, accessKey, secretKey, bucket, namespace} = this.state.imageHosting;
-    const {protocol, link} = this.state;
-    const prefixSelector = (
-      <Select style={{width: 80}} value={protocol} onChange={this.protocolChange}>
-        <Option value="http">http://</Option>
-        <Option value="https">https://</Option>
-      </Select>
-    );
+    const {link} = this.state;
     return (
       <Form {...formItemLayout}>
         <Form.Item label="存储空间名称" style={style.formItem}>
@@ -111,12 +95,7 @@ class QiniuOSS extends Component {
           <Input value={secretKey} onChange={this.secretKeyChange} placeholder="例如：qweASDF1234zxcvbqweASD" />
         </Form.Item>
         <Form.Item label="自定义域名" style={style.formItem}>
-          <Input
-            value={link}
-            onChange={this.linkChange}
-            addonBefore={prefixSelector}
-            placeholder="例如：qiniu.mdnice.com"
-          />
+          <Input value={link} onChange={this.linkChange} addonBefore="https://" placeholder="例如：qiniu.mdnice.com" />
         </Form.Item>
         <Form.Item label="自定义命名空间" style={style.formItem}>
           <Input value={namespace} onChange={this.namespaceChange} placeholder="例如：image/" />
