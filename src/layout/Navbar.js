@@ -8,6 +8,7 @@ import Copy from "../component/Copy";
 import Reset from "../component/Reset";
 import Image from "../component/Image";
 import Link from "../component/Link";
+import Form from "../component/Form";
 import Code from "../component/Code";
 import Italic from "../component/Italic";
 import Bold from "../component/Bold";
@@ -40,6 +41,7 @@ class Navbar extends Component {
             <ButtonGroup style={style.btnGroupMargin}>
               <Link />
               <Image />
+              <Form />
             </ButtonGroup>
             <ButtonGroup style={style.btnGroupRight}>
               <Reset />

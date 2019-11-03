@@ -1,6 +1,6 @@
 import React from "react";
 import {observer, inject} from "mobx-react";
-import {Modal, Input, Form, message} from "antd";
+import {Modal, InputNumber, Form} from "antd";
 
 @inject("dialog")
 @inject("content")
@@ -26,7 +26,7 @@ class FormDialog extends React.Component {
         appendText += "     |";
       }
     }
-    return appendText + (/macintosh|mac\sos\sx+/i.test(navigator.userAgent) ? "\n" : "\r\n");
+    return appendText + (/windows|win32/i.test(navigator.userAgent) ? "\r\n" : "\n");
   };
 
   buildFormFormat = (rowNum, columnNum) => {
@@ -41,17 +41,13 @@ class FormDialog extends React.Component {
   };
 
   handleOk = () => {
-    const columnCheck = this.state.columnNum <= 10;
-    const rowCheck = this.state.rowNum <= 10;
-    if (columnCheck && rowCheck) {
-      const {markdownEditor} = this.props.content;
-      const cursor = markdownEditor.getCursor();
-      const text = this.buildFormFormat(this.state.rowNum, this.state.columnNum);
-      markdownEditor.replaceSelection(text, cursor);
+    const {markdownEditor} = this.props.content;
+    const cursor = markdownEditor.getCursor();
+    const text = this.buildFormFormat(this.state.rowNum, this.state.columnNum);
+    markdownEditor.replaceSelection(text, cursor);
 
-      const content = markdownEditor.getValue();
-      this.props.content.setContent(content);
-    } else message.error(`${rowCheck ? "" : "行数"}${columnCheck ? "" : "列数"}不能大于10`);
+    const content = markdownEditor.getValue();
+    this.props.content.setContent(content);
 
     this.handleCancel();
   };
@@ -59,12 +55,6 @@ class FormDialog extends React.Component {
   handleCancel = () => {
     this.setState(initialState);
     this.props.dialog.setFormOpen(false);
-  };
-
-  handleChange = (value, target) => {
-    this.setState({
-      [target]: value,
-    });
   };
 
   render() {
@@ -77,37 +67,32 @@ class FormDialog extends React.Component {
         onOk={this.handleOk}
         onCancel={this.handleCancel}
       >
-        <div style={style.column}>
-          <Form.Item label="行">
-            <Input
-              placeholder="请输入表格的行数"
-              value={this.state.rowNum}
-              onChange={(e) => this.handleChange(e.target.value, "rowNum")}
-            />
-          </Form.Item>
-          <Form.Item label="列">
-            <Input
-              placeholder="请输入表格的列数"
-              value={this.state.columnNum}
-              onChange={(e) => this.handleChange(e.target.value, "columnNum")}
-            />
-          </Form.Item>
-        </div>
+        <Form.Item label="行数" labelCol={{span: 4}}>
+          <InputNumber
+            min={2}
+            max={10}
+            value={this.state.rowNum}
+            defaultValue={1}
+            onChange={(value) => this.setState({rowNum: value})}
+          />
+        </Form.Item>
+        <Form.Item label="列数" labelCol={{span: 4}}>
+          <InputNumber
+            min={1}
+            max={10}
+            value={this.state.columnNum}
+            defaultValue={1}
+            onChange={(value) => this.setState({columnNum: value})}
+          />
+        </Form.Item>
       </Modal>
     );
   }
 }
 
 const initialState = {
-  columnNum: 0,
-  rowNum: 0,
-};
-
-const style = {
-  column: {
-    display: "flex",
-    flexDirection: "column",
-  },
+  columnNum: 1,
+  rowNum: 2,
 };
 
 export default FormDialog;
