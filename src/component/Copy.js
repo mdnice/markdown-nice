@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Button, message, ConfigProvider} from "antd";
 
-import {solveMath, solveHtml, copySafari} from "../utils/converter";
+import {solveWeChatMath, solveZhihuMath, solveHtml, copySafari} from "../utils/converter";
 
 @inject("content")
 @inject("navbar")
@@ -20,7 +20,8 @@ class Copy extends Component {
 
   copy = () => {
     this.setState({loading: true});
-    solveMath();
+    solveZhihuMath();
+    // solveWeChatMath();
     this.html = solveHtml();
     // FIXED: safari 复制问题
     copySafari(this.html);

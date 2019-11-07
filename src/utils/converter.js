@@ -2,19 +2,22 @@ import juice from "juice";
 import {message} from "antd";
 import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID} from "./constant";
 
-export const solveMath = () => {
+export const solveWeChatMath = () => {
   const layout = document.getElementById(LAYOUT_ID);
-  const svgArr = layout.getElementsByTagName("svg");
-  for (let i = 0; i < svgArr.length; i++) {
-    const svg = svgArr[i];
-    if (!svg.hasAttribute("style")) {
-      continue;
-    }
-
-    const width = svg.getAttribute("width");
-    if (width === null) {
+  const mjxs = layout.getElementsByTagName("mjx-container");
+  for (let i = 0; i < mjxs.length; i++) {
+    const mjx = mjxs[i];
+    if (!mjx.hasAttribute("data")) {
       break;
     }
+
+    mjx.removeAttribute("data");
+    mjx.removeAttribute("jax");
+    mjx.removeAttribute("display");
+    mjx.removeAttribute("tabindex");
+    mjx.removeAttribute("ctxtmenu_counter");
+    const svg = mjx.firstChild;
+    const width = svg.getAttribute("width");
     const height = svg.getAttribute("height");
     svg.removeAttribute("width");
     svg.removeAttribute("height");
@@ -23,11 +26,25 @@ export const solveMath = () => {
   }
 };
 
+export const solveZhihuMath = () => {
+  const layout = document.getElementById(LAYOUT_ID);
+  const mjxs = layout.getElementsByTagName("mjx-container");
+  for (let i = 0; i < mjxs.length; i++) {
+    const mjx = mjxs[i];
+    const data = mjx.getAttribute("data");
+    if (!data) {
+      continue;
+    }
+
+    mjx.innerHTML = '<img class="Formula-image" data-eeimg="true" src="" alt="' + data + '">';
+  }
+};
+
 export const solveHtml = () => {
   const element = document.getElementById("wx-box");
   let html = element.innerHTML;
-  html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
-  html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
+  html = html.replace(/\s<mjx-container class="inline/g, '&nbsp;<mjx-container class="inline');
+  html = html.replace(/svg><\/mjx-container>\s/g, "svg></mjx-container>&nbsp;");
   const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
   const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
   const codeStyle = document.getElementById(CODE_THEME_ID).innerText;

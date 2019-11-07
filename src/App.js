@@ -42,24 +42,16 @@ class App extends Component {
         options: {
           renderActions: {
             addMenu: [0, "", ""],
-          },
-        },
-        startup: {
-          ready: () => {
-            window.MathJax.startup.defaultReady();
-            window.MathJax.startup.promise.then(() => {
-              const element = document.getElementById(LAYOUT_ID);
-              let html = element.innerHTML;
-              html = html.replace(
-                /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-                '<section class="block-equation">$1</section>',
-              );
-              html = html.replace(
-                /<mjx-container.+?>(.+?)<\/mjx-container>/g,
-                '<span class="inline-equation">$1</span>',
-              );
-              element.innerHTML = html;
-            });
+            addContainer: [
+              190,
+              (doc) => {
+                for (const math of doc.math) {
+                  const cls = math.display ? "block-equation" : "inline-equation";
+                  math.typesetRoot.className = cls;
+                  math.typesetRoot.setAttribute("data", math.math);
+                }
+              },
+            ],
           },
         },
       };

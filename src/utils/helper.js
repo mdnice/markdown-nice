@@ -267,16 +267,5 @@ export const addStyleLabel = (styleLabels) => {
 export const updateMathjax = () => {
   window.MathJax.texReset();
   window.MathJax.typesetClear();
-  window.MathJax.typesetPromise()
-    .then(() => {
-      const element = document.getElementById(LAYOUT_ID);
-      let html = element.innerHTML;
-      html = html.replace(
-        /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-        '<section class="block-equation">$1</section>',
-      );
-      html = html.replace(/<mjx-container.+?>(.+?)<\/mjx-container>/g, '<span class="inline-equation">$1</span>');
-      element.innerHTML = html;
-    })
-    .catch((err) => console.log(err.message));
+  window.MathJax.typesetPromise();
 };
