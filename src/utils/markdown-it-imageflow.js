@@ -1,17 +1,10 @@
 const defaultOption = {
   limitless: false, // 限制图片数量
-  limit: 10, // 图片数量上限,
-  height: 300, // 组件高度
+  limit: 10, // 图片数量上限
 };
 
 const imageFlowPlugin = (md, opt) => {
   const options = opt || defaultOption;
-  const style = {
-    IF_layer1: `margin:1em;white-space:normal;border:none;padding:0px;overflow:hidden;height:${options.height}px;line-height:${options.height}px`,
-    IF_layer2: `white-space:nowrap;width:100%;overflow-x:scroll;`,
-    IF_layer3: `display:inline-block;word-wrap:break-word;white-space:normal;vertical-align:middle;width:100%;`,
-    IF_image: `display:inline-block;`,
-  };
 
   const tokenize = (state, silent) => {
     let result = false;
@@ -54,7 +47,7 @@ const imageFlowPlugin = (md, opt) => {
   };
 
   md.renderer.rules.imageFlow_start = () => {
-    return `<section style=${style.IF_layer1}><section style=${style.IF_layer2}>`;
+    return `<section class="imageflow-layer1"><section class="imageflow-layer2">`;
   };
   md.renderer.rules.imageFlow_end = () => {
     return `</section></section>`;
@@ -65,9 +58,9 @@ const imageFlowPlugin = (md, opt) => {
     let image;
     contents.forEach((content) => {
       image = content.split(/\[|\]|\(|\)|!/).filter((val) => val);
-      wrapperContent += `<section style=${style.IF_layer3}><img alt=${image[0]} src=${image[1]} style=${
-        style.IF_image
-      } /></section>`;
+      wrapperContent += `<section class="imageflow-layer3"><img alt=${image[0]} src=${
+        image[1]
+      } class="imageflow-img" /></section>`;
     });
 
     return wrapperContent;
