@@ -180,42 +180,4 @@ table tr th,
 /* 行内公式
  */
 #nice .inline-equation svg {  
-}
-
-/* 横屏移动外层
- * margin: 1em auto;
- * white-space: normal;
- * border: 0px none;
- * padding: 0px;
- * overflow: hidden;
-*/
-#nice .imageflow-layer1 {
-}
-
-/* 横屏移动中间层
- * white-space: nowrap;
- * 100%;
- * overflow-x: scroll;
-*/
-#nice .imageflow-layer2 {
-  white-space: nowrap;
-  width: 100%;
-  overflow-x: scroll;
-}
-
-/* 横屏移动内层
- * display: inline-block
- * word-wrap: break-word;
- * white-space: normal;
- * vertical-align: middle;
- * width: 100%;
-*/
-#nice .imageflow-layer3 {
-}
-
-/* 横屏移动图片
- * display: inline-block;
-*/
-#nice .imageflow-img {
-}
-`;
+}`;
