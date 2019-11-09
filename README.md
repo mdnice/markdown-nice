@@ -8,10 +8,8 @@
 ## 简介
 
 - 支持自定义样式的 Markdown 编辑器
-- 支持微信公众号排版
-- 支持开源中国、知乎、稀土掘金、博客园和 CSDN 等一系列平台
-- 内容和自定义样式浏览器中实时保存
-- 支持上传图片、脚注、公式
+- 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等一系列平台
+- 更多用户和开发者文档请参考 [Markdown Nice Docs](https://docs.mdnice.com/)
 - 欢迎[在线使用](https://mdnice.com/)
 
 ## 示例
@@ -64,10 +62,6 @@ function App() {
 
 export default App;
 ```
-
-## 更多文档
-
-更多用户和开发者文档请参考 [Markdown Nice Docs](https://docs.mdnice.com/)
 
 ## 关于
 

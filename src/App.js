@@ -11,7 +11,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID} from "./utils/constant";
+import {LAYOUT_ID, BOX_ID} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -42,24 +42,16 @@ class App extends Component {
         options: {
           renderActions: {
             addMenu: [0, "", ""],
-          },
-        },
-        startup: {
-          ready: () => {
-            window.MathJax.startup.defaultReady();
-            window.MathJax.startup.promise.then(() => {
-              const element = document.getElementById(LAYOUT_ID);
-              let html = element.innerHTML;
-              html = html.replace(
-                /<mjx-container.+?display.+?>(.+?)<\/mjx-container>/g,
-                '<section class="block-equation">$1</section>',
-              );
-              html = html.replace(
-                /<mjx-container.+?>(.+?)<\/mjx-container>/g,
-                '<span class="inline-equation">$1</span>',
-              );
-              element.innerHTML = html;
-            });
+            addContainer: [
+              190,
+              (doc) => {
+                for (const math of doc.math) {
+                  const cls = math.display ? "block-equation" : "inline-equation";
+                  math.typesetRoot.className = cls;
+                  math.typesetRoot.setAttribute("data", math.math);
+                }
+              },
+            ],
           },
         },
       };
@@ -202,7 +194,7 @@ class App extends Component {
               </div>
               <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
                 <div
-                  id="wx-box"
+                  id={BOX_ID}
                   className="wx-box"
                   onScroll={this.handleScroll}
                   style={{width: previewType === "pc" ? "100%" : 375}}

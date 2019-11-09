@@ -1,10 +1,12 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import {Result} from "antd";
+import {Provider} from "mobx-react";
+
 import "./index.css";
 
 import App from "./App";
 
-import {Provider} from "mobx-react";
 import content from "./store/content";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
@@ -13,14 +15,27 @@ import imageHosting from "./store/imageHosting";
 
 import {isPC} from "./utils/helper";
 import appContext from "./utils/appContext";
-import {Result} from "antd";
 import SvgIcon from "./icon";
-import {solveMath, solveHtml} from "./utils/converter";
+import {solveWeChatMath, solveZhihuMath, solveHtml} from "./utils/converter";
+import {LAYOUT_ID} from "./utils/constant";
 
 class Lib extends Component {
-  getHtml() {
-    solveMath();
-    return solveHtml();
+  getWeChatHtml() {
+    const layout = document.getElementById(LAYOUT_ID); // 保护现场
+    const html = layout.innerHTML;
+    solveWeChatMath();
+    const res = solveHtml();
+    layout.innerHTML = html; // 恢复现场
+    return res;
+  }
+
+  getZhihuHtml() {
+    const layout = document.getElementById(LAYOUT_ID); // 保护现场
+    const html = layout.innerHTML;
+    solveZhihuMath();
+    const res = solveHtml();
+    layout.innerHTML = html; // 恢复现场
+    return res;
   }
 
   render() {

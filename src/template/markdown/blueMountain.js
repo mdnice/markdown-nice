@@ -28,6 +28,7 @@ export default `/*初始化格式*/
 
 /* 一级标题内容 */
 #nice h1 span {
+  font-size: 20px;
   color: rgb(60, 112, 198);
   border-bottom:2px solid #3C7076;
 }
@@ -40,8 +41,7 @@ export default `/*初始化格式*/
 #nice h2 {
   display:block;
   text-align:center;
-  background-image: 
-url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png); 
+  background-image: url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png); 
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: initial;
@@ -91,10 +91,9 @@ url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png);
 
 /* 三级标题内容 */
 #nice h3 span {
-  font-size:15px;
+  font-size:16px;
   font-weight:bold;
   display:inline-block;
-  margin-top:30px;
   margin-left:8px;
   color:rgb(60,112,198);
 }
@@ -112,19 +111,17 @@ url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png);
  * 背景色 background:gray;
  */
 #nice blockquote {
+  padding: 15px 20px;
   line-height: 27px;
   background-color: rgb(239, 239, 239);
-  margin-top: 40px;
-  margin-right: 8px;
-  margin-left: 8px;
   border-left:none;
   display:block;
 }
 
 /* 引用文字 */
 #nice blockquote p {
+  padding: 0px;
   font-size:15px;
-  padding:2px;
   color:rgb(89,89,89);
 }
 
