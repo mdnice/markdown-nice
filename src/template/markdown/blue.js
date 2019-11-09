@@ -129,14 +129,14 @@ ul {
 }
 
 #nice s,
-del {
+#nice del {
   color: #999;
 }
 
 #nice p,
-li,
-li span,
-h4,
+#nice li,
+#nice li span,
+#nice h4,
 table tr td {
   color: #666;
 }

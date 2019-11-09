@@ -137,8 +137,8 @@ url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png);
 
 /* 加粗 */
 #nice strong {
-    line-height: 1.75em;
-  	color: rgb(74,74,74);
+  line-height: 1.75em;
+  color: rgb(74,74,74);
 }
 
 /* 斜体 */
@@ -195,7 +195,7 @@ url(https://my-wechat.mdnice.com/mdnice/mountain_2_20191028221337.png);
  * 内边距 padding: 5px 10px;
  */
 #nice table tr th,
-table tr td {
+#nice table tr td {
   font-size: 14px;
 }
 .footnotes{

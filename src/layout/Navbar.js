@@ -43,10 +43,10 @@ class Navbar extends Component {
               <Image />
               <Form />
             </ButtonGroup>
-            <ButtonGroup style={style.btnGroupRight}>
-              <Reset />
+            <ButtonGroup style={style.btnGroupMargin}>
               <FullScreen />
               <Font />
+              <Reset />
               <About />
             </ButtonGroup>
           </div>

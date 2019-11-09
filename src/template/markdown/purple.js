@@ -184,7 +184,7 @@ export default `/* 全局属性
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-table tr th,
+#nice table tr th,
 #nice table tr td {
 }
 
