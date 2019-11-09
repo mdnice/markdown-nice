@@ -264,13 +264,21 @@ TOC 全称为 Table of Content，列出全部标题。由于示例标题过多�
 
 由于微信只支持到二级列表，本工具仅支持二级标题和三级标题的显示。
 
-## 4.5 注音符号
+### 4.5 注音符号
 
 > 支持平台：微信公众号。
 
 支持注音符号，用法如下：
 
 Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
+
+### 4.6 横屏滑动幻灯片
+
+> 支持平台：微信公众号。
+
+通过\`<![](url),![](url)>\`这种语法设置横屏滑动滑动片，具体用法如下：
+
+<![蓝1](https://my-wechat.mdnice.com/mdnice/%E8%93%9D1_20191109174052.jpg),![绿2](https://my-wechat.mdnice.com/mdnice/%E7%BB%BF2_20191109174052.jpg),![红3](https://my-wechat.mdnice.com/mdnice/%E7%BA%A23_20191109174052.jpg)>
 
 ## 5 其他语法
 
