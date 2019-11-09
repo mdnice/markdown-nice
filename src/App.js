@@ -11,7 +11,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID} from "./utils/constant";
+import {LAYOUT_ID, BOX_ID} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -194,7 +194,7 @@ class App extends Component {
               </div>
               <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
                 <div
-                  id="wx-box"
+                  id={BOX_ID}
                   className="wx-box"
                   onScroll={this.handleScroll}
                   style={{width: previewType === "pc" ? "100%" : 375}}

@@ -1,8 +1,6 @@
 import axios from "axios";
 import MarkdownIt from "markdown-it";
-import markdownItSup from "markdown-it-sup";
 import markdownItMath from "./markdown-it-math";
-import markdownItSub from "markdown-it-sub";
 import markdownItDeflist from "markdown-it-deflist";
 import markdownItImplicitFigures from "markdown-it-implicit-figures";
 import markdownItTableOfContents from "markdown-it-table-of-contents";
@@ -12,7 +10,6 @@ import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import highlightjs from "./langHighlight";
 import markdownLiReplacer from "./markdown-it-li";
-import {LAYOUT_ID} from "./constant";
 
 export const axiosGithub = axios.create({
   baseURL: "https://api.github.com",
@@ -82,10 +79,8 @@ export const markdownParserWechat = new MarkdownIt({
 markdownParserWechat
   .use(markdownItSpan) // 在标题标签中添加span
   .use(markdownItRemovepre) // 移除代码段中的 pre code
-  .use(markdownItSup) // 上标
   .use(markdownItMath) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
-  .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
     transformLink: () => "",
     includeLevel: [2, 3],
@@ -115,10 +110,8 @@ export const markdownParser = new MarkdownIt({
 
 markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
-  .use(markdownItSup) // 上标
   .use(markdownItMath) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
-  .use(markdownItSub) // 下标
   .use(markdownItTableOfContents, {
     transformLink: () => "",
     includeLevel: [2, 3],

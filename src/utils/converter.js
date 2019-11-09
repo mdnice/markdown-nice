@@ -1,6 +1,6 @@
 import juice from "juice";
 import {message} from "antd";
-import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID} from "./constant";
+import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID, BOX_ID} from "./constant";
 
 export const solveWeChatMath = () => {
   const layout = document.getElementById(LAYOUT_ID);
@@ -41,7 +41,7 @@ export const solveZhihuMath = () => {
 };
 
 export const solveHtml = () => {
-  const element = document.getElementById("wx-box");
+  const element = document.getElementById(BOX_ID);
   let html = element.innerHTML;
   html = html.replace(/\s<mjx-container class="inline/g, '&nbsp;<mjx-container class="inline');
   html = html.replace(/svg><\/mjx-container>\s/g, "svg></mjx-container>&nbsp;");

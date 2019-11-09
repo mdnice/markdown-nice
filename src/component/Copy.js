@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button, message, ConfigProvider} from "antd";
+import {message, ConfigProvider, Dropdown, Icon, Menu} from "antd";
 
 import {solveWeChatMath, solveZhihuMath, solveHtml, copySafari} from "../utils/converter";
+import {LAYOUT_ID} from "../utils/constant";
+import "./Copy.css";
 
 @inject("content")
 @inject("navbar")
@@ -13,28 +15,49 @@ class Copy extends Component {
   constructor(props) {
     super(props);
     this.html = "";
-    this.state = {
-      loading: false,
-    };
   }
 
-  copy = () => {
-    this.setState({loading: true});
-    solveZhihuMath();
-    // solveWeChatMath();
+  copyWechat = () => {
+    const layout = document.getElementById(LAYOUT_ID); // 保护现场
+    const html = layout.innerHTML;
+    solveWeChatMath();
     this.html = solveHtml();
-    // FIXED: safari 复制问题
     copySafari(this.html);
     message.success("已复制，请到微信公众平台粘贴");
-    this.setState({loading: false});
+    layout.innerHTML = html; // 恢复现场
+  };
+
+  copyZhihu = () => {
+    const layout = document.getElementById(LAYOUT_ID); // 保护现场
+    const html = layout.innerHTML;
+    solveZhihuMath();
+    this.html = solveHtml();
+    copySafari(this.html);
+    message.success("已复制，请到知乎粘贴");
+    layout.innerHTML = html; // 恢复现场
   };
 
   render() {
+    const menu = (
+      <Menu>
+        <div style={style.menuItem}>
+          <div role="button" style={style.themeItem} onClick={this.copyZhihu} onKeyDown={this.copyZhihu} tabIndex="0">
+            复制到知乎
+          </div>
+        </div>
+      </Menu>
+    );
     return (
       <ConfigProvider autoInsertSpaceInButton={false}>
-        <Button type="primary" style={style.btnHeight} onClick={this.copy} loading={this.state.loading}>
+        <Dropdown.Button
+          onClick={this.copyWechat}
+          overlay={menu}
+          icon={<Icon type="more" style={style.iconSize} />}
+          className="nice-copy"
+          type="primary"
+        >
           复制
-        </Button>
+        </Dropdown.Button>
       </ConfigProvider>
     );
   }
@@ -52,6 +75,27 @@ const style = {
   },
   close: {
     padding: 0,
+  },
+  format: {
+    marginRight: 8,
+  },
+  themeItem: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  themeItemAuthor: {
+    color: "gray",
+  },
+  menuItem: {
+    clear: "both",
+    margin: 0,
+    padding: "5px 12px",
+    color: "rgba(0, 0, 0, 0.65)",
+    fontWeight: "normal",
+    fontSize: "14px",
+    lineHeight: "22px",
+    whiteSpace: "nowrap",
+    cursor: "pointer",
   },
 };
 
