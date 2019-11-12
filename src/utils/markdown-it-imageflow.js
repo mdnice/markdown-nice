@@ -6,53 +6,34 @@ const defaultOption = {
 const imageFlowPlugin = (md, opt) => {
   const options = opt || defaultOption;
 
-  const tokenize = (state, silent) => {
-    let result = false;
+  const tokenize = (state, start) => {
     let token;
+
     const matchReg = /^<((!\[([^\]])*\]\(([^)])*\)(,?)(\s)*)*)>/;
+    const srcLine = state.src.slice(state.bMarks[start], state.eMarks[start]);
 
-    if (silent) {
-      return result;
+    if (srcLine.charCodeAt(0) !== 0x3c /* < */) {
+      return false;
     }
-    if (state.src.charCodeAt(state.pos) !== 0x3c /* < */) {
-      return result;
-    }
-
-    const match = matchReg.exec(state.src.substr(state.pos));
+    const match = matchReg.exec(srcLine);
 
     if (match) {
-      if (options.limitless) {
-        result = true;
-      } else if (match[1].split(/,|\s/).filter((val) => val).length < options.limit) {
-        result = true;
-      } else {
-        return result;
-      }
+      if (!options.limitless && match[1].split(/,|\s/).filter((val) => val).length < options.limit) {
+        token = state.push("imageFlow", "", 0);
+        [, token.content] = match;
+        token.block = true;
 
-      token = state.push("imageFlow_start", "imageFlow", 1);
-      token = state.push("imageFlow_content", "imageFlow", 0);
-      [, token.content] = match;
-      token = state.push("imageFlow_end", "imageFlow", -1);
-
-      // update position
-      var newline = state.src.indexOf("\n", state.pos);
-      if (newline !== -1) {
-        state.pos = newline;
-      } else {
-        state.pos = state.pos + state.posMax + 1;
+        // update line
+        state.line++;
+        return true;
       }
     }
-
-    return result;
+    return false;
   };
 
-  md.renderer.rules.imageFlow_start = () => {
-    return `<section class="imageflow-layer1"><section class="imageflow-layer2">`;
-  };
-  md.renderer.rules.imageFlow_end = () => {
-    return `</section></section>`;
-  };
-  md.renderer.rules.imageFlow_content = (tokens, idx) => {
+  md.renderer.rules.imageFlow = (tokens, idx) => {
+    const start = `<section class="imageflow-layer1"><section class="imageflow-layer2">`;
+    const end = `</section></section>`;
     const contents = tokens[idx].content.split(/,|\s/).filter((val) => val);
     let wrapperContent = "";
     let image;
@@ -63,10 +44,10 @@ const imageFlowPlugin = (md, opt) => {
       } class="imageflow-img" /></section>`;
     });
 
-    return wrapperContent;
+    return start + wrapperContent + end;
   };
 
-  md.inline.ruler.before("image", "imageFlow", tokenize);
+  md.block.ruler.before("paragraph", "imageFlow", tokenize);
 };
 
 export default imageFlowPlugin;
