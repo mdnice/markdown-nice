@@ -29,22 +29,24 @@ export const solveWeChatMath = () => {
 export const solveZhihuMath = () => {
   const layout = document.getElementById(LAYOUT_ID);
   const mjxs = layout.getElementsByTagName("mjx-container");
-  for (let i = 0; i < mjxs.length; i++) {
-    const mjx = mjxs[i];
+  while (mjxs.length > 0) {
+    const mjx = mjxs[0];
     const data = mjx.getAttribute("data");
     if (!data) {
       continue;
     }
 
-    mjx.innerHTML = '<img class="Formula-image" data-eeimg="true" src="" alt="' + data + '">';
+    mjx.outerHTML = '<img class="Formula-image" data-eeimg="true" src="" alt="' + data + '">';
   }
 };
 
 export const solveHtml = () => {
   const element = document.getElementById(BOX_ID);
   let html = element.innerHTML;
-  html = html.replace(/\s<mjx-container class="inline/g, '&nbsp;<mjx-container class="inline');
-  html = html.replace(/svg><\/mjx-container>\s/g, "svg></mjx-container>&nbsp;");
+  html = html.replace(/<mjx-container( class="inline.+?)<\/mjx-container>/g, "<span $1</span>");
+  html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
+  html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
+  html = html.replace(/mjx-container/g, "section");
   const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
   const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
   const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
