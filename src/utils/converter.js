@@ -43,7 +43,7 @@ export const solveZhihuMath = () => {
 export const solveHtml = () => {
   const element = document.getElementById(BOX_ID);
   let html = element.innerHTML;
-  html = html.replace(/<mjx-container( class="inline.+?)<\/mjx-container>/g, "<span $1</span>");
+  html = html.replace(/<mjx-container (class="inline.+?)<\/mjx-container>/g, "<span $1</span>");
   html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
   html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
   html = html.replace(/mjx-container/g, "section");
