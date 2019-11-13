@@ -31,9 +31,13 @@ export const solveZhihuMath = () => {
   const mjxs = layout.getElementsByTagName("mjx-container");
   while (mjxs.length > 0) {
     const mjx = mjxs[0];
-    const data = mjx.getAttribute("data");
+    let data = mjx.getAttribute("data");
     if (!data) {
       continue;
+    }
+
+    if (mjx.hasAttribute("display")) {
+      data += "\\\\";
     }
 
     mjx.outerHTML = '<img class="Formula-image" data-eeimg="true" src="" alt="' + data + '">';
