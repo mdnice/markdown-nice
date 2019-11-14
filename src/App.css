@@ -6,22 +6,43 @@
   font-size: 16px;
 }
 
-.text-container {
+.nice-text-container {
   display: flex;
   height: 91vh;
   width: 100%;
 }
+
+.nice-text-container-immersive {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+
+.nice-md-editing-immersive {
+  padding: 0px;
+  width: 100%;
+}
+
+.nice-md-editing-immersive .CodeMirror-lines {
+  padding: 20px 10%;
+}
+
 /* 编辑器最多会被分成三份width:33.3%，当两份时根据flex-grow:1伸展 */
-.text-box {
+.nice-md-editing, .nice-style-editing {
   width: 33.3%;
   flex-grow: 1;
   padding: 0 20px 20px 20px;
   word-wrap: break-word;
 }
 
-#marked-text {
+.nice-marked-text {
   display: flex;
   justify-content: center;
+  width: 33.3%;
+  flex-grow: 1;
+  padding: 0 20px 20px 20px;
+  word-wrap: break-word;
 }
 
 .wx-box {
@@ -44,4 +65,8 @@
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.nice-not-md-hide {
+  display: none;
 }

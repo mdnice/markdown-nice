@@ -16,6 +16,7 @@ export const PREVIEW_TYPE = "preview_type";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const IS_PRETTIER_OPEN = "is_prettier_open";
+export const IS_IMMERSIVE_EDITING = "is_immersive_editing";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";

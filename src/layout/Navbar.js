@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Button} from "antd";
+import classnames from "classnames";
 
 import ThemeSelect from "../component/ThemeSelect";
 import Format from "../component/Format";
@@ -20,30 +21,37 @@ import FullScreen from "../component/FullScreen";
 import About from "../component/About";
 import Font from "../component/Font";
 
+import "./Navbar.css";
+
 const ButtonGroup = Button.Group;
 
 // @inject("userInfo")
-// @observer
+@inject("navbar")
+@observer
 class Navbar extends Component {
   render() {
     const {title} = this.props;
+    const niceNavbarClass = classnames({
+      "nice-navbar": true,
+      "nice-navbar-hide": this.props.navbar.isImmersiveEditing,
+    });
     return (
-      <div style={style.navBar}>
-        <div style={style.leftNav}>
-          {title === "" ? null : <section style={style.title}>{title}</section>}
-          <div style={style.iconBar}>
-            <ButtonGroup style={style.btnGroupMargin}>
+      <div className={niceNavbarClass}>
+        <div className="nice-left-nav">
+          {title === "" ? null : <section className="nice-title">{title}</section>}
+          <div className="nice-icon-bar">
+            <ButtonGroup className="nice-btn-group-margin">
               <Del />
               <Bold />
               <Italic />
               <Code />
             </ButtonGroup>
-            <ButtonGroup style={style.btnGroupMargin}>
+            <ButtonGroup className="nice-btn-group-margin">
               <Link />
               <Image />
               <Form />
             </ButtonGroup>
-            <ButtonGroup style={style.btnGroupMargin}>
+            <ButtonGroup className="nice-btn-group-margin">
               <FullScreen />
               <Font />
               <Reset />
@@ -51,7 +59,7 @@ class Navbar extends Component {
             </ButtonGroup>
           </div>
         </div>
-        <div style={style.rightNav}>
+        <div className="nice-right-nav">
           <Copy />
           <ThemeSelect />
           <Format />
@@ -63,41 +71,5 @@ class Navbar extends Component {
     );
   }
 }
-
-const style = {
-  navBar: {
-    height: "64px",
-    display: "flex",
-    justifyContent: "space-between",
-    flex: "none",
-    padding: "20px",
-  },
-  leftNav: {
-    display: "flex",
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  rightNav: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  btnGroupMargin: {
-    marginRight: "10px",
-  },
-  btnGroupRight: {
-    marginRight: "20px",
-  },
-  iconBar: {
-    marginTop: 5,
-  },
-  title: {
-    marginRight: "20px",
-    fontWeight: "bold",
-    fontSize: "16px",
-    fontFamily: "Apple Chancery, cursive",
-  },
-};
 
 export default Navbar;

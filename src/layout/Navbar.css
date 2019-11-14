@@ -1,0 +1,44 @@
+.nice-navbar {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  flex: none;
+  padding: 20px;
+  position: relative;
+}
+
+.nice-left-nav {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nice-right-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nice-btn-group-margin {
+  margin-right: 10px;
+}
+
+.nice-btn-group-right {
+  margin-right: 20px;
+}
+
+.nice-icon-bar {
+  margin-top: 5;
+}
+
+.nice-title {
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Apple Chancery, cursive;
+}
+
+.nice-navbar-hide {
+  display: none;
+}

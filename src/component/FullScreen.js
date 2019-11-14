@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import {Tooltip, Button} from "antd";
+import {observer, inject} from "mobx-react";
 
 // import fullscreenIcon from "../icon/fullscreen.svg";
 import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
 import SvgIcon from "../icon";
 
+@inject("navbar")
+@observer
 class FullScreen extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,9 @@ class FullScreen extends Component {
 
   // fullScreen or !fullScreen
   toggleFullScreen = () => {
+    const {isImmersiveEditing} = this.props.navbar;
+    this.props.navbar.setImmersiveEditing(!isImmersiveEditing);
+
     this.setState((prevState) => ({
       isFullScreen: !prevState.isFullScreen,
     }));

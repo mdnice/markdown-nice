@@ -3,6 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
+import classnames from "classnames";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
@@ -159,20 +160,40 @@ class App extends Component {
   };
 
   render() {
-    const {codeNum, isStyleEditorOpen, previewType} = this.props.navbar;
+    const {codeNum, isStyleEditorOpen, previewType, isImmersiveEditing} = this.props.navbar;
 
     const parseHtml =
       codeNum === 0
         ? markdownParserWechat.render(this.props.content.content)
         : markdownParser.render(this.props.content.content);
 
+    const mdEditingClass = classnames({
+      "nice-md-editing": !isImmersiveEditing,
+      "nice-md-editing-immersive": isImmersiveEditing,
+    });
+
+    const styleEditingClass = classnames({
+      "nice-style-editing": true,
+      "nice-not-md-hide": isImmersiveEditing,
+    });
+
+    const richTextClass = classnames({
+      "nice-marked-text": true,
+      "nice-not-md-hide": isImmersiveEditing,
+    });
+
+    const textContainerClass = classnames({
+      "nice-text-container": !isImmersiveEditing,
+      "nice-text-container-immersive": isImmersiveEditing,
+    });
+
     return (
       <appContext.Consumer>
         {({defaultTitle}) => (
           <div className="App">
             <Navbar title={defaultTitle} />
-            <div className="text-container">
-              <div className="text-box" onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+            <div className={textContainerClass}>
+              <div className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror
                   value={this.props.content.content}
                   options={{
@@ -192,7 +213,7 @@ class App extends Component {
                   ref={this.getInstance}
                 />
               </div>
-              <div id="marked-text" className="text-box" onMouseOver={(e) => this.setCurrentIndex(2, e)}>
+              <div className={richTextClass} onMouseOver={(e) => this.setCurrentIndex(2, e)}>
                 <div
                   id={BOX_ID}
                   className="wx-box"
@@ -215,7 +236,7 @@ class App extends Component {
               </div>
 
               {isStyleEditorOpen ? (
-                <div className="text-box">
+                <div className={styleEditingClass}>
                   <StyleEditor />
                 </div>
               ) : null}
