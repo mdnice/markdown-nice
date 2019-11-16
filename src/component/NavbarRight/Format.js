@@ -5,7 +5,8 @@ import {Menu, Dropdown, Switch, Icon, message} from "antd";
 import prettier from "prettier/standalone";
 import prettierMarkdown from "prettier/parser-markdown";
 
-import {IS_PASTE_CHECK_OPEN, IS_PRETTIER_OPEN} from "../utils/constant";
+import {IS_PASTE_CHECK_OPEN, IS_PRETTIER_OPEN} from "../../utils/constant";
+import "./Format.css";
 
 @inject("navbar")
 @inject("content")
@@ -80,20 +81,20 @@ class Format extends Component {
   render() {
     const menu = (
       <Menu>
-        <div style={style.menuItem}>
-          <div style={style.themeItem}>
-            <span style={style.themeItemName}>微信外链转脚注</span>
+        <div className="nice-btn-format-menu-item">
+          <div className="nice-btn-format-list-item">
+            <span className="nice-btn-format-list-item-name">微信外链转脚注</span>
 
-            <span style={style.themeItemAuthor}>
+            <span className="nice-btn-format-list-item-switch">
               <Switch checked={this.props.navbar.isPasteCheckOpen} size="small" onChange={this.toggleAutoFoot} />
             </span>
           </div>
         </div>
-        <div style={style.menuItem}>
-          <div style={style.themeItem}>
-            <span style={style.themeItemName}>排版（中英文空格等）</span>
+        <div className="nice-btn-format-menu-item">
+          <div className="nice-btn-format-list-item">
+            <span className="nice-btn-format-list-item-name">排版（中英文空格等）</span>
 
-            <span style={style.themeItemAuthor}>
+            <span className="nice-btn-format-list-item-switch">
               <Switch checked={this.props.navbar.isPrettierOpen} size="small" onChange={this.togglePrettier} />
             </span>
           </div>
@@ -104,40 +105,13 @@ class Format extends Component {
       <Dropdown.Button
         onClick={this.handleFormat}
         overlay={menu}
-        icon={<Icon type="more" style={style.iconSize} />}
-        style={style.format}
+        icon={<Icon type="more" />}
+        className="nice-btn-format"
       >
         格式化
       </Dropdown.Button>
     );
   }
 }
-
-const style = {
-  format: {
-    marginRight: 8,
-  },
-  themeItem: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  themeItemAuthor: {
-    color: "gray",
-  },
-  themeItemName: {
-    marginRight: "10px",
-  },
-  menuItem: {
-    clear: "both",
-    margin: 0,
-    padding: "5px 12px",
-    color: "rgba(0, 0, 0, 0.65)",
-    fontWeight: "normal",
-    fontSize: "14px",
-    lineHeight: "22px",
-    whiteSpace: "nowrap",
-    cursor: "pointer",
-  },
-};
 
 export default Format;

@@ -2,9 +2,10 @@ import React from "react";
 import {Menu, Dropdown, Modal, message} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {axiosGithub} from "../utils/helper";
-import {ACCESS_TOKEN} from "../utils/constant";
-import SvgIcon from "../icon";
+import {axiosGithub} from "../../utils/helper";
+import {ACCESS_TOKEN} from "../../utils/constant";
+import SvgIcon from "../../icon";
+import "./User.css";
 
 @inject("userInfo")
 @inject("dialog")
@@ -62,13 +63,13 @@ class LogIn extends React.Component {
     const menu = (
       <Menu>
         <Menu.Item key="0">
-          <a style={style.link} rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>
+          <a className="nice-user-link" rel="noopener noreferrer" onClick={this.showConfirm} href={hrefLink}>
             提交主题
           </a>
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item key="1">
-          <a style={style.link} rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>
+          <a className="nice-user-link" rel="noopener noreferrer" onClick={this.signOut} href={hrefLink}>
             退出登录
           </a>
         </Menu.Item>
@@ -77,35 +78,12 @@ class LogIn extends React.Component {
 
     return (
       <Dropdown overlay={menu}>
-        <a style={style.link} rel="noopener noreferrer" className="ant-dropdown-link" href={hrefLink}>
-          <SvgIcon name="rabbit" style={style.svgIcon} />
+        <a className="ant-dropdown-link nice-user-link" rel="noopener noreferrer" href={hrefLink}>
+          <SvgIcon name="rabbit" className="nice-user-icon" />
         </a>
       </Dropdown>
     );
   }
 }
-
-const style = {
-  btnStyle: {
-    border: "none",
-    width: "24px",
-    height: "24px",
-  },
-  iconSize: {
-    fontSize: "24px",
-  },
-  avatar: {
-    background: "white",
-    color: "#1e1e1e",
-    fontSize: "22px",
-  },
-  link: {
-    border: "none",
-  },
-  svgIcon: {
-    width: "30px",
-    height: "30px",
-  },
-};
 
 export default LogIn;

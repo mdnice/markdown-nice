@@ -3,28 +3,15 @@ import {Tooltip, Button} from "antd";
 import {observer, inject} from "mobx-react";
 
 // import fullscreenIcon from "../icon/fullscreen.svg";
-import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import SvgIcon from "../icon";
+import {ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
+import SvgIcon from "../../icon";
+import "./FullScreen.css";
 
 @inject("navbar")
 @observer
 class FullScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFullScreen: false,
-    };
-  }
-
   // fullScreen or !fullScreen
   toggleFullScreen = () => {
-    const {isImmersiveEditing} = this.props.navbar;
-    this.props.navbar.setImmersiveEditing(!isImmersiveEditing);
-
-    this.setState((prevState) => ({
-      isFullScreen: !prevState.isFullScreen,
-    }));
-
     const doc = window.document;
     const docEl = doc.documentElement;
 
@@ -51,23 +38,12 @@ class FullScreen extends Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="全屏">
-        <Button style={style.btnPadding} onClick={this.toggleFullScreen}>
-          <SvgIcon name="fullscreen" style={style.svgIcon} />
+        <Button className="nice-btn-fullscreen" onClick={this.toggleFullScreen}>
+          <SvgIcon name="fullscreen" className="nice-btn-fullscreen-icon" />
         </Button>
       </Tooltip>
     );
   }
 }
-
-const style = {
-  btnPadding: {
-    padding: "0",
-  },
-  svgIcon: {
-    padding: "7px 7px 11px 7px",
-    width: "33px",
-    height: "33px",
-  },
-};
 
 export default FullScreen;

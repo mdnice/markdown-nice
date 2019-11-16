@@ -3,23 +3,23 @@ import {observer, inject} from "mobx-react";
 import {Button} from "antd";
 import classnames from "classnames";
 
-import ThemeSelect from "../component/ThemeSelect";
-import Format from "../component/Format";
-import Copy from "../component/Copy";
-import Reset from "../component/Reset";
-import Image from "../component/Image";
-import Link from "../component/Link";
-import Form from "../component/Form";
-import Code from "../component/Code";
-import Italic from "../component/Italic";
-import Bold from "../component/Bold";
-import Del from "../component/Del";
-import PreviewType from "../component/PreviewType";
-import FullScreen from "../component/FullScreen";
+import ThemeSelect from "../component/NavbarRight/ThemeSelect";
+import Format from "../component/NavbarRight/Format";
+import Copy from "../component/NavbarRight/Copy";
+import Reset from "../component/NavbarLeft/Reset";
+import Image from "../component/NavbarLeft/Image";
+import Link from "../component/NavbarLeft/Link";
+import Form from "../component/NavbarLeft/Form";
+import Code from "../component/NavbarLeft/Code";
+import Italic from "../component/NavbarLeft/Italic";
+import Bold from "../component/NavbarLeft/Bold";
+import Del from "../component/NavbarLeft/Del";
+import PreviewType from "../component/NavbarRight/PreviewType";
+import FullScreen from "../component/NavbarLeft/FullScreen";
 // import LogIn from "../component/LogIn";
 // import User from "../component/User";
-import About from "../component/About";
-import Font from "../component/Font";
+import About from "../component/NavbarLeft/About";
+import Font from "../component/NavbarLeft/Font";
 
 import "./Navbar.css";
 

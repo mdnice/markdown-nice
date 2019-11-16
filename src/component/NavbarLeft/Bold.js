@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Button, Tooltip} from "antd";
 
-import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import SvgIcon from "../icon";
+import {ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
+import SvgIcon from "../../icon";
+import "./Bold.css";
 
 @inject("content")
 @observer
@@ -23,23 +24,12 @@ class Bold extends Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="加粗">
-        <Button onClick={this.handleClick} style={style.btnPadding}>
-          <SvgIcon name="bold" style={style.svgIcon} />
+        <Button onClick={this.handleClick} className="nice-btn-bold">
+          <SvgIcon name="bold" className="nice-btn-bold-icon" />
         </Button>
       </Tooltip>
     );
   }
 }
-
-const style = {
-  btnPadding: {
-    padding: "0",
-  },
-  svgIcon: {
-    padding: "6px 7px 10px 7px",
-    width: "33px",
-    height: "33px",
-  },
-};
 
 export default Bold;

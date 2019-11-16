@@ -18,18 +18,30 @@
   width: 100%;
 }
 
-
 .nice-md-editing-immersive {
   padding: 0px;
   width: 100%;
 }
 
 .nice-md-editing-immersive .CodeMirror-lines {
-  padding: 20px 10%;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .nice-md-editing-immersive .CodeMirror-lines {
+    padding: 20px 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nice-md-editing-immersive .CodeMirror-lines {
+    padding: 20px 15%;
+  }
 }
 
 /* 编辑器最多会被分成三份width:33.3%，当两份时根据flex-grow:1伸展 */
-.nice-md-editing, .nice-style-editing {
+.nice-md-editing,
+.nice-style-editing {
   width: 33.3%;
   flex-grow: 1;
   padding: 0 20px 20px 20px;
@@ -45,11 +57,15 @@
   word-wrap: break-word;
 }
 
-.wx-box {
+.nice-wx-box {
   overflow-y: auto;
   padding: 20px;
   height: 100%;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.nice-not-md-hide {
+  display: none;
 }
 
 ::-webkit-scrollbar {
@@ -65,8 +81,4 @@
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.nice-not-md-hide {
-  display: none;
 }

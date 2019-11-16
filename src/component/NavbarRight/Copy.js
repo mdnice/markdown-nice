@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {message, ConfigProvider, Dropdown, Icon, Menu} from "antd";
 
-import {solveWeChatMath, solveZhihuMath, solveHtml, copySafari} from "../utils/converter";
-import {LAYOUT_ID} from "../utils/constant";
+import {solveWeChatMath, solveZhihuMath, solveHtml, copySafari} from "../../utils/converter";
+import {LAYOUT_ID} from "../../utils/constant";
 import "./Copy.css";
 
 @inject("content")
@@ -40,8 +40,14 @@ class Copy extends Component {
   render() {
     const menu = (
       <Menu>
-        <div style={style.menuItem}>
-          <div role="button" style={style.themeItem} onClick={this.copyZhihu} onKeyDown={this.copyZhihu} tabIndex="0">
+        <div className="nice-btn-copy-menu-item">
+          <div
+            role="button"
+            className="nice-btn-copy-theme-item"
+            onClick={this.copyZhihu}
+            onKeyDown={this.copyZhihu}
+            tabIndex="0"
+          >
             复制到知乎
           </div>
         </div>
@@ -52,8 +58,8 @@ class Copy extends Component {
         <Dropdown.Button
           onClick={this.copyWechat}
           overlay={menu}
-          icon={<Icon type="more" style={style.iconSize} />}
-          className="nice-copy"
+          icon={<Icon type="more" />}
+          className="nice-btn-copy"
           type="primary"
         >
           复制
@@ -62,41 +68,5 @@ class Copy extends Component {
     );
   }
 }
-
-const style = {
-  btnHeight: {
-    height: "30px",
-  },
-  mathNotify: {
-    padding: 0,
-    fontSize: "14px",
-    lineHeight: "20px",
-    color: "rgba(0,0,0,0.65)",
-  },
-  close: {
-    padding: 0,
-  },
-  format: {
-    marginRight: 8,
-  },
-  themeItem: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  themeItemAuthor: {
-    color: "gray",
-  },
-  menuItem: {
-    clear: "both",
-    margin: 0,
-    padding: "5px 12px",
-    color: "rgba(0, 0, 0, 0.65)",
-    fontWeight: "normal",
-    fontSize: "14px",
-    lineHeight: "22px",
-    whiteSpace: "nowrap",
-    cursor: "pointer",
-  },
-};
 
 export default Copy;

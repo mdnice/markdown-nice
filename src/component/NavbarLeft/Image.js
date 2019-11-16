@@ -3,8 +3,9 @@ import {observer, inject} from "mobx-react";
 import {Button, Tooltip} from "antd";
 
 // import imageIcon from "../icon/image.svg";
-import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import SvgIcon from "../icon";
+import {ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
+import SvgIcon from "../../icon";
+import "./Image.css";
 
 @inject("content")
 @inject("dialog")
@@ -17,23 +18,12 @@ class Image extends Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="图片">
-        <Button style={style.btnPadding} onClick={this.showModal}>
-          <SvgIcon name="image" style={style.svgIcon} />
+        <Button className="nice-btn-image" onClick={this.showModal}>
+          <SvgIcon name="image" className="nice-btn-image-icon" />
         </Button>
       </Tooltip>
     );
   }
 }
-
-const style = {
-  btnPadding: {
-    padding: "0",
-  },
-  svgIcon: {
-    padding: "6px 7px 10px 7px",
-    width: "33px",
-    height: "33px",
-  },
-};
 
 export default Image;

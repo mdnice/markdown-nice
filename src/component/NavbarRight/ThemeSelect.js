@@ -2,9 +2,10 @@ import React from "react";
 import {Button, Menu, Dropdown, Switch} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {TEMPLATE_OPTIONS, CODE_OPTIONS, TEMPLATE_CUSTOM_NUM} from "../utils/constant";
-import TEMPLATE from "../template/index";
-import SvgIcon from "../icon";
+import {TEMPLATE_OPTIONS, CODE_OPTIONS, TEMPLATE_CUSTOM_NUM} from "../../utils/constant";
+import TEMPLATE from "../../template/index";
+import SvgIcon from "../../icon";
+import "./ThemeSelect.css";
 
 @inject("content")
 @inject("navbar")
@@ -39,19 +40,19 @@ class ThemeSelect extends React.Component {
       <Menu onClick={this.changeTemplate}>
         {TEMPLATE_OPTIONS.map((option, index) => (
           <Menu.Item key={index}>
-            <div style={style.themeItem}>
-              <span style={style.themeItemName}>{option.name}</span>
+            <div className="nice-themeselect-theme-item">
+              <span className="nice-themeselect-theme-item-name">{option.name}</span>
 
-              <span style={style.themeItemAuthor}>{option.author}</span>
+              <span className="nice-themeselect-theme-item-author">{option.author}</span>
             </div>
           </Menu.Item>
         ))}
         <Menu.Divider />
-        <div style={style.menuItem}>
-          <div style={style.themeItem}>
-            <span style={style.themeItemName}>查看主题 CSS</span>
+        <div className="nice-themeselect-menu-item">
+          <div className="nice-themeselect-theme-item">
+            <span className="nice-themeselect-theme-item-name">查看主题 CSS</span>
 
-            <span style={style.themeItemAuthor}>
+            <span className="nice-themeselect-theme-item-author">
               <Switch checked={this.props.navbar.isStyleEditorOpen} size="small" onChange={this.toggleStyleEditor} />
             </span>
           </div>
@@ -68,23 +69,24 @@ class ThemeSelect extends React.Component {
 
     // 自定义则加上特殊描边
     const {templateNum, codeNum} = this.props.navbar;
-    const mdMenuStyle = templateNum === TEMPLATE_CUSTOM_NUM ? style.mdCutomMenu : style.mdMenu;
+    const mdMenuStyle =
+      templateNum === TEMPLATE_CUSTOM_NUM ? "nice-themeselect-md-cutom-menu" : "nice-themeselect-md-menu";
 
     return (
       <div>
         <Dropdown overlay={mdMenu} placement="bottomCenter">
-          <Button style={mdMenuStyle}>
+          <Button className={mdMenuStyle}>
             {TEMPLATE_OPTIONS[templateNum].name}
             <i className="anticon anticon-down">
-              <SvgIcon name="down" style={style.svgIcon} />
+              <SvgIcon name="down" className="nice-themeselect-icon" />
             </i>
           </Button>
         </Dropdown>
         <Dropdown overlay={codeMenu} placement="bottomCenter">
-          <Button style={style.codeMenu}>
+          <Button className="nice-themeselect-code-menu">
             {CODE_OPTIONS[codeNum].name}
             <i className="anticon anticon-down">
-              <SvgIcon name="down" style={style.svgIcon} />
+              <SvgIcon name="down" className="nice-themeselect-icon" />
             </i>
           </Button>
         </Dropdown>
@@ -92,48 +94,5 @@ class ThemeSelect extends React.Component {
     );
   }
 }
-
-const style = {
-  mdCutomMenu: {
-    marginLeft: 8,
-    border: "1px dashed #1890ff",
-  },
-  mdMenu: {
-    marginLeft: 8,
-  },
-  codeMenu: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
-  themeItem: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  themeItemAuthor: {
-    color: "gray",
-  },
-  themeItemName: {
-    marginRight: "10px",
-  },
-  svgIcon: {
-    width: "18px",
-    height: "18px",
-  },
-  layout: {
-    display: "flex",
-    alignItems: "center",
-  },
-  menuItem: {
-    clear: "both",
-    margin: 0,
-    padding: "5px 12px",
-    color: "rgba(0, 0, 0, 0.65)",
-    fontWeight: "normal",
-    fontSize: "14px",
-    lineHeight: "22px",
-    whiteSpace: "nowrap",
-    cursor: "pointer",
-  },
-};
 
 export default ThemeSelect;

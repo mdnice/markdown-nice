@@ -6,7 +6,6 @@ import {
   CODE_OPTIONS,
   IS_PASTE_CHECK_OPEN,
   IS_PRETTIER_OPEN,
-  IS_IMMERSIVE_EDITING,
   PREVIEW_TYPE,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
@@ -102,7 +101,6 @@ store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
 store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
-store.isImmersiveEditing = window.localStorage.getItem(IS_IMMERSIVE_EDITING) === "false";
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 
 // 初始化代码主题

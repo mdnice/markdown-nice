@@ -31,6 +31,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    document.addEventListener("fullscreenchange", this.solveScreenChange);
+    document.addEventListener("webkitfullscreenchange", this.solveScreenChange);
+    document.addEventListener("mozfullscreenchange", this.solveScreenChange);
+    document.addEventListener("MSFullscreenChange", this.solveScreenChange);
     try {
       window.MathJax = {
         tex: {
@@ -78,6 +82,10 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    document.removeEventListener("fullscreenchange", this.solveScreenChange);
+    document.removeEventListener("webkitfullscreenchange", this.solveScreenChange);
+    document.removeEventListener("mozfullscreenchange", this.solveScreenChange);
+    document.removeEventListener("MSFullscreenChange", this.solveScreenChange);
     this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
 
@@ -91,6 +99,11 @@ class App extends Component {
   setCurrentIndex(index) {
     this.index = index;
   }
+
+  solveScreenChange = () => {
+    const {isImmersiveEditing} = this.props.navbar;
+    this.props.navbar.setImmersiveEditing(!isImmersiveEditing);
+  };
 
   getInstance = (instance) => {
     if (instance) {
@@ -193,7 +206,7 @@ class App extends Component {
           <div className="App">
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
-              <div className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+              <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 <CodeMirror
                   value={this.props.content.content}
                   options={{
@@ -213,10 +226,10 @@ class App extends Component {
                   ref={this.getInstance}
                 />
               </div>
-              <div className={richTextClass} onMouseOver={(e) => this.setCurrentIndex(2, e)}>
+              <div id="nice-rich-text" className={richTextClass} onMouseOver={(e) => this.setCurrentIndex(2, e)}>
                 <div
                   id={BOX_ID}
-                  className="wx-box"
+                  className="nice-wx-box"
                   onScroll={this.handleScroll}
                   style={{width: previewType === "pc" ? "100%" : 375}}
                   ref={(node) => {
@@ -236,7 +249,7 @@ class App extends Component {
               </div>
 
               {isStyleEditorOpen ? (
-                <div className={styleEditingClass}>
+                <div id="nice-style-editor" className={styleEditingClass}>
                   <StyleEditor />
                 </div>
               ) : null}
