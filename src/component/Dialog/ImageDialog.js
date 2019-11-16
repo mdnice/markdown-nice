@@ -70,9 +70,13 @@ class ImageDialog extends Component {
       // this.qiniuFreeUpload(formData, file, onSuccess, onError);
     }
     // 使用SM.MS图床
-    else {
+    else if (this.props.imageHosting.type === "SM.MS") {
       uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials});
       // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
+    }
+    // 使用用户提供的图床
+    else {
+      uploadAdaptor({formData, file, onSuccess, onError, images});
     }
 
     return {
@@ -88,7 +92,12 @@ class ImageDialog extends Component {
   };
 
   render() {
-    const columns = IMAGE_HOSTING_TYPE_OPTIONS.map((option, index) => (
+    // const columns = IMAGE_HOSTING_TYPE_OPTIONS.map((option, index) => (
+    //   <Option key={index} value={option.value}>
+    //     {option.label}
+    //   </Option>
+    // ));
+    const columns = this.props.imageHosting.hostingList.map((option, index) => (
       <Option key={index} value={option.value}>
         {option.label}
       </Option>

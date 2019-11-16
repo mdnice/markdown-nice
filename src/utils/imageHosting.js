@@ -6,7 +6,14 @@ import {message} from "antd";
 import axios from "axios";
 import OSS from "ali-oss";
 
-import {SM_MS_PROXY, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMAGE_HOSTING_TYPE} from "./constant";
+import {
+  SM_MS_PROXY,
+  ALIOSS_IMAGE_HOSTING,
+  QINIUOSS_IMAGE_HOSTING,
+  IMAGE_HOSTING_TYPE,
+  CUSTOM_IMAGE_HOSTING,
+  CUSTOM_HOSTING_NAME,
+} from "./constant";
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
 
 function showUploadNoti() {
@@ -176,6 +183,47 @@ export const qiniuFreeUpload = async ({
   }
 };
 
+// 用户自定义的图床上传
+export const customImageUpload = async ({
+  formData = new FormData(),
+  file = {},
+  onSuccess = () => {},
+  onError = () => {},
+  images = [],
+  content = null,
+}) => {
+  showUploadNoti();
+  try {
+    formData.append("file", file);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    const postURL = window.localStorage.getItem(CUSTOM_IMAGE_HOSTING);
+    const result = await axios.post(postURL, formData, config);
+    const names = file.name.split(".");
+    names.pop();
+    const filename = names.join(".");
+    const image = {
+      filename,
+      url: encodeURI(result.data),
+    };
+    if (content) {
+      writeToEditor({content, image});
+    }
+    images.push(image);
+    onSuccess(result);
+    setTimeout(() => {
+      hideUploadNoti();
+    }, 500);
+  } catch (error) {
+    hideUploadNoti();
+    uploadError(error.toString());
+    onError(error, error.toString());
+  }
+};
+
 // SM.MS存储上传
 export const smmsUpload = ({
   formData = new FormData(),
@@ -305,11 +353,14 @@ export const aliOSSUpload = ({
 
 // 自动检测上传配置，进行上传
 export const uploadAdaptor = (...args) => {
-  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // mdnice | SM.MS | 阿里云 | 七牛云
+  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // mdnice | SM.MS | 阿里云 | 七牛云 | 用户自定义图床
+  const userType = localStorage.getItem(CUSTOM_HOSTING_NAME);
   if (type === "mdnice") {
     return qiniuFreeUpload(...args);
   } else if (type === "SM.MS") {
     return smmsUpload(...args);
+  } else if (type === userType) {
+    return customImageUpload(...args);
   } else if (type === "七牛云") {
     const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
     if (

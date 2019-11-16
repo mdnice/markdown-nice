@@ -1,12 +1,24 @@
 import {observable, action} from "mobx";
-import {IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING} from "../utils/constant";
+import {
+  IMAGE_HOSTING_TYPE,
+  ALIOSS_IMAGE_HOSTING,
+  QINIUOSS_IMAGE_HOSTING,
+  IMAGE_HOSTING_TYPE_OPTIONS,
+} from "../utils/constant";
 
 class ImageHosting {
   @observable type = "SM.MS";
 
+  @observable hostingList = IMAGE_HOSTING_TYPE_OPTIONS;
+
   @action
   setType = (type) => {
     this.type = type;
+  };
+
+  @action
+  setHostingList = (list) => {
+    this.hostingList = list;
   };
 }
 

@@ -12,7 +12,13 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID, BOX_ID} from "./utils/constant";
+import {
+  LAYOUT_ID,
+  BOX_ID,
+  CUSTOM_IMAGE_HOSTING,
+  CUSTOM_HOSTING_NAME,
+  IMAGE_HOSTING_TYPE_OPTIONS,
+} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -22,6 +28,7 @@ import bindHotkeys from "./utils/hotkey";
 @inject("content")
 @inject("navbar")
 @inject("dialog")
+@inject("imageHosting")
 @observer
 class App extends Component {
   constructor(props) {
@@ -67,6 +74,21 @@ class App extends Component {
       console.log(e);
     }
     this.setEditorContent();
+    if (this.props.useImageHosting) {
+      if (this.props.imageHostingUrl) {
+        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, this.props.imageHostingUrl);
+      }
+    }
+    if (this.props.imageHostingName) {
+      const customName = this.props.imageHostingName;
+      window.localStorage.setItem(CUSTOM_HOSTING_NAME, customName);
+    }
+    const newOptions = IMAGE_HOSTING_TYPE_OPTIONS;
+    const localName = window.localStorage.getItem(CUSTOM_HOSTING_NAME);
+    if (localName !== undefined) {
+      newOptions.push({value: localName, label: localName});
+      this.props.imageHosting.setHostingList(newOptions);
+    }
   }
 
   componentDidUpdate() {
