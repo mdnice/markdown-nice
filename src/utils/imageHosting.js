@@ -144,45 +144,6 @@ export const qiniuOSSUpload = async ({
   }
 };
 
-export const qiniuFreeUpload = async ({
-  formData = new FormData(),
-  file = {},
-  onSuccess = () => {},
-  onError = () => {},
-  images = [],
-  content = null, // store content
-}) => {
-  showUploadNoti();
-  try {
-    formData.append("file", file);
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    };
-    const result = await axiosMdnice.post(`/qiniuFree`, formData, config);
-    const names = file.name.split(".");
-    names.pop();
-    const filename = names.join(".");
-    const image = {
-      filename, // 名字不变并且去掉后缀
-      url: encodeURI(result.data),
-    };
-    if (content) {
-      writeToEditor({content, image});
-    }
-    images.push(image);
-    onSuccess(result);
-    setTimeout(() => {
-      hideUploadNoti();
-    }, 500);
-  } catch (err) {
-    hideUploadNoti();
-    uploadError();
-    onError(err, err.toString());
-  }
-};
-
 // 用户自定义的图床上传
 export const customImageUpload = async ({
   formData = new FormData(),
@@ -218,7 +179,7 @@ export const customImageUpload = async ({
       hideUploadNoti();
     }, 500);
   } catch (error) {
-    hideUploadNoti();
+    message.destroy();
     uploadError(error.toString());
     onError(error, error.toString());
   }
@@ -353,14 +314,12 @@ export const aliOSSUpload = ({
 
 // 自动检测上传配置，进行上传
 export const uploadAdaptor = (...args) => {
-  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // mdnice | SM.MS | 阿里云 | 七牛云 | 用户自定义图床
+  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // SM.MS | 阿里云 | 七牛云 | 用户自定义图床
   const userType = localStorage.getItem(CUSTOM_HOSTING_NAME);
-  if (type === "mdnice") {
-    return qiniuFreeUpload(...args);
+  if (type === userType) {
+    return customImageUpload(...args);
   } else if (type === "SM.MS") {
     return smmsUpload(...args);
-  } else if (type === userType) {
-    return customImageUpload(...args);
   } else if (type === "七牛云") {
     const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
     if (

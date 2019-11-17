@@ -74,21 +74,7 @@ class App extends Component {
       console.log(e);
     }
     this.setEditorContent();
-    if (this.props.useImageHosting) {
-      if (this.props.imageHostingUrl) {
-        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, this.props.imageHostingUrl);
-      }
-    }
-    if (this.props.imageHostingName) {
-      const customName = this.props.imageHostingName;
-      window.localStorage.setItem(CUSTOM_HOSTING_NAME, customName);
-    }
-    const newOptions = IMAGE_HOSTING_TYPE_OPTIONS;
-    const localName = window.localStorage.getItem(CUSTOM_HOSTING_NAME);
-    if (localName !== undefined) {
-      newOptions.push({value: localName, label: localName});
-      this.props.imageHosting.setHostingList(newOptions);
-    }
+    this.setCustomImageHosting();
   }
 
   componentDidUpdate() {
@@ -110,6 +96,41 @@ class App extends Component {
     document.removeEventListener("MSFullscreenChange", this.solveScreenChange);
     this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
+
+  setCustomImageHosting = () => {
+    const defaultURL = "https://math.mdnice.com/qiniuFree";
+    const defaultName = "mdnice";
+    console.log(this.props);
+    if (this.props.useImageHosting) {
+      if (this.props.imageHostingUrl) {
+        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, this.props.imageHostingUrl);
+      } else {
+        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, defaultURL);
+      }
+      if (this.props.imageHostingName) {
+        const customName = this.props.imageHostingName;
+        window.localStorage.setItem(CUSTOM_HOSTING_NAME, customName);
+        const options = IMAGE_HOSTING_TYPE_OPTIONS;
+        const localName = window.localStorage.getItem(CUSTOM_HOSTING_NAME);
+        if (localName !== undefined) {
+          const newOptions = options.map((option) => {
+            return option.value === "mdnice"
+              ? {
+                  value: localName,
+                  label: localName,
+                }
+              : option;
+          });
+          this.props.imageHosting.setHostingList(newOptions);
+        } else {
+          window.localStorage.setItem(CUSTOM_HOSTING_NAME, defaultName);
+        }
+      }
+    } else {
+      window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, defaultURL);
+      window.localStorage.setItem(CUSTOM_HOSTING_NAME, defaultName);
+    }
+  };
 
   setEditorContent = () => {
     const {defaultText} = this.props;
