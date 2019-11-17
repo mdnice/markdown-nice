@@ -19,8 +19,6 @@ export const IS_PRETTIER_OPEN = "is_prettier_open";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
-export const CUSTOM_IMAGE_HOSTING = "custom_image_hosting";
-export const CUSTOM_HOSTING_NAME = "custom_hosting_name";
 export const IMAGE_HOSTING_TYPE_OPTIONS = [
   {value: "mdnice", label: "mdnice"},
   {value: "SM.MS", label: "SM.MS"},

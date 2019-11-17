@@ -12,13 +12,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {
-  LAYOUT_ID,
-  BOX_ID,
-  CUSTOM_IMAGE_HOSTING,
-  CUSTOM_HOSTING_NAME,
-  IMAGE_HOSTING_TYPE_OPTIONS,
-} from "./utils/constant";
+import {LAYOUT_ID, BOX_ID} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -98,37 +92,14 @@ class App extends Component {
   }
 
   setCustomImageHosting = () => {
-    const defaultURL = "https://math.mdnice.com/qiniuFree";
-    const defaultName = "mdnice";
-    console.log(this.props);
-    if (this.props.useImageHosting) {
-      if (this.props.imageHostingUrl) {
-        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, this.props.imageHostingUrl);
-      } else {
-        window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, defaultURL);
+    const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
+    if (useImageHosting) {
+      if (imageHostingUrl) {
+        this.props.imageHosting.setHostingUrl(imageHostingUrl);
       }
-      if (this.props.imageHostingName) {
-        const customName = this.props.imageHostingName;
-        window.localStorage.setItem(CUSTOM_HOSTING_NAME, customName);
-        const options = IMAGE_HOSTING_TYPE_OPTIONS;
-        const localName = window.localStorage.getItem(CUSTOM_HOSTING_NAME);
-        if (localName !== undefined) {
-          const newOptions = options.map((option) => {
-            return option.value === "mdnice"
-              ? {
-                  value: localName,
-                  label: localName,
-                }
-              : option;
-          });
-          this.props.imageHosting.setHostingList(newOptions);
-        } else {
-          window.localStorage.setItem(CUSTOM_HOSTING_NAME, defaultName);
-        }
+      if (imageHostingName) {
+        this.props.imageHosting.setHostingName(imageHostingName);
       }
-    } else {
-      window.localStorage.setItem(CUSTOM_IMAGE_HOSTING, defaultURL);
-      window.localStorage.setItem(CUSTOM_HOSTING_NAME, defaultName);
     }
   };
 
