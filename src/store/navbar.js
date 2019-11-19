@@ -18,6 +18,8 @@ class Navbar {
 
   @observable isPrettierOpen = true;
 
+  @observable isImmersiveEditing = false;
+
   @observable templateNum;
 
   @observable codeNum;
@@ -32,6 +34,11 @@ class Navbar {
   @action
   setAutoFootOpen = (isPasteCheckOpen) => {
     this.isPasteCheckOpen = isPasteCheckOpen;
+  };
+
+  @action
+  setImmersiveEditing = (isImmersiveEditing) => {
+    this.isImmersiveEditing = isImmersiveEditing;
   };
 
   @action

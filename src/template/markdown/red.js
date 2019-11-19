@@ -228,7 +228,7 @@ export default `/* 全局属性
  * 内边距 padding: 5px 10px;
  */
 #nice table tr th,
-table tr td {
+#nice table tr td {
   font-size: 14px;
 }
 

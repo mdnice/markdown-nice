@@ -141,7 +141,7 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
  * 边框 border: 1px solid #ccc;
  * 内边距 padding: 5px 10px;
  */
-table tr th,
+#nice table tr th,
 #nice table tr td {
 }
 

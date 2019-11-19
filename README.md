@@ -8,10 +8,8 @@
 ## 简介
 
 - 支持自定义样式的 Markdown 编辑器
-- 支持微信公众号排版
-- 支持开源中国、知乎、稀土掘金、博客园和 CSDN 等一系列平台
-- 内容和自定义样式浏览器中实时保存
-- 支持上传图片、脚注、公式
+- 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等一系列平台
+- 更多用户和开发者文档请参考 [Markdown Nice Docs](https://docs.mdnice.com/)
 - 欢迎[在线使用](https://mdnice.com/)
 
 ## 示例
@@ -24,10 +22,6 @@
 - 科技蓝：[2019 前端秋季社招面试经历总结（二年多经验）](https://mp.weixin.qq.com/s/eDIDOESem_s93liccYK-qw)
 
 > 欢迎提供更多文章示例~~
-
-## 开发文档
-
-开发文档请参考本项目的[wiki](https://github.com/mdnice/markdown-nice/wiki/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3)
 
 ## 组件使用
 
@@ -69,14 +63,12 @@ function App() {
 export default App;
 ```
 
-其中 defaultTitle 属性不添加则左上角不显示，defaultText 属性不添加则默认每次从 localStorage 中获取值。
-
 ## 关于
 
-目前 mdnice 已经有了一定量的用户，故而组建了**微信群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
+mdnice 社区组建了**微信用户群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
 
-<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>
+同时也欢迎打赏哟，您的支持是我们最大的动力！
 
-欢迎打赏哟，您的支持是我最大的动力！
-
-<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>
+|入群码|打赏码|
+|---|---|
+|<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>|<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>|

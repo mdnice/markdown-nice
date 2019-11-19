@@ -1,18 +1,18 @@
-export default `建议使用 **Chrome** 浏览器。
+export default `请使用 **Chrome** 浏览器。
 
 请阅读下方文本熟悉工具使用方法，本文可直接拷贝到微信中预览。
 
 <img style="width: 120px" src="https://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
 
-## 1. Markdown Nice 简介
+## 1 Markdown Nice 简介
 
 - 支持自定义样式的 Markdown 编辑器
-- 支持微信公众号排版
-- 支持开源中国、知乎、掘金、博客园和 CSDN 等平台
-- 内容和自定义样式浏览器中实时保存
-- 欢迎登录 GitHub 账号，提交自定义主题
+- 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等平台
+- 欢迎扫码回复「排版」加入用户群
 
-## 2. 示例文章
+![](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
+
+## 2 示例文章
 
 - <span style="color:orangered;font-weight:bold;">橙心：</span>[终于等到你，公众号排版神器](https://mp.weixin.qq.com/s/raFgkqlV5hZmrXiEWVAyfQ)
 - <span style="color:#773098;font-weight:bold;">姹紫：</span>[JavaScript 数据结构与算法之美](https://mp.weixin.qq.com/s/KmoRDGdJLZ7reMfTDDaFGg)
@@ -21,7 +21,9 @@ export default `建议使用 **Chrome** 浏览器。
 - <span style="color:orangered;font-weight:bold;">Wechat-Format</span>：[Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
 - <span style="color:#0e88eb;font-weight:bold;">科技蓝</span>：[2019 前端秋季社招面试经历总结（二年多经验）](https://mp.weixin.qq.com/s/eDIDOESem_s93liccYK-qw)
 
-## 3. 标题
+## 3 通用语法
+
+### 3.1 标题
 
 在文字写书写不同数量的\`#\`可以完成不同的标题，如下：
 
@@ -31,13 +33,13 @@ export default `建议使用 **Chrome** 浏览器。
 
 ### 三级标题
 
-## 4. 无序列表
+### 3.2 无序列表
 
 无序列表的使用，在符号\`-\`后加空格使用。如下：
 
 - 无序列表 1
 - 无序列表 2
-- 无序列表
+- 无序列表 3
 
 如果要控制列表的层级，则需要在符号\`-\`前使用空格。如下：
 
@@ -48,7 +50,7 @@ export default `建议使用 **Chrome** 浏览器。
 
 **由于微信原因，最多支持到二级列表**。
 
-## 5. 有序列表
+### 3.3 有序列表
 
 有序列表的使用，在数字及符号\`.\`后加空格后输入内容，如下：
 
@@ -56,7 +58,7 @@ export default `建议使用 **Chrome** 浏览器。
 2. 有序列表 2
 3. 有序列表 3
 
-## 6. 引用
+### 3.4 引用
 
 引用的格式是在符号\`>\`后面书写文字。如下：
 
@@ -64,11 +66,11 @@ export default `建议使用 **Chrome** 浏览器。
 
 > 雇用制度对工人不利，但工人根本无力摆脱这个制度。 ——阮一峰
 
-## 7. 粗体和斜体
+### 3.5 粗体和斜体
 
 粗体的使用是在需要加粗的文字前后各加两个\`*\`。
 
-而斜体的使用则是在需要斜体的文字前后各加一个\`_\`。
+而斜体的使用则是在需要斜体的文字前后各加一个\`*\`。
 
 如果要使用粗体和斜体，那么就是在需要操作的文字前后加三个\`*\`。如下：
 
@@ -84,34 +86,41 @@ export default `建议使用 **Chrome** 浏览器。
 
 这个是正常现象，请参考[加粗 Issue](https://github.com/markdown-it/markdown-it/issues/410 "加粗 Issue")。
 
-## 8. 链接
+### 3.6 链接
 
 微信公众号仅支持公众号文章链接，即域名为\`https://mp.weixin.qq.com/\`的合法链接。使用方法如下所示：
 
 对于该论述，欢迎读者查阅之前发过的文章，[你是《未来世界的幸存者》么？](https://mp.weixin.qq.com/s/s5IhxV2ooX3JN_X416nidA)
 
-## 9. 脚注
+### 3.7 分割线
 
-脚注与链接的区别如下所示：
+可以在一行中用三个以上的减号来建立一个分隔线，同时需要在分隔线的上面空一行。如下：
 
-\`\`\`markdown
-链接：[文字](链接)
-脚注：[文字](脚注解释 "脚注名字")
-\`\`\`
+---
 
-有人认为在[大前端时代](https://en.wikipedia.org/wiki/Front-end_web_development "Front-end web development")的背景下，移动端开发（Android、IOS）将逐步退出历史舞台。
+### 3.8 删除线
 
-[全栈工程师](是指掌握多种技能，并能利用多种技能独立完成产品的人。 "什么是全栈工程师")在业务开发流程中起到了至关重要的作用。
+删除线的使用，在需要删除的文字前后各使用两个\`~\`，如下：
 
-脚注内容请拉到最下面观看。
+~~这是要被删除的内容。~~
 
-## 10. 图片
+### 3.9 表格
+
+可以使用冒号来定义表格的对齐方式，如下：
+
+| 姓名   | 年龄 |     工作 |
+| :----- | :--: | -------: |
+| 小可爱 |  18  | 吃可爱多 |
+| 小小勇敢 |  20  | 爬棵勇敢树 |
+| 小小小机智 |  22  | 看一本机智书 |
+
+### 3.10 图片
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
 ![这里写图片描述](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
 
-支持 jpg、png、gif、svg 等图片格式，svg 文件示例如下：
+支持 jpg、png、gif、svg 等图片格式，**其中 svg 文件仅可在微信公众平台中使用**，svg 文件示例如下：
 
 ![](https://my-wechat.mdnice.com/mdnice/i_am_svg_20191024083453.svg)
 
@@ -133,7 +142,7 @@ export default `建议使用 **Chrome** 浏览器。
 | mdnice | 图片只保存一天           |
 | SM.MS  | 失败率高可用性很差       |
 | 阿里云 | 配置繁琐，费用昂贵       |
-| 七牛云 | 需要长期域名替代测试域名 |
+| 七牛云 | 配置繁琐，需购买长期域名 |
 
 **建议：一次性排版推荐使用 mdnice，图片需要长期管理推荐使用七牛云**。
 
@@ -143,16 +152,37 @@ export default `建议使用 **Chrome** 浏览器。
 
 配置文档如下：
 
-- [Markdown Nice 新特性：阿里云图床](https://mp.weixin.qq.com/s/QPsOUkLCsvhqSicTOGaHJg)
-- [Markdown Nice 新特性：七牛云图床](https://mp.weixin.qq.com/s/_ytSpvKnzEVx0l_LONdnHg)
+- [阿里云图床搭建](https://docs.mdnice.com/#/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA "阿里云图床搭建")
+- [七牛云图床搭建](https://docs.mdnice.com/#/%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA "七牛云图床搭建")
 
-## 11. 代码块
+## 4. 特殊语法
+
+### 4.1 脚注
+
+> 支持平台：微信公众号、知乎。
+
+脚注与链接的区别如下所示：
+
+\`\`\`markdown
+链接：[文字](链接)
+脚注：[文字](脚注解释 "脚注名字")
+\`\`\`
+
+有人认为在[大前端时代](https://en.wikipedia.org/wiki/Front-end_web_development "Front-end web development")的背景下，移动端开发（Android、IOS）将逐步退出历史舞台。
+
+[全栈工程师](是指掌握多种技能，并能利用多种技能独立完成产品的人。 "什么是全栈工程师")在业务开发流程中起到了至关重要的作用。
+
+脚注内容请拉到最下面观看。
+
+### 4.2 代码块
+
+> 支持平台：微信代码主题仅支持微信公众号！其他主题无限制。
 
 如果在一个行内需要引用代码，只要用反引号引起来就好，如下：
 
 Use the \`printf()\` function.
 
-在需要高亮的代码块的前一行及后一行使用三个反引号，同时**第一行反引号后面表面代码块所使用的语言**，如下：
+在需要高亮的代码块的前一行及后一行使用三个反引号，同时**第一行反引号后面表示代码块所使用的语言**，如下：
 
 \`\`\`java
 // FileName: HelloWorld.java
@@ -197,35 +227,9 @@ yaml
 
 **其他主题不带行号，可自定义是否换行，代码大小与当前编辑器一致**
 
-## 12. 分割线
+### 4.3 数学公式
 
-可以在一行中用三个以上的减号来建立一个分隔线，同时需要在分隔线的上面空一行。如下：
-
----
-
-## 13. 删除线
-
-删除线的使用，在需要删除的文字前后各使用两个\`~\`，如下：
-
-~~这是要被删除的内容。~~
-
-## 14. 表格
-
-可以使用冒号来定义表格的对齐方式，如下：
-
-| 姓名   | 年龄 |     工作 |
-| :----- | :--: | -------: |
-| 小可爱 |  18  | 吃可爱多 |
-| 小勇敢 |  20  | 爬勇敢树 |
-| 小机智 |  22  | 看机智书 |
-
-## 15. 上标和下标
-
-使用两个\`^\`包围可作为上标，如下：19^th^
-
-使用两个\`~\`包围可作为下标，如下：H~2~O
-
-## 16. 数学公式
+> 支持平台：微信公众号、知乎。
 
 行内公式使用方法，比如这个化学公式：$\\ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-}$
 
@@ -248,7 +252,9 @@ $$
 
 目前测试如果公式量过大，在 Chrome 下会存在粘贴后无响应，但是在 Firefox 中始终能够成功。
 
-## 17. TOC
+### 4.4 TOC
+
+> 支持平台：微信公众号、知乎。
 
 TOC 全称为 Table of Content，列出全部标题。由于示例标题过多，需要使用将下方代码段去除即可。
 
@@ -258,20 +264,32 @@ TOC 全称为 Table of Content，列出全部标题。由于示例标题过多�
 
 由于微信只支持到二级列表，本工具仅支持二级标题和三级标题的显示。
 
-## 18. 注音符号
+### 4.5 注音符号
+
+> 支持平台：微信公众号。
 
 支持注音符号，用法如下：
 
 Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 
-## 19. HTML
+### 4.6 横屏滑动幻灯片
 
-支持原生 HTML 语法，除个别情况外，建议尽少使用，如下：
+> 支持平台：微信公众号。
+
+通过\`<![](url),![](url)>\`这种语法设置横屏滑动滑动片，具体用法如下：
+
+<![蓝1](https://my-wechat.mdnice.com/mdnice/%E8%93%9D1_20191109174052.jpg),![绿2](https://my-wechat.mdnice.com/mdnice/%E7%BB%BF2_20191109174052.jpg),![红3](https://my-wechat.mdnice.com/mdnice/%E7%BA%A23_20191109174052.jpg)>
+
+## 5 其他语法
+
+### 5.1 HTML
+
+支持原生 HTML 语法，请写内联样式，如下：
 
 <span style="display:block;text-align:right;color:orangered;">橙色居右</span>
 <span style="display:block;text-align:center;color:orangered;">橙色居中</span>
 
-## 20. UML
+### 5.2 UML
 
 不支持，推荐使用开源工具\`https://draw.io/\`制作后再导入图片
 `;

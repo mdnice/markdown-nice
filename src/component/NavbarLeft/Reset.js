@@ -3,10 +3,11 @@ import {observer, inject} from "mobx-react";
 import {Button, Tooltip, Modal} from "antd";
 // import resetIcon from "../icon/reset.svg";
 
-import {ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
+import {ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
 
-import TEMPLATE from "../template/index";
-import SvgIcon from "../icon";
+import TEMPLATE from "../../template/index";
+import SvgIcon from "../../icon";
+import "./Reset.css";
 
 @inject("content")
 @inject("navbar")
@@ -32,23 +33,12 @@ class Reset extends Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="重置">
-        <Button onClick={this.showConfirm} style={style.btnPadding}>
-          <SvgIcon name="reset" style={style.svgIcon} />
+        <Button onClick={this.showConfirm} className="nice-btn-reset">
+          <SvgIcon name="reset" className="nice-btn-reset-icon" />
         </Button>
       </Tooltip>
     );
   }
 }
-
-const style = {
-  btnPadding: {
-    padding: "0",
-  },
-  svgIcon: {
-    padding: "8px 5px 12px 0px",
-    width: "34px",
-    height: "33px",
-  },
-};
 
 export default Reset;

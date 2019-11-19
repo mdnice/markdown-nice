@@ -194,10 +194,12 @@ export default `/*自定义样式，实时生效*/
   color: #f8f8f8;
   border-bottom: 0;
 }
+
 #nice table tr td {
   border: 1px solid #009688;
 }
-table tr:nth-child(2n){
+
+#nice table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 

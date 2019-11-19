@@ -31,6 +31,7 @@ export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
 export const LAYOUT_ID = "nice";
+export const BOX_ID = "nice-rich-text-box";
 
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
@@ -153,12 +154,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.4.0";
+export const VERSION_NUM = "1.4.4";
 
 export const VERSION_TIMELINE = [
+  "2019-11-16 新增全屏沉浸式编辑（点击全屏按钮可查看）",
+  "2019-11-13 修复横屏幻灯片渲染问题, 修复知乎公式问题",
+  "2019-11-09 新增幻灯片横屏滑动语法，重置后查看；新增拷贝到知乎，支持知乎公式使用",
+  "2019-11-05 新增快捷键，新增表格添加功能",
   "2019-11-02 break change！请将所有的自定义标签前面加上 #nice，否则将失效，可参考其他主题！新增主题「极客黑」和「简」",
-  "2019-10-28 修复公式 bug，新增主题「蓝山」，请重置看查看效果",
-  "2019-10-27 组件化，新增预览模式，修改导航栏布局",
-  "2019-10-24 修复 PWA 中的 mdnice 图床 https 问题，添加图片拖拽提示",
-  "2019-10-23 支持 PWA、图片 svg 示例",
 ];

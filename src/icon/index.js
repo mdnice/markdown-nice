@@ -8,6 +8,7 @@ import Del from "./Del";
 import Down from "./Down";
 import Environment from "./Environment";
 import Font from "./Font";
+import Form from "./Form";
 import FullScreen from "./FullScreen";
 import GitHub from "./GitHub";
 import Inbox from "./Inbox";
@@ -66,6 +67,8 @@ export default (props) => {
       return <PC {...props} />;
     case "mobile":
       return <Mobile {...props} />;
+    case "form":
+      return <Form {...props} />;
     default:
       return <svg />;
   }

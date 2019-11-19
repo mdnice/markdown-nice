@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {Tooltip, Button} from "antd";
 
-import {ENTER_DELAY, LEAVE_DELAY, FONT_THEME_ID} from "../utils/constant";
-import {replaceStyle} from "../utils/helper";
-import SvgIcon from "../icon";
+import {ENTER_DELAY, LEAVE_DELAY, FONT_THEME_ID} from "../../utils/constant";
+import {replaceStyle} from "../../utils/helper";
+import SvgIcon from "../../icon";
+import "./Font.css";
 
 class Font extends Component {
   constructor(props) {
@@ -30,8 +31,8 @@ class Font extends Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="字体">
-        <Button style={style.btnPadding} onClick={this.toggleFont}>
-          <SvgIcon name="font" style={style.svgIcon} />
+        <Button className="nice-btn-font" onClick={this.toggleFont}>
+          <SvgIcon name="font" className="nice-btn-font-icon" />
         </Button>
       </Tooltip>
     );

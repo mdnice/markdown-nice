@@ -3,9 +3,9 @@ import {Tooltip, Button} from "antd";
 import {observer, inject} from "mobx-react";
 import axios from "axios";
 
-import {CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN, ENTER_DELAY, LEAVE_DELAY} from "../utils/constant";
-import {queryParse, axiosJSON, axiosGithub} from "../utils/helper";
-import SvgIcon from "../icon";
+import {CLIENT_ID, CLIENT_SECRET, PROXY, ACCESS_TOKEN, ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
+import {queryParse, axiosJSON, axiosGithub} from "../../utils/helper";
+import SvgIcon from "../../icon";
 
 @inject("userInfo")
 @observer
@@ -49,28 +49,12 @@ class LogIn extends React.Component {
   render() {
     return (
       <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="登录">
-        <Button shape="circle" style={style.btnStyle} onClick={this.login}>
-          <SvgIcon name="github" style={style.svgIcon} />
+        <Button shape="circle" className="nice-btn-login" onClick={this.login}>
+          <SvgIcon name="github" className="nice-btn-login-icon" />
         </Button>
       </Tooltip>
     );
   }
 }
-
-const style = {
-  btnStyle: {
-    border: "none",
-    width: "24px",
-    height: "24px",
-  },
-  avatar: {
-    background: "white",
-    color: "black",
-  },
-  svgIcon: {
-    width: "24px",
-    height: "24px",
-  },
-};
 
 export default LogIn;
