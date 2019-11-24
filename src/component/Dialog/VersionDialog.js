@@ -6,7 +6,7 @@ import SvgIcon from "../../icon";
 
 @inject("dialog")
 @observer
-class LinkDialog extends Component {
+class VersionDialog extends Component {
   handleOk = () => {
     this.props.dialog.setVersionOpen(false);
   };
@@ -68,4 +68,4 @@ const style = {
   },
 };
 
-export default LinkDialog;
+export default VersionDialog;
