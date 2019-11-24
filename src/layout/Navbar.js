@@ -15,6 +15,7 @@ import Italic from "../component/NavbarLeft/Italic";
 import Bold from "../component/NavbarLeft/Bold";
 import Del from "../component/NavbarLeft/Del";
 import PreviewType from "../component/NavbarRight/PreviewType";
+import SyncScroll from "../component/NavbarRight/SyncScroll";
 import FullScreen from "../component/NavbarLeft/FullScreen";
 // import LogIn from "../component/LogIn";
 // import User from "../component/User";
@@ -60,6 +61,7 @@ class Navbar extends Component {
           </div>
         </div>
         <div className="nice-right-nav">
+          <SyncScroll/>
           <Copy />
           <ThemeSelect />
           <Format />

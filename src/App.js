@@ -112,16 +112,18 @@ class App extends Component {
   };
 
   handleScroll = () => {
-    const {markdownEditor} = this.props.content;
-    const cmData = markdownEditor.getScrollInfo();
-    const editorToTop = cmData.top;
-    const editorScrollHeight = cmData.height - cmData.clientHeight;
-    this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 55) / editorScrollHeight;
-    if (this.index === 1) {
-      this.previewContainer.scrollTop = editorToTop * this.scale;
-    } else {
-      this.editorTop = this.previewContainer.scrollTop / this.scale;
-      markdownEditor.scrollTo(null, this.editorTop);
+    if (this.props.navbar.syncScroll) {
+      const {markdownEditor} = this.props.content;
+      const cmData = markdownEditor.getScrollInfo();
+      const editorToTop = cmData.top;
+      const editorScrollHeight = cmData.height - cmData.clientHeight;
+      this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 55) / editorScrollHeight;
+      if (this.index === 1) {
+        this.previewContainer.scrollTop = editorToTop * this.scale;
+      } else {
+        this.editorTop = this.previewContainer.scrollTop / this.scale;
+        markdownEditor.scrollTo(null, this.editorTop);
+      }
     }
   };
 
