@@ -16,7 +16,7 @@ class Setting extends Component {
 
   render() {
     return (
-      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY}>
+      <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="设置">
         <Button className="nice-btn-setting" onClick={this.showModal}>
           <SvgIcon name="setting" className="nice-btn-setting-icon" />
         </Button>
