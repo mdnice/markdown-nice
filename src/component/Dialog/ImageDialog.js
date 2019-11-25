@@ -64,15 +64,14 @@ class ImageDialog extends Component {
       // const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
       uploadAdaptor({file, onSuccess, onError, onProgress, images});
     }
-    // 使用mdnice七牛云免费图床
-    else if (this.props.imageHosting.type === "mdnice") {
-      uploadAdaptor({formData, file, onSuccess, onError, images});
-      // this.qiniuFreeUpload(formData, file, onSuccess, onError);
-    }
     // 使用SM.MS图床
-    else {
+    else if (this.props.imageHosting.type === "SM.MS") {
       uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials});
       // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
+    }
+    // 使用用户提供的图床或是默认mdnice图床
+    else {
+      uploadAdaptor({formData, file, onSuccess, onError, images});
     }
 
     return {
@@ -88,7 +87,7 @@ class ImageDialog extends Component {
   };
 
   render() {
-    const columns = IMAGE_HOSTING_TYPE_OPTIONS.map((option, index) => (
+    const columns = this.props.imageHosting.hostingList.map((option, index) => (
       <Option key={index} value={option.value}>
         {option.label}
       </Option>

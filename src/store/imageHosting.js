@@ -1,12 +1,41 @@
 import {observable, action} from "mobx";
-import {IMAGE_HOSTING_TYPE, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING} from "../utils/constant";
+import {
+  IMAGE_HOSTING_TYPE,
+  ALIOSS_IMAGE_HOSTING,
+  QINIUOSS_IMAGE_HOSTING,
+  IMAGE_HOSTING_TYPE_OPTIONS,
+} from "../utils/constant";
 
 class ImageHosting {
   @observable type = "SM.MS";
 
+  @observable hostingList = IMAGE_HOSTING_TYPE_OPTIONS;
+
+  @observable hostingUrl = "https://math.mdnice.com/qiniuFree";
+
+  @observable hostingName = "mdnice";
+
   @action
   setType = (type) => {
     this.type = type;
+  };
+
+  @action
+  setHostingUrl = (url) => {
+    this.hostingUrl = url;
+  };
+
+  @action
+  setHostingName = (name) => {
+    this.hostingList = this.hostingList.map((item) =>
+      item.label === this.hostingName
+        ? {
+            value: name,
+            label: name,
+          }
+        : item,
+    );
+    this.hostingName = name;
   };
 }
 

@@ -21,6 +21,18 @@ export interface MarkdownNiceProps {
    * 编辑器内容监听函数
    */
   onTextChange?: (text: string) => void;
+  /**
+   * 是否启用用户提供的图床
+   */
+  useImageHosting?: boolean;
+  /**
+   * 用户提供的图床URL
+   */
+  imageHostingUrl?: string;
+  /**
+   * 用户提供的图床名称
+   */
+  imageHostingName?: string;
 }
 
 declare class MarkdownNice extends React.Component<MarkdownNiceProps, any> {}

@@ -22,6 +22,7 @@ import bindHotkeys from "./utils/hotkey";
 @inject("content")
 @inject("navbar")
 @inject("dialog")
+@inject("imageHosting")
 @observer
 class App extends Component {
   constructor(props) {
@@ -67,6 +68,7 @@ class App extends Component {
       console.log(e);
     }
     this.setEditorContent();
+    this.setCustomImageHosting();
   }
 
   componentDidUpdate() {
@@ -88,6 +90,18 @@ class App extends Component {
     document.removeEventListener("MSFullscreenChange", this.solveScreenChange);
     this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
+
+  setCustomImageHosting = () => {
+    const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
+    if (useImageHosting) {
+      if (imageHostingUrl) {
+        this.props.imageHosting.setHostingUrl(imageHostingUrl);
+      }
+      if (imageHostingName) {
+        this.props.imageHosting.setHostingName(imageHostingName);
+      }
+    }
+  };
 
   setEditorContent = () => {
     const {defaultText} = this.props;

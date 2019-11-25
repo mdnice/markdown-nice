@@ -5,6 +5,7 @@ import * as qiniu from "qiniu-js";
 import {message} from "antd";
 import axios from "axios";
 import OSS from "ali-oss";
+import imageHosting from "../store/imageHosting";
 
 import {SM_MS_PROXY, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMAGE_HOSTING_TYPE} from "./constant";
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
@@ -137,13 +138,14 @@ export const qiniuOSSUpload = async ({
   }
 };
 
-export const qiniuFreeUpload = async ({
+// 用户自定义的图床上传
+export const customImageUpload = async ({
   formData = new FormData(),
   file = {},
   onSuccess = () => {},
   onError = () => {},
   images = [],
-  content = null, // store content
+  content = null,
 }) => {
   showUploadNoti();
   try {
@@ -153,12 +155,13 @@ export const qiniuFreeUpload = async ({
         "Content-Type": "multipart/form-data",
       },
     };
-    const result = await axiosMdnice.post(`/qiniuFree`, formData, config);
+    const postURL = imageHosting.hostingUrl;
+    const result = await axios.post(postURL, formData, config);
     const names = file.name.split(".");
     names.pop();
     const filename = names.join(".");
     const image = {
-      filename, // 名字不变并且去掉后缀
+      filename,
       url: encodeURI(result.data),
     };
     if (content) {
@@ -169,10 +172,10 @@ export const qiniuFreeUpload = async ({
     setTimeout(() => {
       hideUploadNoti();
     }, 500);
-  } catch (err) {
-    hideUploadNoti();
-    uploadError();
-    onError(err, err.toString());
+  } catch (error) {
+    message.destroy();
+    uploadError(error.toString());
+    onError(error, error.toString());
   }
 };
 
@@ -305,9 +308,10 @@ export const aliOSSUpload = ({
 
 // 自动检测上传配置，进行上传
 export const uploadAdaptor = (...args) => {
-  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // mdnice | SM.MS | 阿里云 | 七牛云
-  if (type === "mdnice") {
-    return qiniuFreeUpload(...args);
+  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // SM.MS | 阿里云 | 七牛云 | 用户自定义图床
+  const userType = imageHosting.hostingName;
+  if (type === userType) {
+    return customImageUpload(...args);
   } else if (type === "SM.MS") {
     return smmsUpload(...args);
   } else if (type === "七牛云") {
