@@ -12,6 +12,8 @@ class Dialog {
 
   @observable isFormOpen = false;
 
+  @observable isSettingOpen = false;
+
   @action
   setImageOpen = (isImageOpen) => {
     this.isImageOpen = isImageOpen;
@@ -35,6 +37,11 @@ class Dialog {
   @action
   setFormOpen = (isFormOpen) => {
     this.isFormOpen = isFormOpen;
+  };
+
+  @action
+  setSettingOpen = (isSettingOpen) => {
+    this.isSettingOpen = isSettingOpen;
   };
 }
 

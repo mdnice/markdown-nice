@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import { message, ConfigProvider, Dropdown, Icon, Menu } from "antd";
+import React, {Component} from "react";
+import {observer, inject} from "mobx-react";
+import {message, ConfigProvider, Dropdown, Icon, Menu} from "antd";
 
-import { solveWeChatMath, solveZhihuMath, solveHtml, copySafari } from "../../utils/converter";
-import { LAYOUT_ID, CODE_NUM } from "../../utils/constant";
+import {solveWeChatMath, solveZhihuMath, solveHtml, copySafari} from "../../utils/converter";
+import {LAYOUT_ID, CODE_NUM} from "../../utils/constant";
 import "./Copy.css";
 
 @inject("content")
@@ -29,7 +29,7 @@ class Copy extends Component {
 
   copyZhihu = () => {
     if (window.localStorage.getItem(CODE_NUM) === "0") {
-      message.warning('您当前使用的是微信主题，请切换其他主题后再试哦');
+      message.warning("您当前使用的是微信主题，请切换其他主题后再试哦");
       return;
     }
     const layout = document.getElementById(LAYOUT_ID); // 保护现场

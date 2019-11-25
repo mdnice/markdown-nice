@@ -15,8 +15,8 @@ import Italic from "../component/NavbarLeft/Italic";
 import Bold from "../component/NavbarLeft/Bold";
 import Del from "../component/NavbarLeft/Del";
 import PreviewType from "../component/NavbarRight/PreviewType";
-import SyncScroll from "../component/NavbarRight/SyncScroll";
 import FullScreen from "../component/NavbarLeft/FullScreen";
+import Setting from "../component/NavbarLeft/Setting";
 // import LogIn from "../component/LogIn";
 // import User from "../component/User";
 import About from "../component/NavbarLeft/About";
@@ -42,6 +42,9 @@ class Navbar extends Component {
           {title === "" ? null : <section className="nice-title">{title}</section>}
           <div className="nice-icon-bar">
             <ButtonGroup className="nice-btn-group-margin">
+              <Setting />
+            </ButtonGroup>
+            <ButtonGroup className="nice-btn-group-margin">
               <Del />
               <Bold />
               <Italic />
@@ -61,10 +64,11 @@ class Navbar extends Component {
           </div>
         </div>
         <div className="nice-right-nav">
-          <SyncScroll/>
+          {/* <SyncScroll /> */}
           <Copy />
           <ThemeSelect />
           <Format />
+
           <PreviewType />
 
           {/* {this.props.userInfo.userInfo.login ? <User /> : <LogIn />} */}

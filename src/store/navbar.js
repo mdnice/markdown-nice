@@ -7,7 +7,7 @@ import {
   IS_PASTE_CHECK_OPEN,
   IS_PRETTIER_OPEN,
   PREVIEW_TYPE,
-  SYNC_SCROLL
+  SYNC_SCROLL,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
