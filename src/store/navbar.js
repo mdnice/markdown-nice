@@ -7,6 +7,7 @@ import {
   IS_PASTE_CHECK_OPEN,
   IS_PRETTIER_OPEN,
   PREVIEW_TYPE,
+  SYNC_SCROLL
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
@@ -25,6 +26,8 @@ class Navbar {
   @observable codeNum;
 
   @observable previewType;
+
+  @observable syncScroll = true;
 
   @action
   setStyleEditorOpen = (isStyleEditorOpen) => {
@@ -67,6 +70,12 @@ class Navbar {
   setPreviewType = (previewType) => {
     this.previewType = previewType;
     window.localStorage.setItem(PREVIEW_TYPE, previewType);
+  };
+
+  @action
+  setSyncScroll = (value) => {
+    this.syncScroll = value;
+    window.localStorage.setItem(SYNC_SCROLL, value);
   };
 }
 
