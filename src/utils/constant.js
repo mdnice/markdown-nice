@@ -13,7 +13,7 @@ export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
 export const PREVIEW_TYPE = "preview_type";
-export const SYNC_SCROLL = "sync_scroll";
+export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const IS_PRETTIER_OPEN = "is_prettier_open";
@@ -21,7 +21,6 @@ export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
 export const IMAGE_HOSTING_TYPE_OPTIONS = [
-  {value: "mdnice", label: "mdnice"},
   {value: "SM.MS", label: "SM.MS"},
   {value: "阿里云", label: "阿里云"},
   {value: "七牛云", label: "七牛云"},

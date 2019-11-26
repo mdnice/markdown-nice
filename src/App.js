@@ -92,14 +92,20 @@ class App extends Component {
   }
 
   setCustomImageHosting = () => {
-    const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
-    if (useImageHosting) {
-      if (imageHostingUrl) {
-        this.props.imageHosting.setHostingUrl(imageHostingUrl);
-      }
-      if (imageHostingName) {
-        this.props.imageHosting.setHostingName(imageHostingName);
-      }
+    // const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
+    // if (useImageHosting) {
+    //   if (imageHostingUrl) {
+    //     this.props.imageHosting.setHostingUrl(imageHostingUrl);
+    //   }
+    //   if (imageHostingName) {
+    //     this.props.imageHosting.setHostingName(imageHostingName);
+    //   }
+    // }
+    const host = this.props.useImageHosting;
+    if (host) {
+      this.props.imageHosting.setHostingUrl(host.url);
+      this.props.imageHosting.setHostingName(host.name);
+      this.props.imageHosting.addImageHosting(host.name);
     }
   };
 
@@ -126,7 +132,7 @@ class App extends Component {
   };
 
   handleScroll = () => {
-    if (this.props.navbar.syncScroll) {
+    if (this.props.navbar.isSyncScroll) {
       const {markdownEditor} = this.props.content;
       const cmData = markdownEditor.getScrollInfo();
       const editorToTop = cmData.top;

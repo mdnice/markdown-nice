@@ -7,7 +7,7 @@ import {
   IS_PASTE_CHECK_OPEN,
   IS_PRETTIER_OPEN,
   PREVIEW_TYPE,
-  SYNC_SCROLL,
+  IS_SYNC_SCROLL,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
@@ -27,7 +27,7 @@ class Navbar {
 
   @observable previewType;
 
-  @observable syncScroll = true;
+  @observable isSyncScroll = true;
 
   @action
   setStyleEditorOpen = (isStyleEditorOpen) => {
@@ -73,9 +73,9 @@ class Navbar {
   };
 
   @action
-  setSyncScroll = (value) => {
-    this.syncScroll = value;
-    window.localStorage.setItem(SYNC_SCROLL, value);
+  setSyncScroll = (isSyncScroll) => {
+    this.isSyncScroll = isSyncScroll;
+    window.localStorage.setItem(IS_SYNC_SCROLL, isSyncScroll);
   };
 }
 
@@ -105,12 +105,17 @@ if (!window.localStorage.getItem(PREVIEW_TYPE)) {
   window.localStorage.setItem(PREVIEW_TYPE, "mobile");
 }
 
+if (!window.localStorage.getItem(IS_SYNC_SCROLL)) {
+  window.localStorage.setItem(IS_SYNC_SCROLL, true);
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
 store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
+store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL);
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

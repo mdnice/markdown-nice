@@ -39,7 +39,7 @@ class Lib extends Component {
   }
 
   render() {
-    const {defaultTitle, defaultText, onTextChange, useImageHosting, imageHostingUrl, imageHostingName} = this.props;
+    const {defaultTitle, defaultText, onTextChange, useImageHosting} = this.props;
     const appCtx = {
       defaultTitle,
     };
@@ -48,13 +48,7 @@ class Lib extends Component {
       <Provider content={content} userInfo={userInfo} navbar={navbar} dialog={dialog} imageHosting={imageHosting}>
         {isPC() ? (
           <appContext.Provider value={appCtx}>
-            <App
-              defaultText={defaultText}
-              onTextChange={onTextChange}
-              useImageHosting={useImageHosting}
-              imageHostingUrl={imageHostingUrl}
-              imageHostingName={imageHostingName}
-            />
+            <App defaultText={defaultText} onTextChange={onTextChange} useImageHosting={useImageHosting} />
           </appContext.Provider>
         ) : (
           <Result
@@ -85,17 +79,18 @@ Lib.defaultProps = {
   defaultTitle: "",
   defaultText: "",
   onTextChange: () => {},
-  useImageHosting: false,
-  imageHostingUrl: "",
-  imageHostingName: "",
+  // eslint-disable-next-line react/default-props-match-prop-types
+  imageHosting: null,
 };
 Lib.propTypes = {
   defaultTitle: PropTypes.string,
   defaultText: PropTypes.string,
   onTextChange: PropTypes.func,
-  useImageHosting: PropTypes.bool,
-  imageHostingUrl: PropTypes.string,
-  imageHostingName: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
+  useImageHosting: PropTypes.shape({
+    url: PropTypes.string,
+    name: PropTypes.string,
+  }),
 };
 
 export default Lib;

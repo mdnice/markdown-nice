@@ -8,7 +8,7 @@ import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
 
 import {uploadAdaptor} from "../../utils/imageHosting";
-import {SM_MS_PROXY, IMAGE_HOSTING_TYPE, IMAGE_HOSTING_TYPE_OPTIONS} from "../../utils/constant";
+import {SM_MS_PROXY, IMAGE_HOSTING_TYPE} from "../../utils/constant";
 
 const {Dragger} = Upload;
 const {TabPane} = Tabs;

@@ -16,7 +16,7 @@ class SyncScroll extends Component {
         <Switch
           checkedChildren="开"
           unCheckedChildren="关"
-          checked={this.props.navbar.syncScroll}
+          checked={this.props.navbar.isSyncScroll}
           onChange={this.handleChange}
         />
       </>

@@ -11,9 +11,9 @@ class ImageHosting {
 
   @observable hostingList = IMAGE_HOSTING_TYPE_OPTIONS;
 
-  @observable hostingUrl = "https://math.mdnice.com/qiniuFree";
+  @observable hostingUrl = "";
 
-  @observable hostingName = "mdnice";
+  @observable hostingName = "";
 
   @action
   setType = (type) => {
@@ -27,15 +27,15 @@ class ImageHosting {
 
   @action
   setHostingName = (name) => {
-    this.hostingList = this.hostingList.map((item) =>
-      item.label === this.hostingName
-        ? {
-            value: name,
-            label: name,
-          }
-        : item,
-    );
     this.hostingName = name;
+  };
+
+  @action
+  addImageHosting = (name) => {
+    this.hostingList.push({
+      value: name,
+      label: name,
+    });
   };
 }
 
