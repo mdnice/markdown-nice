@@ -22,17 +22,12 @@ export interface MarkdownNiceProps {
    */
   onTextChange?: (text: string) => void;
   /**
-   * 是否启用用户提供的图床
+   * 是否启用用户提供的图床, 内部为图床的URL以及要显示的图床名称。
    */
-  useImageHosting?: boolean;
-  /**
-   * 用户提供的图床URL
-   */
-  imageHostingUrl?: string;
-  /**
-   * 用户提供的图床名称
-   */
-  imageHostingName?: string;
+  useImageHosting?: {
+    url: string;
+    name: string;
+  };
 }
 
 declare class MarkdownNice extends React.Component<MarkdownNiceProps, any> {}
