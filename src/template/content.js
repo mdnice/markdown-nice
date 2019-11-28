@@ -215,6 +215,7 @@ tex，typescript
 verilog，vhdl
 xml
 yaml
+diff
 \`\`\`
 
 如果想要更换代码主题，可在上方挑选，不支持代码主题自定义。
