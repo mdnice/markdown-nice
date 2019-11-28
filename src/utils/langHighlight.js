@@ -40,6 +40,7 @@ import verilog from "highlight.js/lib/languages/verilog";
 import vhdl from "highlight.js/lib/languages/vhdl";
 import xml from "highlight.js/lib/languages/xml";
 import yaml from "highlight.js/lib/languages/yaml";
+import diff from "highlight.js/lib/languages/diff";
 
 highlightjs.registerLanguage("bash", bash);
 highlightjs.registerLanguage("clojure", clojure);
@@ -80,5 +81,6 @@ highlightjs.registerLanguage("verilog", verilog);
 highlightjs.registerLanguage("vhdl", vhdl);
 highlightjs.registerLanguage("xml", xml);
 highlightjs.registerLanguage("yaml", yaml);
+highlightjs.registerLanguage("diff", diff);
 
 export default highlightjs;
