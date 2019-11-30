@@ -19,6 +19,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
+    "lint": "eslint src --ext ts,tsx,js --fix",
     "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
   },
   "dependencies": {
@@ -180,8 +181,7 @@
       "node"
     ],
     "watchPlugins": [
-      "/Users/zhangyining/code/mark-app/node_modules/jest-watch-typeahead/filename.js",
-      "/Users/zhangyining/code/mark-app/node_modules/jest-watch-typeahead/testname.js"
+
     ]
   },
   "babel": {
