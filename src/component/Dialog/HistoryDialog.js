@@ -1,25 +1,39 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Modal} from "antd";
+import {Drawer} from "antd";
+import LocalHistory from "../LocalHistory";
 
 @inject("dialog")
+@inject("content")
 @observer
 class HistoryDialog extends Component {
   closeDialog = () => {
     this.props.dialog.setHistoryOpen(false);
   };
 
+  editLocalDocument = (content) => {
+    this.props.content.setContent(content);
+    this.closeDialog();
+  };
+
   render() {
     return (
-      <Modal
+      <Drawer
+        className="nice-md-local-history"
         title="本地历史"
-        okText="确认"
-        cancelText="取消"
+        placement="right"
+        closable={false}
+        width={450}
         visible={this.props.dialog.isHistoryOpen}
-        onOk={this.closeDialog}
-        onCancel={this.closeDialog}
+        onClose={this.closeDialog}
       >
-      </Modal>
+        <LocalHistory
+          editor={this.props.content.markdownEditor}
+          content={this.props.content.content}
+          documentID={1}
+          onEdit={this.editLocalDocument}
+        />
+      </Drawer>
     );
   }
 }
