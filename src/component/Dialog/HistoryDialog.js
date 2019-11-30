@@ -2,11 +2,105 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Drawer} from "antd";
 import LocalHistory from "../LocalHistory";
+import {AutoSaveInterval, getLocalDocuments, setLocalDocuments, setLocalDraft} from "../LocalHistory/util";
+import IndexDB from "../LocalHistory/indexdb";
+import debouce from 'lodash.debounce';
+const DocumentID = 1;
 
 @inject("dialog")
 @inject("content")
 @observer
 class HistoryDialog extends Component {
+  timer = null;
+
+  db = null;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      documents: [],
+    };
+  }
+
+  async componentDidMount() {
+    await this.initIndexDB();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  get editor() {
+    return this.props.content.markdownEditor;
+  }
+
+  //
+  // async UNSAFE_componentWillReceiveProps(nextProps) {
+  //   // 文档 id 变更
+  //   if (this.props.documentID !== nextProps.documentID && nextProps.documentID != null) {
+  //     if (this.db) {
+  //       await this.refreshLocalDocuments(nextProps.documentID);
+  //     }
+  //   }
+  // }
+  //
+  autoSave = async (isRecent = false) => {
+    const Content = this.props.content.markdownEditor.getValue();
+    if (Content.trim() !== "") {
+      const document = {
+        Content,
+        DocumentID: this.props.documentID,
+        SaveTime: new Date(),
+      };
+      const setLocalDocumentMethod = isRecent && this.state.documents.length > 0 ? setLocalDraft : setLocalDocuments;
+      await setLocalDocumentMethod(this.db, this.state.documents, document);
+      await this.refreshLocalDocuments(this.props.documentID);
+    }
+  };
+
+  async initIndexDB() {
+    console.log("initIndexDB");
+    try {
+      const indexDB = new IndexDB({
+        name: "mdnice-local-history",
+        storeName: "customers",
+        storeOptions: {keyPath: "id", autoIncrement: true},
+        storeInit: (objectStore) => {
+          objectStore.createIndex("DocumentID", "DocumentID", {unique: false});
+          objectStore.createIndex("SaveTime", "SaveTime", {unique: false});
+        },
+      });
+      this.db = await indexDB.init();
+
+      if (this.db && this.props.documentID) {
+        await this.refreshLocalDocuments(this.props.documentID);
+      }
+      // 每隔一段时间自动保存
+      this.timer = setInterval(async () => {
+        await this.autoSave();
+      }, AutoSaveInterval);
+      // 每改变内容自动保存最近的一条
+      this.editor.on &&
+        this.editor.on(
+          "change",
+          debouce(async () => {
+            await this.autoSave(true);
+          }, 1000),
+        );
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // 刷新本地历史文档
+  async refreshLocalDocuments(documentID) {
+    const localDocuments = await getLocalDocuments(this.db, +documentID);
+    // console.log('refresh local',localDocuments);
+    this.setState({
+      documents: localDocuments,
+    });
+  }
+
   closeDialog = () => {
     this.props.dialog.setHistoryOpen(false);
   };
@@ -28,14 +122,18 @@ class HistoryDialog extends Component {
         onClose={this.closeDialog}
       >
         <LocalHistory
-          editor={this.props.content.markdownEditor}
           content={this.props.content.content}
-          documentID={1}
+          documents={this.state.documents}
+          documentID={this.props.documentID}
           onEdit={this.editLocalDocument}
         />
       </Drawer>
     );
   }
 }
+
+HistoryDialog.defaultProps = {
+  documentID: DocumentID,
+};
 
 export default HistoryDialog;
