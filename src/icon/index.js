@@ -22,6 +22,7 @@ import Setting from "./Setting";
 import Smile from "./Smile";
 import Mobile from "./Mobile";
 import PC from "./PC";
+import History from "./History";
 
 export default (props) => {
   switch (props.name) {
@@ -69,6 +70,8 @@ export default (props) => {
       return <Mobile {...props} />;
     case "form":
       return <Form {...props} />;
+    case "history":
+      return <History {...props} />;
     default:
       return <svg />;
   }

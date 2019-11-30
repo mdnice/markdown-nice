@@ -20,6 +20,7 @@ import Setting from "../component/NavbarLeft/Setting";
 // import LogIn from "../component/LogIn";
 // import User from "../component/User";
 import About from "../component/NavbarLeft/About";
+import History from "../component/NavbarLeft/History";
 import Font from "../component/NavbarLeft/Font";
 
 import "./Navbar.css";
@@ -60,6 +61,9 @@ class Navbar extends Component {
               <Font />
               <Reset />
               <About />
+            </ButtonGroup>
+            <ButtonGroup className="nice-btn-group-margin">
+              <History />
             </ButtonGroup>
           </div>
         </div>
