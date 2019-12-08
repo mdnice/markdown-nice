@@ -162,7 +162,7 @@ export const customImageUpload = async ({
     const filename = names.join(".");
     const image = {
       filename,
-      url: encodeURI(result.data),
+      url: encodeURI(result.data.data), // 这里要和外接图床规定好数据逻辑，否则会接入失败
     };
     if (content) {
       writeToEditor({content, image});
