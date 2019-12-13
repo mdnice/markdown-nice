@@ -39,7 +39,7 @@ class HistoryDialog extends Component {
   //   // 文档 id 变更
   //   if (this.props.documentID !== nextProps.documentID && nextProps.documentID != null) {
   //     if (this.db) {
-  //       await this.refreshLocalDocuments(nextProps.documentID);
+  //       await this.overrideLocalDocuments(nextProps.documentID);
   //     }
   //   }
   // }
@@ -54,12 +54,11 @@ class HistoryDialog extends Component {
       };
       const setLocalDocumentMethod = isRecent && this.state.documents.length > 0 ? setLocalDraft : setLocalDocuments;
       await setLocalDocumentMethod(this.db, this.state.documents, document);
-      await this.refreshLocalDocuments(this.props.documentID);
+      await this.overrideLocalDocuments(this.props.documentID);
     }
   };
 
   async initIndexDB() {
-    console.log("initIndexDB");
     try {
       const indexDB = new IndexDB({
         name: "mdnice-local-history",
@@ -73,7 +72,7 @@ class HistoryDialog extends Component {
       this.db = await indexDB.init();
 
       if (this.db && this.props.documentID) {
-        await this.refreshLocalDocuments(this.props.documentID);
+        await this.overrideLocalDocuments(this.props.documentID);
       }
       // 每隔一段时间自动保存
       this.timer = setInterval(async () => {
@@ -93,7 +92,7 @@ class HistoryDialog extends Component {
   }
 
   // 刷新本地历史文档
-  async refreshLocalDocuments(documentID) {
+  async overrideLocalDocuments(documentID) {
     const localDocuments = await getLocalDocuments(this.db, +documentID);
     // console.log('refresh local',localDocuments);
     this.setState({
