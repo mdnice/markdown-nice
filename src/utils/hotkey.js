@@ -110,4 +110,15 @@ const bindHotkeys = (content, dialog) =>
         },
       };
 
+export const betterTab = (cm) => {
+  if (cm.somethingSelected()) {
+    cm.indentSelection("add");
+  } else {
+    cm.replaceSelection(
+      cm.getOption("indentWithTabs") ? "\t" : Array(cm.getOption("indentUnit") + 1).join(" "),
+      "end",
+      "+input",
+    );
+  }
+};
 export default bindHotkeys;
