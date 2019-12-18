@@ -20,7 +20,7 @@
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
     "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.28",
