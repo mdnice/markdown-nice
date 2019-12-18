@@ -48,11 +48,13 @@
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "7.2.2",
+    "@storybook/react": "^4.1.11",
     "@svgr/webpack": "^4.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.5",
+    "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-named-asset-import": "^0.3.1",
     "babel-preset-react-app": "^7.0.1",
     "bfj": "6.1.1",
@@ -109,8 +111,7 @@
     "webpack": "4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3",
-    "@storybook/react": "^4.1.11"
+    "workbox-webpack-plugin": "3.6.3"
   },
   "build": {
     "productName": "Markdown Nice",
@@ -203,7 +204,12 @@
         {
           "loose": true
         }
-      ]
+      ],
+      ["babel-plugin-inline-import", {
+        "extensions": [
+          ".md"
+        ]
+      }]
     ]
   },
   "husky": {
