@@ -3,7 +3,7 @@ import highlightjs from "highlight.js/lib/highlight";
 
 const languages = ["bash",
   "clojure", "cpp", "cs", "css",
-  "dart", "dockerfile", "diff"
+  "dart", "dockerfile", "diff",
   "erlang",
   "go", "gradle", "groovy",
   "haskell",
