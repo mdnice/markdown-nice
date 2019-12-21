@@ -14,6 +14,7 @@ export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
 export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
+export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
 export const VERSION = "version";
 export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
 export const IS_PRETTIER_OPEN = "is_prettier_open";
@@ -154,12 +155,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.4.6";
+export const VERSION_NUM = "1.4.7";
 
 export const VERSION_TIMELINE = [
+  "2019-12-21 修复代码块换行问题，新增上传时包含图片名选项",
   "2019-12-08 新增「图壳」免费图床，可以长期存储并且排版成功率高！下一个版本将移除其他图床的支持！仅提供组件配置项",
   "2019-11-16 新增全屏沉浸式编辑（点击全屏按钮可查看）",
   "2019-11-13 修复横屏幻灯片渲染问题, 修复知乎公式问题",
   "2019-11-09 新增幻灯片横屏滑动语法，重置后查看；新增拷贝到知乎，支持知乎公式使用",
-  "2019-11-05 新增快捷键，新增表格添加功能",
 ];

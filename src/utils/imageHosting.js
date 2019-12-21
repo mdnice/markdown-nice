@@ -7,7 +7,13 @@ import axios from "axios";
 import OSS from "ali-oss";
 import imageHosting from "../store/imageHosting";
 
-import {SM_MS_PROXY, ALIOSS_IMAGE_HOSTING, QINIUOSS_IMAGE_HOSTING, IMAGE_HOSTING_TYPE} from "./constant";
+import {
+  SM_MS_PROXY,
+  ALIOSS_IMAGE_HOSTING,
+  QINIUOSS_IMAGE_HOSTING,
+  IMAGE_HOSTING_TYPE,
+  IS_CONTAIN_IMG_NAME,
+} from "./constant";
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
 
 function showUploadNoti() {
@@ -24,8 +30,14 @@ function hideUploadNoti() {
 }
 
 function writeToEditor({content, image}) {
-  // 此处图片名称可能存在空格，所以要encodeURI
-  const text = `\n![${image.filename}](${image.url})\n`;
+  const isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
+  console.log(isContainImgName);
+  let text = "";
+  if (isContainImgName) {
+    text = `\n![${image.filename}](${image.url})\n`;
+  } else {
+    text = `\n![](${image.url})\n`;
+  }
   const {markdownEditor} = content;
   const cursor = markdownEditor.getCursor();
   markdownEditor.replaceSelection(text, cursor);
@@ -164,6 +176,7 @@ export const customImageUpload = async ({
       filename,
       url: encodeURI(result.data.data), // 这里要和外接图床规定好数据逻辑，否则会接入失败
     };
+
     if (content) {
       writeToEditor({content, image});
     }

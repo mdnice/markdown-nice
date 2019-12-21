@@ -4,19 +4,19 @@ import {Switch} from "antd";
 
 @inject("navbar")
 @observer
-class SyncScroll extends Component {
+class ContainImgName extends Component {
   handleChange = (key) => {
-    this.props.navbar.setSyncScroll(key);
+    this.props.navbar.setContainImgName(key);
   };
 
   render() {
     return (
-      <div>
-        同步滚动：
+      <div style={{marginTop: "10px"}}>
+        上传图片时包含名称：
         <Switch
           checkedChildren="开"
           unCheckedChildren="关"
-          checked={this.props.navbar.isSyncScroll}
+          checked={this.props.navbar.isContainImgName}
           onChange={this.handleChange}
         />
       </div>
@@ -24,4 +24,4 @@ class SyncScroll extends Component {
   }
 }
 
-export default SyncScroll;
+export default ContainImgName;

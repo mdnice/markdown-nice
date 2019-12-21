@@ -17,6 +17,7 @@ const {Option} = Select;
 @inject("dialog")
 @inject("content")
 @inject("imageHosting")
+@inject("navbar")
 @observer
 class ImageDialog extends Component {
   constructor(props) {
@@ -28,9 +29,16 @@ class ImageDialog extends Component {
   handleOk = () => {
     let text = "";
     // 成功后添加url
-    this.images.forEach((value) => {
-      text += `![${value.filename}](${value.url})\n`;
-    });
+    if (this.props.navbar.isContainImgName) {
+      this.images.forEach((value) => {
+        text += `![${value.filename}](${value.url})\n`;
+      });
+    } else {
+      this.images.forEach((value) => {
+        text += `![](${value.url})\n`;
+      });
+    }
+    // 重新初始化
     this.images = [];
     const {markdownEditor} = this.props.content;
     const cursor = markdownEditor.getCursor();

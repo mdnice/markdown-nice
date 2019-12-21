@@ -8,8 +8,8 @@ const defaultTitle = "Markdown Nice";
 
 // 自定义图床参数
 const useImageHosting = {
-  name: "自定义图床名称",
-  url: "自定义图床URL"
+  url: "https://imgkr.com/api/files/upload",
+  name: "图壳"
 };
 
 function App() {

@@ -64,7 +64,6 @@ class Navbar extends Component {
           </div>
         </div>
         <div className="nice-right-nav">
-          {/* <SyncScroll /> */}
           <Copy />
           <ThemeSelect />
           <Format />
