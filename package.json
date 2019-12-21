@@ -19,7 +19,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
-    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files",
+    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && cross-env BABEL_ENV=production npx babel src --out-dir lib --copy-files",
     "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
@@ -204,13 +204,19 @@
         {
           "loose": true
         }
-      ],
-      ["babel-plugin-inline-import", {
-        "extensions": [
-          ".md"
+      ]
+    ],
+    "env": {
+      "production": {
+        "plugins": [
+          ["babel-plugin-inline-import", {
+            "extensions": [
+              ".md"
+            ]
+          }]
         ]
-      }]
-    ]
+      }
+    }
   },
   "husky": {
     "hooks": {
