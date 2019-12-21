@@ -19,7 +19,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
-    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files"
+    "publish:npm": "cross-env NODE_ENV=production && rm -rf lib && mkdir lib && npx babel src --out-dir lib --copy-files",
+    "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@uiw/react-codemirror": "^1.0.28",
@@ -47,11 +48,13 @@
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "7.2.2",
+    "@storybook/react": "^4.1.11",
     "@svgr/webpack": "^4.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.5",
+    "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-named-asset-import": "^0.3.1",
     "babel-preset-react-app": "^7.0.1",
     "bfj": "6.1.1",
@@ -92,6 +95,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
     "pretty-quick": "^1.11.1",
+    "raw-loader": "^4.0.0",
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "resolve": "1.10.0",
@@ -200,7 +204,12 @@
         {
           "loose": true
         }
-      ]
+      ],
+      ["babel-plugin-inline-import", {
+        "extensions": [
+          ".md"
+        ]
+      }]
     ]
   },
   "husky": {

@@ -15,7 +15,7 @@ import shanchui from "./markdown/shanchui";
 import simple from "./markdown/simple";
 import wechatFormat from "./markdown/wechatFormat";
 
-import content from "./content";
+import content from "./content.md";
 
 import atomOneDark from "./code/atomOneDark";
 import atomOneLight from "./code/atomOneLight";
