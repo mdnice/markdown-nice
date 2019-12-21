@@ -36,7 +36,7 @@ export const solveZhihuMath = () => {
       continue;
     }
 
-    if (mjx.hasAttribute("display")) {
+    if (mjx.hasAttribute("display") && data.indexOf("\\tag") === -1) {
       data += "\\\\";
     }
 
