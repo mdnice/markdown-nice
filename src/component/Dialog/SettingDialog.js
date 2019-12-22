@@ -3,6 +3,7 @@ import {observer, inject} from "mobx-react";
 import {Modal} from "antd";
 
 import SyncScroll from "../Setting/SyncScroll";
+import ContainImgName from "../Setting/ContainImgName";
 
 @inject("dialog")
 @observer
@@ -22,6 +23,7 @@ class SettingDialog extends Component {
         onCancel={this.closeDialog}
       >
         <SyncScroll />
+        <ContainImgName />
       </Modal>
     );
   }

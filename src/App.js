@@ -17,7 +17,7 @@ import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helpe
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
-import bindHotkeys from "./utils/hotkey";
+import bindHotkeys, {betterTab} from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
@@ -237,7 +237,7 @@ class App extends Component {
                     mode: "markdown",
                     lineWrapping: true,
                     lineNumbers: false,
-                    extraKeys: bindHotkeys(this.props.content, this.props.dialog),
+                    extraKeys: {...bindHotkeys(this.props.content, this.props.dialog), Tab: betterTab},
                   }}
                   onChange={this.handleChange}
                   onScroll={this.handleScroll}
@@ -260,6 +260,8 @@ class App extends Component {
                 >
                   <section
                     id={LAYOUT_ID}
+                    data-tool="mdnice编辑器"
+                    data-website="https://www.mdnice.com"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
                     }}

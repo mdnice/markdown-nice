@@ -8,6 +8,7 @@ import {
   IS_PRETTIER_OPEN,
   PREVIEW_TYPE,
   IS_SYNC_SCROLL,
+  IS_CONTAIN_IMG_NAME,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
@@ -21,13 +22,15 @@ class Navbar {
 
   @observable isImmersiveEditing = false;
 
+  @observable isSyncScroll = true;
+
+  @observable isContainImgName = false;
+
   @observable templateNum;
 
   @observable codeNum;
 
   @observable previewType;
-
-  @observable isSyncScroll = true;
 
   @action
   setStyleEditorOpen = (isStyleEditorOpen) => {
@@ -47,6 +50,18 @@ class Navbar {
   @action
   setPrettierOpen = (isPrettierOpen) => {
     this.isPrettierOpen = isPrettierOpen;
+  };
+
+  @action
+  setSyncScroll = (isSyncScroll) => {
+    this.isSyncScroll = isSyncScroll;
+    window.localStorage.setItem(IS_SYNC_SCROLL, isSyncScroll);
+  };
+
+  @action
+  setContainImgName = (isContainImgName) => {
+    this.isContainImgName = isContainImgName;
+    window.localStorage.setItem(IS_CONTAIN_IMG_NAME, isContainImgName);
   };
 
   @action
@@ -70,12 +85,6 @@ class Navbar {
   setPreviewType = (previewType) => {
     this.previewType = previewType;
     window.localStorage.setItem(PREVIEW_TYPE, previewType);
-  };
-
-  @action
-  setSyncScroll = (isSyncScroll) => {
-    this.isSyncScroll = isSyncScroll;
-    window.localStorage.setItem(IS_SYNC_SCROLL, isSyncScroll);
   };
 }
 
@@ -109,6 +118,10 @@ if (!window.localStorage.getItem(IS_SYNC_SCROLL)) {
   window.localStorage.setItem(IS_SYNC_SCROLL, true);
 }
 
+if (!window.localStorage.getItem(IS_CONTAIN_IMG_NAME)) {
+  window.localStorage.setItem(IS_CONTAIN_IMG_NAME, false);
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
@@ -116,6 +129,7 @@ store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "t
 store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
+store.isSyncScroll = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

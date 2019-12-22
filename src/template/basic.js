@@ -161,7 +161,7 @@ ol {
   margin-bottom: 10px;
 }
 #nice pre code {
-  display: -webkit-box !important;
+  display: block;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   font-size: 12px;

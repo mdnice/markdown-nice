@@ -50,6 +50,8 @@
     "react/jsx-wrap-multilines": 0,
     "no-unused-expressions": 0,
     "react/no-danger": 0,
-    "no-console": 0
+    "no-console": 0,
+    "import/no-dynamic-require": 1,
+    "global-require": 1
   }
 }

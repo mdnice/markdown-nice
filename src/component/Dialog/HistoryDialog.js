@@ -4,7 +4,8 @@ import {Drawer} from "antd";
 import LocalHistory from "../LocalHistory";
 import {AutoSaveInterval, getLocalDocuments, setLocalDocuments, setLocalDraft} from "../LocalHistory/util";
 import IndexDB from "../LocalHistory/indexdb";
-import debouce from 'lodash.debounce';
+import debouce from "lodash.debounce";
+
 const DocumentID = 1;
 
 @inject("dialog")
@@ -44,6 +45,16 @@ class HistoryDialog extends Component {
   //   }
   // }
   //
+
+  closeDialog = () => {
+    this.props.dialog.setHistoryOpen(false);
+  };
+
+  editLocalDocument = (content) => {
+    this.props.content.setContent(content);
+    this.closeDialog();
+  };
+
   autoSave = async (isRecent = false) => {
     const Content = this.props.content.markdownEditor.getValue();
     if (Content.trim() !== "") {
@@ -99,15 +110,6 @@ class HistoryDialog extends Component {
       documents: localDocuments,
     });
   }
-
-  closeDialog = () => {
-    this.props.dialog.setHistoryOpen(false);
-  };
-
-  editLocalDocument = (content) => {
-    this.props.content.setContent(content);
-    this.closeDialog();
-  };
 
   render() {
     return (
