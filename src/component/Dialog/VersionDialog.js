@@ -32,6 +32,7 @@ class VersionDialog extends Component {
             确认
           </Button>,
         ]}
+        destroyOnClose
       >
         <Timeline>
           {VERSION_TIMELINE.map((version, index) => {

@@ -28,6 +28,7 @@
     "ali-oss": "^6.1.1",
     "antd": "^3.15.1",
     "axios": "^0.18.0",
+    "diff_match_patch": "^0.1.1",
     "highlight.js": "^9.15.6",
     "juice": "^5.2.0",
     "lodash.debounce": "^4.0.8",
@@ -38,7 +39,6 @@
     "markdown-it-katex": "^2.0.3",
     "markdown-it-ruby": "^0.1.1",
     "markdown-it-table-of-contents": "^0.4.4",
-    "mathjax": "^3.0.0",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "prettier": "^1.18.2",
@@ -208,11 +208,14 @@
     "env": {
       "production": {
         "plugins": [
-          ["babel-plugin-inline-import", {
-            "extensions": [
-              ".md"
-            ]
-          }]
+          [
+            "babel-plugin-inline-import",
+            {
+              "extensions": [
+                ".md"
+              ]
+            }
+          ]
         ]
       }
     }

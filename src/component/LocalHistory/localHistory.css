@@ -5,10 +5,14 @@
 
 .nice-md-local-history-preview {
     width: 100%;
+    max-width: 800px;
 }
 
 .nice-md-local-history-btn-group {
-    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
 }
 .nice-md-local-history-btn-group button {
     margin: 25px 10px;

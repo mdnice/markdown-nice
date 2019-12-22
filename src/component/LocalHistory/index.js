@@ -1,11 +1,15 @@
 import * as React from "react";
-import {Menu, Button} from "antd";
+import {Menu, Button, Radio} from "antd";
 import CodeMirror from "@uiw/react-codemirror";
+import MergeCodeMirror from "./mergeCodeMirror";
+import {inject} from "mobx-react";
+
 import "./localHistory.css";
 
 const NOOP = () => {};
 const prefix = "nice-md-local-history";
 
+@inject("content")
 class LocalHistory extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +17,7 @@ class LocalHistory extends React.Component {
     this.state = {
       content: documents[0].Content,
       selectedKeys: String(documents[0].id),
+      mode: "all",
     };
   }
 
@@ -21,6 +26,12 @@ class LocalHistory extends React.Component {
     this.setState({
       content,
       selectedKeys,
+    });
+  };
+
+  handleModeChange = (e) => {
+    this.setState({
+      mode: e.target.value,
     });
   };
 
@@ -36,28 +47,54 @@ class LocalHistory extends React.Component {
         </Menu>
         {this.state.content && (
           <div className={`${prefix}-preview`}>
-            <CodeMirror
-              key="local-history"
-              value={this.state.content}
-              height="calc(100% - 56px)"
-              options={{
-                readOnly: true,
-                theme: "md-mirror",
-                mode: "markdown",
-                lineWrapping: true,
-                lineNumbers: false,
-              }}
-            />
-            <div className={`${prefix}-btn-group`}>
-              <Button onClick={this.props.onCancel}>取消</Button>
-              <Button
-                type="primary"
-                onClick={() => {
-                  this.props.onEdit(this.state.content);
+            {this.state.mode === "all" ? (
+              <CodeMirror
+                key="local-history"
+                value={this.state.content}
+                height="calc(100% - 56px)"
+                options={{
+                  readOnly: true,
+                  theme: "md-mirror",
+                  mode: "markdown",
+                  lineWrapping: true,
+                  lineNumbers: false,
                 }}
-              >
-                恢复此版本
-              </Button>
+              />
+            ) : (
+              <MergeCodeMirror
+                key="local-history-diff"
+                height="calc(100% - 56px)"
+                className={`${prefix}-merge`}
+                value={this.state.content}
+                options={{
+                  value: this.state.content,
+                  origLeft: this.props.content.content,
+                  orig: this.state.content,
+                  lineNumbers: true,
+                  theme: "md-mirror",
+                  mode: "markdown",
+                  highlightDifferences: true,
+                  connect: "align",
+                  collapseIdentical: false,
+                }}
+              />
+            )}
+            <div className={`${prefix}-btn-group`}>
+              <Radio.Group onChange={this.handleModeChange} value={this.state.mode}>
+                <Radio value="all">全文</Radio>
+                <Radio value="diff">和当前内容对比</Radio>
+              </Radio.Group>
+              <div>
+                <Button onClick={this.props.onCancel}>取消</Button>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    this.props.onEdit(this.state.content);
+                  }}
+                >
+                  恢复此版本
+                </Button>
+              </div>
             </div>
           </div>
         )}
