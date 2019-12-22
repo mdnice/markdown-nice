@@ -1,63 +1,66 @@
 import * as React from "react";
-import {Button} from "antd";
-import PreviewForm from "./preview";
+import {Menu, Button} from "antd";
+import CodeMirror from "@uiw/react-codemirror";
 import "./localHistory.css";
 
 const NOOP = () => {};
+const prefix = "nice-md-local-history";
+
 class LocalHistory extends React.Component {
   constructor(props) {
     super(props);
+    const {documents} = this.props;
     this.state = {
-      showPreview: false,
-      markDownString: "",
+      content: documents[0].Content,
+      selectedKeys: String(documents[0].id),
     };
   }
 
-  preview = (content) => {
+  selectNav = ({selectedKeys}) => {
+    const {Content: content} = this.props.documents.find((doc) => String(doc.id) === String(selectedKeys[0])) || {};
     this.setState({
-      showPreview: true,
-      markDownString: content,
-    });
-  };
-
-  hidePreview = () => {
-    this.setState({
-      showPreview: false,
-      markDownString: "",
+      content,
+      selectedKeys,
     });
   };
 
   render() {
     const {documents} = this.props;
+
     return (
       <>
-        {documents.map((d) => (
-          <div key={d.id}>
-            {/* 保存时间：{moment(d.SaveTime).format('YYYY-MM-DD HH:mm:ss')} */}
-            保存时间：
-            {d.SaveTime.toLocaleString()}
-            <Button
-              type="primary"
-              onClick={() => {
-                this.preview(d.Content);
+        <Menu className={`${prefix}-nav`} onSelect={this.selectNav} selectedKeys={this.state.selectedKeys}>
+          {documents.map((d) => (
+            <Menu.Item key={d.id}>{d.SaveTime.toLocaleString()}</Menu.Item>
+          ))}
+        </Menu>
+        {this.state.content && (
+          <div className={`${prefix}-preview`}>
+            <CodeMirror
+              key="local-history"
+              value={this.state.content}
+              height="calc(100% - 56px)"
+              options={{
+                readOnly: true,
+                theme: "md-mirror",
+                mode: "markdown",
+                lineWrapping: true,
+                lineNumbers: true,
               }}
-            >
-              预览
-            </Button>
-            <Button
-              onClick={() => {
-                this.props.onEdit(d.Content);
-              }}
-            >
-              编辑
-            </Button>
-            <PreviewForm
-              hideModal={this.hidePreview}
-              visible={this.state.showPreview}
-              markDownString={this.state.markDownString}
             />
+            <div className={`${prefix}-btn-group`}>
+              <Button onClick={this.props.onCancel}>取消</Button>
+              <Button
+                type="primary"
+                onClick={() => {
+                  this.props.onEdit(this.state.content);
+                }}
+              >
+                恢复此版本
+              </Button>
+            </div>
           </div>
-        ))}
+        )}
       </>
     );
   }
@@ -65,8 +68,9 @@ class LocalHistory extends React.Component {
 
 LocalHistory.defaultProps = {
   visible: false,
-  document: [],
+  document: [{}],
   onEdit: NOOP,
+  onCancel: NOOP,
 };
 
 export default LocalHistory;

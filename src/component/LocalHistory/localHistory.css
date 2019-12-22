@@ -1,7 +1,33 @@
-.nice-md-local-history button {
-    margin: 5px 10px;
+.nice-md-local-history .ant-modal-body {
+    display: flex;
+    height: calc(100vh - 112px);
 }
 
-.nice-md-local-history button:last-child {
-    margin: 5px 10px;
+.nice-md-local-history-preview {
+    width: 100%;
+}
+
+.nice-md-local-history-btn-group {
+    float: right;
+}
+.nice-md-local-history-btn-group button {
+    margin: 25px 10px;
+}
+
+.nice-md-local-history-btn-group button:last-child {
+    margin-right: 0;
+}
+
+.nice-md-local-history-nav {
+    width: 256px;
+    flex: 0 0 auto;
+    background: #fff;
+    border-radius: 4px 0 0 4px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.nice-md-local-history-nav .ant-list-item {
+    border-bottom: 0;
+    padding: 17px 24px;
 }

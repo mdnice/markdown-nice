@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Drawer} from "antd";
+import {Modal, Empty} from "antd";
 import LocalHistory from "../LocalHistory";
 import {AutoSaveInterval, getLocalDocuments, setLocalDocuments, setLocalDraft} from "../LocalHistory/util";
 import IndexDB from "../LocalHistory/indexdb";
@@ -113,22 +113,26 @@ class HistoryDialog extends Component {
 
   render() {
     return (
-      <Drawer
+      <Modal
         className="nice-md-local-history"
         title="本地历史"
-        placement="right"
-        closable={false}
-        width={450}
+        width={1080}
         visible={this.props.dialog.isHistoryOpen}
-        onClose={this.closeDialog}
+        onCancel={this.closeDialog}
+        footer={null}
       >
-        <LocalHistory
-          content={this.props.content.content}
-          documents={this.state.documents}
-          documentID={this.props.documentID}
-          onEdit={this.editLocalDocument}
-        />
-      </Drawer>
+        {this.state.documents && this.state.documents.length > 0 ? (
+          <LocalHistory
+            content={this.props.content.content}
+            documents={this.state.documents}
+            documentID={this.props.documentID}
+            onEdit={this.editLocalDocument}
+            onCancel={this.closeDialog}
+          />
+        ) : (
+          <Empty style={{width: "100%"}} description="暂无本地历史" />
+        )}
+      </Modal>
     );
   }
 }
