@@ -45,7 +45,7 @@ class LocalHistory extends React.Component {
                 theme: "md-mirror",
                 mode: "markdown",
                 lineWrapping: true,
-                lineNumbers: true,
+                lineNumbers: false,
               }}
             />
             <div className={`${prefix}-btn-group`}>
