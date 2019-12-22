@@ -22,9 +22,9 @@ export default class MergeCodeMirror extends Component {
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
     const val = this.editor.edit.getValue();
-    const next = nextProps.value;
-    if (next !== undefined && next !== this.props.value && next !== val) {
-      this.editor.edit.setValue(nextProps.value);
+    const next = nextProps.options.value;
+    if (next !== undefined && next !== this.props.options.value && next !== val) {
+      this.editor.edit.setValue(nextProps.options.value);
     }
     const {options} = nextProps;
     await this.setOptions(options);
@@ -32,7 +32,6 @@ export default class MergeCodeMirror extends Component {
 
   componentWillUnmount() {
     if (this.editor) {
-      console.log("this.editor", this.editor);
       // this.editor.destory();
     }
   }
@@ -61,7 +60,7 @@ export default class MergeCodeMirror extends Component {
     // 获取CodeMirror用于获取其中的一些常量
     this.codemirror = CodeMirror;
     // 初始化值
-    const {value} = this.props;
+    const {value} = this.props.options;
     this.editor.edit.setValue(value || "");
   }
 
@@ -79,12 +78,10 @@ export default class MergeCodeMirror extends Component {
 
 MergeCodeMirror.defaultProps = {
   options: {},
-  value: "",
   className: "",
 };
 
 MergeCodeMirror.propTypes = {
   options: PropTypes.object,
-  value: PropTypes.string,
   className: PropTypes.string,
 };

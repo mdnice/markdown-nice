@@ -65,7 +65,6 @@ class LocalHistory extends React.Component {
                 key="local-history-diff"
                 height="calc(100% - 56px)"
                 className={`${prefix}-merge`}
-                value={this.state.content}
                 options={{
                   value: this.state.content,
                   origLeft: this.props.content.content,
