@@ -75,6 +75,7 @@ class LocalHistory extends React.Component {
                   highlightDifferences: true,
                   connect: "align",
                   collapseIdentical: false,
+                  readOnly: true,
                 }}
               />
             )}
