@@ -4,10 +4,10 @@ function saveTimeSort(a, b) {
   return new Date(b.SaveTime).getTime() - new Date(a.SaveTime).getTime();
 }
 
-export const MaxLocalDocumentLength = 15;
+export const MaxLocalDocumentLength = 30;
 
 // export const AutoSaveInterval = 10 * 60 * 1000;
-export const AutoSaveInterval = 3 * 1000;
+export const AutoSaveInterval = 60 * 1000;
 
 export const getLocalDocuments = (db, DocumentID) => {
   try {
