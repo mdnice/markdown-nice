@@ -36,7 +36,7 @@ class LocalHistory extends React.Component {
   };
 
   render() {
-    const {documents} = this.props;
+    const {documents, content} = this.props;
 
     return (
       <>
@@ -67,8 +67,8 @@ class LocalHistory extends React.Component {
                 className={`${prefix}-merge`}
                 options={{
                   value: this.state.content,
-                  origLeft: this.props.content.content,
-                  orig: this.state.content,
+                  origLeft: null,
+                  orig: content,
                   lineNumbers: true,
                   theme: "md-mirror",
                   mode: "markdown",
