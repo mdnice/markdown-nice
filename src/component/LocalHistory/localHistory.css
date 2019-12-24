@@ -8,6 +8,10 @@
     height: calc(100vh - 216px);
 }
 
+.nice-md-local-history .CodeMirror-merge-copy {
+    display: none;
+}
+
 .nice-md-local-history-preview {
     width: 100%;
     max-width: 800px;
