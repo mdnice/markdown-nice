@@ -116,6 +116,7 @@ class HistoryDialog extends Component {
       <Modal
         className="nice-md-local-history"
         title="本地历史"
+        centered
         width={1080}
         visible={this.props.dialog.isHistoryOpen}
         onCancel={this.closeDialog}
