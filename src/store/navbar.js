@@ -129,7 +129,7 @@ store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "t
 store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
-store.isSyncScroll = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
+store.isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
 
 // 初始化代码主题
 const codeId = CODE_OPTIONS[store.codeNum].id;

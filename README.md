@@ -50,6 +50,12 @@ const defaultText = `编辑器默认的内容`;
 // 标题，是一个字符串
 const defaultTitle = "Markdown Nice";
 
+// 自定义图床参数
+const useImageHosting = {
+  name: "自定义图床名称",
+  url: "自定义图床URL",
+};
+
 function App() {
   return (
     <MarkdownNice
@@ -69,6 +75,6 @@ mdnice 社区组建了**微信用户群**，欢迎反馈意见和公众号大佬
 
 同时也欢迎打赏哟，您的支持是我们最大的动力！
 
-|入群码|打赏码|
-|---|---|
-|<img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/>|<img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/>|
+| 入群码                                                                                                | 打赏码                                                                                  |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| <img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/> | <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/> |
