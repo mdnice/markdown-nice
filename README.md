@@ -24,7 +24,7 @@
 
 ## 组件使用
 
-目前仅支持 React
+### React
 
 1、安装 markdown-nice
 
@@ -68,6 +68,10 @@ function App() {
 
 export default App;
 ```
+
+### Vue(临时)
+
+当前组件没有正式支持 Vue，可以参考[这里](https://github.com/ElyhG/vuera)来在 Vue 中引入组件
 
 ## 关于
 
