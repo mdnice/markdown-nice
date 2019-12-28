@@ -20,6 +20,11 @@ class VersionDialog extends Component {
     w.location.href = "https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md";
   };
 
+  handleDocs = () => {
+    const w = window.open("about:blank");
+    w.location.href = "https://docs.mdnice.com";
+  };
+
   render() {
     return (
       <Modal
@@ -46,14 +51,27 @@ class VersionDialog extends Component {
               return <Timeline.Item key={index}>{version}</Timeline.Item>;
             }
           })}
-          <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
+          <Timeline.Item>
+            了解更多，请查看
             <a
+              style={{fontWeight: "bold"}}
               alt=""
-              href="https://github.com/mdnice/markdown-nice/blob/master/CHANGELOG.md"
+              href="https://docs.mdnice.com"
               rel="noopener noreferrer"
               target="_blank"
             >
-              更多
+              用户与开发者文档
+            </a>
+          </Timeline.Item>
+          <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
+            <a
+              style={{fontWeight: "bold", borderBottom: "double"}}
+              alt=""
+              href="https://github.com/mdnice/markdown-nice"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              恭喜 markdown-nice 突破 1k Star 🎉🎉🎉，欢迎点击 Star
             </a>
           </Timeline.Item>
         </Timeline>

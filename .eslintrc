@@ -54,6 +54,7 @@
     "camelcase": 0,
     "import/no-dynamic-require": 1,
     "global-require": 1,
-    "react/forbid-prop-types": 1
+    "react/forbid-prop-types": 1,
+    "jsx-a11y/accessible-emoji": 0
   }
 }
