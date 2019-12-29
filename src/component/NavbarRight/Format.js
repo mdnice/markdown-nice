@@ -20,6 +20,8 @@ class Format extends Component {
     if (this.props.navbar.isPrettierOpen) {
       content = this.handlePrettierDoc(content);
     }
+    content = content.replace(/([\u4e00-\u9fa5])\$/g, "$1 $");
+    content = content.replace(/\$([\u4e00-\u9fa5])/g, "$ $1");
     this.props.content.setContent(content);
     message.success("格式化完成！");
   };
