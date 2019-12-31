@@ -44,7 +44,7 @@ class LocalHistory extends React.Component {
     });
   };
 
-  handleModeChange = async (e) => {
+  handleModeChange = (e) => {
     const {content} = this.props;
     this.setState((preState) => ({
       mode: e.target.value,
