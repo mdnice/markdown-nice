@@ -5511,15 +5511,15 @@ detect-port@^1.2.3:
     address "^1.0.1"
     debug "^2.6.0"
 
+diff-match-patch@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/diff-match-patch/-/diff-match-patch-1.0.4.tgz#6ac4b55237463761c4daf0dc603eb869124744b1"
+  integrity sha512-Uv3SW8bmH9nAtHKaKSanOQmj2DnlH65fUpcrMdfdaOxUG02QQ4YGZ8AE7kKOMisF7UqvOlGKVYWRvezdncW9lg==
+
 diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
-
-diff_match_patch@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/diff_match_patch/-/diff_match_patch-0.1.1.tgz#d3f14d5b76fb4b5a9cf44706261dadb5bd97edbc"
-  integrity sha1-0/FNW3b7S1qc9EcGJh2ttb2X7bw=
 
 diffie-hellman@^5.0.0:
   version "5.0.3"

@@ -3,7 +3,7 @@ import {Menu, Button, Radio} from "antd";
 import CodeMirror from "@uiw/react-codemirror";
 import {diff_match_patch as DiffMatchPath} from "diff-match-patch";
 // import MergeCodeMirror from "./mergeCodeMirror";
-import {inject} from "mobx-react";
+// import {inject} from "mobx-react";
 
 import "./localHistory.css";
 
@@ -11,28 +11,31 @@ const NOOP = () => {};
 const prefix = "nice-md-local-history";
 
 const diff = new DiffMatchPath();
-@inject("content")
+// @inject("content")
 class LocalHistory extends React.Component {
   constructor(props) {
     super(props);
     const {documents} = this.props;
     this.state = {
       content: documents[0].Content,
-      diffHtml: "",
       selectedKeys: String(documents[0].id),
       mode: "all",
     };
   }
 
-  getDiffHtml = (content, history) => {
+  getDiffHtml = () => {
     // eslint-disable-next-line no-underscore-dangle
-    var a = diff.diff_linesToChars_(content, history);
+    var a = diff.diff_linesToChars_(this.state.content, this.props.content);
     var lineText1 = a.chars1;
     var lineText2 = a.chars2;
     var diffs = diff.diff_main(lineText1, lineText2, false);
     // eslint-disable-next-line no-underscore-dangle
     diff.diff_charsToLines_(diffs, a.lineArray);
-    return diff.diff_prettyHtml(diffs).replace(/&para;/g, "");
+    const html = diff
+      .diff_prettyHtml(diffs)
+      .replace(/&para;/g, "")
+      .replace(/<br>/g, "&#8203;<br>&#8203;");
+    return html;
   };
 
   selectNav = ({selectedKeys}) => {
@@ -40,20 +43,17 @@ class LocalHistory extends React.Component {
     this.setState({
       content,
       selectedKeys,
-      diffHtml: this.getDiffHtml(content, this.props.content),
     });
   };
 
   handleModeChange = (e) => {
-    const {content} = this.props;
-    this.setState((preState) => ({
+    this.setState({
       mode: e.target.value,
-      diffHtml: e.target.value === "diff" ? this.getDiffHtml(preState.content, content) : preState.diffHtml,
-    }));
+    });
   };
 
   render() {
-    const {documents, content} = this.props;
+    const {documents} = this.props;
 
     return (
       <>
@@ -95,7 +95,7 @@ class LocalHistory extends React.Component {
               //     readOnly: true,
               //   }}
               // />
-              <div dangerouslySetInnerHTML={{__html: this.state.diffHtml}} className={`${prefix}-diff-content`} />
+              <div dangerouslySetInnerHTML={{__html: this.getDiffHtml()}} className={`${prefix}-diff-content`} />
             )}
             <div className={`${prefix}-btn-group`}>
               <Radio.Group onChange={this.handleModeChange} value={this.state.mode}>
