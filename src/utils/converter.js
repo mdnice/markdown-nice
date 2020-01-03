@@ -68,6 +68,12 @@ export const solveHtml = () => {
   } catch (e) {
     message.error("请检查 CSS 文件是否编写正确！");
   }
+  const codeReg = /<pre([^>])*class="custom"([^>])*><code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
+  const codeMatch = res.match(codeReg);
+  if (codeMatch) {
+    const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
+    res = res.replace(codeReg, convertTag);
+  }
   return res;
 };
 
