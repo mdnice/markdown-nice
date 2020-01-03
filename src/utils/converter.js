@@ -55,6 +55,7 @@ export const solveHtml = () => {
   html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
   html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
   html = html.replace(/mjx-container/g, "section");
+  html = html.replace(/class="mjx-solid"/g, 'fill="none" stroke-width="70"');
   const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
   const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
   const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
@@ -66,6 +67,12 @@ export const solveHtml = () => {
     });
   } catch (e) {
     message.error("请检查 CSS 文件是否编写正确！");
+  }
+  const codeReg = /<pre([^>])*class="custom"([^>])*><code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
+  const codeMatch = res.match(codeReg);
+  if (codeMatch) {
+    const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
+    res = res.replace(codeReg, convertTag);
   }
   return res;
 };
