@@ -1,15 +1,17 @@
 import * as React from "react";
 import {Menu, Button, Radio} from "antd";
 import CodeMirror from "@uiw/react-codemirror";
-import MergeCodeMirror from "./mergeCodeMirror";
-import {inject} from "mobx-react";
+import {diff_match_patch as DiffMatchPath} from "diff-match-patch";
+// import MergeCodeMirror from "./mergeCodeMirror";
+// import {inject} from "mobx-react";
 
 import "./localHistory.css";
 
 const NOOP = () => {};
 const prefix = "nice-md-local-history";
 
-@inject("content")
+const diff = new DiffMatchPath();
+// @inject("content")
 class LocalHistory extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,21 @@ class LocalHistory extends React.Component {
       mode: "all",
     };
   }
+
+  getDiffHtml = () => {
+    // eslint-disable-next-line no-underscore-dangle
+    var a = diff.diff_linesToChars_(this.state.content, this.props.content);
+    var lineText1 = a.chars1;
+    var lineText2 = a.chars2;
+    var diffs = diff.diff_main(lineText1, lineText2, false);
+    // eslint-disable-next-line no-underscore-dangle
+    diff.diff_charsToLines_(diffs, a.lineArray);
+    const html = diff
+      .diff_prettyHtml(diffs)
+      .replace(/&para;/g, "")
+      .replace(/<br>/g, "&#8203;<br>&#8203;");
+    return html;
+  };
 
   selectNav = ({selectedKeys}) => {
     const {Content: content} = this.props.documents.find((doc) => String(doc.id) === String(selectedKeys[0])) || {};
@@ -36,7 +53,7 @@ class LocalHistory extends React.Component {
   };
 
   render() {
-    const {documents, content} = this.props;
+    const {documents} = this.props;
 
     return (
       <>
@@ -61,23 +78,24 @@ class LocalHistory extends React.Component {
                 }}
               />
             ) : (
-              <MergeCodeMirror
-                key="local-history-diff"
-                height="calc(100% - 56px)"
-                className={`${prefix}-merge`}
-                options={{
-                  value: this.state.content,
-                  origLeft: null,
-                  orig: content,
-                  lineNumbers: true,
-                  theme: "md-mirror",
-                  mode: "markdown",
-                  highlightDifferences: true,
-                  connect: "align",
-                  collapseIdentical: false,
-                  readOnly: true,
-                }}
-              />
+              // <MergeCodeMirror
+              //   key="local-history-diff"
+              //   height="calc(100% - 56px)"
+              //   className={`${prefix}-merge`}
+              //   options={{
+              //     value: this.state.content,
+              //     origLeft: null,
+              //     orig: content,
+              //     lineNumbers: true,
+              //     theme: "md-mirror",
+              //     mode: "markdown",
+              //     highlightDifferences: true,
+              //     connect: "align",
+              //     collapseIdentical: false,
+              //     readOnly: true,
+              //   }}
+              // />
+              <div dangerouslySetInnerHTML={{__html: this.getDiffHtml()}} className={`${prefix}-diff-content`} />
             )}
             <div className={`${prefix}-btn-group`}>
               <Radio.Group onChange={this.handleModeChange} value={this.state.mode}>
