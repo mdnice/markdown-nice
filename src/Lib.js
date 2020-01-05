@@ -42,6 +42,7 @@ class Lib extends Component {
     const {defaultTitle, defaultText, onTextChange, useImageHosting} = this.props;
     const appCtx = {
       defaultTitle,
+      useImageHosting,
     };
 
     return (
@@ -80,7 +81,13 @@ Lib.defaultProps = {
   defaultText: "",
   onTextChange: () => {},
   // eslint-disable-next-line react/default-props-match-prop-types
-  imageHosting: null,
+  useImageHosting: {
+    url: "",
+    name: "",
+    isSmmsOpen: true,
+    isQiniuyunOpen: true,
+    isAliyunOpen: true,
+  },
 };
 Lib.propTypes = {
   defaultTitle: PropTypes.string,
@@ -90,6 +97,9 @@ Lib.propTypes = {
   useImageHosting: PropTypes.shape({
     url: PropTypes.string,
     name: PropTypes.string,
+    isSmmsOpen: PropTypes.bool,
+    isQiniuyunOpen: PropTypes.bool,
+    isAliyunOpen: PropTypes.bool,
   }),
 };
 

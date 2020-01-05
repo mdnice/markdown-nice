@@ -8,7 +8,8 @@ import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
 
 import {uploadAdaptor} from "../../utils/imageHosting";
-import {SM_MS_PROXY, IMAGE_HOSTING_TYPE} from "../../utils/constant";
+import {SM_MS_PROXY, IMAGE_HOSTING_TYPE, IMAGE_HOSTING_NAMES} from "../../utils/constant";
+import appContext from "../../utils/appContext";
 
 const {Dragger} = Upload;
 const {TabPane} = Tabs;
@@ -95,17 +96,19 @@ class ImageDialog extends Component {
   };
 
   render() {
-    const columns = this.props.imageHosting.hostingList.map((option, index) => (
+    const {hostingList, type} = this.props.imageHosting;
+
+    const columns = hostingList.map((option, index) => (
       <Option key={index} value={option.value}>
         {option.label}
       </Option>
     ));
+
     const imageHostingSwitch = (
-      <Select value={this.props.imageHosting.type} onChange={this.typeChange}>
+      <Select style={{width: "90px"}} value={type} onChange={this.typeChange}>
         {columns}
       </Select>
     );
-    const {type} = this.props.imageHosting;
 
     return (
       <Modal
@@ -117,23 +120,31 @@ class ImageDialog extends Component {
         onCancel={this.handleCancel}
         bodyStyle={{paddingTop: "10px"}}
       >
-        <Tabs tabBarExtraContent={imageHostingSwitch} type="card">
-          <TabPane tab="图片上传" key="1">
-            <Dragger name="file" multiple action={SM_MS_PROXY} customRequest={this.customRequest}>
-              <p className="ant-upload-drag-icon">
-                <SvgIcon name="inbox" style={style.svgIcon} fill="#40a9ff" />
-              </p>
-              <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
-              <p className="ant-upload-hint">{"正在使用" + type + "图床"}</p>
-            </Dragger>
-          </TabPane>
-          <TabPane tab="阿里云" key="2">
-            <AliOSS />
-          </TabPane>
-          <TabPane tab="七牛云" key="3">
-            <QiniuOSS />
-          </TabPane>
-        </Tabs>
+        <appContext.Consumer>
+          {({useImageHosting}) => (
+            <Tabs tabBarExtraContent={imageHostingSwitch} type="card">
+              <TabPane tab="图片上传" key="1">
+                <Dragger name="file" multiple action={SM_MS_PROXY} customRequest={this.customRequest}>
+                  <p className="ant-upload-drag-icon">
+                    <SvgIcon name="inbox" style={style.svgIcon} fill="#40a9ff" />
+                  </p>
+                  <p className="ant-upload-text">点击或拖拽一张或多张照片上传</p>
+                  <p className="ant-upload-hint">{"正在使用" + type + "图床"}</p>
+                </Dragger>
+              </TabPane>
+              {useImageHosting.isAliyunOpen ? (
+                <TabPane tab={IMAGE_HOSTING_NAMES.aliyun} key="2">
+                  <AliOSS />
+                </TabPane>
+              ) : null}
+              {useImageHosting.isQiniuyunOpen ? (
+                <TabPane tab={IMAGE_HOSTING_NAMES.qiniuyun} key="3">
+                  <QiniuOSS />
+                </TabPane>
+              ) : null}
+            </Tabs>
+          )}
+        </appContext.Consumer>
       </Modal>
     );
   }

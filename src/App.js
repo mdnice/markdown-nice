@@ -12,7 +12,7 @@ import StyleEditor from "./layout/StyleEditor";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID, BOX_ID} from "./utils/constant";
+import {LAYOUT_ID, BOX_ID, IMAGE_HOSTING_NAMES} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -92,20 +92,24 @@ class App extends Component {
   }
 
   setCustomImageHosting = () => {
-    // const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
-    // if (useImageHosting) {
-    //   if (imageHostingUrl) {
-    //     this.props.imageHosting.setHostingUrl(imageHostingUrl);
-    //   }
-    //   if (imageHostingName) {
-    //     this.props.imageHosting.setHostingName(imageHostingName);
-    //   }
-    // }
-    const host = this.props.useImageHosting;
-    if (host) {
-      this.props.imageHosting.setHostingUrl(host.url);
-      this.props.imageHosting.setHostingName(host.name);
-      this.props.imageHosting.addImageHosting(host.name);
+    console.log(this.props.useImageHosting);
+    if (this.props.useImageHosting === undefined) {
+      return;
+    }
+    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen} = this.props.useImageHosting;
+    if (name) {
+      this.props.imageHosting.setHostingUrl(url);
+      this.props.imageHosting.setHostingName(name);
+      this.props.imageHosting.addImageHosting(name);
+    }
+    if (isSmmsOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.smms);
+    }
+    if (isAliyunOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.aliyun);
+    }
+    if (isQiniuyunOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.qiniuyun);
     }
   };
 

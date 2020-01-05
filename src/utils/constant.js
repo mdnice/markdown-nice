@@ -21,18 +21,17 @@ export const IS_PRETTIER_OPEN = "is_prettier_open";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
-export const IMAGE_HOSTING_TYPE_OPTIONS = [
-  {value: "SM.MS", label: "SM.MS"},
-  {value: "阿里云", label: "阿里云"},
-  {value: "七牛云", label: "七牛云"},
-];
-
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
 export const LAYOUT_ID = "nice";
 export const BOX_ID = "nice-rich-text-box";
+export const IMAGE_HOSTING_NAMES = {
+  smms: "SM.MS",
+  aliyun: "阿里云",
+  qiniuyun: "七牛云",
+};
 
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 

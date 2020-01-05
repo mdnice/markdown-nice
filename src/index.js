@@ -9,6 +9,9 @@ ReactDOM.render(
     useImageHosting={{
       url: "https://imgkr.com/api/files/upload",
       name: "图壳",
+      isSmmsOpen: true,
+      isQiniuyunOpen: true,
+      isAliyunOpen: true,
     }}
   />,
   document.getElementById("root"),

@@ -13,6 +13,7 @@ import {
   QINIUOSS_IMAGE_HOSTING,
   IMAGE_HOSTING_TYPE,
   IS_CONTAIN_IMG_NAME,
+  IMAGE_HOSTING_NAMES,
 } from "./constant";
 import {toBlob, getOSSName, axiosMdnice} from "./helper";
 
@@ -325,9 +326,9 @@ export const uploadAdaptor = (...args) => {
   const userType = imageHosting.hostingName;
   if (type === userType) {
     return customImageUpload(...args);
-  } else if (type === "SM.MS") {
+  } else if (type === IMAGE_HOSTING_NAMES.smms) {
     return smmsUpload(...args);
-  } else if (type === "七牛云") {
+  } else if (type === IMAGE_HOSTING_NAMES.qiniuyun) {
     const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
     if (
       !config.region.length ||
@@ -340,7 +341,7 @@ export const uploadAdaptor = (...args) => {
       return false;
     }
     return qiniuOSSUpload(...args);
-  } else if (type === "阿里云") {
+  } else if (type === IMAGE_HOSTING_NAMES.aliyun) {
     const config = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
     if (
       !config.region.length ||
