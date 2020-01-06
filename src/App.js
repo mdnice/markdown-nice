@@ -13,7 +13,7 @@ import "./App.css";
 import "./utils/mdMirror.css";
 
 import {LAYOUT_ID, BOX_ID, IMAGE_HOSTING_NAMES} from "./utils/constant";
-import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
+import {markdownParser, markdownParserWechat, updateMathjax, throttle} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
@@ -41,6 +41,7 @@ class App extends Component {
         tex: {
           inlineMath: [["$", "$"]],
           displayMath: [["$$", "$$"]],
+          tags: "ams",
         },
         svg: {
           fontCache: "none",
@@ -73,13 +74,7 @@ class App extends Component {
 
   componentDidUpdate() {
     if (pluginCenter.mathjax) {
-      try {
-        updateMathjax();
-      } catch (e) {
-        this.mathJaxTimer = setTimeout(() => {
-          updateMathjax();
-        }, 1000);
-      }
+      throttle(updateMathjax, 1500);
     }
   }
 
