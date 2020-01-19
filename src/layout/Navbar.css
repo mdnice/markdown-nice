@@ -1,10 +1,12 @@
 .nice-navbar {
-  height: 64px;
+  height: 30px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  /* justify-content: space-between; */
   flex: none;
-  padding: 20px;
   position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  z-index: 2;
 }
 
 .nice-left-nav {
@@ -33,10 +35,11 @@
 }
 
 .nice-title {
-  margin-right: 20px;
+  padding: 0 10px 0 20px;
   font-weight: bold;
   font-size: 16px;
-  font-family: Apple Chancery, cursive;
+  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, "PingFang SC", Cambria, Cochin, Georgia,
+    Times, "Times New Roman", serif;
 }
 
 .nice-navbar-hide {

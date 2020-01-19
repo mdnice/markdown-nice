@@ -34,6 +34,8 @@ export const FONT_THEME_ID = "font-theme";
 export const LAYOUT_ID = "nice";
 export const BOX_ID = "nice-rich-text-box";
 
+export const RIGHT_SYMBOL = "✔️";
+
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
 export const ENTER_DELAY = 0.5;

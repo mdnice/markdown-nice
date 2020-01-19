@@ -1,0 +1,53 @@
+.nice-menu-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nice-menu-shortcut {
+  color: gray;
+}
+
+.nice-menu-name {
+  margin-right: 10px;
+}
+
+.nice-menu-flag {
+  display: inline-block;
+  width: 16px;
+}
+
+.nice-menu-link {
+  color: #333;
+  font-size: 14px;
+  padding: 8px 10px;
+}
+
+.nice-menu-link:hover {
+  color: #333;
+}
+
+.nice-menu-link:focus {
+  color: #333;
+  background: #e6f7ff;
+}
+
+.nice-overlay {
+  top: 30px !important;
+}
+
+.nice-overlay ul {
+  border-radius: 0px 0px 4px 4px;
+}
+
+.nice-overlay ul .ant-dropdown-menu-item {
+  clear: both;
+  margin: 0;
+  padding: 5px 12px 5px 6px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  white-space: nowrap;
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@ ReactDOM.render(
       url: "https://imgkr.com/api/files/upload",
       name: "图壳",
     }}
+    defaultTitle="Markdown Nice"
   />,
   document.getElementById("root"),
 );

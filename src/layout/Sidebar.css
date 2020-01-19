@@ -1,0 +1,12 @@
+.nice-sidebar {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nice-sidebar-hide {
+  display: none;
+}
