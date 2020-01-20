@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
 import classnames from "classnames";
 import throttle from "lodash.throttle";
+import {Dropdown, Menu} from "antd";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
@@ -227,6 +228,14 @@ class App extends Component {
       "nice-text-container": !isImmersiveEditing,
       "nice-text-container-immersive": isImmersiveEditing,
     });
+
+    const menu = (
+      <Menu>
+        <Menu.Item key="1">1st menu item</Menu.Item>
+        <Menu.Item key="2">2nd menu item</Menu.Item>
+        <Menu.Item key="3">3rd menu item</Menu.Item>
+      </Menu>
+    );
 
     return (
       <appContext.Consumer>

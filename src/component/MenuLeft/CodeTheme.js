@@ -20,7 +20,7 @@ class CodeTheme extends React.Component {
     const codeMenu = (
       <Menu onClick={this.changeCodeTheme}>
         {CODE_OPTIONS.map((option, index) => (
-          <Menu.Item key={index} className="nice-codetheme-menu-item">
+          <Menu.Item key={index}>
             <div className="nice-codetheme-item">
               <span>
                 <span className="nice-codetheme-item-flag">{codeNum === index && <span>{RIGHT_SYMBOL}</span>}</span>
