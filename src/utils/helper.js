@@ -265,13 +265,3 @@ export const updateMathjax = () => {
   window.MathJax.typesetClear();
   window.MathJax.typesetPromise();
 };
-
-export const throttle = (fun, delay) => {
-  if (fun.timeoutId) {
-    window.clearTimeout(fun.timeoutId);
-  }
-  fun.timeoutId = window.setTimeout(function() {
-    fun();
-    fun.timeoutId = null;
-  }, delay);
-};
