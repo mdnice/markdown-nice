@@ -13,6 +13,7 @@ ReactDOM.render(
       isQiniuyunOpen: true,
       isAliyunOpen: true,
     }}
+    defaultTitle="Markdown Nice"
   />,
   document.getElementById("root"),
 );

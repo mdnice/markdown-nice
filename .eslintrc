@@ -55,6 +55,8 @@
     "import/no-dynamic-require": 1,
     "global-require": 1,
     "react/forbid-prop-types": 1,
-    "jsx-a11y/accessible-emoji": 0
+    "jsx-a11y/accessible-emoji": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   }
 }

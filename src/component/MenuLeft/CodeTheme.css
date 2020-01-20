@@ -1,0 +1,22 @@
+.nice-codetheme-item {
+  display: flex;
+  justify-content: space-between;
+}
+.nice-codetheme-item-name {
+  margin-right: 10px;
+}
+.nice-codetheme-item-flag {
+  display: inline-block;
+  width: 16px;
+}
+.nice-codetheme-menu-item {
+  clear: both;
+  margin: 0;
+  padding: 5px 12px 5px 6px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  white-space: nowrap;
+  cursor: pointer;
+}

@@ -1,31 +1,16 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Button} from "antd";
 import classnames from "classnames";
 
-import ThemeSelect from "../component/NavbarRight/ThemeSelect";
-import Format from "../component/NavbarRight/Format";
-import Copy from "../component/NavbarRight/Copy";
-import Reset from "../component/NavbarLeft/Reset";
-import Image from "../component/NavbarLeft/Image";
-import Link from "../component/NavbarLeft/Link";
-import Form from "../component/NavbarLeft/Form";
-import Code from "../component/NavbarLeft/Code";
-import Italic from "../component/NavbarLeft/Italic";
-import Bold from "../component/NavbarLeft/Bold";
-import Del from "../component/NavbarLeft/Del";
-import PreviewType from "../component/NavbarRight/PreviewType";
-import FullScreen from "../component/NavbarLeft/FullScreen";
-import Setting from "../component/NavbarLeft/Setting";
-// import LogIn from "../component/LogIn";
-// import User from "../component/User";
-import About from "../component/NavbarLeft/About";
-import History from "../component/NavbarLeft/History";
-import Font from "../component/NavbarLeft/Font";
+import File from "../component/MenuLeft/File";
+import Help from "../component/MenuLeft/Help";
+import Pattern from "../component/MenuLeft/Pattern";
+import Function from "../component/MenuLeft/Function";
+import Theme from "../component/MenuLeft/Theme";
+import CodeTheme from "../component/MenuLeft/CodeTheme";
+import Setting from "../component/MenuLeft/Setting";
 
 import "./Navbar.css";
-
-const ButtonGroup = Button.Group;
 
 // @inject("userInfo")
 @inject("navbar")
@@ -41,41 +26,15 @@ class Navbar extends Component {
       <div className={niceNavbarClass}>
         <div className="nice-left-nav">
           {title === "" ? null : <section className="nice-title">{title}</section>}
-          <div className="nice-icon-bar">
-            <ButtonGroup className="nice-btn-group-margin">
-              <Setting />
-            </ButtonGroup>
-            <ButtonGroup className="nice-btn-group-margin">
-              <Del />
-              <Bold />
-              <Italic />
-              <Code />
-            </ButtonGroup>
-            <ButtonGroup className="nice-btn-group-margin">
-              <Link />
-              <Image />
-              <Form />
-            </ButtonGroup>
-            <ButtonGroup className="nice-btn-group-margin">
-              <FullScreen />
-              <Font />
-              <Reset />
-              <About />
-            </ButtonGroup>
-            <ButtonGroup className="nice-btn-group-margin">
-              <History />
-            </ButtonGroup>
-          </div>
+          <File />
+          <Pattern />
+          <Function />
+          <Theme />
+          <CodeTheme />
+          <Setting />
+          <Help />
         </div>
-        <div className="nice-right-nav">
-          <Copy />
-          <ThemeSelect />
-          <Format />
-
-          <PreviewType />
-
-          {/* {this.props.userInfo.userInfo.login ? <User /> : <LogIn />} */}
-        </div>
+        <div className="nice-right-nav" />
       </div>
     );
   }

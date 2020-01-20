@@ -4,6 +4,7 @@
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
+
 ## 简介
 
 - 支持自定义样式的 Markdown 编辑器
@@ -36,6 +37,14 @@ $ yarn add markdown-nice
 
 ```shell
 $ npm install markdown-nice --save
+```
+
+若 npm install 过慢，建议使用yarn作为包管理工具。
+
+其中的 mathjax 包下载速度可能比较慢，如果不需要公式支持，可以在 package.json 中删除 mathjax 部分
+
+```shell
+$ yarn remove mathjax
 ```
 
 2、愉快使用

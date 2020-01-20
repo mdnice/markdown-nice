@@ -33,6 +33,8 @@ export const IMAGE_HOSTING_NAMES = {
   qiniuyun: "七牛云",
 };
 
+export const RIGHT_SYMBOL = "✔️";
+
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
 export const ENTER_DELAY = 0.5;

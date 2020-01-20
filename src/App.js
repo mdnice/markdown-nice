@@ -8,6 +8,7 @@ import throttle from "lodash.throttle";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
+import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
 
 import "./App.css";
@@ -216,6 +217,12 @@ class App extends Component {
     const richTextClass = classnames({
       "nice-marked-text": true,
       "nice-not-md-hide": isImmersiveEditing,
+      "nice-marked-text-pc": previewType === "pc",
+    });
+
+    const richTextBoxClass = classnames({
+      "nice-wx-box": true,
+      "nice-wx-box-pc": previewType === "pc",
     });
 
     const textContainerClass = classnames({
@@ -250,11 +257,11 @@ class App extends Component {
                 />
               </div>
               <div id="nice-rich-text" className={richTextClass} onMouseOver={(e) => this.setCurrentIndex(2, e)}>
+                <Sidebar />
                 <div
                   id={BOX_ID}
-                  className="nice-wx-box"
+                  className={richTextBoxClass}
                   onScroll={this.handleScroll}
-                  style={{width: previewType === "pc" ? "100%" : 375}}
                   ref={(node) => {
                     this.previewContainer = node;
                   }}
