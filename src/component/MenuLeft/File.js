@@ -1,17 +1,17 @@
 import React, {Component} from "react";
 import {Menu, Dropdown} from "antd";
 
-import Export from "./File/Export";
-import Import from "./File/Import";
+import ExportFile from "./File/ExportFile";
+import ImportFile from "./File/ImportFile";
 import "./common.css";
 
 const menu = (
   <Menu>
     <Menu.Item>
-      <Export />
+      <ExportFile />
     </Menu.Item>
     <Menu.Item>
-      <Import />
+      <ImportFile />
     </Menu.Item>
   </Menu>
 );

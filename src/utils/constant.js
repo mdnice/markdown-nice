@@ -34,6 +34,7 @@ export const IMAGE_HOSTING_NAMES = {
 };
 
 export const RIGHT_SYMBOL = "✔️";
+export const EXPORT_FILENAME_SUFFIX = ".md";
 
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
@@ -117,6 +118,11 @@ export const TEMPLATE_OPTIONS = [
     author: "aco",
   },
   {
+    id: "rose",
+    name: "蔷薇紫",
+    author: "HeyRain",
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",
@@ -156,12 +162,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.0";
+export const VERSION_NUM = "1.5.1";
 
 export const VERSION_TIMELINE = [
-  "2020-1-3 修复代码块换行问题，改动了本地历史和当前内容的对比界面",
+  "2020-01-20 整体视觉改版，新增蔷薇紫主题，新增文件导入导出，公式节流渲染，仅保留图壳图床",
+  "2020-01-03 修复代码块换行问题，本地历史优化",
   "2019-12-28 修复同步滚动和图片包含名称问题",
   "2019-12-25 增加本地历史功能，浏览器刷新后以前版本不丢失",
   "2019-12-21 修复代码块换行问题，新增上传时包含图片名选项",
-  "2019-12-08 新增「图壳」免费图床，可以长期存储并且排版成功率高！下一个版本将移除其他图床的支持！仅提供组件配置项",
 ];

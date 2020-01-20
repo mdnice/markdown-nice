@@ -86,11 +86,9 @@ class App extends Component {
     document.removeEventListener("webkitfullscreenchange", this.solveScreenChange);
     document.removeEventListener("mozfullscreenchange", this.solveScreenChange);
     document.removeEventListener("MSFullscreenChange", this.solveScreenChange);
-    this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
 
   setCustomImageHosting = () => {
-    console.log(this.props.useImageHosting);
     if (this.props.useImageHosting === undefined) {
       return;
     }

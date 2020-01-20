@@ -51,3 +51,7 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
+.nice-overlay ul label {
+  cursor: pointer;
+}
