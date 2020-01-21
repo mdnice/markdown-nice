@@ -1,0 +1,80 @@
+.mdnice-searchbox {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 20;
+  transition: all 0.15s ease-in-out;
+  padding: 10px;
+  max-width: calc(100% - 40px);
+  background-color: white;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: flex-start;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mdnice-searchbox>:not(:last-child ) {
+  margin-right: 8px;
+}
+
+.mdnice-searchbox button {
+  outline: none;
+  padding: 0px;
+  border: none;
+  border-radius: 4px;
+}
+
+.mdnice-searchbox button:active{
+  background-color: #e6f7ff;
+}
+
+.searchbox-replace-toggle .searchbox-icon{
+  transform: rotate(-90deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.searchbox-replace-toggle[data-active="true"] .searchbox-icon{
+  transform: unset;
+}
+
+.searchbox-input {
+  overflow: hidden;
+  transition: all 0.15s ease-in-out;
+}
+
+.searchbox-input[data-active="false"] {
+  max-height: 32px !important;;
+}
+
+.searchbox-input>:last-child{
+  margin-top: 10px;
+}
+
+
+.searchbox-icon {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+}
+
+.searchbox-icon-prev {
+  transform: rotate(180deg);
+}
+
+.searchbox-text-highlight {
+  background-color: #91d5ff;
+}
+
+.mdnice-searchbox[data-active="false"] {
+  visibility: hidden;
+  max-height: 0px !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.mdnice-searchbox[data-active="true"] ~ div .CodeMirror-code {
+  margin-top: 52px;
+}
+
+

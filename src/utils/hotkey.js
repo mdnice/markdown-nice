@@ -73,6 +73,9 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-T": () => {
           dialog.setFormOpen(true);
         },
+        "Ctrl-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
+        },
       }
     : {
         "Cmd-B": () => {
@@ -107,6 +110,9 @@ const bindHotkeys = (content, dialog) =>
         },
         "Cmd-Alt-T": () => {
           dialog.setFormOpen(true);
+        },
+        "Cmd-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
         },
       };
 

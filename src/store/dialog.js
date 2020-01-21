@@ -16,6 +16,8 @@ class Dialog {
 
   @observable isHistoryOpen = false;
 
+  @observable isSearchOpen = false;
+
   @action
   setImageOpen = (isImageOpen) => {
     this.isImageOpen = isImageOpen;
@@ -49,6 +51,11 @@ class Dialog {
   @action
   setHistoryOpen = (isHistoryOpen) => {
     this.isHistoryOpen = isHistoryOpen;
+  };
+
+  @action
+  setSearchOpen = (isSearchOpen) => {
+    this.isSearchOpen = isSearchOpen;
   };
 }
 

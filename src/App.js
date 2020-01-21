@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CodeMirror from "@uiw/react-codemirror";
+import "codemirror/addon/search/searchcursor";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
@@ -11,6 +12,7 @@ import Navbar from "./layout/Navbar";
 import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
 import EditorMenu from "./layout/EditorMenu";
+import SearchBox from "./component/SearchBox";
 
 import "./App.css";
 import "./utils/mdMirror.css";
@@ -236,6 +238,7 @@ class App extends Component {
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+                <SearchBox />
                 <CodeMirror
                   value={this.props.content.content}
                   options={{

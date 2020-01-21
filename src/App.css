@@ -42,6 +42,7 @@
 /* 编辑器最多会被分成三份width:33.3%，当两份时根据flex-grow:1伸展 */
 .nice-md-editing,
 .nice-style-editing {
+  position: relative;
   width: 33.3%;
   flex-grow: 1;
   word-wrap: break-word;
