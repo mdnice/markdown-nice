@@ -162,9 +162,10 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.1";
+export const VERSION_NUM = "1.5.2";
 
 export const VERSION_TIMELINE = [
+  "2020-01-21 新增右键菜单，恢复格式化",
   "2020-01-20 整体视觉改版，新增蔷薇紫主题，新增文件导入导出，公式节流渲染，仅保留图壳图床",
   "2020-01-03 修复代码块换行问题，本地历史优化",
   "2019-12-28 修复同步滚动和图片包含名称问题",
