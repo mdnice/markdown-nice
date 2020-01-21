@@ -1,0 +1,28 @@
+.nice-editor-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 4px;
+  padding: 4px 0;
+}
+
+.nice-editor-menu .ant-dropdown-menu-item {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nice-editor-menu .ant-menu-item-selected {
+  background-color: white !important;
+}
+.nice-editor-menu .ant-dropdown-menu-item:hover {
+  background-color: #e6f7ff !important;
+}

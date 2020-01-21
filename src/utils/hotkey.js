@@ -121,4 +121,25 @@ export const betterTab = (cm) => {
     );
   }
 };
+
+export const rightClick = (cm) => {
+  const ele = document.getElementById("nice-md-editor");
+  ele.oncontextmenu = (e) => {
+    const element = document.getElementById("nice-editor-menu");
+    element.style.display = "block";
+    // event--ie  ev--其他浏览器
+    const oEvent = window.event || window.ev;
+    // documentElement--其他游览器    body--谷歌
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    // 菜单的style样式跟随鼠标的位置
+    element.style.top = oEvent.clientY + scrollTop + "px";
+    const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    element.style.left = oEvent.clientX + scrollLeft + "px";
+    return false;
+  };
+  window.onclick = (e) => {
+    const element = document.getElementById("nice-editor-menu");
+    element.style.display = "none";
+  };
+};
 export default bindHotkeys;

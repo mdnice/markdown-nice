@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Menu, Dropdown} from "antd";
 
-import Font from "./Function/Font";
 import FullScreen from "./Function/FullScreen";
 import Reset from "./Function/Reset";
 import History from "./Function/History";
@@ -15,9 +14,6 @@ const menu = (
     </Menu.Item>
     <Menu.Item>
       <Reset />
-    </Menu.Item>
-    <Menu.Item>
-      <Font />
     </Menu.Item>
 
     <Menu.Divider />

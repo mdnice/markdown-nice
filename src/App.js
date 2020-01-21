@@ -5,12 +5,12 @@ import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
 import classnames from "classnames";
 import throttle from "lodash.throttle";
-import {Dropdown, Menu} from "antd";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
 import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
+import EditorMenu from "./layout/EditorMenu";
 
 import "./App.css";
 import "./utils/mdMirror.css";
@@ -20,7 +20,7 @@ import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helpe
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
-import bindHotkeys, {betterTab} from "./utils/hotkey";
+import bindHotkeys, {betterTab, rightClick} from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
@@ -229,14 +229,6 @@ class App extends Component {
       "nice-text-container-immersive": isImmersiveEditing,
     });
 
-    const menu = (
-      <Menu>
-        <Menu.Item key="1">1st menu item</Menu.Item>
-        <Menu.Item key="2">2nd menu item</Menu.Item>
-        <Menu.Item key="3">3rd menu item</Menu.Item>
-      </Menu>
-    );
-
     return (
       <appContext.Consumer>
         {({defaultTitle}) => (
@@ -252,7 +244,11 @@ class App extends Component {
                     mode: "markdown",
                     lineWrapping: true,
                     lineNumbers: false,
-                    extraKeys: {...bindHotkeys(this.props.content, this.props.dialog), Tab: betterTab},
+                    extraKeys: {
+                      ...bindHotkeys(this.props.content, this.props.dialog),
+                      Tab: betterTab,
+                      RightClick: rightClick,
+                    },
                   }}
                   onChange={this.handleChange}
                   onScroll={this.handleScroll}
@@ -294,6 +290,7 @@ class App extends Component {
               ) : null}
 
               <Dialog />
+              <EditorMenu />
             </div>
           </div>
         )}
