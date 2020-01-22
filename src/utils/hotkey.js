@@ -1,32 +1,32 @@
+import * as keyEvents from "./editorKeyEvents";
+
 const handlePressHotkey = (type, content) => {
   const {markdownEditor} = content;
-  const cursor = markdownEditor.getCursor();
   const selection = markdownEditor.getSelection();
-  const wrapChar = /windows|win32/i.test(navigator.userAgent) ? "\r\n" : "\n";
   switch (type) {
     case "Bold":
-      markdownEditor.replaceSelection(`**${selection}**`, cursor);
+      keyEvents.bold(markdownEditor, selection);
       break;
     case "Del":
-      markdownEditor.replaceSelection(`~~${selection}~~`, cursor);
+      keyEvents.del(markdownEditor, selection);
       break;
     case "Italic":
-      markdownEditor.replaceSelection(`*${selection}*`, cursor);
+      keyEvents.italic(markdownEditor, selection);
       break;
     case "Code":
-      markdownEditor.replaceSelection(`${wrapChar}\`\`\`${wrapChar}${selection}${wrapChar}\`\`\`${wrapChar}`);
+      keyEvents.code(markdownEditor, selection);
       break;
     case "InlineCode":
-      markdownEditor.replaceSelection(`\`${selection}\``, cursor);
+      keyEvents.inlineCode(markdownEditor, selection);
       break;
     case "H1":
-      markdownEditor.replaceSelection(`# ${selection}`, cursor);
+      keyEvents.h1(markdownEditor, selection);
       break;
     case "H2":
-      markdownEditor.replaceSelection(`## ${selection}`, cursor);
+      keyEvents.h2(markdownEditor, selection);
       break;
     case "H3":
-      markdownEditor.replaceSelection(`### ${selection}`, cursor);
+      keyEvents.h3(markdownEditor, selection);
       break;
     default:
       return;
@@ -52,7 +52,7 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-C": () => {
           handlePressHotkey("Code", content);
         },
-        "Ctrl-Alt-F": () => {
+        "Ctrl-Alt-V": () => {
           handlePressHotkey("InlineCode", content);
         },
         "Ctrl-Alt-1": () => {
@@ -73,6 +73,15 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-T": () => {
           dialog.setFormOpen(true);
         },
+        "Ctrl-Alt-S": () => {
+          // Converting between sans serif and serif
+        },
+        "Ctrl-Alt-L": () => {
+          keyEvents.parseLinkToFoot(content.content, content);
+        },
+        "Ctrl-Alt-P": () => {
+          keyEvents.formatDoc(content.content, content);
+        },
       }
     : {
         "Cmd-B": () => {
@@ -87,7 +96,7 @@ const bindHotkeys = (content, dialog) =>
         "Cmd-Alt-C": () => {
           handlePressHotkey("Code", content);
         },
-        "Cmd-Alt-F": () => {
+        "Cmd-Alt-V": () => {
           handlePressHotkey("InlineCode", content);
         },
         "Cmd-Alt-1": () => {
@@ -107,6 +116,15 @@ const bindHotkeys = (content, dialog) =>
         },
         "Cmd-Alt-T": () => {
           dialog.setFormOpen(true);
+        },
+        "Cmd-Alt-S": () => {
+          // Converting between sans serif and serif
+        },
+        "Cmd-Alt-L": () => {
+          keyEvents.parseLinkToFoot(content.content, content);
+        },
+        "Cmd-Alt-P": () => {
+          keyEvents.formatDoc(content.content, content);
         },
       };
 

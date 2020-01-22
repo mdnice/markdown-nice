@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {message} from "antd";
-import prettier from "prettier/standalone";
-import prettierMarkdown from "prettier/parser-markdown";
+
+import {formatDoc} from "../../../utils/editorKeyEvents";
 
 import "../common.css";
 
@@ -11,20 +10,8 @@ import "../common.css";
 @observer
 class Format extends Component {
   handleFormat = () => {
-    let {content} = this.props.content;
-    content = this.handlePrettierDoc(content);
-    content = content.replace(/([\u4e00-\u9fa5])\$/g, "$1 $");
-    content = content.replace(/\$([\u4e00-\u9fa5])/g, "$ $1");
-    this.props.content.setContent(content);
-    message.success("格式化文档完成！");
-  };
-
-  handlePrettierDoc = (content) => {
-    const prettierRes = prettier.format(content, {
-      parser: "markdown",
-      plugins: [prettierMarkdown],
-    });
-    return prettierRes;
+    const {content} = this.props.content;
+    formatDoc(content, this.props.content);
   };
 
   render() {
@@ -34,7 +21,7 @@ class Format extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">格式化文档</span>
         </span>
-        {/* <span className="nice-menu-shortcut">⌘⌥I</span> */}
+        <span className="nice-menu-shortcut">⌘⌥P</span>
       </div>
     );
   }
