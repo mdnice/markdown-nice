@@ -49,6 +49,9 @@ class ImageDialog extends Component {
     this.props.content.setContent(content);
 
     this.props.dialog.setImageOpen(false);
+    cursor.ch += 2;
+    markdownEditor.setCursor(cursor);
+    markdownEditor.focus();
   };
 
   handleCancel = () => {

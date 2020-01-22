@@ -26,6 +26,9 @@ class LinkDialog extends Component {
 
     this.setState({link: ""});
     this.props.dialog.setLinkOpen(false);
+    cursor.ch += 1;
+    markdownEditor.setCursor(cursor);
+    markdownEditor.focus();
   };
 
   handleCancel = () => {
