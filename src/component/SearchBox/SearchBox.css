@@ -4,28 +4,54 @@
   top: 20px;
   z-index: 20;
   transition: all 0.15s ease-in-out;
-  padding: 10px;
+  padding: 8px;
   max-width: calc(100% - 40px);
   background-color: white;
+  max-height: 76px;
   box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.05);
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   border-radius: 4px;
   overflow: hidden;
 }
 
-.mdnice-searchbox>:not(:last-child ) {
-  margin-right: 8px;
+.mdnice-searchbox>:last-child {
+  margin-top: 8px;
+  margin-left: 29px;
 }
 
-.mdnice-searchbox button {
+.mdnice-searchbox > div {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.mdnice-searchbox > div span {
+  margin-left: auto;
+}
+
+.mdnice-searchbox div>:not(:last-child ) {
+  margin-right: 5px;
+}
+
+.mdnice-searchbox div span>:not(:last-child ) {
+  margin-right: 2px;
+}
+
+.mdnice-searchbox div input {
+  width: 160px;
+}
+
+.mdnice-searchbox .searchbox-button {
   outline: none;
   padding: 0px;
   border: none;
   border-radius: 4px;
+  height: 24px;
+  width: 24px;
 }
 
-.mdnice-searchbox button:active{
+.mdnice-searchbox .searchbox-button:active{
   background-color: #e6f7ff;
 }
 
@@ -34,28 +60,24 @@
   transition: all 0.2s ease-in-out;
 }
 
-.searchbox-replace-toggle[data-active="true"] .searchbox-icon{
-  transform: unset;
-}
-
 .searchbox-input {
   overflow: hidden;
   transition: all 0.15s ease-in-out;
 }
 
 .searchbox-input[data-active="false"] {
-  max-height: 32px !important;;
+  max-height: 32px !important;
 }
 
 .searchbox-input>:last-child{
   margin-top: 10px;
 }
 
-
 .searchbox-icon {
-  height: 30px;
-  width: 30px;
-  padding: 5px;
+  display: block;
+  margin: auto;
+  height: 24px;
+  width: 24px;
 }
 
 .searchbox-icon-prev {
@@ -64,6 +86,12 @@
 
 .searchbox-text-highlight {
   background-color: #91d5ff;
+  line-height: 16px;
+  padding: 3px 0px;
+}
+
+.mdnice-searchbox[data-replace="true"] .searchbox-replace-toggle .searchbox-icon{
+  transform: unset;
 }
 
 .mdnice-searchbox[data-active="false"] {
@@ -73,8 +101,19 @@
   padding-bottom: 0px;
 }
 
-.mdnice-searchbox[data-active="true"] ~ div .CodeMirror-code {
-  margin-top: 52px;
+.mdnice-searchbox[data-replace="false"] {
+  max-height: 40px;
+}
+
+.mdnice-searchbox[data-active="true"] ~ div .CodeMirror-code{
+  margin-top: 40px;
+  transition: all 0.15s ease-in-out;
+  /* padding-top: 40px; */
+}
+
+.mdnice-searchbox[data-active="true"][data-replace="true"] ~ div .CodeMirror-code {
+  margin-top: 76px;
+  /* padding-top: 76px; */
 }
 
 

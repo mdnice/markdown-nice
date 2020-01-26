@@ -3,6 +3,7 @@ import {Menu, Dropdown} from "antd";
 
 import FullScreen from "./Function/FullScreen";
 import Reset from "./Function/Reset";
+import Search from "./Function/Search";
 import History from "./Function/History";
 
 import "./common.css";
@@ -14,6 +15,9 @@ const menu = (
     </Menu.Item>
     <Menu.Item>
       <Reset />
+    </Menu.Item>
+    <Menu.Item>
+      <Search />
     </Menu.Item>
 
     <Menu.Divider />
