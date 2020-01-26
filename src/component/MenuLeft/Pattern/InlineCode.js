@@ -1,17 +1,17 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
-import {del} from "../../../utils/editorKeyEvents";
+import {inlineCode} from "../../../utils/editorKeyEvents";
 
 import "../common.css";
 
 @inject("content")
 @observer
-class Del extends Component {
+class InlineCode extends Component {
   handleClick = () => {
     const {markdownEditor} = this.props.content;
     const selection = markdownEditor.getSelection();
-    del(markdownEditor, selection);
+    inlineCode(markdownEditor, selection);
 
     // 上传后实时更新内容
     const content = markdownEditor.getValue();
@@ -24,12 +24,12 @@ class Del extends Component {
       <div className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
-          <span className="nice-menu-name">删除线</span>
+          <span className="nice-menu-name">行内代码</span>
         </span>
-        <span className="nice-menu-shortcut">⌘U</span>
+        <span className="nice-menu-shortcut">⌘⌥V</span>
       </div>
     );
   }
 }
 
-export default Del;
+export default InlineCode;

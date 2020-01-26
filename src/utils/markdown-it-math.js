@@ -6,7 +6,7 @@ It differs in that it takes (a subset of) LaTeX as input and relies on KaTeX
 for rendering output.
 */
 /* eslint-disable */
-var katex = require("katex");
+// var katex = require("katex");
 
 // Test if potential opening or closing delimieter
 // Assumes that there is a "$" at state.src[pos]

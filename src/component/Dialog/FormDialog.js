@@ -43,6 +43,7 @@ class FormDialog extends React.Component {
   handleOk = () => {
     const {markdownEditor} = this.props.content;
     const cursor = markdownEditor.getCursor();
+
     const text = this.buildFormFormat(this.state.rowNum, this.state.columnNum);
     markdownEditor.replaceSelection(text, cursor);
 
@@ -50,6 +51,9 @@ class FormDialog extends React.Component {
     this.props.content.setContent(content);
 
     this.handleCancel();
+    cursor.ch += 2;
+    markdownEditor.setCursor(cursor);
+    markdownEditor.focus();
   };
 
   handleCancel = () => {
