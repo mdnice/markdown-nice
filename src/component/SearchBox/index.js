@@ -19,6 +19,7 @@ class SearchBox extends React.Component {
       searchText: "",
       isReplaceOpen: false,
       cursor: null,
+      caseFold: true,
     };
   }
 
@@ -28,7 +29,7 @@ class SearchBox extends React.Component {
     if (typeof direction !== "boolean") {
       return;
     }
-    if (this.state.searchText) {
+    if (this.state.searchText && this.state.cursor) {
       this.state.cursor.find(direction);
       if (this.state.cursor.atOccurrence) {
         this.highlight();
@@ -40,6 +41,21 @@ class SearchBox extends React.Component {
         this.highlight();
       }
     }
+  };
+
+  handleCaseFold = () => {
+    const {markdownEditor} = this.props.content;
+    this.clearMarks();
+    this.setState(
+      (prevState) => {
+        const caseFold = !prevState.caseFold;
+        const cursor = prevState.searchText
+          ? markdownEditor.getSearchCursor(prevState.searchText, null, {caseFold: caseFold})
+          : null;
+        return {caseFold: caseFold, cursor: cursor};
+      },
+      () => this.posChange(false),
+    );
   };
 
   componentDidUpdate = () => {
@@ -55,16 +71,21 @@ class SearchBox extends React.Component {
 
   clearMarks = () => {
     const {markdownEditor} = this.props.content;
-    const markers = markdownEditor.getAllMarks();
-    markers.forEach((marker) => marker.clear());
+    // const markers = markdownEditor.getAllMarks();
+    // markers.forEach((marker) => marker.clear());
     const cursor = markdownEditor.getCursor();
     markdownEditor.setSelection(cursor);
   };
 
   findContent = (value) => {
     const {markdownEditor} = this.props.content;
-    const cursor = markdownEditor.getSearchCursor(value, null, {caseFold: true});
-    this.setState({searchText: value, cursor: cursor}, () => this.posChange(false));
+    this.setState(
+      (prevState) => {
+        const cursor = value ? markdownEditor.getSearchCursor(value, null, {caseFold: prevState.caseFold}) : null;
+        return {searchText: value, cursor: cursor};
+      },
+      () => this.posChange(false),
+    );
   };
 
   highlight = () => {
@@ -74,9 +95,9 @@ class SearchBox extends React.Component {
       const from = this.state.cursor.from();
       const to = this.state.cursor.to();
 
-      markdownEditor.markText(from, to, {
-        className: "searchbox-text-highlight",
-      });
+      // markdownEditor.markText(from, to, {
+      //   className: "searchbox-text-highlight",
+      // });
       markdownEditor.setSelection(from, to);
       // 防止搜索框挡住文字
       markdownEditor.scrollIntoView(from, 100);
@@ -133,6 +154,16 @@ class SearchBox extends React.Component {
             onPressEnter={() => this.posChange(false)}
           />
           <span>
+            <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="忽略大小写">
+              <button type="button" className="searchbox-button" onClick={this.handleCaseFold}>
+                <SvgIcon
+                  name="fontCase"
+                  className="searchbox-icon"
+                  style={{height: 18, width: 18}}
+                  fill={this.state.caseFold ? "#40a9ff" : undefined}
+                />
+              </button>
+            </Tooltip>
             <button type="button" onClick={() => this.posChange(true)} className="searchbox-button">
               <SvgIcon name="down" className="searchbox-icon searchbox-icon-prev" />
             </button>
