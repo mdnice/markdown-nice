@@ -2,8 +2,6 @@ import * as React from "react";
 import {Menu, Button, Radio} from "antd";
 import CodeMirror from "@uiw/react-codemirror";
 import {diff_match_patch as DiffMatchPath} from "diff-match-patch";
-// import MergeCodeMirror from "./mergeCodeMirror";
-// import {inject} from "mobx-react";
 
 import "./localHistory.css";
 
@@ -11,7 +9,7 @@ const NOOP = () => {};
 const prefix = "nice-md-local-history";
 
 const diff = new DiffMatchPath();
-// @inject("content")
+
 class LocalHistory extends React.Component {
   constructor(props) {
     super(props);
@@ -78,23 +76,6 @@ class LocalHistory extends React.Component {
                 }}
               />
             ) : (
-              // <MergeCodeMirror
-              //   key="local-history-diff"
-              //   height="calc(100% - 56px)"
-              //   className={`${prefix}-merge`}
-              //   options={{
-              //     value: this.state.content,
-              //     origLeft: null,
-              //     orig: content,
-              //     lineNumbers: true,
-              //     theme: "md-mirror",
-              //     mode: "markdown",
-              //     highlightDifferences: true,
-              //     connect: "align",
-              //     collapseIdentical: false,
-              //     readOnly: true,
-              //   }}
-              // />
               <div dangerouslySetInnerHTML={{__html: this.getDiffHtml()}} className={`${prefix}-diff-content`} />
             )}
             <div className={`${prefix}-btn-group`}>
