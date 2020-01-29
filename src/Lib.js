@@ -12,6 +12,7 @@ import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
 import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
+import view from "./store/view";
 
 import {isPC} from "./utils/helper";
 import appContext from "./utils/appContext";
@@ -46,7 +47,14 @@ class Lib extends Component {
     };
 
     return (
-      <Provider content={content} userInfo={userInfo} navbar={navbar} dialog={dialog} imageHosting={imageHosting}>
+      <Provider
+        content={content}
+        userInfo={userInfo}
+        navbar={navbar}
+        dialog={dialog}
+        imageHosting={imageHosting}
+        view={view}
+      >
         {isPC() ? (
           <appContext.Provider value={appCtx}>
             <App defaultText={defaultText} onTextChange={onTextChange} useImageHosting={useImageHosting} />

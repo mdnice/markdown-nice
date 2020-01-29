@@ -76,7 +76,15 @@
   box-shadow: none;
 }
 
-.nice-not-md-hide {
+.nice-style-editing-hide {
+  display: none;
+}
+
+.nice-md-editing-hide {
+  display: none;
+}
+
+.nice-marked-text-hide {
   display: none;
 }
 
@@ -93,4 +101,26 @@
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media print {
+  .nice-md-editing {
+    display: none;
+  }
+  .nice-navbar {
+    display: none;
+  }
+  .nice-sidebar {
+    display: none;
+  }
+  .nice-wx-box {
+    overflow: visible;
+    box-shadow: none;
+  }
+  .nice-style-editing {
+    display: none;
+  }
+  #nice-rich-text {
+    padding: 0 !important;
+  }
 }

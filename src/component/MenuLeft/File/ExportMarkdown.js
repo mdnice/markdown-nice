@@ -8,7 +8,7 @@ import "../common.css";
 
 @inject("content")
 @observer
-class ExportFile extends Component {
+class ExportMarkdown extends Component {
   handleClick = () => {
     const {markdownEditor} = this.props.content;
     const content = markdownEditor.getValue();
@@ -24,11 +24,11 @@ class ExportFile extends Component {
       <div className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
-          <span className="nice-menu-name">导出</span>
+          <span className="nice-menu-name">导出 Markdown</span>
         </span>
       </div>
     );
   }
 }
 
-export default ExportFile;
+export default ExportMarkdown;

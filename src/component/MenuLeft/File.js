@@ -1,14 +1,18 @@
 import React, {Component} from "react";
 import {Menu, Dropdown} from "antd";
 
-import ExportFile from "./File/ExportFile";
+import ExportMarkdown from "./File/ExportMarkdown";
+import ExportPdf from "./File/ExportPdf";
 import ImportFile from "./File/ImportFile";
 import "./common.css";
 
 const menu = (
   <Menu>
     <Menu.Item>
-      <ExportFile />
+      <ExportMarkdown />
+    </Menu.Item>
+    <Menu.Item>
+      <ExportPdf />
     </Menu.Item>
     <Menu.Item>
       <ImportFile />

@@ -8,16 +8,17 @@ import Zhihu from "../component/Sidebar/Zhihu";
 import "./Sidebar.css";
 
 // @inject("userInfo")
-@inject("navbar")
+@inject("view")
 @observer
-class Navbar extends Component {
+class Sidebar extends Component {
   render() {
-    const niceNavbarClass = classnames({
+    const {isImmersiveEditing} = this.props.view;
+    const niceSidebarClass = classnames({
       "nice-sidebar": true,
-      "nice-sidebar-hide": this.props.navbar.isImmersiveEditing,
+      "nice-sidebar-hide": isImmersiveEditing,
     });
     return (
-      <div className={niceNavbarClass}>
+      <div className={niceSidebarClass}>
         <Wechat />
         <Zhihu />
         <PreviewType />
@@ -26,4 +27,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default Sidebar;

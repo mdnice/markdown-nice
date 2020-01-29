@@ -23,53 +23,8 @@ const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin-alt");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
-const languages = [
-  "bash",
-  "clojure",
-  "cpp",
-  "cs",
-  "css",
-  "dart",
-  "dockerfile",
-  "diff",
-  "erlang",
-  "go",
-  "gradle",
-  "groovy",
-  "haskell",
-  "java",
-  "javascript",
-  "json",
-  "julia",
-  "kotlin",
-  "lisp",
-  "lua",
-  "makefile",
-  "markdown",
-  "matlab",
-  "objectivec",
-  "perl",
-  "php",
-  "python",
-  "r",
-  "ruby",
-  "rust",
-  "scala",
-  "shell",
-  "sql",
-  "swift",
-  "tex",
-  "typescript",
-  "verilog",
-  "vhdl",
-  "xml",
-  "yaml",
-].map(lang => escapeRegExp(lang));
-function escapeRegExp(string) {
-  return string.replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$&');
-}
 
-  // Source maps are resource heavy and can cause out of memory issue for large source files.
+// Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
@@ -520,10 +475,7 @@ module.exports = function(webpackEnv) {
       // It is absolutely essential that NODE_ENV is set to production
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
-      new webpack.DefinePlugin({
-        ...env.stringified,
-        'HLSLANGUAGES':JSON.stringify(languages)
-      }),
+      new webpack.DefinePlugin(env.stringified),
       // This is necessary to emit hot updates (currently CSS only):
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use
@@ -637,7 +589,6 @@ module.exports = function(webpackEnv) {
           silent: true,
           formatter: typescriptFormatter,
         }),
-      new webpack.ContextReplacementPlugin(/highlight\.js\/lib\/languages$/,new RegExp(`^./(${languages.join('|')})$`)),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.

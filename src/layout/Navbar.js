@@ -9,18 +9,20 @@ import Function from "../component/MenuLeft/Function";
 import Theme from "../component/MenuLeft/Theme";
 import CodeTheme from "../component/MenuLeft/CodeTheme";
 import Setting from "../component/MenuLeft/Setting";
+import View from "../component/MenuLeft/View";
 
 import "./Navbar.css";
 
 // @inject("userInfo")
-@inject("navbar")
+@inject("view")
 @observer
 class Navbar extends Component {
   render() {
     const {title} = this.props;
+    const {isImmersiveEditing} = this.props.view;
     const niceNavbarClass = classnames({
       "nice-navbar": true,
-      "nice-navbar-hide": this.props.navbar.isImmersiveEditing,
+      "nice-navbar-hide": isImmersiveEditing,
     });
     return (
       <div className={niceNavbarClass}>
@@ -29,6 +31,7 @@ class Navbar extends Component {
           <File />
           <Pattern />
           <Function />
+          <View />
           <Theme />
           <CodeTheme />
           <Setting />

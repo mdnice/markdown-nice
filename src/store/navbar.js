@@ -14,13 +14,9 @@ import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
 
 class Navbar {
-  @observable isStyleEditorOpen = false;
-
   @observable isPasteCheckOpen = true;
 
   @observable isPrettierOpen = true;
-
-  @observable isImmersiveEditing = false;
 
   @observable isSyncScroll = true;
 
@@ -33,18 +29,8 @@ class Navbar {
   @observable previewType;
 
   @action
-  setStyleEditorOpen = (isStyleEditorOpen) => {
-    this.isStyleEditorOpen = isStyleEditorOpen;
-  };
-
-  @action
   setAutoFootOpen = (isPasteCheckOpen) => {
     this.isPasteCheckOpen = isPasteCheckOpen;
-  };
-
-  @action
-  setImmersiveEditing = (isImmersiveEditing) => {
-    this.isImmersiveEditing = isImmersiveEditing;
   };
 
   @action

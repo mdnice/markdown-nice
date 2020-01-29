@@ -8,6 +8,7 @@ import "./Theme.css";
 
 @inject("content")
 @inject("navbar")
+@inject("view")
 @observer
 class Theme extends React.Component {
   changeTemplate = (item) => {
@@ -26,8 +27,8 @@ class Theme extends React.Component {
   };
 
   toggleStyleEditor = () => {
-    const {isStyleEditorOpen} = this.props.navbar;
-    this.props.navbar.setStyleEditorOpen(!isStyleEditorOpen);
+    const {isStyleEditorOpen} = this.props.view;
+    this.props.view.setStyleEditorOpen(!isStyleEditorOpen);
   };
 
   render() {
@@ -53,7 +54,7 @@ class Theme extends React.Component {
           <div className="nice-themeselect-theme-item" onClick={this.toggleStyleEditor}>
             <span>
               <span className="nice-themeselect-theme-item-flag">
-                {this.props.navbar.isStyleEditorOpen && <span>{RIGHT_SYMBOL}</span>}
+                {this.props.view.isStyleEditorOpen && <span>{RIGHT_SYMBOL}</span>}
               </span>
               <span className="nice-themeselect-theme-item-name">查看主题 CSS</span>
             </span>

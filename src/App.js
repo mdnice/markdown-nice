@@ -24,6 +24,7 @@ import bindHotkeys, {betterTab, rightClick} from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
+@inject("view")
 @inject("dialog")
 @inject("imageHosting")
 @observer
@@ -122,8 +123,8 @@ class App extends Component {
   }
 
   solveScreenChange = () => {
-    const {isImmersiveEditing} = this.props.navbar;
-    this.props.navbar.setImmersiveEditing(!isImmersiveEditing);
+    const {isImmersiveEditing} = this.props.view;
+    this.props.view.setImmersiveEditing(!isImmersiveEditing);
   };
 
   getInstance = (instance) => {
@@ -196,7 +197,8 @@ class App extends Component {
   };
 
   render() {
-    const {codeNum, isStyleEditorOpen, previewType, isImmersiveEditing} = this.props.navbar;
+    const {codeNum, previewType} = this.props.navbar;
+    const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
 
     const parseHtml =
       codeNum === 0
@@ -206,17 +208,18 @@ class App extends Component {
     const mdEditingClass = classnames({
       "nice-md-editing": !isImmersiveEditing,
       "nice-md-editing-immersive": isImmersiveEditing,
+      "nice-md-editing-hide": !isEditAreaOpen,
     });
 
     const styleEditingClass = classnames({
       "nice-style-editing": true,
-      "nice-not-md-hide": isImmersiveEditing,
+      "nice-style-editing-hide": isImmersiveEditing,
     });
 
     const richTextClass = classnames({
       "nice-marked-text": true,
-      "nice-not-md-hide": isImmersiveEditing,
       "nice-marked-text-pc": previewType === "pc",
+      "nice-marked-text-hide": isImmersiveEditing || !isPreviewAreaOpen,
     });
 
     const richTextBoxClass = classnames({
@@ -283,11 +286,11 @@ class App extends Component {
                 </div>
               </div>
 
-              {isStyleEditorOpen ? (
+              {isStyleEditorOpen && (
                 <div id="nice-style-editor" className={styleEditingClass}>
                   <StyleEditor />
                 </div>
-              ) : null}
+              )}
 
               <Dialog />
               <EditorMenu />
