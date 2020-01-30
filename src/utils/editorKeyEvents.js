@@ -41,7 +41,7 @@ const handleWechatOuterLink = (content) => {
 };
 
 export const parseLinkToFoot = (content, store) => {
-  handleWechatOuterLink(content);
+  content = handleWechatOuterLink(content);
   content = content.replace(/([\u4e00-\u9fa5])\$/g, "$1 $");
   content = content.replace(/\$([\u4e00-\u9fa5])/g, "$ $1");
   store.setContent(content);
