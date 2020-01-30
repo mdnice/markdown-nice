@@ -12,6 +12,10 @@ import Mobile from "./Mobile";
 import PC from "./PC";
 import Wechat from "./Wechat";
 import Zhihu from "./Zhihu";
+import Close from "./Close";
+import FontCase from "./FontCase";
+import Replace from "./Replace";
+import ReplaceAll from "./ReplaceAll";
 
 export default (props) => {
   switch (props.name) {
@@ -39,6 +43,14 @@ export default (props) => {
       return <Wechat {...props} />;
     case "zhihu":
       return <Zhihu {...props} />;
+    case "close":
+      return <Close {...props} />;
+    case "fontCase":
+      return <FontCase {...props} />;
+    case "replace":
+      return <Replace {...props} />;
+    case "replaceAll":
+      return <ReplaceAll {...props} />;
     default:
       return <svg />;
   }

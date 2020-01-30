@@ -82,6 +82,9 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-P": () => {
           keyEvents.formatDoc(content.content, content);
         },
+        "Ctrl-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
+        },
       }
     : {
         "Cmd-B": () => {
@@ -125,6 +128,9 @@ const bindHotkeys = (content, dialog) =>
         },
         "Cmd-Alt-P": () => {
           keyEvents.formatDoc(content.content, content);
+        },
+        "Cmd-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
         },
       };
 

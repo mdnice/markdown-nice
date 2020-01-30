@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Menu, Dropdown} from "antd";
 
 import Reset from "./Function/Reset";
+import Search from "./Function/Search";
 import History from "./Function/History";
 
 import "./common.css";
@@ -10,6 +11,9 @@ const menu = (
   <Menu>
     <Menu.Item>
       <Reset />
+    </Menu.Item>
+    <Menu.Item>
+      <Search />
     </Menu.Item>
 
     <Menu.Divider />
