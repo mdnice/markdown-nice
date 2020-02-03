@@ -95,7 +95,7 @@ class ImageDialog extends Component {
 
   typeChange = (type) => {
     this.props.imageHosting.setType(type);
-    localStorage.setItem(IMAGE_HOSTING_TYPE, type);
+    window.localStorage.setItem(IMAGE_HOSTING_TYPE, type);
   };
 
   render() {

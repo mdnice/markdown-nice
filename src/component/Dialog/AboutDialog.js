@@ -81,13 +81,13 @@ class AboutDialog extends Component {
         <div style={{display: "flex", alignItems: "center"}}>
           <img
             alt="图片描述"
-            style={style.imgWidth}
+            style={style.leftImgWidth}
             src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"
           />
           <img
             alt="图片描述"
-            style={style.imgWidth}
-            src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"
+            style={style.rightImgWidth}
+            src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"
           />
         </div>
       </Modal>
@@ -96,8 +96,12 @@ class AboutDialog extends Component {
 }
 
 const style = {
-  imgWidth: {
-    width: "50%",
+  leftImgWidth: {
+    width: "40%",
+    height: "100%",
+  },
+  rightImgWidth: {
+    width: "60%",
     height: "100%",
   },
   headerMargin: {

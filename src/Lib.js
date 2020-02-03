@@ -45,7 +45,6 @@ class Lib extends Component {
       defaultTitle,
       useImageHosting,
     };
-
     return (
       <Provider
         content={content}

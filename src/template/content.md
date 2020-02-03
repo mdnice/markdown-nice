@@ -10,7 +10,7 @@
 - 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等平台
 - 欢迎扫码回复「排版」加入用户群
 
-![](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
+![](https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png)
 
 ## 2 示例文章
 
@@ -118,7 +118,7 @@
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
-![这里写图片描述](https://my-wechat.mdnice.com/mdnice/%E4%BA%8C%E7%BB%B4%E7%A0%81_20191007150357.gif)
+![这里写图片描述](https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png)
 
 支持 jpg、png、gif、svg 等图片格式，**其中 svg 文件仅可在微信公众平台中使用**，svg 文件示例如下：
 

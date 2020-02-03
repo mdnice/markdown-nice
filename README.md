@@ -85,4 +85,4 @@ mdnice 社区组建了**微信用户群**，欢迎反馈意见和公众号大佬
 
 | 入群码                                                                                                | 打赏码                                                                                  |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| <img width="250px" src="https://my-wechat.mdnice.com/wechat/wechat_gongzhognhao_20191014013348.gif"/> | <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/> |
+| <img width="360px" src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"/> | <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/> |
