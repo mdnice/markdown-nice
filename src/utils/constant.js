@@ -165,6 +165,7 @@ export const CODE_OPTIONS = [
 export const VERSION_NUM = "1.5.3";
 
 export const VERSION_TIMELINE = [
+  "2020-01-30 修复微信外链转脚注问题",
   "2020-01-30 新增搜索替换、导出PDF和查看菜单",
   "2020-01-21 新增右键菜单，恢复格式化",
   "2020-01-20 整体视觉改版，新增蔷薇紫主题，新增文件导入导出，公式节流渲染，仅保留图壳图床",
