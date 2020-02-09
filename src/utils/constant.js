@@ -16,8 +16,6 @@ export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
 export const VERSION = "version";
-export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
-export const IS_PRETTIER_OPEN = "is_prettier_open";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
@@ -162,12 +160,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.5";
+export const VERSION_NUM = "1.5.6";
 
 export const VERSION_TIMELINE = [
+  "2020-02-09 浏览器插件草稿版，https://docs.mdnice.com/#/beta",
   "2020-02-05 修复第一次进入后无默认图床问题",
   "2020-01-30 修复微信外链转脚注问题",
   "2020-01-30 新增搜索替换、导出PDF和查看菜单",
   "2020-01-21 新增右键菜单，恢复格式化",
-  "2020-01-20 整体视觉改版，新增蔷薇紫主题，新增文件导入导出，公式节流渲染，仅保留图壳图床",
 ];

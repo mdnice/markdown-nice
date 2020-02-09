@@ -1,10 +1,7 @@
 import React, {Component} from "react";
-import {observer, inject} from "mobx-react";
 
 import "../common.css";
 
-@inject("dialog")
-@observer
 class Document extends Component {
   handleClick = () => {
     const w = window.open("about:blank");

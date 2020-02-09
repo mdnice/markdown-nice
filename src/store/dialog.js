@@ -12,8 +12,6 @@ class Dialog {
 
   @observable isFormOpen = false;
 
-  @observable isSettingOpen = false;
-
   @observable isHistoryOpen = false;
 
   @observable isSearchOpen = false;
@@ -41,11 +39,6 @@ class Dialog {
   @action
   setFormOpen = (isFormOpen) => {
     this.isFormOpen = isFormOpen;
-  };
-
-  @action
-  setSettingOpen = (isSettingOpen) => {
-    this.isSettingOpen = isSettingOpen;
   };
 
   @action

@@ -4,8 +4,6 @@ import {
   CODE_NUM,
   CODE_THEME_ID,
   CODE_OPTIONS,
-  IS_PASTE_CHECK_OPEN,
-  IS_PRETTIER_OPEN,
   PREVIEW_TYPE,
   IS_SYNC_SCROLL,
   IS_CONTAIN_IMG_NAME,
@@ -14,10 +12,6 @@ import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
 
 class Navbar {
-  @observable isPasteCheckOpen = true;
-
-  @observable isPrettierOpen = true;
-
   @observable isSyncScroll = true;
 
   @observable isContainImgName = false;
@@ -27,16 +21,6 @@ class Navbar {
   @observable codeNum;
 
   @observable previewType;
-
-  @action
-  setAutoFootOpen = (isPasteCheckOpen) => {
-    this.isPasteCheckOpen = isPasteCheckOpen;
-  };
-
-  @action
-  setPrettierOpen = (isPrettierOpen) => {
-    this.isPrettierOpen = isPrettierOpen;
-  };
 
   @action
   setSyncScroll = (isSyncScroll) => {
@@ -86,16 +70,6 @@ if (!window.localStorage.getItem(CODE_NUM)) {
   window.localStorage.setItem(CODE_NUM, 0);
 }
 
-// 如果为空先把数据放进去
-if (!window.localStorage.getItem(IS_PASTE_CHECK_OPEN)) {
-  window.localStorage.setItem(IS_PASTE_CHECK_OPEN, true);
-}
-
-// 如果为空先把数据放进去
-if (!window.localStorage.getItem(IS_PRETTIER_OPEN)) {
-  window.localStorage.setItem(IS_PRETTIER_OPEN, true);
-}
-
 if (!window.localStorage.getItem(PREVIEW_TYPE)) {
   window.localStorage.setItem(PREVIEW_TYPE, "mobile");
 }
@@ -111,8 +85,6 @@ if (!window.localStorage.getItem(IS_CONTAIN_IMG_NAME)) {
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
-store.isPasteCheckOpen = window.localStorage.getItem(IS_PASTE_CHECK_OPEN) === "true";
-store.isPrettierOpen = window.localStorage.getItem(IS_PRETTIER_OPEN) === "true";
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
 store.isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";

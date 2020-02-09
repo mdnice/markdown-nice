@@ -7,8 +7,6 @@ class View {
 
   @observable isStyleEditorOpen = false;
 
-  @observable isStyleEditorOpen = false;
-
   @observable isImmersiveEditing = false;
 
   @action

@@ -20,7 +20,7 @@ class Theme extends React.Component {
     if (id === "custom") {
       this.props.content.setCustomStyle();
       // 切换自定义自动打开css编辑
-      this.props.navbar.setStyleEditorOpen(true);
+      this.props.view.setStyleEditorOpen(true);
     } else {
       this.props.content.setStyle(TEMPLATE.style[id]);
     }

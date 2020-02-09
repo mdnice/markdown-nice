@@ -5,7 +5,6 @@ import {observer, inject} from "mobx-react";
 import {CODE_OPTIONS, RIGHT_SYMBOL} from "../../utils/constant";
 import "./CodeTheme.css";
 
-@inject("content")
 @inject("navbar")
 @observer
 class CodeTheme extends React.Component {

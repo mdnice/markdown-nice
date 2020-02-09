@@ -5,7 +5,6 @@ import {formatDoc} from "../../../utils/editorKeyEvents";
 
 import "../common.css";
 
-@inject("navbar")
 @inject("content")
 @observer
 class Format extends Component {

@@ -3,7 +3,6 @@ import {observer, inject} from "mobx-react";
 
 import "../common.css";
 
-@inject("content")
 @inject("dialog")
 @observer
 class Image extends Component {
