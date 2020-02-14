@@ -62,7 +62,7 @@ class App extends Component {
                 for (const math of doc.math) {
                   const cls = math.display ? "block-equation" : "inline-equation";
                   math.typesetRoot.className = cls;
-                  math.typesetRoot.setAttribute("data", math.math);
+                  math.typesetRoot.setAttribute("data-formula", math.math);
                 }
               },
             ],
