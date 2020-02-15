@@ -160,12 +160,12 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.6";
+export const VERSION_NUM = "1.5.7";
 
 export const VERSION_TIMELINE = [
+  "2020-02-15 优化主题，mathjax升级至3.0.1",
   "2020-02-09 浏览器插件草稿版，https://docs.mdnice.com/#/beta",
   "2020-02-05 修复第一次进入后无默认图床问题",
   "2020-01-30 修复微信外链转脚注问题",
   "2020-01-30 新增搜索替换、导出PDF和查看菜单",
-  "2020-01-21 新增右键菜单，恢复格式化",
 ];
