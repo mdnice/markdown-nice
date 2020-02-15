@@ -93,7 +93,7 @@ color:#595959;
 }
 
 
-/* 无序列表整体样式
+/* 有序列表整体样式
 * list-style-type: upper-roman|lower-greek|lower-alpha;
 */
 #nice ol {
@@ -163,7 +163,7 @@ color:#595959;
 /* 加粗 */
 #nice strong {
   color: #595959;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 #nice strong::after {

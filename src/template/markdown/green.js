@@ -90,7 +90,7 @@ export default `/* 全局属性
 #nice ul {
 }
 
-/* 无序列表整体样式
+/* 有序列表整体样式
  * list-style-type: upper-roman|lower-greek|lower-alpha;
  */
 #nice ol {

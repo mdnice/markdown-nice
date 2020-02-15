@@ -161,7 +161,7 @@ export default `/*初始化格式*/
   background-image:linear-gradient(to right,rgba(60,122,198,0),rgba(60,122,198,0.75),rgba(60,122,198,0));
 }
 
-/*图片*/
+/* 图片 */
 #nice img {
     border-radius:4px;
     margin-bottom:25px;
@@ -209,7 +209,7 @@ export default `/*初始化格式*/
   color: rgb(60, 112, 198);
 }
 
-/*脚注超链接样式*/
+/* 脚注超链接样式 */
 #nice .footnote-item em {
   color: rgb(60, 112, 198);
   font-size:13px;

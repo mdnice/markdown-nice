@@ -64,7 +64,7 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 #nice ul {
 }
 
-/* 无序列表整体样式
+/* 有序列表整体样式
  * list-style-type: upper-roman|lower-greek|lower-alpha;
  */
 #nice ol {
