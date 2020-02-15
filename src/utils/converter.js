@@ -19,9 +19,9 @@ export const solveWeChatMath = () => {
       break;
     }
 
-    // mjx.removeAttribute("data");
     mjx.removeAttribute("jax");
-    mjx.removeAttribute("display");
+    mjx.removeAttribute("role");
+    mjx.removeAttribute("style");
     mjx.removeAttribute("tabindex");
     mjx.removeAttribute("ctxtmenu_counter");
     const svg = mjx.firstChild;
@@ -59,12 +59,11 @@ export const solveHtml = () => {
     item.setAttribute("data-tool", "mdnice编辑器");
   }
   let html = element.innerHTML;
-  html = html.replace(/<mjx-container (class="inline.+?)<\/mjx-container>/g, "<span $1</span>");
-  html = html.replace(/\s<span class="inline/g, '&nbsp;<span class="inline');
-  html = html.replace(/svg><\/span>\s/g, "svg></span>&nbsp;");
-  html = html.replace(/mjx-container/g, "section");
-  html = html.replace(/class="mjx-solid"/g, 'fill="none" stroke-width="70"');
   html = html.replace(/<mjx-assistive-mml.+?<\/mjx-assistive-mml>/g, "");
+  html = html.replace(/<mjx-container (class="inline.+?)<\/mjx-container>/g, "<mjx $1</mjx>");
+  html = html.replace(/\s<mjx class="inline/g, '&nbsp;<mjx class="inline');
+  html = html.replace(/svg><\/mjx>\s/g, "svg></mjx>&nbsp;");
+  html = html.replace(/class="mjx-solid"/g, 'fill="none" stroke-width="70"');
   const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
   const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
   const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
