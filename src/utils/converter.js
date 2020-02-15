@@ -7,11 +7,11 @@ export const solveWeChatMath = () => {
   const mjxs = layout.getElementsByTagName("mjx-container");
   for (let i = 0; i < mjxs.length; i++) {
     const mjx = mjxs[i];
-    if (!mjx.hasAttribute("data")) {
+    if (!mjx.hasAttribute("jax")) {
       break;
     }
 
-    mjx.removeAttribute("data");
+    // mjx.removeAttribute("data");
     mjx.removeAttribute("jax");
     mjx.removeAttribute("display");
     mjx.removeAttribute("tabindex");
