@@ -1,6 +1,6 @@
 import juice from "juice";
 import {message} from "antd";
-import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID, BOX_ID} from "./constant";
+import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID, BOX_ID, FONT_THEME_ID} from "./constant";
 
 export const solveWeChatMath = () => {
   const layout = document.getElementById(LAYOUT_ID);
@@ -60,9 +60,10 @@ export const solveHtml = () => {
   const basicStyle = document.getElementById(BASIC_THEME_ID).innerText;
   const markdownStyle = document.getElementById(MARKDOWN_THEME_ID).innerText;
   const codeStyle = document.getElementById(CODE_THEME_ID).innerText;
+  const fontStyle = document.getElementById(FONT_THEME_ID).innerText;
   let res = "";
   try {
-    res = juice.inlineContent(html, basicStyle + markdownStyle + codeStyle, {
+    res = juice.inlineContent(html, basicStyle + markdownStyle + codeStyle + fontStyle, {
       inlinePseudoElements: true,
       preserveImportant: true,
     });
