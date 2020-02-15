@@ -7,6 +7,7 @@ export const CLIENT_SECRET =
 export const PROXY = "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token";
 export const SM_MS_PROXY = "https://cors-anywhere.herokuapp.com/https://sm.ms/api/upload";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
+export const MJX_DATA_FORMULA = "data-formula";
 
 export const CONTENT = "content";
 export const STYLE = "style";
@@ -160,11 +161,11 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.7";
+export const VERSION_NUM = "1.5.9";
 
 export const VERSION_TIMELINE = [
-  "2020-02-15 优化主题，mathjax升级至3.0.1",
-  "2020-02-09 浏览器插件草稿版，https://docs.mdnice.com/#/beta",
+  "2020-02-15 优化主题，mathjax升级至3.0.1，浏览器插件更新，https://docs.mdnice.com/#/beta",
+  "2020-02-09 浏览器插件草稿版",
   "2020-02-05 修复第一次进入后无默认图床问题",
   "2020-01-30 修复微信外链转脚注问题",
   "2020-01-30 新增搜索替换、导出PDF和查看菜单",

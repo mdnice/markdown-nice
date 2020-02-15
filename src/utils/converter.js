@@ -1,6 +1,14 @@
 import juice from "juice";
 import {message} from "antd";
-import {BASIC_THEME_ID, CODE_THEME_ID, MARKDOWN_THEME_ID, LAYOUT_ID, BOX_ID, FONT_THEME_ID} from "./constant";
+import {
+  BASIC_THEME_ID,
+  CODE_THEME_ID,
+  MARKDOWN_THEME_ID,
+  LAYOUT_ID,
+  BOX_ID,
+  FONT_THEME_ID,
+  MJX_DATA_FORMULA,
+} from "./constant";
 
 export const solveWeChatMath = () => {
   const layout = document.getElementById(LAYOUT_ID);
@@ -31,7 +39,7 @@ export const solveZhihuMath = () => {
   const mjxs = layout.getElementsByTagName("mjx-container");
   while (mjxs.length > 0) {
     const mjx = mjxs[0];
-    let data = mjx.getAttribute("data");
+    let data = mjx.getAttribute(MJX_DATA_FORMULA);
     if (!data) {
       continue;
     }

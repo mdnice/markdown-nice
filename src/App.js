@@ -17,7 +17,7 @@ import SearchBox from "./component/SearchBox";
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID, BOX_ID, IMAGE_HOSTING_NAMES, IMAGE_HOSTING_TYPE} from "./utils/constant";
+import {LAYOUT_ID, BOX_ID, IMAGE_HOSTING_NAMES, IMAGE_HOSTING_TYPE, MJX_DATA_FORMULA} from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
@@ -62,7 +62,7 @@ class App extends Component {
                 for (const math of doc.math) {
                   const cls = math.display ? "block-equation" : "inline-equation";
                   math.typesetRoot.className = cls;
-                  math.typesetRoot.setAttribute("data-formula", math.math);
+                  math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
                 }
               },
             ],
