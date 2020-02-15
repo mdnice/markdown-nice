@@ -1958,6 +1958,21 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@sitdown/juejin@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sitdown/juejin/-/juejin-1.0.1.tgz#83ad92a76936f3ca9679ddec375aecae3ce851b2"
+  integrity sha512-d3n6uN26atsPNnfm/I/v8IVXLnMkWav60POxJHaKtK19NaK4BMv3b51b4jnjKSjPnwvTHrTaBaU59xVUwEor1g==
+
+"@sitdown/wechat@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sitdown/wechat/-/wechat-1.0.1.tgz#b00a2e4966268b4fc68cefac41407af933f4ae15"
+  integrity sha512-gihItazLYRBGxkrhkpxuMU5f9a/mGsEKplqHdnyewUWzSAWm9XuZlyPY1MBcA5Nr4WhZWzkr/l4fxY5HtxTUCA==
+
+"@sitdown/zhihu@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sitdown/zhihu/-/zhihu-1.0.1.tgz#6e88c9ab4ba279d9341b7566ea2e091002a65b12"
+  integrity sha512-seniWiNp9NQYRH9gOO0dmiJyP1bTZSsJ/xY7VUsvfHO+A5sa4RpD8/gqm+KfNF8saB+sD5WRNEWFNbwcKjdujg==
+
 "@storybook/addons@4.1.18":
   version "4.1.18"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.18.tgz#05f72f19c9e744f1cf24fc9174d5e32f5e94c27d"
@@ -13757,6 +13772,11 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
+sitdown@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sitdown/-/sitdown-1.0.1.tgz#1a4b944304ee2736848ab899b03dc1a940418e00"
+  integrity sha512-pQoaMMAygsUvziTZDe6iEU5T4tRUF7E9SzLGP34k6bPJuzKrhXmI9uBqCo7LWe3YmRPjOvvmU8kRwsZ+qNF4xA==
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -14773,6 +14793,11 @@ tunnel-agent@^0.6.0:
   integrity sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
   dependencies:
     safe-buffer "^5.0.1"
+
+turndown-plugin-gfm@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/turndown-plugin-gfm/-/turndown-plugin-gfm-1.0.2.tgz#6f8678a361f35220b2bdf5619e6049add75bf1c7"
+  integrity sha512-vwz9tfvF7XN/jE0dGoBei3FXWuvll78ohzCZQuOb+ZjWrs3a0XhQVomJEb2Qh4VHTPNRO4GPZh0V7VRbiWwkRg==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"

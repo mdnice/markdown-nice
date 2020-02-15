@@ -16,6 +16,8 @@ class Dialog {
 
   @observable isSearchOpen = false;
 
+  @observable isSitDownOpen = false;
+
   @action
   setImageOpen = (isImageOpen) => {
     this.isImageOpen = isImageOpen;
@@ -49,6 +51,11 @@ class Dialog {
   @action
   setSearchOpen = (isSearchOpen) => {
     this.isSearchOpen = isSearchOpen;
+  };
+
+  @action
+  setSitDownOpen = (isSitDownOpen) => {
+    this.isSitDownOpen = isSitDownOpen;
   };
 }
 

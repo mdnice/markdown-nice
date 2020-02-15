@@ -161,12 +161,35 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.5.9";
+export const SITDOWN_OPTIONS = [
+  {
+    key: "wechat",
+    value: "微信公众号 - https://mp.weixin.qq.com/",
+  },
+  {
+    key: "zhihu",
+    value: "知乎专栏 - https://zhuanlan.zhihu.com/",
+  },
+  {
+    key: "juejin",
+    value: "掘金 - https://juejin.im/post/",
+  },
+  {
+    key: "csdn",
+    value: "CSDN - https://blog.csdn.net/",
+  },
+  {
+    key: "other",
+    value: "其他",
+  },
+];
+
+export const VERSION_NUM = "1.6.0";
 
 export const VERSION_TIMELINE = [
+  "2020-02-15 转发文章重排版，坐立不安？请 SitDown - html 转 markdown 神器（请在功能中查看）",
   "2020-02-15 优化主题，mathjax升级至3.0.1，浏览器插件更新，https://docs.mdnice.com/#/beta",
-  "2020-02-09 浏览器插件草稿版",
+  "2020-02-09 浏览器插件草稿版发布",
   "2020-02-05 修复第一次进入后无默认图床问题",
   "2020-01-30 修复微信外链转脚注问题",
-  "2020-01-30 新增搜索替换、导出PDF和查看菜单",
 ];

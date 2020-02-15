@@ -67,11 +67,11 @@ class VersionDialog extends Component {
             <a
               style={{fontWeight: "bold", borderBottom: "double"}}
               alt=""
-              href="https://github.com/mdnice/markdown-nice"
+              href="https://github.com/mdnice/sitdown"
               rel="noopener noreferrer"
               target="_blank"
             >
-              恭喜 markdown-nice 突破 1k Star 🎉🎉🎉，欢迎点击 Star
+              感谢「林风」贡献的 SitDown（html 转 markdown 神器），欢迎点击 Star
             </a>
           </Timeline.Item>
         </Timeline>

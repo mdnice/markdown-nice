@@ -2,7 +2,7 @@
   "name": "markdown-nice",
   "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "private": false,
   "main": "lib/Lib.js",
   "module": "lib/Lib.js",
@@ -24,6 +24,9 @@
     "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
+    "@sitdown/juejin": "^1.0.1",
+    "@sitdown/wechat": "^1.0.1",
+    "@sitdown/zhihu": "^1.0.1",
     "@uiw/react-codemirror": "^1.0.28",
     "ali-oss": "^6.1.1",
     "antd": "^3.15.1",
@@ -46,7 +49,9 @@
     "qiniu-js": "^2.5.4",
     "react": "16.10.2",
     "react-dom": "16.10.2",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "sitdown": "^1.0.1",
+    "turndown-plugin-gfm": "^1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
