@@ -16,7 +16,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "watch": "node ./watch.js",
-    "build": "node scripts/build.js",
+    "build": "node --max_old_space_size=4096 scripts/build.js",
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
     "lint": "eslint src --ext ts,tsx,js --fix",
@@ -50,8 +50,7 @@
     "react": "16.10.2",
     "react-dom": "16.10.2",
     "react-helmet": "^5.2.1",
-    "sitdown": "^1.0.1",
-    "turndown-plugin-gfm": "^1.0.2"
+    "sitdown": "^1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
