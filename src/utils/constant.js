@@ -8,6 +8,7 @@ export const PROXY = "https://cors-anywhere.herokuapp.com/https://github.com/log
 export const SM_MS_PROXY = "https://cors-anywhere.herokuapp.com/https://sm.ms/api/upload";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
 export const MJX_DATA_FORMULA = "data-formula";
+export const MJX_DATA_FORMULA_TYPE = "data-formula-type";
 
 export const CONTENT = "content";
 export const STYLE = "style";
