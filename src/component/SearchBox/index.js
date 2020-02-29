@@ -8,6 +8,17 @@ import SvgIcon from "../../icon";
 
 import "./SearchBox.css";
 
+function WrappedButton(props) {
+  const className = props.className === undefined ? "" : props.className;
+  return (
+    <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title={props.tipText}>
+      <button className="searchbox-button" type="button" onClick={props.onClick}>
+        <SvgIcon name={props.icon} className={`searchbox-icon ${className}`} fill={props.fill} />
+      </button>
+    </Tooltip>
+  );
+}
+
 @inject("content")
 @inject("dialog")
 @observer
@@ -129,6 +140,15 @@ class SearchBox extends React.Component {
     }
   };
 
+  handelFoldClick = () => {
+    this.setState((prevState) => ({isReplaceOpen: !prevState.isReplaceOpen}));
+  };
+
+  handleClose = () => {
+    this.props.dialog.setSearchOpen(false);
+    this.clearMarks();
+  };
+
   render() {
     return (
       <div
@@ -137,15 +157,7 @@ class SearchBox extends React.Component {
         className="mdnice-searchbox"
       >
         <div>
-          <Tooltip placement="left" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="展开">
-            <button
-              className="searchbox-button searchbox-replace-toggle "
-              type="button"
-              onClick={() => this.setState((prevState) => ({isReplaceOpen: !prevState.isReplaceOpen}))}
-            >
-              <SvgIcon name="down" className="searchbox-icon" />
-            </button>
-          </Tooltip>
+          <WrappedButton icon="down" tipText="展开" onClick={this.handelFoldClick} className="searchbox-icon-fold" />
           <Input
             size="small"
             value={this.state.searchText}
@@ -153,34 +165,21 @@ class SearchBox extends React.Component {
             onChange={(e) => this.findContent(e.target.value)}
             onPressEnter={() => this.posChange(false)}
           />
-          <span>
-            <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="忽略大小写">
-              <button type="button" className="searchbox-button" onClick={this.handleCaseFold}>
-                <SvgIcon
-                  name="fontCase"
-                  className="searchbox-icon"
-                  style={{height: 18, width: 18}}
-                  fill={this.state.caseFold ? "#40a9ff" : undefined}
-                />
-              </button>
-            </Tooltip>
-            <button type="button" onClick={() => this.posChange(true)} className="searchbox-button">
-              <SvgIcon name="down" className="searchbox-icon searchbox-icon-prev" />
-            </button>
-            <button type="button" onClick={() => this.posChange(false)} className="searchbox-button">
-              <SvgIcon name="down" className="searchbox-icon" />
-            </button>
-            <button
-              type="button"
-              className="searchbox-button"
-              onClick={() => {
-                this.props.dialog.setSearchOpen(false);
-                this.clearMarks();
-              }}
-            >
-              <SvgIcon name="close" className="searchbox-icon" />
-            </button>
-          </span>
+          <WrappedButton
+            icon="fontCase"
+            onClick={this.handleCaseFold}
+            tipText="忽略大小写"
+            className="searchbox-icon-casefold"
+            fill={this.state.caseFold ? "#40a9ff" : undefined}
+          />
+          <WrappedButton
+            icon="down"
+            className="searchbox-icon-prev"
+            onClick={() => this.posChange(true)}
+            tipText="上一个"
+          />
+          <WrappedButton icon="down" onClick={() => this.posChange(false)} tipText="下一个" />
+          <WrappedButton icon="close" onClick={this.handleClose} tipText="关闭" />
         </div>
         <div>
           <Input
@@ -192,18 +191,13 @@ class SearchBox extends React.Component {
             }}
             onPressEnter={this.replace}
           />
-          <span>
-            <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="替换">
-              <button type="button" className="searchbox-button" onClick={this.replace}>
-                <SvgIcon name="replace" className="searchbox-icon" style={{height: 16, width: 16}} />
-              </button>
-            </Tooltip>
-            <Tooltip placement="bottom" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="全部替换">
-              <button type="button" className="searchbox-button" onClick={this.replaceAll}>
-                <SvgIcon name="replaceAll" className="searchbox-icon" style={{height: 16, width: 16}} />
-              </button>
-            </Tooltip>
-          </span>
+          <WrappedButton icon="replace" className="searchbox-icon-replace" onClick={this.replace} tipText="替换" />
+          <WrappedButton
+            icon="replaceAll"
+            className="searchbox-icon-replace"
+            onClick={this.replaceAll}
+            tipText="替换所有"
+          />
         </div>
       </div>
     );
