@@ -8975,7 +8975,7 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsdom@^11.5.1:
+jsdom@^11.5.1, jsdom@^11.9.0:
   version "11.12.0"
   resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-11.12.0.tgz#1a80d40ddd378a1de59656e9e6dc5a3ba8657bc8"
   integrity sha512-y8Px43oyiBM13Zc1z780FrfNLJCXTL40EWlty/LXUtcjykRBNgLlCjWXpfSPBl2iv+N7koQN+dvqszHZgT/Fjw==
@@ -13772,10 +13772,12 @@ sisteransi@^0.1.1:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
   integrity sha512-PmGOd02bM9YO5ifxpw36nrNMBTptEtfRl4qUYl9SndkolplkrZZOW7PGHjrZL53QvMVj9nQ+TKqUnRsw4tJa4g==
 
-sitdown@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/sitdown/-/sitdown-1.0.1.tgz#1a4b944304ee2736848ab899b03dc1a940418e00"
-  integrity sha512-pQoaMMAygsUvziTZDe6iEU5T4tRUF7E9SzLGP34k6bPJuzKrhXmI9uBqCo7LWe3YmRPjOvvmU8kRwsZ+qNF4xA==
+sitdown@^1.0.2:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sitdown/-/sitdown-1.1.0.tgz#687af0dc83b0a3df8263ceb3d301ae339847d75a"
+  integrity sha512-oYpreFku80chG6ziyFn4OXMLJeu1hzbQLVUIbv1YAL5k3WSYReQL46L4DqO5HCX5aiwN3Hh5yUCEvvwVvtnEgA==
+  dependencies:
+    jsdom "^11.9.0"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -14793,11 +14795,6 @@ tunnel-agent@^0.6.0:
   integrity sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
   dependencies:
     safe-buffer "^5.0.1"
-
-turndown-plugin-gfm@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/turndown-plugin-gfm/-/turndown-plugin-gfm-1.0.2.tgz#6f8678a361f35220b2bdf5619e6049add75bf1c7"
-  integrity sha512-vwz9tfvF7XN/jE0dGoBei3FXWuvll78ohzCZQuOb+ZjWrs3a0XhQVomJEb2Qh4VHTPNRO4GPZh0V7VRbiWwkRg==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"

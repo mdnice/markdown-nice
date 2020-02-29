@@ -188,7 +188,8 @@ ol {
 #nice img {
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 /*图片*/

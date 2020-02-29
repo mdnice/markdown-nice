@@ -88,6 +88,7 @@ color:#595959;
 * list-style-type: square|circle|disc;
 */
 #nice ul {
+  font-size: 15px; /*神奇逻辑，必须比li section的字体大才会在二级中生效*/
   color: #595959;
   list-style-type: circle;
 }
@@ -97,6 +98,7 @@ color:#595959;
 * list-style-type: upper-roman|lower-greek|lower-alpha;
 */
 #nice ol {
+  font-size: 15px;
   color: #595959;
 }
 
