@@ -25,7 +25,7 @@ class ImportFile extends Component {
             style={{display: "none"}}
             type="file"
             id="importFile"
-            accept="text/*"
+            accept=".txt,.md"
             hidden=""
             onChange={this.handleChange}
           />
