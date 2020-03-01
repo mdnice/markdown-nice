@@ -146,7 +146,7 @@ export const hotKeys = isPlatformWindows
       form: "Ctrl+Alt+T",
       format: "Alt+Shift+F",
       linkToFoot: "Alt+Shift+L",
-      search: "Ctrl+S",
+      search: "Ctrl+F",
     }
   : {
       bold: "⌘B",
@@ -159,7 +159,7 @@ export const hotKeys = isPlatformWindows
       form: "⌥⌘T",
       format: "⌥⇧F",
       linkToFoot: "⌥⇧L",
-      search: "⌘S",
+      search: "⌘F",
     };
 
 export const betterTab = (cm) => {

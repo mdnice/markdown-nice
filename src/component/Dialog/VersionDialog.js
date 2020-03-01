@@ -84,8 +84,8 @@ class VersionDialog extends Component {
             </a>
           </Timeline.Item>
         </Timeline>
-        <video style={{width: "100%"}} controls>
-          <source src="https://imgkr.cn-bj.ufileos.com/e269a7aa-ba4b-42f9-b2bf-c15e0632400e.mov" type="video/mp4" />
+        <video style={{width: "100%"}} controls autoPlay>
+          <source src="https://imgkr.cn-bj.ufileos.com/4d624bd6-13f6-4956-a58a-0b77763a9784.mov" type="video/mp4" />
           <track src="captions_en.vtt" kind="captions" srcLang="en" label="english_captions" />
         </video>
       </Modal>
