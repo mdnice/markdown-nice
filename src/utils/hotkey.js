@@ -1,4 +1,5 @@
 import * as keyEvents from "./editorKeyEvents";
+import {isPlatformWindows} from "./helper";
 
 const handlePressHotkey = (type, content) => {
   const {markdownEditor} = content;
@@ -37,8 +38,7 @@ const handlePressHotkey = (type, content) => {
 };
 
 const bindHotkeys = (content, dialog) =>
-  // /macintosh|mac\sos\s+x/i.test(navigator.userAgent)
-  /windows|win32/i.test(navigator.userAgent)
+  isPlatformWindows
     ? {
         "Ctrl-B": () => {
           handlePressHotkey("Bold", content);
@@ -76,10 +76,10 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-S": () => {
           // Converting between sans serif and serif
         },
-        "Ctrl-Alt-L": () => {
+        "Alt-Shift-L": () => {
           keyEvents.parseLinkToFoot(content.content, content);
         },
-        "Ctrl-Alt-P": () => {
+        "Alt-Shift-F": () => {
           keyEvents.formatDoc(content.content, content);
         },
         "Ctrl-F": () => {
@@ -123,16 +123,44 @@ const bindHotkeys = (content, dialog) =>
         "Cmd-Alt-S": () => {
           // Converting between sans serif and serif
         },
-        "Cmd-Alt-L": () => {
+        "Alt-Shift-L": () => {
           keyEvents.parseLinkToFoot(content.content, content);
         },
-        "Cmd-Alt-P": () => {
+        "Alt-Shift-F": () => {
           keyEvents.formatDoc(content.content, content);
         },
         "Cmd-F": () => {
           dialog.setSearchOpen(!dialog.isSearchOpen);
         },
       };
+
+export const hotKeys = isPlatformWindows
+  ? {
+      bold: "Ctrl+B",
+      del: "Ctrl+U",
+      italic: "Ctrl+I",
+      code: "Ctrl+Alt+C",
+      inlineCode: "Ctrl+Alt+V",
+      link: "Ctrl+K",
+      image: "Ctrl+Alt+I",
+      form: "Ctrl+Alt+T",
+      format: "Alt+Shift+F",
+      linkToFoot: "Alt+Shift+L",
+      search: "Ctrl+S",
+    }
+  : {
+      bold: "⌘B",
+      del: "⌘U",
+      italic: "⌘I",
+      code: "⌥⌘C",
+      inlineCode: "⌥⌘V",
+      link: "⌘K",
+      image: "⌥⌘I",
+      form: "⌥⌘T",
+      format: "⌥⇧F",
+      linkToFoot: "⌥⇧L",
+      search: "⌘S",
+    };
 
 export const betterTab = (cm) => {
   if (cm.somethingSelected()) {

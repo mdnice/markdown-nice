@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
+import {hotKeys} from "../../../utils/hotkey";
+
 import "../common.css";
 
 @inject("dialog")
@@ -17,7 +19,7 @@ class Search extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">查找</span>
         </span>
-        <span className="nice-menu-shortcut">⌘F</span>
+        <span className="nice-menu-shortcut">{hotKeys.search}</span>
       </div>
     );
   }
