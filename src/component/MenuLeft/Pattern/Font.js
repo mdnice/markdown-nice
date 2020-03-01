@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {message} from "antd";
 
 import {FONT_THEME_ID, RIGHT_SYMBOL} from "../../../utils/constant";
 import {replaceStyle} from "../../../utils/helper";
@@ -23,6 +24,7 @@ class Font extends Component {
     }`;
     const choosen = isSerif ? serif : sansSerif;
     replaceStyle(FONT_THEME_ID, choosen);
+    message.success("字体切换成功！");
     this.setState({isSerif: !isSerif});
   };
 

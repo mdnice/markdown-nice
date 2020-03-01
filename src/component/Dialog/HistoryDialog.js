@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Modal, Empty} from "antd";
+import {Modal, Empty, message} from "antd";
 import LocalHistory from "../LocalHistory";
 import {AutoSaveInterval, getLocalDocuments, setLocalDocuments, setLocalDraft} from "../LocalHistory/util";
 import IndexDB from "../LocalHistory/indexdb";
@@ -52,6 +52,7 @@ class HistoryDialog extends Component {
 
   editLocalDocument = (content) => {
     this.props.content.setContent(content);
+    message.success("恢复成功！");
     this.closeDialog();
   };
 

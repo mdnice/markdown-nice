@@ -24,7 +24,6 @@
     "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
-    "@ant-design/compatible": "^0.0.1-rc.1",
     "@sitdown/juejin": "^1.1.1",
     "@sitdown/wechat": "^1.1.1",
     "@sitdown/zhihu": "^1.1.1",
