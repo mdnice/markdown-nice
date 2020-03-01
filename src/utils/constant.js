@@ -185,12 +185,8 @@ export const SITDOWN_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.6.1";
+export const VERSION_NUM = "1.6.2";
 
 export const VERSION_TIMELINE = [
-  "2020-02-17 解决 build 内存溢出的问题。",
-  "2020-02-15 转发文章重排版，坐立不安？请 SitDown - html 转 markdown 神器（请在功能中查看）",
-  "2020-02-15 优化主题，mathjax升级至3.0.1，浏览器插件更新，https://docs.mdnice.com/#/beta",
-  "2020-02-09 浏览器插件草稿版发布",
-  "2020-02-05 修复第一次进入后无默认图床问题",
+  "2020-03-01 浏览器插件 beta 版，修改微信 logo，修改图片自适应，更改 TOC 语法为[TOC]，升级 antd 3 至 antd 4，修复快捷键",
 ];
