@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
 import {del} from "../../../utils/editorKeyEvents";
+import {hotKeys} from "../../../utils/hotkey";
 
 import "../common.css";
 
@@ -26,7 +27,7 @@ class Del extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">删除线</span>
         </span>
-        <span className="nice-menu-shortcut">⌘U</span>
+        <span className="nice-menu-shortcut">{hotKeys.del}</span>
       </div>
     );
   }

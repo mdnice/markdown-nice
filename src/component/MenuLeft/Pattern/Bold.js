@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
 import {bold} from "../../../utils/editorKeyEvents";
+import {hotKeys} from "../../../utils/hotkey";
 
 import "../common.css";
 
@@ -27,7 +28,7 @@ class Bold extends Component {
           <span className="nice-menu-name">加粗</span>
         </span>
 
-        <span className="nice-menu-shortcut">⌘B</span>
+        <span className="nice-menu-shortcut">{hotKeys.bold}</span>
       </div>
     );
   }

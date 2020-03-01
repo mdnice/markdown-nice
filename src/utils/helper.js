@@ -281,3 +281,7 @@ export const download = (content, filename) => {
   // 然后移除
   document.body.removeChild(eleLink);
 };
+
+export const platformWindows = () => {
+  return /windows|win32/i.test(navigator.userAgent);
+};
