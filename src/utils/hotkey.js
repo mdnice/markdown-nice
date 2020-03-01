@@ -1,5 +1,5 @@
 import * as keyEvents from "./editorKeyEvents";
-import {platformWindows} from "./helper";
+import {isPlatformWindows} from "./helper";
 
 const handlePressHotkey = (type, content) => {
   const {markdownEditor} = content;
@@ -38,7 +38,7 @@ const handlePressHotkey = (type, content) => {
 };
 
 const bindHotkeys = (content, dialog) =>
-  platformWindows()
+  isPlatformWindows
     ? {
         "Ctrl-B": () => {
           handlePressHotkey("Bold", content);
@@ -134,7 +134,7 @@ const bindHotkeys = (content, dialog) =>
         },
       };
 
-export const hotKeys = platformWindows()
+export const hotKeys = isPlatformWindows
   ? {
       bold: "Ctrl+B",
       del: "Ctrl+U",
