@@ -283,3 +283,5 @@ export const download = (content, filename) => {
 };
 
 export const isPlatformWindows = /windows|win32/i.test(navigator.userAgent);
+
+export const packageVersion = process.env.VERSION;
