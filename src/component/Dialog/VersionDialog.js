@@ -55,7 +55,9 @@ class VersionDialog extends Component {
           this.props.dialog.setVersionOpen(true);
         }
       }
-      localStorage.setItem(NEWEST_VERSION, data.versionNumber);
+      if (newestVersion !== data.versionNumber) {
+        localStorage.setItem(NEWEST_VERSION, data.versionNumber);
+      }
       this.setState({...data});
     } catch (err) {
       console.error("读取最新Mdnice版本信息错误");
@@ -110,12 +112,14 @@ class VersionDialog extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {this.state.recommend.maininfo}
+                {this.state.recommend.mainInfo}
               </a>
             </Timeline.Item>
           )}
         </Timeline>
-        <div dangerouslySetInnerHTML={{__html: this.state.specialInfo}} className="specialInfo" />
+        {this.state.specialInfo && (
+          <div dangerouslySetInnerHTML={{__html: this.state.specialInfo}} className="specialInfo" />
+        )}
       </Modal>
     );
   }
