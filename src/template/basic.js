@@ -57,7 +57,7 @@ h6 {
 
 /*列表*/
 #nice ul,
-ol {
+#nice ol {
   margin-top: 8px;
   margin-bottom: 8px;
   padding-left: 25px;
@@ -172,7 +172,8 @@ ol {
 }
 
 /*行内代码*/
-#nice p code, li code{
+#nice p code,
+#nice li code {
   font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;
@@ -188,7 +189,8 @@ ol {
 #nice img {
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 /*图片*/
@@ -226,7 +228,7 @@ ol {
 }
 
 #nice table tr th,
-table tr td {
+#nice table tr td {
   font-size: 16px;
   border: 1px solid #ccc;
   padding: 5px 10px;

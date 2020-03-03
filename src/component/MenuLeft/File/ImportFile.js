@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
 import "../common.css";
+import {message} from "antd";
 
 @inject("content")
 @observer
@@ -11,6 +12,7 @@ class ImportFile extends Component {
     const reader = new FileReader();
     reader.onload = (event) => {
       this.props.content.setContent(event.target.result);
+      message.success("导入文件成功！");
     };
     reader.readAsText(file);
   };
@@ -25,7 +27,7 @@ class ImportFile extends Component {
             style={{display: "none"}}
             type="file"
             id="importFile"
-            accept="text/*"
+            accept=".txt,.md"
             hidden=""
             onChange={this.handleChange}
           />

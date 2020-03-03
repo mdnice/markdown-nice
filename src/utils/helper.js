@@ -85,6 +85,7 @@ markdownParserWechat
   .use(markdownItTableOfContents, {
     transformLink: () => "",
     includeLevel: [2, 3],
+    markerPattern: /^\[toc\]/im,
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
@@ -117,6 +118,7 @@ markdownParser
   .use(markdownItTableOfContents, {
     transformLink: () => "",
     includeLevel: [2, 3],
+    markerPattern: /^\[toc\]/im,
   }) // TOC仅支持二级和三级标题
   .use(markdownItRuby) // 注音符号
   .use(markdownItImplicitFigures, {figcaption: true}) // 图示
@@ -279,3 +281,5 @@ export const download = (content, filename) => {
   // 然后移除
   document.body.removeChild(eleLink);
 };
+
+export const isPlatformWindows = /windows|win32/i.test(navigator.userAgent);

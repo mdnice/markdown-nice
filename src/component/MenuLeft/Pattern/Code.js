@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
 import {code} from "../../../utils/editorKeyEvents";
+import {hotKeys} from "../../../utils/hotkey";
 
 import "../common.css";
 
@@ -26,7 +27,7 @@ class Code extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">代码</span>
         </span>
-        <span className="nice-menu-shortcut">⌘⌥C</span>
+        <span className="nice-menu-shortcut">{hotKeys.code}</span>
       </div>
     );
   }

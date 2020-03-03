@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Modal} from "antd";
+import {Modal, message} from "antd";
 
 import TEMPLATE from "../../../template/index";
 import "../common.css";
@@ -21,6 +21,7 @@ class Reset extends Component {
         this.props.content.setStyle(TEMPLATE.style.normal);
         this.props.content.setCustomStyle(TEMPLATE.style.custom);
         this.props.navbar.setTemplateNum(0);
+        message.success("重置成功！");
       },
       onCancel() {},
     });

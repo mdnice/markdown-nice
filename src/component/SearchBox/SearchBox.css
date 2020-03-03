@@ -9,29 +9,22 @@
   background-color: white;
   max-height: 76px;
   box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .mdnice-searchbox>:last-child {
   margin-top: 8px;
-  margin-left: 29px;
+  margin-left: 27px;
 }
 
 .mdnice-searchbox > div {
   display: flex;
   align-items: center;
-  flex: 1;
 }
 
 .mdnice-searchbox div>:not(:last-child ) {
-  margin-right: 5px;
-}
-
-.mdnice-searchbox div span>:not(:last-child ) {
-  margin-right: 2px;
+  margin-right: 3px;
 }
 
 .mdnice-searchbox div input {
@@ -39,6 +32,7 @@
 }
 
 .mdnice-searchbox .searchbox-button {
+  background-color: white;
   outline: none;
   padding: 0px;
   border: none;
@@ -51,33 +45,33 @@
   background-color: #e6f7ff;
 }
 
-.searchbox-replace-toggle .searchbox-icon{
-  transform: rotate(-90deg);
-  transition: all 0.2s ease-in-out;
-}
-
-.searchbox-input {
-  overflow: hidden;
-  transition: all 0.15s ease-in-out;
-}
-
-.searchbox-input[data-active="false"] {
-  max-height: 32px !important;
-}
-
-.searchbox-input>:last-child{
-  margin-top: 10px;
-}
-
 .searchbox-icon {
   display: block;
   margin: auto;
   height: 24px;
   width: 24px;
+  background-color: transparent;
+}
+
+.searchbox-icon-casefold {
+  width: 18px;
 }
 
 .searchbox-icon-prev {
   transform: rotate(180deg);
+}
+
+.searchbox-icon-replace {
+  width: 16px;
+}
+
+.searchbox-icon-fold {
+  transform: rotate(-90deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.mdnice-searchbox[data-replace="true"]  .searchbox-icon-fold{
+  transform: unset;
 }
 
 .searchbox-text-highlight {
@@ -86,12 +80,7 @@
   padding: 3px 0px;
 }
 
-.mdnice-searchbox[data-replace="true"] .searchbox-replace-toggle .searchbox-icon{
-  transform: unset;
-}
-
 .mdnice-searchbox[data-active="false"] {
-  visibility: hidden;
   max-height: 0px !important;
   padding-top: 0px;
   padding-bottom: 0px;

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 
 import {parseLinkToFoot} from "../../../utils/editorKeyEvents";
+import {hotKeys} from "../../../utils/hotkey";
 
 import "../common.css";
 
@@ -20,7 +21,7 @@ class Format extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">微信外链转脚注</span>
         </span>
-        <span className="nice-menu-shortcut">⌘⌥L</span>
+        <span className="nice-menu-shortcut">{hotKeys.linkToFoot}</span>
       </div>
     );
   }

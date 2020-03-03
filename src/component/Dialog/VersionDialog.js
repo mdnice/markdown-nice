@@ -64,7 +64,7 @@ class VersionDialog extends Component {
             </a>
           </Timeline.Item>
           <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
-            <a
+            {/* <a
               style={{fontWeight: "bold", borderBottom: "double"}}
               alt=""
               href="https://github.com/mdnice/sitdown"
@@ -72,9 +72,22 @@ class VersionDialog extends Component {
               target="_blank"
             >
               感谢「林风」贡献的 SitDown（html 转 markdown 神器），欢迎点击 Star
+            </a> */}
+            <a
+              style={{fontWeight: "bold", borderBottom: "double"}}
+              alt=""
+              href="https://docs.mdnice.com/#/beta"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Markdown Nice浏览器插件进入Beta阶段🎉🎉🎉，欢迎使用，排版效果更优！
             </a>
           </Timeline.Item>
         </Timeline>
+        <video style={{width: "100%"}} controls autoPlay>
+          <source src="https://imgkr.cn-bj.ufileos.com/4d624bd6-13f6-4956-a58a-0b77763a9784.mov" type="video/mp4" />
+          <track src="captions_en.vtt" kind="captions" srcLang="en" label="english_captions" />
+        </video>
       </Modal>
     );
   }

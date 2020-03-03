@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {inject, observer} from "mobx-react";
 
+import {hotKeys} from "../../../utils/hotkey";
+
 import "../common.css";
 
 @inject("dialog")
@@ -17,7 +19,7 @@ class Form extends Component {
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">表格</span>
         </span>
-        <span className="nice-menu-shortcut">⌘⌥T</span>
+        <span className="nice-menu-shortcut">{hotKeys.form}</span>
       </div>
     );
   }
