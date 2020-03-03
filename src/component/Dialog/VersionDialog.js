@@ -6,6 +6,8 @@ import {packageVersion} from "../../utils/helper";
 import {NEWEST_VERSION} from "../../utils/constant";
 import SvgIcon from "../../icon";
 
+import "./VersionDialog.css";
+
 @inject("dialog")
 @observer
 class VersionDialog extends Component {
@@ -13,7 +15,7 @@ class VersionDialog extends Component {
     super(props);
     this.state = {
       // eslint-disable-next-line react/no-unused-state
-      versionNum: 0,
+      versionNumber: 0,
       versionTimeline: [],
       recommend: null,
       specialInfo: "",
@@ -40,16 +42,20 @@ class VersionDialog extends Component {
 
   componentDidMount = async () => {
     try {
-      const {data} = await axios.get("https://api.mdnice.com/versions/newest");
+      const {
+        data: response,
+        data: {data},
+      } = await axios.get("https://api.mdnice.com/versions/newest");
+      if (!response.success) {
+        throw new Error();
+      }
       const newestVersion = localStorage.getItem(NEWEST_VERSION);
-      if (newestVersion !== data.version) {
-        localStorage.setItem(NEWEST_VERSION, data.version);
-        if (data.version !== packageVersion) {
+      if (!newestVersion || newestVersion === "undefined") {
+        if (data.versionNumber !== packageVersion) {
           this.props.dialog.setVersionOpen(true);
         }
-      } else if (newestVersion !== packageVersion) {
-        this.props.dialog.setVersionOpen(true);
       }
+      localStorage.setItem(NEWEST_VERSION, data.versionNumber);
       this.setState({...data});
     } catch (err) {
       console.error("读取最新Mdnice版本信息错误");
@@ -71,17 +77,6 @@ class VersionDialog extends Component {
         destroyOnClose
       >
         <Timeline>
-          {/* {VERSION_TIMELINE.map((version, index) => {
-            if (index === 0) {
-              return (
-                <Timeline.Item key={index} dot={<SvgIcon name="environment" style={style.svgIcon} />}>
-                  <strong>{version}</strong>
-                </Timeline.Item>
-              );
-            } else {
-              return <Timeline.Item key={index}>{version}</Timeline.Item>;
-            }
-          })} */}
           {this.state.versionTimeline.map((version, index) => {
             if (index === 0) {
               return (
@@ -107,15 +102,6 @@ class VersionDialog extends Component {
           </Timeline.Item>
           {this.state.recommend && (
             <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
-              {/* <a
-              style={{fontWeight: "bold", borderBottom: "double"}}
-              alt=""
-              href="https://github.com/mdnice/sitdown"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              感谢「林风」贡献的 SitDown（html 转 markdown 神器），欢迎点击 Star
-            </a> */}
               <a
                 style={{fontWeight: "bold", borderBottom: "double"}}
                 alt=""
@@ -124,17 +110,12 @@ class VersionDialog extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {/* Markdown Nice浏览器插件进入Beta阶段🎉🎉🎉，欢迎使用，排版效果更优！ */}
                 {this.state.recommend.maininfo}
               </a>
             </Timeline.Item>
           )}
         </Timeline>
-        <div dangerouslySetInnerHTML={{__html: this.state.specialInfo}} />
-        {/* <video style={{width: "100%"}} controls autoPlay>
-          <source src="https://imgkr.cn-bj.ufileos.com/4d624bd6-13f6-4956-a58a-0b77763a9784.mov" type="video/mp4" />
-          <track src="captions_en.vtt" kind="captions" srcLang="en" label="english_captions" />
-        </video> */}
+        <div dangerouslySetInnerHTML={{__html: this.state.specialInfo}} className="specialInfo" />
       </Modal>
     );
   }
