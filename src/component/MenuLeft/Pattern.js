@@ -10,6 +10,7 @@ import Form from "./Pattern/Form";
 import Image from "./Pattern/Image";
 import Format from "./Pattern/Format";
 import LinkToFoot from "./Pattern/LinkToFoot";
+import ImageReplace from "./Pattern/ImageReplace";
 import Font from "./Pattern/Font";
 import InlineCode from "./Pattern/InlineCode";
 
@@ -55,6 +56,9 @@ const menu = (
     </Menu.Item>
     <Menu.Item>
       <Format />
+    </Menu.Item>
+    <Menu.Item>
+      <ImageReplace />
     </Menu.Item>
   </Menu>
 );
