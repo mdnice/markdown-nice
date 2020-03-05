@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {Modal, Timeline, Button} from "antd";
 import axios from "axios";
-import {packageVersion} from "../../utils/helper";
 import {NEWEST_VERSION} from "../../utils/constant";
 import SvgIcon from "../../icon";
 
@@ -50,12 +49,8 @@ class VersionDialog extends Component {
         throw new Error();
       }
       const newestVersion = localStorage.getItem(NEWEST_VERSION);
-      if (!newestVersion || newestVersion === "undefined") {
-        if (data.versionNumber !== packageVersion) {
-          this.props.dialog.setVersionOpen(true);
-        }
-      }
-      if (newestVersion !== data.versionNumber) {
+      if (data.versionNumber !== newestVersion) {
+        this.props.dialog.setVersionOpen(true);
         localStorage.setItem(NEWEST_VERSION, data.versionNumber);
       }
       this.setState({...data});
