@@ -2,7 +2,7 @@
 
 请阅读下方文本熟悉工具使用方法，本文可直接拷贝到微信中预览。
 
-<img style="width: 120px" src="https://my-wechat.mdnice.com/mdnice/mdnice%20logo_20191007150129.png"/>
+![](https://imgkr.cn-bj.ufileos.com/483960b0-6d8c-457e-9af6-b66dfb886289.svg)
 
 ## 1 Markdown Nice 简介
 
