@@ -1,8 +1,8 @@
+![](https://imgkr.cn-bj.ufileos.com/3ee4192f-591b-46e1-8e65-3d26fd80a01c.svg)
+
 请使用 **Chrome** 浏览器。
 
 请阅读下方文本熟悉工具使用方法，本文可直接拷贝到微信中预览。
-
-![](https://imgkr.cn-bj.ufileos.com/483960b0-6d8c-457e-9af6-b66dfb886289.svg)
 
 ## 1 Markdown Nice 简介
 
