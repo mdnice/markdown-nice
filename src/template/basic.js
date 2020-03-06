@@ -392,4 +392,8 @@ h6 {
 #nice .imageflow-img {
   display: inline-block;
 }
+
+.nice-suffix-juejin-container {
+  margin-top: 20px !important;
+}
 `;

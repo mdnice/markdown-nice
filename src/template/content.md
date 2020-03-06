@@ -7,7 +7,7 @@
 ## 1 Markdown Nice 简介
 
 - 支持自定义样式的 Markdown 编辑器
-- 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等平台
+- 支持微信公众号、知乎和稀土掘金
 - 欢迎扫码回复「排版」加入用户群
 
 ![](https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png)

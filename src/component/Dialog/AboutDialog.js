@@ -52,7 +52,7 @@ class AboutDialog extends Component {
         </h3>
 
         <p style={style.lineHeight}>支持自定义样式的 Markdown 编辑器；</p>
-        <p style={style.lineHeight}>支持微信公众号、开源中国、知乎、掘金、博客园和CSDN等平台；</p>
+        <p style={style.lineHeight}>支持微信公众号、知乎和稀土掘金；</p>
         <h3 style={style.headerMargin}>我们</h3>
         <p style={style.lineHeight}>
           如果你喜欢我们的工具，欢迎关注

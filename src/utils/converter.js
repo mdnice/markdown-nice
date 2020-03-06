@@ -52,8 +52,47 @@ export const solveZhihuMath = () => {
   }
 };
 
+export const solveJuejinMath = () => {
+  const layout = document.getElementById(LAYOUT_ID);
+  const mjxs = layout.getElementsByTagName("mjx-container");
+  while (mjxs.length > 0) {
+    const mjx = mjxs[0];
+    const data = mjx.getAttribute(MJX_DATA_FORMULA);
+    if (!data) {
+      continue;
+    }
+
+    // 行间公式
+    if (mjx.hasAttribute("display")) {
+      mjx.outerHTML = `<figure><img class="equation" src="https://juejin.im/equation?tex=${data}" alt=""/></figure>`;
+    }
+    // 行内公式
+    else {
+      mjx.outerHTML = `<span><img style="display:inline;" class="equation" src="https://juejin.im/equation?tex=${data}" alt=""/></span>`;
+    }
+  }
+};
+
+export const juejinSuffix = () => {
+  const suffix = document.createElement("p");
+  suffix.id = "nice-suffix-juejin-container";
+  suffix.className = "nice-suffix-juejin-container";
+  suffix.innerHTML = `本文使用 <a href="https://mdnice.com">mdnice</a> 排版`;
+
+  const element = document.getElementById(LAYOUT_ID);
+  element.appendChild(suffix);
+};
+
 export const solveHtml = () => {
   const element = document.getElementById(BOX_ID);
+
+  // 代码注释换行问题
+  const hljss = element.getElementsByClassName("hljs");
+  for (const hljs of hljss) {
+    hljs.innerHTML = hljs.innerHTML.replace(/\r\n/g, "<br>");
+    hljs.innerHTML = hljs.innerHTML.replace(/\n/g, "<br>");
+  }
+
   const inner = element.children[0].children;
   for (const item of inner) {
     item.setAttribute("data-tool", "mdnice编辑器");
@@ -78,6 +117,8 @@ export const solveHtml = () => {
   } catch (e) {
     message.error("请检查 CSS 文件是否编写正确！");
   }
+
+  // 代码注释换行预览显示问题
   const codeReg = /<pre([^>])*class="custom"([^>])*><code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
   const codeMatch = res.match(codeReg);
   if (codeMatch) {

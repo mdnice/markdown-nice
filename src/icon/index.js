@@ -12,6 +12,7 @@ import Mobile from "./Mobile";
 import PC from "./PC";
 import Wechat from "./Wechat";
 import Zhihu from "./Zhihu";
+import Juejin from "./Juejin";
 import Close from "./Close";
 import FontCase from "./FontCase";
 import Replace from "./Replace";
@@ -43,6 +44,8 @@ export default (props) => {
       return <Wechat {...props} />;
     case "zhihu":
       return <Zhihu {...props} />;
+    case "juejin":
+      return <Juejin {...props} />;
     case "close":
       return <Close {...props} />;
     case "fontCase":

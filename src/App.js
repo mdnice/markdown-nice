@@ -163,7 +163,6 @@ class App extends Component {
     if (this.props.navbar.isSyncScroll) {
       const {markdownEditor} = this.props.content;
       const cmData = markdownEditor.getScrollInfo();
-      console.log(cmData);
       const editorToTop = cmData.top;
       const editorScrollHeight = cmData.height - cmData.clientHeight;
       this.scale = (this.previewWrap.offsetHeight - this.previewContainer.offsetHeight + 55) / editorScrollHeight;

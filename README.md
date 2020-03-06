@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://mdnice.com">
-<img width="200" src="./logo.png"/>
+<img width="200" src="./logo.svg"/>
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
@@ -8,7 +8,7 @@
 ## 简介
 
 - 支持自定义样式的 Markdown 编辑器
-- 支持微信公众号、知乎、开源中国、稀土掘金、博客园和 CSDN 等一系列平台
+- 支持微信公众号、知乎和稀土掘金
 - 更多用户和开发者文档请参考 [Markdown Nice Docs](https://docs.mdnice.com/)
 - 欢迎[在线使用](https://mdnice.com/)
 
@@ -41,11 +41,7 @@ $ npm install markdown-nice --save
 
 若 npm install 过慢，建议使用yarn作为包管理工具。
 
-其中的 mathjax 包下载速度可能比较慢，如果不需要公式支持，可以在 package.json 中删除 mathjax 部分
-
-```shell
-$ yarn remove mathjax
-```
+其中的 mathjax 包下载速度可能比较慢，请耐心等待，或者选择网络好的地方进行尝试。
 
 2、愉快使用
 
@@ -85,4 +81,4 @@ mdnice 社区组建了**微信用户群**，欢迎反馈意见和公众号大佬
 
 | 入群码                                                                                                | 打赏码                                                                                  |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| <img width="360px" src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"/> | <img width="250px" src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"/> |
+| <img width="360px" src="./group.png"/> | <img width="250px" src="./bonus.png"/> |
