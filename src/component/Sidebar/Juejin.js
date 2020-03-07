@@ -29,7 +29,7 @@ class Juejin extends Component {
     juejinSuffix();
     this.html = solveHtml();
     copySafari(this.html);
-    message.success("已复制，请到稀土掘金粘贴");
+    message.success("已复制且添加 mdnice 排版后缀，感谢宣传，请到稀土掘金粘贴");
     layout.innerHTML = html; // 恢复现场
   };
 
