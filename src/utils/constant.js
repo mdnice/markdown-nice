@@ -123,6 +123,12 @@ export const TEMPLATE_OPTIONS = [
     author: "HeyRain",
   },
   {
+    id: "cuteGreen",
+    name: "萌绿",
+    author: "koala",
+    isNew: true,
+  },
+  {
     id: "custom",
     name: "自定义",
     author: "",

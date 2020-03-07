@@ -44,6 +44,7 @@ class Theme extends React.Component {
                   {templateNum === index && <span>{RIGHT_SYMBOL}</span>}
                 </span>
                 <span className="nice-themeselect-theme-item-name">{option.name}</span>
+                {option.isNew && <span className="nice-themeselect-theme-item-new">new</span>}
               </span>
               <span className="nice-themeselect-theme-item-author">{option.author}</span>
             </div>

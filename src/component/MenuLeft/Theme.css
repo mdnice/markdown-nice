@@ -20,6 +20,15 @@
 .nice-themeselect-theme-item-name {
   margin-right: 10px;
 }
+.nice-themeselect-theme-item-new {
+  border-radius: 3px;
+  font-size: 12px;
+  color: #1890ff;
+  background: rgb(230, 247, 255);
+  padding: 0px 5px;
+  margin-left: -5px;
+  line-height: 18px;
+}
 .nice-themeselect-theme-item-flag {
   display: inline-block;
   width: 16px;
