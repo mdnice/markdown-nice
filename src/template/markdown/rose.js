@@ -209,7 +209,6 @@ color:#595959;
   border-radius: 6px;
   display: block;
   margin: 20px auto;
-  height: 100%;
   object-fit: contain;
 }
 
