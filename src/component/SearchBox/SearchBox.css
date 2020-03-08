@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.mdnice-searchbox>:last-child {
+.mdnice-searchbox-replace {
   margin-top: 8px;
   margin-left: 27px;
 }
