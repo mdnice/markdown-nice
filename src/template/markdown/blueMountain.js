@@ -175,7 +175,7 @@ export default `/*初始化格式*/
 }
 
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
 	color: rgb(60, 112, 198);;
 }
 
@@ -195,7 +195,8 @@ export default `/*初始化格式*/
 #nice table tr td {
   font-size: 14px;
 }
-.footnotes{
+
+#nice .footnotes{
   padding-top: 8px;
 }
 

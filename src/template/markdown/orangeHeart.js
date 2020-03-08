@@ -145,7 +145,7 @@ export default `/* 全局属性
 }
 
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
   color: rgb(239, 112, 96);
 }
 

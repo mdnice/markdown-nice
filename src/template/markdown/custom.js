@@ -124,8 +124,7 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 }
 
 /* 行内代码 */
-#nice p code, li code {
-  color: rgb(239, 112, 96);
+#nice p code, #nice li code {
 }
 
 /* 非微信代码块

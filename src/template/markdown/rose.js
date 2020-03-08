@@ -222,7 +222,7 @@ color:#595959;
 
 /* 行内代码 */
 #nice p code,
-li code {
+#nice li code {
   color: #595959;
 }
 

@@ -133,7 +133,7 @@ export default `/* 全局属性
 }
 
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
 }
 
 /* 非微信代码块

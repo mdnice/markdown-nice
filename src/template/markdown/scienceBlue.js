@@ -216,7 +216,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 行内代码 */
-#nice p code,li code {
+#nice p code, #nice li code {
   color:/*自定义样式，实时生效*/
 }
 

@@ -155,7 +155,7 @@ export default `/* 全局属性
 }
 
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
   background: #f8f5ec;
   color: #ff3502;
   line-height: 1.5;

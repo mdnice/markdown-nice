@@ -26,11 +26,11 @@ export default `/*默认样式，最佳实践*/
 
 /*标题*/
 #nice h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+#nice h2,
+#nice h3,
+#nice h4,
+#nice h5,
+#nice h6 {
   margin-top: 40px;
   margin-bottom: 20px;
   font-weight: bold;
@@ -393,7 +393,7 @@ h6 {
   display: inline-block;
 }
 
-.nice-suffix-juejin-container {
+#nice .nice-suffix-juejin-container {
   margin-top: 20px !important;
 }
 `;

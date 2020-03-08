@@ -158,7 +158,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
   color: #9b6e23;
   background-color: #fff5e3;
   padding: 3px;

@@ -87,7 +87,7 @@ export default `/* 全局属性 */
 /* 其他块元素 */
 
 #nice ol,
-ul {
+#nice ul {
   padding-left: 2em;
 }
 
@@ -137,7 +137,7 @@ ul {
 #nice li,
 #nice li span,
 #nice h4,
-table tr td {
+#nice table tr td {
   color: #666;
 }
 
@@ -147,7 +147,7 @@ table tr td {
 }
 
 #nice p code,
-li code {
+#nice li code {
   color: hsl(216, 100%, 68%);
 }
 

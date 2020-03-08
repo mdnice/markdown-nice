@@ -157,7 +157,7 @@ export default `#nice {
   font-family:PingFangSC-Light;
 }
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
 	color: #28ca71;
 }
 /* 非微信代码块
@@ -175,7 +175,7 @@ export default `#nice {
 #nice table tr td {
   font-size: 14px;
 }
-.footnotes{
+#nice .footnotes{
   padding-top: 8px;
 }
 /* 脚注文字 */
@@ -226,7 +226,6 @@ export default `#nice {
  * 最大宽度 max-width: 300% !important;
  */
 #nice .block-equation svg {
-  
 }
 /* 行内公式*/
 #nice .inline-equation svg {  
