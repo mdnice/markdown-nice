@@ -33,7 +33,6 @@ class SearchBox extends React.Component {
       isReplaceOpen: false,
       cursor: null,
       caseFold: true,
-      isSearchFocus: false,
     };
     this.searchRef = createRef();
   }
@@ -74,24 +73,36 @@ class SearchBox extends React.Component {
     );
   };
 
-  componentDidUpdate = (_, prevState) => {
-    const {dialog} = this.props;
-    if (dialog) {
-      const {isReplaceOpen, isSearchFocus} = prevState;
-      if (!dialog.isSearchOpen) {
-        if (isReplaceOpen || isSearchFocus) {
-          this.setState({
-            isReplaceOpen: false,
-            isSearchFocus: false,
-          });
+  componentDidUpdate = (prevProps, prevState) => {
+    const {dialog} = prevProps;
+    const {isReplaceOpen, replaceText, searchText} = prevState;
+    const {markdownEditor} = this.props.content;
+    const topPos = markdownEditor.getScrollInfo().top;
+    if (!dialog.isSearchOpen) {
+      if (isReplaceOpen) {
+        // 搜索框关闭，关闭replace以及取消focus
+        if (this.state.isReplaceOpen) {
+          markdownEditor.scrollTo(null, topPos - 32);
         }
-      } else {
-        if (!prevState.isSearchFocus) {
-          this.searchRef.current.focus();
-          this.setState({
-            isSearchFocus: true,
-          });
+        this.setState({
+          isReplaceOpen: false,
+        });
+      }
+      markdownEditor.scrollTo(null, topPos - 40);
+    } else {
+      // 判断有没有改动替换文本，防止替换输入框输入时 focus 被切换
+      if (replaceText === this.state.replaceText) {
+        if (searchText === this.state.searchText) {
+          if (!isReplaceOpen && this.state.isReplaceOpen) {
+            markdownEditor.scrollTo(null, topPos + 32);
+          } else if (isReplaceOpen && !this.state.isReplaceOpen) {
+            markdownEditor.scrollTo(null, topPos - 32);
+          } else {
+            markdownEditor.scrollTo(null, topPos + 40);
+          }
         }
+        // 如果替换输入框没有改动，则 focus 搜索输入框。
+        this.searchRef.current.focus();
       }
     }
   };
@@ -180,7 +191,6 @@ class SearchBox extends React.Component {
             onChange={(e) => this.findContent(e.target.value)}
             onPressEnter={() => this.posChange(false)}
             ref={this.searchRef}
-            onBlur={() => this.setState({isSearchFocus: false})}
           />
           <WrappedButton
             icon="fontCase"
@@ -198,26 +208,24 @@ class SearchBox extends React.Component {
           <WrappedButton icon="down" onClick={() => this.posChange(false)} tipText="下一个" />
           <WrappedButton icon="close" onClick={this.handleClose} tipText="关闭" />
         </div>
-        {isReplaceOpen && (
-          <div className="mdnice-searchbox-replace">
-            <Input
-              size="small"
-              value={this.state.replaceText}
-              placeholder="按Enter进行替换"
-              onChange={(e) => {
-                this.setState({replaceText: e.target.value});
-              }}
-              onPressEnter={this.replace}
-            />
-            <WrappedButton icon="replace" className="searchbox-icon-replace" onClick={this.replace} tipText="替换" />
-            <WrappedButton
-              icon="replaceAll"
-              className="searchbox-icon-replace"
-              onClick={this.replaceAll}
-              tipText="替换所有"
-            />
-          </div>
-        )}
+        <div className="mdnice-searchbox-replace">
+          <Input
+            size="small"
+            value={this.state.replaceText}
+            placeholder="按Enter进行替换"
+            onChange={(e) => {
+              this.setState({replaceText: e.target.value});
+            }}
+            onPressEnter={this.replace}
+          />
+          <WrappedButton icon="replace" className="searchbox-icon-replace" onClick={this.replace} tipText="替换" />
+          <WrappedButton
+            icon="replaceAll"
+            className="searchbox-icon-replace"
+            onClick={this.replaceAll}
+            tipText="替换所有"
+          />
+        </div>
       </div>
     );
   }
