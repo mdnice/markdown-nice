@@ -80,11 +80,11 @@
   padding: 3px 0px;
 }
 
-.mdnice-searchbox[data-active="false"] {
+/* .mdnice-searchbox[data-active="false"] {
   max-height: 0px !important;
   padding-top: 0px;
   padding-bottom: 0px;
-}
+} */
 
 .mdnice-searchbox[data-replace="false"] {
   height: 40px;
@@ -98,11 +98,11 @@
   transition: all 0.15s ease-in-out;
 } */
 
-.mdnice-searchbox[data-active="true"] ~ div .CodeMirror-sizer {
+.mdnice-searchbox ~ div .CodeMirror-sizer {
   top: 40px;  
 }
 
-.mdnice-searchbox[data-active="true"][data-replace="true"] ~ div .CodeMirror-sizer {
+.mdnice-searchbox[data-replace="true"] ~ div .CodeMirror-sizer {
   top: 72px;
 }
 

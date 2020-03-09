@@ -73,38 +73,20 @@ class SearchBox extends React.Component {
     );
   };
 
-  componentDidUpdate = (prevProps, prevState) => {
-    const {dialog} = prevProps;
-    const {isReplaceOpen, replaceText, searchText} = prevState;
+  handleScroll = (offset) => {
     const {markdownEditor} = this.props.content;
-    const topPos = markdownEditor.getScrollInfo().top;
-    if (!dialog.isSearchOpen) {
-      if (isReplaceOpen) {
-        // 搜索框关闭，关闭replace以及取消focus
-        if (this.state.isReplaceOpen) {
-          markdownEditor.scrollTo(null, topPos - 32);
-        }
-        this.setState({
-          isReplaceOpen: false,
-        });
-      }
-      markdownEditor.scrollTo(null, topPos - 40);
-    } else {
-      // 判断有没有改动替换文本，防止替换输入框输入时 focus 被切换
-      if (replaceText === this.state.replaceText) {
-        if (searchText === this.state.searchText) {
-          if (!isReplaceOpen && this.state.isReplaceOpen) {
-            markdownEditor.scrollTo(null, topPos + 32);
-          } else if (isReplaceOpen && !this.state.isReplaceOpen) {
-            markdownEditor.scrollTo(null, topPos - 32);
-          } else {
-            markdownEditor.scrollTo(null, topPos + 40);
-          }
-        }
-        // 如果替换输入框没有改动，则 focus 搜索输入框。
-        this.searchRef.current.focus();
-      }
-    }
+    const {top} = markdownEditor.getScrollInfo(offset);
+    console.log(offset);
+    markdownEditor.scrollTo(null, top + offset);
+  };
+
+  componentWillUnmount = () => {
+    this.handleScroll(this.state.isReplaceOpen ? -72 : -40);
+  };
+
+  componentDidMount = () => {
+    this.searchRef.current.focus();
+    this.handleScroll(40);
   };
 
   clearMarks = () => {
@@ -138,7 +120,7 @@ class SearchBox extends React.Component {
       // });
       markdownEditor.setSelection(from, to);
       // 防止搜索框挡住文字
-      markdownEditor.scrollIntoView(from, 100);
+      markdownEditor.scrollIntoView(from, 200);
     }
   };
 
@@ -168,7 +150,11 @@ class SearchBox extends React.Component {
   };
 
   handelFoldClick = () => {
-    this.setState((prevState) => ({isReplaceOpen: !prevState.isReplaceOpen}));
+    this.setState((prevState) => {
+      const {isReplaceOpen} = prevState;
+      this.handleScroll(isReplaceOpen ? -32 : 32);
+      return {isReplaceOpen: !isReplaceOpen};
+    });
   };
 
   handleClose = () => {
@@ -178,10 +164,9 @@ class SearchBox extends React.Component {
 
   render() {
     const {isReplaceOpen} = this.state;
-    const {isSearchOpen} = this.props.dialog;
 
     return (
-      <div data-active={isSearchOpen} data-replace={isReplaceOpen} className="mdnice-searchbox">
+      <div data-replace={isReplaceOpen} className="mdnice-searchbox">
         <div>
           <WrappedButton icon="down" tipText="展开" onClick={this.handelFoldClick} className="searchbox-icon-fold" />
           <Input
