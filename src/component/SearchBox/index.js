@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable react/no-did-update-set-state */
+/* eslint-disable react/no-unused-state */
+import React, {createRef} from "react";
 import {observer, inject} from "mobx-react";
 import {Input, Tooltip} from "antd";
 
@@ -32,6 +34,7 @@ class SearchBox extends React.Component {
       cursor: null,
       caseFold: true,
     };
+    this.searchRef = createRef();
   }
 
   /** false means next, true means previous */
@@ -40,15 +43,16 @@ class SearchBox extends React.Component {
     if (typeof direction !== "boolean") {
       return;
     }
-    if (this.state.searchText && this.state.cursor) {
-      this.state.cursor.find(direction);
-      if (this.state.cursor.atOccurrence) {
+    const {cursor, searchText} = this.state;
+    if (searchText && cursor) {
+      cursor.find(direction);
+      if (cursor.atOccurrence) {
         this.highlight();
       } else {
-        while (this.state.cursor.find(!direction)) {
+        while (cursor.find(!direction)) {
           //  从头开始寻找
         }
-        this.state.cursor.find(direction);
+        cursor.find(direction);
         this.highlight();
       }
     }
@@ -63,21 +67,26 @@ class SearchBox extends React.Component {
         const cursor = prevState.searchText
           ? markdownEditor.getSearchCursor(prevState.searchText, null, {caseFold: caseFold})
           : null;
-        return {caseFold: caseFold, cursor: cursor};
+        return {caseFold, cursor};
       },
       () => this.posChange(false),
     );
   };
 
-  componentDidUpdate = () => {
-    if (this.props.dialog && !this.props.dialog.isSearchOpen) {
-      if (this.state.isReplaceOpen) {
-        // eslint-disable-next-line react/no-did-update-set-state
-        this.setState({
-          isReplaceOpen: false,
-        });
-      }
-    }
+  handleScroll = (offset) => {
+    const {markdownEditor} = this.props.content;
+    const {top} = markdownEditor.getScrollInfo(offset);
+    console.log(offset);
+    markdownEditor.scrollTo(null, top + offset);
+  };
+
+  componentWillUnmount = () => {
+    this.handleScroll(this.state.isReplaceOpen ? -72 : -40);
+  };
+
+  componentDidMount = () => {
+    this.searchRef.current.focus();
+    this.handleScroll(40);
   };
 
   clearMarks = () => {
@@ -93,7 +102,7 @@ class SearchBox extends React.Component {
     this.setState(
       (prevState) => {
         const cursor = value ? markdownEditor.getSearchCursor(value, null, {caseFold: prevState.caseFold}) : null;
-        return {searchText: value, cursor: cursor};
+        return {searchText: value, cursor};
       },
       () => this.posChange(false),
     );
@@ -111,7 +120,7 @@ class SearchBox extends React.Component {
       // });
       markdownEditor.setSelection(from, to);
       // 防止搜索框挡住文字
-      markdownEditor.scrollIntoView(from, 100);
+      markdownEditor.scrollIntoView(from, 200);
     }
   };
 
@@ -141,7 +150,11 @@ class SearchBox extends React.Component {
   };
 
   handelFoldClick = () => {
-    this.setState((prevState) => ({isReplaceOpen: !prevState.isReplaceOpen}));
+    this.setState((prevState) => {
+      const {isReplaceOpen} = prevState;
+      this.handleScroll(isReplaceOpen ? -32 : 32);
+      return {isReplaceOpen: !isReplaceOpen};
+    });
   };
 
   handleClose = () => {
@@ -150,12 +163,10 @@ class SearchBox extends React.Component {
   };
 
   render() {
+    const {isReplaceOpen} = this.state;
+
     return (
-      <div
-        data-active={this.props.dialog.isSearchOpen}
-        data-replace={this.state.isReplaceOpen}
-        className="mdnice-searchbox"
-      >
+      <div data-replace={isReplaceOpen} className="mdnice-searchbox">
         <div>
           <WrappedButton icon="down" tipText="展开" onClick={this.handelFoldClick} className="searchbox-icon-fold" />
           <Input
@@ -164,6 +175,7 @@ class SearchBox extends React.Component {
             placeholder="按Enter进行查找"
             onChange={(e) => this.findContent(e.target.value)}
             onPressEnter={() => this.posChange(false)}
+            ref={this.searchRef}
           />
           <WrappedButton
             icon="fontCase"
@@ -181,7 +193,7 @@ class SearchBox extends React.Component {
           <WrappedButton icon="down" onClick={() => this.posChange(false)} tipText="下一个" />
           <WrappedButton icon="close" onClick={this.handleClose} tipText="关闭" />
         </div>
-        <div>
+        <div className="mdnice-searchbox-replace">
           <Input
             size="small"
             value={this.state.replaceText}

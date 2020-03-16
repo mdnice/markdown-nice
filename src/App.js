@@ -67,12 +67,10 @@ class App extends Component {
               190,
               (doc) => {
                 for (const math of doc.math) {
-                  const cls = math.display ? "block-equation" : "inline-equation";
-                  math.typesetRoot.className = cls;
-                  math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
-                  math.typesetRoot.setAttribute(MJX_DATA_FORMULA_TYPE, cls);
+                  this.addContainer(math, doc);
                 }
               },
+              this.addContainer,
             ],
           },
         },
@@ -222,9 +220,20 @@ class App extends Component {
     }
   };
 
+  addContainer(math, doc) {
+    const tag = "span";
+    const spanClass = math.display ? "span-block-equation" : "span-inline-equation";
+    const cls = math.display ? "block-equation" : "inline-equation";
+    math.typesetRoot.className = cls;
+    math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
+    math.typesetRoot.setAttribute(MJX_DATA_FORMULA_TYPE, cls);
+    math.typesetRoot = doc.adaptor.node(tag, {class: spanClass, style: "cursor:pointer"}, [math.typesetRoot]);
+  }
+
   render() {
     const {codeNum, previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
+    const {isSearchOpen} = this.props.dialog;
 
     const parseHtml =
       codeNum === 0
@@ -265,7 +274,7 @@ class App extends Component {
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
-                <SearchBox />
+                {isSearchOpen && <SearchBox />}
                 <CodeMirror
                   value={this.props.content.content}
                   options={{
