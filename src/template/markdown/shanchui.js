@@ -122,7 +122,7 @@ export default `/*自定义样式，实时生效*/
 #nice em {}
 
 /* 加粗斜体 */
-#nice strong em {}
+#nice em strong {}
 
 /* 删除线 */
 #nice del {

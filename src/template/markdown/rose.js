@@ -180,7 +180,7 @@ color:#595959;
 }
 
 /* 加粗斜体 */
-#nice strong em {
+#nice em strong {
   color: #595959;
 }
 

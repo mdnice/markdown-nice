@@ -171,7 +171,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 加粗斜体 */
-#nice strong em {
+#nice em strong {
   color: #0e88eb;
   letter-spacing:0.3em;
 }

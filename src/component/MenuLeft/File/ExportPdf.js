@@ -11,7 +11,7 @@ class ExportPdf extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-export-pdf" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">导出 PDF</span>

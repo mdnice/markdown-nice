@@ -19,7 +19,7 @@ class ImportFile extends Component {
 
   render() {
     return (
-      <label className="nice-menu-item" htmlFor="importFile">
+      <label id="nice-menu-import-file" className="nice-menu-item" htmlFor="importFile">
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">导入</span>

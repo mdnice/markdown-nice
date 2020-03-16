@@ -12,7 +12,7 @@ class SitDownFunction extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-sitdown" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">SitDown</span>

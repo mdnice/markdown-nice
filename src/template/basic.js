@@ -134,7 +134,7 @@ export default `/*默认样式，最佳实践*/
 }
 
 /*加粗斜体*/
-#nice strong em {
+#nice em strong {
   font-weight: bold;
   color: black;
 }

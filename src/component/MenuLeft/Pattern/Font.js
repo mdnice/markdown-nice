@@ -30,7 +30,7 @@ class Font extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.toggleFont}>
+      <div id="nice-menu-font" className="nice-menu-item" onClick={this.toggleFont}>
         <span>
           <span className="nice-menu-flag">{!this.state.isSerif && <span>{RIGHT_SYMBOL}</span>}</span>
           <span className="nice-menu-name">衬线字体</span>

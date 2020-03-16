@@ -20,7 +20,7 @@ class CodeTheme extends React.Component {
       <Menu onClick={this.changeCodeTheme}>
         {CODE_OPTIONS.map((option, index) => (
           <Menu.Item key={index}>
-            <div className="nice-codetheme-item">
+            <div id={`nice-menu-codetheme-${option.id}`} className="nice-codetheme-item">
               <span>
                 <span className="nice-codetheme-item-flag">{codeNum === index && <span>{RIGHT_SYMBOL}</span>}</span>
                 <span className="nice-codetheme-item-name">{option.name}</span>
@@ -33,7 +33,7 @@ class CodeTheme extends React.Component {
 
     return (
       <Dropdown overlay={codeMenu} trigger={["click"]} overlayClassName="nice-overlay">
-        <a className="nice-menu-link" href="#">
+        <a id="nice-menu-codetheme" className="nice-menu-link" href="#">
           代码主题
         </a>
       </Dropdown>

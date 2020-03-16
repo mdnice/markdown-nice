@@ -22,7 +22,7 @@ class InlineCode extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-inline-code" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">行内代码</span>

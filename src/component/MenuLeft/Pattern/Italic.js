@@ -22,7 +22,7 @@ class Italic extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-italic" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">倾斜</span>

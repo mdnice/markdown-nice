@@ -32,7 +32,7 @@ class View extends Component {
   render() {
     return (
       <Dropdown overlay={menu} trigger={["click"]} overlayClassName="nice-overlay">
-        <a className="nice-menu-link" href="#">
+        <a id="nice-menu-view" className="nice-menu-link" href="#">
           查看
         </a>
       </Dropdown>

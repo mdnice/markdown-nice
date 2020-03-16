@@ -33,7 +33,7 @@ class FullScreen extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.toggleFullScreen}>
+      <div id="nice-menu-full-screen" className="nice-menu-item" onClick={this.toggleFullScreen}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">全屏</span>

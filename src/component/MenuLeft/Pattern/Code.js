@@ -22,7 +22,7 @@ class Code extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-code" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">代码</span>

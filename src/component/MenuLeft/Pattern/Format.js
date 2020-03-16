@@ -16,7 +16,7 @@ class Format extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleFormat}>
+      <div id="nice-menu-format" className="nice-menu-item" onClick={this.handleFormat}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">格式化文档</span>

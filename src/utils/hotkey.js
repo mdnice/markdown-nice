@@ -76,10 +76,10 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-S": () => {
           // Converting between sans serif and serif
         },
-        "Alt-Shift-L": () => {
+        "Ctrl-Alt-L": () => {
           keyEvents.parseLinkToFoot(content.content, content);
         },
-        "Alt-Shift-F": () => {
+        "Ctrl-Alt-F": () => {
           keyEvents.formatDoc(content.content, content);
         },
         "Ctrl-F": () => {
@@ -123,10 +123,10 @@ const bindHotkeys = (content, dialog) =>
         "Cmd-Alt-S": () => {
           // Converting between sans serif and serif
         },
-        "Alt-Shift-L": () => {
+        "Cmd-Alt-L": () => {
           keyEvents.parseLinkToFoot(content.content, content);
         },
-        "Alt-Shift-F": () => {
+        "Cmd-Alt-F": () => {
           keyEvents.formatDoc(content.content, content);
         },
         "Cmd-F": () => {
@@ -144,8 +144,8 @@ export const hotKeys = isPlatformWindows
       link: "Ctrl+K",
       image: "Ctrl+Alt+I",
       form: "Ctrl+Alt+T",
-      format: "Alt+Shift+F",
-      linkToFoot: "Alt+Shift+L",
+      format: "Ctrl+Alt+F",
+      linkToFoot: "Ctrl+Alt+L",
       search: "Ctrl+F",
     }
   : {
@@ -157,8 +157,8 @@ export const hotKeys = isPlatformWindows
       link: "⌘K",
       image: "⌥⌘I",
       form: "⌥⌘T",
-      format: "⌥⇧F",
-      linkToFoot: "⌥⇧L",
+      format: "⌥⌘F",
+      linkToFoot: "⌥⌘L",
       search: "⌘F",
     };
 

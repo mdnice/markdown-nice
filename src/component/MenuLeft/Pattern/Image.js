@@ -14,7 +14,7 @@ class Image extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.showModal}>
+      <div id="nice-menu-image" className="nice-menu-item" onClick={this.showModal}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">图片</span>

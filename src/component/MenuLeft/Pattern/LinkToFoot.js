@@ -16,7 +16,7 @@ class Format extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleFormat}>
+      <div id="nice-menu-link-to-foot" className="nice-menu-item" onClick={this.handleFormat}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">微信外链转脚注</span>

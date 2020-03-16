@@ -143,7 +143,7 @@ export default `/*初始化格式*/
 }
 
 /* 加粗斜体 */
-#nice strong em {
+#nice em strong {
   color:rgb(248,57,41);
   letter-spacing:0.3em;
 }

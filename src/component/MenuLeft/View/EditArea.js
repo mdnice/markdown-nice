@@ -14,7 +14,7 @@ class EditArea extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-edit-area" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag">{this.props.view.isEditAreaOpen && <span>{RIGHT_SYMBOL}</span>}</span>
           <span className="nice-menu-name">编辑区域</span>

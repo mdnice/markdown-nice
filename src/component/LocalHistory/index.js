@@ -86,6 +86,7 @@ class LocalHistory extends React.Component {
               <div>
                 <Button onClick={this.props.onCancel}>取消</Button>
                 <Button
+                  id="nice-local-history-review"
                   type="primary"
                   onClick={() => {
                     this.props.onEdit(this.state.content);

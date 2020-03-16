@@ -14,7 +14,7 @@ class SyncScroll extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-contain-img-name" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag">{this.props.navbar.isContainImgName && <span>{RIGHT_SYMBOL}</span>}</span>
           <span className="nice-menu-name">上传图片时包含名称</span>

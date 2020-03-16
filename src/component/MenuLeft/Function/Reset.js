@@ -29,7 +29,7 @@ class Reset extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.showConfirm}>
+      <div id="nice-menu-reset" className="nice-menu-item" onClick={this.showConfirm}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">重置</span>

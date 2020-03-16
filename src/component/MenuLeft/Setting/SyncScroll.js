@@ -14,7 +14,7 @@ class SyncScroll extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-sync-scroll" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag">{this.props.navbar.isSyncScroll && <span>{RIGHT_SYMBOL}</span>}</span>
           <span className="nice-menu-name">同步滚动</span>

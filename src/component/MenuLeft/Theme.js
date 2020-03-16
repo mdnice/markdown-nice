@@ -38,7 +38,7 @@ class Theme extends React.Component {
       <Menu onClick={this.changeTemplate}>
         {TEMPLATE_OPTIONS.map((option, index) => (
           <Menu.Item key={index}>
-            <div className="nice-themeselect-theme-item">
+            <div id={`nice-menu-theme-${option.id}`} className="nice-themeselect-theme-item">
               <span>
                 <span className="nice-themeselect-theme-item-flag">
                   {templateNum === index && <span>{RIGHT_SYMBOL}</span>}
@@ -52,7 +52,7 @@ class Theme extends React.Component {
         ))}
         <Menu.Divider />
         <li className="nice-themeselect-menu-item">
-          <div className="nice-themeselect-theme-item" onClick={this.toggleStyleEditor}>
+          <div id="nice-menu-view-css" className="nice-themeselect-theme-item" onClick={this.toggleStyleEditor}>
             <span>
               <span className="nice-themeselect-theme-item-flag">
                 {this.props.view.isStyleEditorOpen && <span>{RIGHT_SYMBOL}</span>}
@@ -65,7 +65,7 @@ class Theme extends React.Component {
     );
     return (
       <Dropdown overlay={mdMenu} trigger={["click"]} overlayClassName="nice-overlay">
-        <a className="nice-menu-link" href="#">
+        <a id="nice-menu-theme" className="nice-menu-link" href="#">
           主题
         </a>
       </Dropdown>

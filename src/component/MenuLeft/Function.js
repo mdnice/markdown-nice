@@ -32,7 +32,7 @@ class Function extends Component {
   render() {
     return (
       <Dropdown overlay={menu} trigger={["click"]} overlayClassName="nice-overlay">
-        <a className="nice-menu-link" href="#">
+        <a id="nice-menu-function" className="nice-menu-link" href="#">
           功能
         </a>
       </Dropdown>

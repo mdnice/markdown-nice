@@ -165,7 +165,7 @@ export default `/* 全局属性
 }
 
 /* 加粗斜体 */
-#nice strong em {
+#nice em strong {
   color:rgb(248,57,41);
   letter-spacing:0.3em;
 }

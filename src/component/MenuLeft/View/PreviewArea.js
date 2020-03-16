@@ -14,7 +14,7 @@ class PreviewArea extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.handleClick}>
+      <div id="nice-menu-preview-area" className="nice-menu-item" onClick={this.handleClick}>
         <span>
           <span className="nice-menu-flag">{this.props.view.isPreviewAreaOpen && <span>{RIGHT_SYMBOL}</span>}</span>
           <span className="nice-menu-name">预览区域</span>

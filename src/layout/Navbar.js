@@ -27,7 +27,11 @@ class Navbar extends Component {
     return (
       <div className={niceNavbarClass}>
         <div className="nice-left-nav">
-          {title === "" ? null : <section className="nice-title">{title}</section>}
+          {title === "" ? null : (
+            <section id="nice-title" className="nice-title">
+              {title}
+            </section>
+          )}
           <File />
           <Pattern />
           <Function />

@@ -31,7 +31,7 @@ class Wechat extends Component {
   render() {
     return (
       <Tooltip placement="left" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="复制到公众号">
-        <a className="nice-btn-wechat" onClick={this.copyWechat}>
+        <a id="nice-sidebar-wechat" className="nice-btn-wechat" onClick={this.copyWechat}>
           <SvgIcon name="wechat" className="nice-btn-wechat-icon" />
         </a>
       </Tooltip>

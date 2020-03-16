@@ -35,7 +35,7 @@ class Zhihu extends Component {
   render() {
     return (
       <Tooltip placement="left" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="复制到知乎">
-        <a className="nice-btn-zhihu" onClick={this.copyZhihu}>
+        <a id="nice-sidebar-zhihu" className="nice-btn-zhihu" onClick={this.copyZhihu}>
           <SvgIcon name="zhihu" className="nice-btn-zhihu-icon" />
         </a>
       </Tooltip>

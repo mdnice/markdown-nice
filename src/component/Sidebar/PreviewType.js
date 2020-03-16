@@ -18,7 +18,7 @@ class PreviewType extends Component {
 
     return (
       <Tooltip placement="left" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="预览模式">
-        <a className="nice-btn-previewtype" onClick={() => this.handleClick(targetType)}>
+        <a id="nice-sidebar-preview-type" className="nice-btn-previewtype" onClick={() => this.handleClick(targetType)}>
           <SvgIcon name={targetType} className="nice-btn-previewtype-icon" />
         </a>
       </Tooltip>

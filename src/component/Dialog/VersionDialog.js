@@ -88,6 +88,7 @@ class VersionDialog extends Component {
           <Timeline.Item>
             了解更多，请查看
             <a
+              id="nice-version-dialog-doc"
               style={{fontWeight: "bold"}}
               alt=""
               href="https://docs.mdnice.com"
@@ -100,6 +101,7 @@ class VersionDialog extends Component {
           {this.state.recommend && (
             <Timeline.Item dot={<SvgIcon name="more" style={style.svgIcon} />}>
               <a
+                id="nice-version-dialog-recommend"
                 style={{fontWeight: "bold", borderBottom: "double"}}
                 alt=""
                 // href="https://docs.mdnice.com/#/beta"
@@ -113,7 +115,11 @@ class VersionDialog extends Component {
           )}
         </Timeline>
         {this.state.specialInfo && (
-          <div dangerouslySetInnerHTML={{__html: this.state.specialInfo}} className="specialInfo" />
+          <div
+            id="nice-version-dialog-special"
+            dangerouslySetInnerHTML={{__html: this.state.specialInfo}}
+            className="specialInfo"
+          />
         )}
       </Modal>
     );

@@ -36,7 +36,7 @@ class Juejin extends Component {
   render() {
     return (
       <Tooltip placement="left" mouseEnterDelay={ENTER_DELAY} mouseLeaveDelay={LEAVE_DELAY} title="复制到稀土掘金">
-        <a className="nice-btn-juejin" onClick={this.copyJuejin}>
+        <a id="nice-sidebar-juejin" className="nice-btn-juejin" onClick={this.copyJuejin}>
           <SvgIcon name="juejin" className="nice-btn-juejin-icon" />
         </a>
       </Tooltip>

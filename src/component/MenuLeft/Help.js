@@ -25,7 +25,7 @@ class Help extends Component {
   render() {
     return (
       <Dropdown overlay={menu} trigger={["click"]} overlayClassName="nice-overlay">
-        <a className="nice-menu-link" href="#">
+        <a id="nice-menu-help" className="nice-menu-link" href="#">
           帮助
         </a>
       </Dropdown>

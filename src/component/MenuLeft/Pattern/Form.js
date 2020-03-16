@@ -14,7 +14,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="nice-menu-item" onClick={this.showModal}>
+      <div id="nice-menu-form" className="nice-menu-item" onClick={this.showModal}>
         <span>
           <span className="nice-menu-flag" />
           <span className="nice-menu-name">表格</span>
