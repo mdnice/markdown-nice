@@ -25,11 +25,15 @@ export default `/* 全局属性
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
 }
 
-/* 一级标题修饰 请参考有实例的主题 */
-#nice h1:after {
+/* 一级标题前缀 */
+#nice h1 .prefix {
+}
+
+/* 一级标题后缀 */
+#nice h1 .suffix {
 }
 
 /* 二级标题 */
@@ -37,11 +41,15 @@ export default `/* 全局属性
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
 }
 
-/* 二级标题修饰 请参考有实例的主题 */
-#nice h2:after {
+/* 二级标题前缀 */
+#nice h2 .prefix {
+}
+
+/* 二级标题后缀 */
+#nice h2 .suffix {
 }
 
 /* 三级标题 */
@@ -49,11 +57,15 @@ export default `/* 全局属性
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
 }
 
-/* 三级标题修饰 请参考有实例的主题 */
-#nice h3:after {
+/* 三级标题前缀 */
+#nice h3 .prefix {
+}
+
+/* 三级标题后缀 */
+#nice h3 .suffix {
 }
 
 /* 无序列表整体样式

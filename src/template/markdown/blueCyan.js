@@ -33,7 +33,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
@@ -49,7 +49,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
@@ -64,7 +64,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
 }
 
 /* 三级标题修饰 请参考有实例的主题 */

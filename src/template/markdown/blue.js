@@ -12,7 +12,7 @@ export default `/* 全局属性 */
   border-bottom: 2px solid hsl(216, 100%, 68%);
 }
 
-#nice h1 span {
+#nice h1 .content {
   background: hsl(216, 100%, 68%);
   color: white;
   padding: 3px 10px;
@@ -28,7 +28,7 @@ export default `/* 全局属性 */
   border-bottom: 1px solid hsl(216, 100%, 68%);
 }
 
-#nice h2 span {
+#nice h2 .content {
   border-bottom: 1px solid hsl(216, 100%, 68%);
 }
 

@@ -27,7 +27,7 @@ export default `/*初始化格式*/
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   font-size: 20px;
   color: rgb(60, 112, 198);
   border-bottom:2px solid #3C7076;
@@ -57,7 +57,7 @@ export default `/*初始化格式*/
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
   text-align:center;
   display: inline-block;
   height: 38px;
@@ -90,7 +90,7 @@ export default `/*初始化格式*/
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   font-size:16px;
   font-weight:bold;
   display:inline-block;

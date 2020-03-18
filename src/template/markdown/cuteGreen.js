@@ -22,7 +22,7 @@ export default `#nice {
   margin-bottom: 10px;
 }
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   font-size: 20px;
   color: #48b378;;
   border-bottom:2px solid #2e7950;
@@ -49,7 +49,7 @@ export default `#nice {
 #nice h2:before {
 }
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
   text-align:center;
   display: inline-block;
   height: 38px;
@@ -84,7 +84,7 @@ export default `#nice {
   margin-top: 30px;
 }
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   font-size:17px;
   font-weight:bold;
   display:inline-block;

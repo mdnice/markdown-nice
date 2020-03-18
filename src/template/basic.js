@@ -4,7 +4,7 @@ export default `/*默认样式，最佳实践*/
 #nice {
   font-size: 16px;
   color: black;
-  padding: 10px;
+  padding: 0 10px;
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
@@ -12,6 +12,7 @@ export default `/*默认样式，最佳实践*/
   word-wrap: break-word;
   text-align: left;
   font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-top: -10px; /*解决开头空隙过大问题*/
 }
 
 /*段落*/
@@ -31,16 +32,16 @@ export default `/*默认样式，最佳实践*/
 #nice h4,
 #nice h5,
 #nice h6 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
   font-weight: bold;
   color: black;
 }
 #nice h1 {
-  font-size: 28px;
+  font-size: 24px;
 }
 #nice h2 {
-  font-size: 24px;
+  font-size: 22px;
 }
 #nice h3 {
   font-size: 20px;
@@ -53,6 +54,24 @@ export default `/*默认样式，最佳实践*/
 }
 #nice h6 {
   font-size: 16px;
+}
+
+#nice h1 .prefix,
+#nice h2 .prefix,
+#nice h3 .prefix,
+#nice h4 .prefix,
+#nice h5 .prefix,
+#nice h6 .prefix {
+  display: none;
+}
+
+#nice h1 .suffix
+#nice h2 .suffix,
+#nice h3 .suffix,
+#nice h4 .suffix,
+#nice h5 .suffix,
+#nice h6 .suffix {
+  display: none;
 }
 
 /*列表*/

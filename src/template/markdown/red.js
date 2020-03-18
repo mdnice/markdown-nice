@@ -33,7 +33,7 @@ export default `/* 全局属性
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   display:inline-block;
   font-weight:normal;
   background:rgb(248,57,41);
@@ -55,7 +55,7 @@ export default `/* 全局属性
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
   font-family:STHeitiSC-Light;
   font-size:18px;
   font-weight:bolder;
@@ -73,7 +73,7 @@ export default `/* 全局属性
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   font-size:14px;
   color:rgb(165,213,93);
 }

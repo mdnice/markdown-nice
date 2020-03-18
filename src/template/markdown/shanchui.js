@@ -19,7 +19,7 @@ export default `/*自定义样式，实时生效*/
   border-bottom: 1px solid #c99833;
 }
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   color: #515151;
   font-weight: 700;
 }
@@ -40,7 +40,7 @@ export default `/*自定义样式，实时生效*/
 
 /* 二级标题内容 */
 
-#nice h2 span {
+#nice h2 .content {
   display: inline-block;
   font-weight: bold;
   background: linear-gradient(#fff 60%, #ffb11b 40%);
@@ -61,7 +61,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   color: #515151;
   font-weight: 700;
  font-size: 1.0em;

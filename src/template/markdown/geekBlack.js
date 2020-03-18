@@ -39,7 +39,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgb(160, 160, 160);
@@ -63,7 +63,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
   margin-left: -10px;
   display: inline-block;
   width: auto;
@@ -89,7 +89,7 @@ export default `/*自定义样式，实时生效*/
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   margin-top: -1px;
   padding-top: 6px;
   padding-right: 5px;
@@ -110,7 +110,7 @@ export default `/*自定义样式，实时生效*/
   box-sizing: border-box;
 }
 
-#nice h4 span {
+#nice h4 .content {
   margin-top: -1px;
   padding-top: 6px;
   padding-right: 5px;

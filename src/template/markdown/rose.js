@@ -39,7 +39,7 @@ color:#595959;
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+#nice h1 .content {
   display: inline-block;
   font-weight: bold;
   color: #595959;
@@ -55,7 +55,7 @@ color:#595959;
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+#nice h2 .content {
   font-size: 18px;
   font-weight: bold;
   display: inline-block;
@@ -76,7 +76,7 @@ color:#595959;
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   border-bottom: 2px solid #DEC6FB;
   color: #595959;
 }
