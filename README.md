@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://mdnice.com">
-<img width="200" src="./logo.png"/>
+<img width="500" src="https://imgkr.cn-bj.ufileos.com/3ee4192f-591b-46e1-8e65-3d26fd80a01c.svg"/>
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
