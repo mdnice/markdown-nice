@@ -126,6 +126,11 @@ export const TEMPLATE_OPTIONS = [
     id: "cuteGreen",
     name: "萌绿",
     author: "koala",
+  },
+  {
+    id: "fullStackBlue",
+    name: "全栈篮",
+    author: "Nealyang",
     isNew: true,
   },
   {
