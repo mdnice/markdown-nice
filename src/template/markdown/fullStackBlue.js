@@ -291,8 +291,7 @@ color:#595959;
 	background-repeat:no-repeat;
   background-position:center;
   margin-right:5px;
-  position:relative;
-  top:3px;
+  margin-bottom:-5px;
 }
 
 /* 行内代码 */
@@ -315,7 +314,7 @@ color:#595959;
 }
 
 #nice pre code {
-  /* background: #f7f7f7; */
+  letter-spacing: 0px;
 }
 
 /*
