@@ -7,7 +7,7 @@ export default `/*自定义样式，实时生效*/
 color:#595959;
 */
 #nice {
-  line-height: 1.75;
+  line-height: 1.25;
   color: #595959;
   font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light, PingFangTC-light;
   letter-spacing: 2px;
@@ -52,49 +52,44 @@ color:#595959;
 
 /* 二级标题 */
 #nice h2 {
-  text-align: left;
-  margin: 10px 10px 0px 0px;
-  position:relative;
-  border-bottom:4px solid #40B8FA;
-  padding-left:30px;
+  display:block;
+  border-bottom: 4px solid #40B8FA;
 }
 
 /* 二级标题内容 */
-#nice h2 span {
-  font-size: 20px;
-  font-weight: bolder;
-  display: inline-block;
+#nice h2 .content {
+  display: flex;
   color: #40B8FA;
-  position:relative;
-  top:5px;
+  font-size: 20px;
+  margin-left: 25px;
 }
 
-#nice h2 span:before{
-  content:'';
-  width:20px;
-  height:20px;
-  display:block;
+/* 二级标题前缀 */
+#nice h2 .prefix {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
   background-image:url(https://img.alicdn.com/tfs/TB1iq.pypY7gK0jSZKzXXaikpXa-32-32.png);
-  position:absolute;
-  background-position:center;
-  background-size:20px 20px;
-  bottom:7px;
-  left:-30px;
+  margin-bottom: -22px;
 }
 
-/* 二级标题修饰 请参考有实例的主题 */
-#nice h2:after {
-  content:'';
-  display:inline-block;
-  height:10px;
-  max-width:70%;
-  width:250px;
-  background:RGBA(64, 184, 250, .5);
-  position:absolute;
-  right:0;
-  bottom:0;
+/* 二级标题后缀 */
+#nice h2 .suffix {
+  display: flex;
+  box-sizing: border-box;
+  width: 200px;
+  height: 10px;
   border-top-left-radius: 20px;
-  background-repeat:no-repeat;
+  background: RGBA(64, 184, 250, .5);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  letter-spacing: 0.544px;
+  justify-content: flex-end;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  float: right;
+  margin-top: -10px;
 }
 
 /* 三级标题 */
@@ -103,16 +98,18 @@ color:#595959;
   font-weight: bold;
   text-align: center;
   position:relative;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 /* 三级标题内容 */
-#nice h3 span {
+#nice h3 .content {
   border-bottom: 2px solid RGBA(79, 177, 249, .65);
   color: #595959;
   padding-bottom:2px
 }
 
-#nice h3 span:before{
+#nice h3 .content:before{
   content:'';
   width:30px;
   height:30px;
@@ -132,13 +129,17 @@ color:#595959;
 /* 三级标题修饰 请参考有实例的主题 */
 #nice h3:after {}
 
-#nice h4 span:before{
+#nice h4 .content {
+  font-size: 14px;
+}
+
+#nice h4 .content:before{
   content:'';
   background-image:url(https://img.alicdn.com/tfs/TB1Lc.uyuL2gK0jSZFmXXc7iXXa-32-32.png);
   display:inline-block;
-  width:20px;
-  height:20px;
-  background-size:20px;
+  width:16px;
+  height:16px;
+  background-size:16px;
   background-position:center;
   background-repeat:no-repeat;
   margin-right:6px;
@@ -358,11 +359,11 @@ color:#595959;
 }
 
 #nice .footnotes{
-  	background: RGBA(53, 148, 247, .4);
-    padding: 20px 20px 20px 20px;
-    font-size: 14px;
-    border-radius: 6px;
-    border: 1px solid RGBA(53, 148, 247, 1);
+  background: RGBA(53, 148, 247, .4);
+  padding: 20px 20px 20px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid RGBA(53, 148, 247, 1);
 }
 
 /* "参考资料"四个字
