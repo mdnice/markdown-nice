@@ -16,6 +16,7 @@ import simple from "./markdown/simple";
 import wechatFormat from "./markdown/wechatFormat";
 import rose from "./markdown/rose";
 import cuteGreen from "./markdown/cuteGreen";
+import fullStackBlue from "./markdown/fullStackBlue";
 
 import content from "./content.md";
 
@@ -48,6 +49,7 @@ export default {
     wechatFormat,
     rose,
     cuteGreen,
+    fullStackBlue,
   },
   code: {
     atomOneDark,
