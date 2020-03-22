@@ -2,7 +2,7 @@ import React from "react";
 import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {CODE_OPTIONS, RIGHT_SYMBOL, IS_APPLE_CODE} from "../../utils/constant";
+import {CODE_OPTIONS, RIGHT_SYMBOL, IS_MAC_CODE} from "../../utils/constant";
 import "./CodeTheme.css";
 
 @inject("navbar")
@@ -10,7 +10,7 @@ import "./CodeTheme.css";
 class CodeTheme extends React.Component {
   changeCodeTheme = (item) => {
     // 是否为 Mac 风格代码
-    if (item.key === IS_APPLE_CODE) {
+    if (item.key === IS_MAC_CODE) {
       const {isMacCode, codeNum} = this.props.navbar;
       if (isMacCode) {
         this.props.navbar.setMacCode(false);
@@ -42,7 +42,7 @@ class CodeTheme extends React.Component {
           </Menu.Item>
         ))}
         <Menu.Divider />
-        <Menu.Item key={IS_APPLE_CODE}>
+        <Menu.Item key={IS_MAC_CODE}>
           <div id="nice-menu-codetheme-apple" className="nice-codetheme-item">
             <span>
               <span className="nice-codetheme-item-flag">{isMacCode && <span>{RIGHT_SYMBOL}</span>}</span>

@@ -7,7 +7,7 @@ import {
   PREVIEW_TYPE,
   IS_SYNC_SCROLL,
   IS_CONTAIN_IMG_NAME,
-  IS_APPLE_CODE,
+  IS_MAC_CODE,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
@@ -54,12 +54,12 @@ class Navbar {
     this.codeNum = codeNum;
     window.localStorage.setItem(CODE_NUM, codeNum);
     // 更新style
-    const {id, appleId} = CODE_OPTIONS[codeNum];
+    const {id, macId} = CODE_OPTIONS[codeNum];
     // 非微信代码块
     if (codeNum !== 0) {
       //  Mac 风格代码
       if (isMacCode) {
-        replaceStyle(CODE_THEME_ID, TEMPLATE.code[appleId]);
+        replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
       } else {
         replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
       }
@@ -69,7 +69,7 @@ class Navbar {
   @action
   setMacCode = (isMacCode) => {
     this.isMacCode = isMacCode;
-    window.localStorage.setItem(IS_APPLE_CODE, isMacCode);
+    window.localStorage.setItem(IS_MAC_CODE, isMacCode);
   };
 
   @action
@@ -103,8 +103,8 @@ if (!window.localStorage.getItem(IS_CONTAIN_IMG_NAME)) {
   window.localStorage.setItem(IS_CONTAIN_IMG_NAME, false);
 }
 
-if (!window.localStorage.getItem(IS_APPLE_CODE)) {
-  window.localStorage.setItem(IS_APPLE_CODE, false);
+if (!window.localStorage.getItem(IS_MAC_CODE)) {
+  window.localStorage.setItem(IS_MAC_CODE, false);
 }
 
 // 获取之前选择的主题状态
@@ -113,13 +113,13 @@ store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
 store.isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
-store.isMacCode = window.localStorage.getItem(IS_APPLE_CODE) === "true";
+store.isMacCode = window.localStorage.getItem(IS_MAC_CODE) === "true";
 
 // 初始化代码主题
-const {appleId, id} = CODE_OPTIONS[store.codeNum];
+const {macId, id} = CODE_OPTIONS[store.codeNum];
 if (store.codeNum !== 0) {
   if (store.isMacCode) {
-    replaceStyle(CODE_THEME_ID, TEMPLATE.code[appleId]);
+    replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
   } else {
     replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
   }

@@ -143,8 +143,7 @@ color:#595959;
   background-position:center;
   background-repeat:no-repeat;
   margin-right:6px;
-  position:relative;
-  top:4px
+  margin-bottom: -4px;
 }
 
 /* 无序列表整体样式

@@ -17,7 +17,7 @@ export const CODE_NUM = "code_num";
 export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
-export const IS_APPLE_CODE = "is_apple_code";
+export const IS_MAC_CODE = "is_mac_code";
 export const NEWEST_VERSION = "newest_version";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
@@ -150,32 +150,32 @@ export const CODE_OPTIONS = [
   },
   {
     id: "atomOneDark",
-    appleId: "appleAtomOneDark",
+    macId: "macAtomOneDark",
     name: "atom-one-dark",
   },
   {
     id: "atomOneLight",
-    appleId: "appleAtomOneLight",
+    macId: "macAtomOneLight",
     name: "atom-one-light",
   },
   {
     id: "monokai",
-    appleId: "appleMonokai",
+    macId: "macMonokai",
     name: "monokai",
   },
   {
     id: "github",
-    appleId: "appleGithub",
+    macId: "macGithub",
     name: "github",
   },
   {
     id: "vs2015",
-    appleId: "appleVs2015",
+    macId: "macVs2015",
     name: "vs2015",
   },
   {
     id: "xcode",
-    appleId: "appleXcode",
+    macId: "macXcode",
     name: "xcode",
   },
 ];
