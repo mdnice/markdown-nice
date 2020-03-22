@@ -7,19 +7,28 @@ import {
   PREVIEW_TYPE,
   IS_SYNC_SCROLL,
   IS_CONTAIN_IMG_NAME,
+  IS_APPLE_CODE,
 } from "../utils/constant";
 import TEMPLATE from "../template/index";
 import {replaceStyle} from "../utils/helper";
 
 class Navbar {
+  // 是否同步滚动
   @observable isSyncScroll = true;
 
+  // 是否保留图片名称
   @observable isContainImgName = false;
 
+  // 主题序号
   @observable templateNum;
 
+  // 代码主题序号
   @observable codeNum;
 
+  // 是否为 Mac 风格代码
+  @observable isMacCode = false;
+
+  // 预览类型
   @observable previewType;
 
   @action
@@ -41,14 +50,26 @@ class Navbar {
   };
 
   @action
-  setCodeNum = (codeNum) => {
+  setCodeNum = (codeNum, isMacCode) => {
     this.codeNum = codeNum;
     window.localStorage.setItem(CODE_NUM, codeNum);
     // 更新style
-    const {id} = CODE_OPTIONS[codeNum];
+    const {id, appleId} = CODE_OPTIONS[codeNum];
+    // 非微信代码块
     if (codeNum !== 0) {
-      replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
+      //  Mac 风格代码
+      if (isMacCode) {
+        replaceStyle(CODE_THEME_ID, TEMPLATE.code[appleId]);
+      } else {
+        replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
+      }
     }
+  };
+
+  @action
+  setMacCode = (isMacCode) => {
+    this.isMacCode = isMacCode;
+    window.localStorage.setItem(IS_APPLE_CODE, isMacCode);
   };
 
   @action
@@ -82,17 +103,26 @@ if (!window.localStorage.getItem(IS_CONTAIN_IMG_NAME)) {
   window.localStorage.setItem(IS_CONTAIN_IMG_NAME, false);
 }
 
+if (!window.localStorage.getItem(IS_APPLE_CODE)) {
+  window.localStorage.setItem(IS_APPLE_CODE, false);
+}
+
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
 store.isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
+store.isMacCode = window.localStorage.getItem(IS_APPLE_CODE) === "true";
 
 // 初始化代码主题
-const codeId = CODE_OPTIONS[store.codeNum].id;
+const {appleId, id} = CODE_OPTIONS[store.codeNum];
 if (store.codeNum !== 0) {
-  replaceStyle(CODE_THEME_ID, TEMPLATE.code[codeId]);
+  if (store.isMacCode) {
+    replaceStyle(CODE_THEME_ID, TEMPLATE.code[appleId]);
+  } else {
+    replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
+  }
 }
 
 export default store;

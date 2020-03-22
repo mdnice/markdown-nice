@@ -26,6 +26,14 @@ import github from "./code/github";
 import monokai from "./code/monokai";
 import vs2015 from "./code/vs2015";
 import xcode from "./code/xcode";
+
+import appleAtomOneDark from "./appleCode/appleAtomOneDark";
+import appleAtomOneLight from "./appleCode/appleAtomOneLight";
+import appleGithub from "./appleCode/appleGithub";
+import appleMonokai from "./appleCode/appleMonokai";
+import appleVs2015 from "./appleCode/appleVs2015";
+import appleXcode from "./appleCode/appleXcode";
+
 import basic from "./basic";
 
 export default {
@@ -58,6 +66,12 @@ export default {
     monokai,
     vs2015,
     xcode,
+    appleAtomOneDark,
+    appleAtomOneLight,
+    appleGithub,
+    appleMonokai,
+    appleVs2015,
+    appleXcode,
   },
   content,
 };

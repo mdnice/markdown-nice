@@ -2,19 +2,32 @@ import React from "react";
 import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {CODE_OPTIONS, RIGHT_SYMBOL} from "../../utils/constant";
+import {CODE_OPTIONS, RIGHT_SYMBOL, IS_APPLE_CODE} from "../../utils/constant";
 import "./CodeTheme.css";
 
 @inject("navbar")
 @observer
 class CodeTheme extends React.Component {
   changeCodeTheme = (item) => {
-    const codeNum = parseInt(item.key, 10);
-    this.props.navbar.setCodeNum(codeNum);
+    // 是否为 Mac 风格代码
+    if (item.key === IS_APPLE_CODE) {
+      const {isMacCode, codeNum} = this.props.navbar;
+      if (isMacCode) {
+        this.props.navbar.setMacCode(false);
+        this.props.navbar.setCodeNum(codeNum, false);
+      } else {
+        this.props.navbar.setMacCode(true);
+        this.props.navbar.setCodeNum(codeNum, true);
+      }
+    } else {
+      const {isMacCode} = this.props.navbar;
+      const codeNum = parseInt(item.key, 10);
+      this.props.navbar.setCodeNum(codeNum, isMacCode);
+    }
   };
 
   render() {
-    const {codeNum} = this.props.navbar;
+    const {codeNum, isMacCode} = this.props.navbar;
 
     const codeMenu = (
       <Menu onClick={this.changeCodeTheme}>
@@ -28,6 +41,15 @@ class CodeTheme extends React.Component {
             </div>
           </Menu.Item>
         ))}
+        <Menu.Divider />
+        <Menu.Item key={IS_APPLE_CODE}>
+          <div id="nice-menu-codetheme-apple" className="nice-codetheme-item">
+            <span>
+              <span className="nice-codetheme-item-flag">{isMacCode && <span>{RIGHT_SYMBOL}</span>}</span>
+              <span className="nice-codetheme-item-name"> Mac 风格</span>
+            </span>
+          </div>
+        </Menu.Item>
       </Menu>
     );
 

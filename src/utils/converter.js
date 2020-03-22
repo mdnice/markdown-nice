@@ -119,7 +119,7 @@ export const solveHtml = () => {
   }
 
   // 代码注释换行预览显示问题
-  const codeReg = /<pre([^>])*class="custom"([^>])*><code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
+  const codeReg = /<pre([^>])*class="custom"([^>])*>(.*?)<code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
   const codeMatch = res.match(codeReg);
   if (codeMatch) {
     const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
