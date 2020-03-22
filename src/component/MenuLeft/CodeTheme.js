@@ -46,7 +46,7 @@ class CodeTheme extends React.Component {
           <div id="nice-menu-codetheme-apple" className="nice-codetheme-item">
             <span>
               <span className="nice-codetheme-item-flag">{isMacCode && <span>{RIGHT_SYMBOL}</span>}</span>
-              <span className="nice-codetheme-item-name"> Mac 风格</span>
+              <span className="nice-codetheme-item-name">Mac 风格</span>
             </span>
           </div>
         </Menu.Item>
