@@ -1,4 +1,4 @@
-![](https://imgkr.cn-bj.ufileos.com/3ee4192f-591b-46e1-8e65-3d26fd80a01c.svg)
+![](https://imgkr.cn-bj.ufileos.com/b4c806dd-caa2-43f4-82d9-796ce6716267.svg)
 
 请使用 **Chrome** 浏览器。
 
