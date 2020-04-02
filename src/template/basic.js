@@ -180,7 +180,7 @@ export default `/*默认样式，最佳实践*/
   margin-bottom: 10px;
 }
 #nice pre code {
-  display: block;
+  display: -webkit-box;
   font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
   border-radius: 0px;
   font-size: 12px;

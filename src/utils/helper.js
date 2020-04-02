@@ -103,8 +103,8 @@ export const markdownParser = new MarkdownIt({
         const formatted = highlightjs
           .highlight(lang, str, true)
           .value.replace(/\n/g, "<br/>") // 换行用br表示
-          .replace(/\s/g, "&#8203; ") // 零宽空格加空格替换空格，防止chrome 中 display: -webkit-box 显示问题
-          .replace(/span&#8203;/g, "span");
+          .replace(/\s/g, "&nbsp;") // 用nbsp替换空格
+          .replace(/span&nbsp;/g, "span "); // span标签修复
         return '<pre class="custom"><code class="hljs">' + formatted + "</code></pre>";
       } catch (e) {
         console.log(e);
