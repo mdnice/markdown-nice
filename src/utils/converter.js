@@ -87,11 +87,11 @@ export const solveHtml = () => {
   const element = document.getElementById(BOX_ID);
 
   // 代码注释换行问题
-  const hljss = element.getElementsByClassName("hljs");
-  for (const hljs of hljss) {
-    hljs.innerHTML = hljs.innerHTML.replace(/\r\n/g, "<br>");
-    hljs.innerHTML = hljs.innerHTML.replace(/\n/g, "<br>");
-  }
+  // const hljss = element.getElementsByClassName("hljs");
+  // for (const hljs of hljss) {
+  //   hljs.innerHTML = hljs.innerHTML.replace(/\r\n/g, "<br>");
+  //   hljs.innerHTML = hljs.innerHTML.replace(/\n/g, "<br>");
+  // }
 
   const inner = element.children[0].children;
   for (const item of inner) {
@@ -119,12 +119,12 @@ export const solveHtml = () => {
   }
 
   // 代码注释换行预览显示问题
-  const codeReg = /<pre([^>])*class="custom"([^>])*>(.*?)<code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
-  const codeMatch = res.match(codeReg);
-  if (codeMatch) {
-    const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
-    res = res.replace(codeReg, convertTag);
-  }
+  // const codeReg = /<pre([^>])*class="custom"([^>])*>(.*?)<code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
+  // const codeMatch = res.match(codeReg);
+  // if (codeMatch) {
+  //   const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
+  //   res = res.replace(codeReg, convertTag);
+  // }
   return res;
 };
 

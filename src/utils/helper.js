@@ -100,9 +100,12 @@ export const markdownParser = new MarkdownIt({
     // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
     if (lang && highlightjs.getLanguage(lang)) {
       try {
-        return (
-          '<pre class="custom"><code class="hljs">' + highlightjs.highlight(lang, str, true).value + "</code></pre>"
-        );
+        const formatted = highlightjs
+          .highlight(lang, str, true)
+          .value.replace(/\n/g, "<br/>") // 换行用br表示
+          .replace(/\s/g, "&#8203; ") // 零宽空格加空格替换空格，防止chrome 中 display: -webkit-box 显示问题
+          .replace(/span&#8203;/g, "span");
+        return '<pre class="custom"><code class="hljs">' + formatted + "</code></pre>";
       } catch (e) {
         console.log(e);
       }
