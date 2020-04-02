@@ -4,14 +4,14 @@ export default `/*自定义样式，实时生效*/
 * 页边距 padding:30px;
 * 全文字体 font-family:optima-Regular;
 * 英文换行 word-break:break-all;
-color:#595959;
+color:#2b2b2b;
 */
 #nice {
   line-height: 1.25;
-  color: #595959;
+  color: #2b2b2b;
   font-family: Optima-Regular, Optima, PingFangTC-Light, PingFangSC-light, PingFangTC-light;
   letter-spacing: 2px;
-  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.04) 3%, rgba(0, 0, 0, 0) 3%);
   background-size: 20px 20px;
   background-position: center center;
 }
@@ -28,7 +28,7 @@ color:#595959;
 * 首行缩进 text-indent:2em;
 */
 #nice p {
-  color: #595959;
+  color: #2b2b2b;
   margin: 10px 0px;
   letter-spacing: 2px;
   font-size: 14px;
@@ -70,7 +70,7 @@ color:#595959;
   width: 20px;
   height: 20px;
   background-size: 20px 20px;
-  background-image:url(https://img.alicdn.com/tfs/TB1iq.pypY7gK0jSZKzXXaikpXa-32-32.png);
+  background-image:url(//imgkr.cn-bj.ufileos.com/15fdfb3c-b350-4da9-928e-5f8c506ec325.png);
   margin-bottom: -22px;
 }
 
@@ -94,18 +94,18 @@ color:#595959;
 
 /* 三级标题 */
 #nice h3 {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
   text-align: center;
   position:relative;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 /* 三级标题内容 */
 #nice h3 .content {
   border-bottom: 2px solid RGBA(79, 177, 249, .65);
-  color: #595959;
+  color: #2b2b2b;
   padding-bottom:2px
 }
 
@@ -114,37 +114,38 @@ color:#595959;
   width:30px;
   height:30px;
   display:block;
-  background-image:url(https://img.alicdn.com/tfs/TB1Hm.xyEz1gK0jSZLeXXb9kVXa-153-153.png);
-  position:absolute;
+  background-image:url(//imgkr.cn-bj.ufileos.com/cdf294d0-6361-4af9-85e2-0913f0eb609b.png);
   background-position:center;
   background-size:30px;
-	left:0;
-  right:0;
   margin:auto;
   opacity:1;
   background-repeat:no-repeat;
-  bottom:17px;
+  margin-bottom:-8px;
 }
 
 /* 三级标题修饰 请参考有实例的主题 */
 #nice h3:after {}
 
 #nice h4 .content {
-  font-size: 14px;
+  height:16px;
+  line-height:16px;
+  font-size: 16px;
 }
 
 #nice h4 .content:before{
   content:'';
-  background-image:url(https://img.alicdn.com/tfs/TB1Lc.uyuL2gK0jSZFmXXc7iXXa-32-32.png);
+  background-image:url(//imgkr.cn-bj.ufileos.com/899e43b7-5a08-4ac6-aa00-1c45f169a65b.png);
   display:inline-block;
   width:16px;
   height:16px;
-  background-size:16px;
-  background-position:center;
+  background-size:100% ;
+  background-position:left bottom;
   background-repeat:no-repeat;
+  width: 16px;
+  height: 15px;
+  line-height:15px;
   margin-right:6px;
-  position:relative;
-  top:4px
+  margin-bottom:-2px;
 }
 
 /* 无序列表整体样式
@@ -278,7 +279,7 @@ color:#595959;
 #nice figcaption {
   display: block;
   font-size: 13px;
-  color: #595959;
+  color: #2b2b2b;
 }
 
 #nice figcaption:before{
@@ -301,7 +302,9 @@ color:#595959;
   background: RGBA(59, 170, 250, .1);
   display:inline-block;
   padding:0 2px;
-  border-radius:2px
+  border-radius:2px;
+  height:21px;
+  line-height:22px;
 }
 
 /* 非微信代码块
