@@ -14,6 +14,7 @@ export const CONTENT = "content";
 export const STYLE = "style";
 export const TEMPLATE_NUM = "template_num";
 export const CODE_NUM = "code_num";
+export const THEME_LIST = "theme_list";
 export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
@@ -41,107 +42,6 @@ export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "fon
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
-
-export const TEMPLATE_OPTIONS = [
-  {
-    id: "normal",
-    name: "默认主题",
-    author: "zhning12",
-  },
-  {
-    id: "orangeHeart",
-    name: "橙心",
-    author: "zhning12",
-  },
-  {
-    id: "ink",
-    name: "墨黑",
-    author: "Mayandev",
-  },
-  {
-    id: "purple",
-    name: "姹紫",
-    author: "djmaxwow",
-  },
-  {
-    id: "cyan",
-    name: "嫩青",
-    author: "画手",
-  },
-  {
-    id: "green",
-    name: "绿意",
-    author: "夜尽天明",
-  },
-  {
-    id: "red",
-    name: "红绯",
-    author: "HeyRain",
-  },
-  {
-    id: "wechatFormat",
-    name: "WeChat-Format",
-    author: "画手",
-  },
-  {
-    id: "blue",
-    name: "蓝莹",
-    author: "谭淞宸",
-  },
-  {
-    id: "scienceBlue",
-    name: "科技蓝",
-    author: "夜尽天明",
-  },
-  {
-    id: "blueCyan",
-    name: "兰青",
-    author: "Krahets",
-  },
-  {
-    id: "shanchui",
-    name: "山吹",
-    author: "ElyhG",
-  },
-  {
-    id: "blueMountain",
-    name: "前端之巅同款",
-    author: "HeyRain",
-  },
-  {
-    id: "geekBlack",
-    name: "极客黑",
-    author: "hyper-xx",
-  },
-  {
-    id: "simple",
-    name: "简",
-    author: "aco",
-  },
-  {
-    id: "rose",
-    name: "蔷薇紫",
-    author: "HeyRain",
-  },
-  {
-    id: "cuteGreen",
-    name: "萌绿",
-    author: "koala",
-  },
-  {
-    id: "fullStackBlue",
-    name: "全栈蓝",
-    author: "Nealyang",
-    isNew: true,
-  },
-  {
-    id: "custom",
-    name: "自定义",
-    author: "",
-  },
-];
-
-export const TEMPLATE_CUSTOM_NUM = TEMPLATE_OPTIONS.length - 1;
 
 export const CODE_OPTIONS = [
   {
@@ -202,3 +102,11 @@ export const SITDOWN_OPTIONS = [
     value: "其他",
   },
 ];
+
+export const THEME_API = () => {
+  const currentPage = 0;
+  const pageSize = 20;
+  const checked = true;
+  const order = "ASC";
+  return `https://api.mdnice.com/themes?currentPage=${currentPage}&pageSize=${pageSize}&checked=${checked}&order=${order}`;
+};
