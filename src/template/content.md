@@ -120,6 +120,14 @@
 
 ![这里写图片描述](https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png)
 
+可以通过在图片尾部添加宽度和高度控制图片大小，用法如下：
+
+![同时设置宽度和高度](https://imgkr.cn-bj.ufileos.com/4f78d8e8-77f6-4ea8-8a93-305087da06bd.png =150x150)
+
+![只设置宽度，推荐使用百分比](https://imgkr.cn-bj.ufileos.com/4f78d8e8-77f6-4ea8-8a93-305087da06bd.png =40%x)
+
+该语法比较特殊，其他 Markdown 编辑器不完全通用。
+
 支持 jpg、png、gif、svg 等图片格式，**其中 svg 文件仅可在微信公众平台中使用**，svg 文件示例如下：
 
 ![](https://my-wechat.mdnice.com/mdnice/i_am_svg_20191024083453.svg)

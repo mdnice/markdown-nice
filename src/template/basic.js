@@ -208,7 +208,6 @@ export default `/*默认样式，最佳实践*/
 #nice img {
   display: block;
   margin: 0 auto;
-  width: auto;
   max-width: 100%;
 }
 
@@ -387,7 +386,8 @@ export default `/*默认样式，最佳实践*/
 }
 
 #nice .imageflow-layer1 {
-  margin: 1em auto;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
   white-space: normal;
   border: 0px none;
   padding: 0px;
@@ -412,7 +412,18 @@ export default `/*默认样式，最佳实践*/
   display: inline-block;
 }
 
+#nice .imageflow-caption {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0px;
+  color: #888;
+}
+
 #nice .nice-suffix-juejin-container {
   margin-top: 20px !important;
+}
+
+#nice figure a {
+  border: none;
 }
 `;

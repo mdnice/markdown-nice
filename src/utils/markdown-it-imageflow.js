@@ -34,7 +34,7 @@ const imageFlowPlugin = (md, opt) => {
 
   md.renderer.rules.imageFlow = (tokens, idx) => {
     const start = `<section class="imageflow-layer1"><section class="imageflow-layer2">`;
-    const end = `</section></section>`;
+    const end = `</section></section><p class="imageflow-caption"><<< 左右滑动见更多 >>></p>`;
     const contents = tokens[idx].meta;
     let wrappedContent = "";
     let alt;
