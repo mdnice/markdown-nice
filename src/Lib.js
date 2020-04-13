@@ -67,7 +67,7 @@ class Lib extends Component {
               <img
                 alt=""
                 style={{width: "100%"}}
-                src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"
+                src="https://imgkr.cn-bj.ufileos.com/c3690018-4a92-4766-ac7e-ac54dd54c093.jpg"
               />
             }
           />

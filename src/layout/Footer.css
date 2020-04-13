@@ -1,0 +1,17 @@
+.nice-footer-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background: white;
+  padding: 0 20px;
+  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, "PingFang SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.nice-footer-container p {
+  font-size: 12px;
+  margin: 0;
+  margin-right: 10px;
+}

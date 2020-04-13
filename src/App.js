@@ -9,6 +9,7 @@ import throttle from "lodash.throttle";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
+import Footer from "./layout/Footer";
 import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
 import EditorMenu from "./layout/EditorMenu";
@@ -331,6 +332,7 @@ class App extends Component {
               <Dialog />
               <EditorMenu />
             </div>
+            <Footer />
           </div>
         )}
       </appContext.Consumer>
