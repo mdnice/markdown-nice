@@ -10,6 +10,7 @@ import App from "./App";
 import content from "./store/content";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
+import footer from "./store/footer";
 import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
 import view from "./store/view";
@@ -50,6 +51,7 @@ class Lib extends Component {
         content={content}
         userInfo={userInfo}
         navbar={navbar}
+        footer={footer}
         dialog={dialog}
         imageHosting={imageHosting}
         view={view}

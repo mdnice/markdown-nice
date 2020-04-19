@@ -1,16 +1,81 @@
 import React, {Component} from "react";
+import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 import {wordCalc} from "../utils/helper";
+import SitDownConverter from "../utils/sitdownConverter";
+import {SITDOWN_OPTIONS} from "../utils/constant";
 
 import "./Footer.css";
 
 @inject("content")
 @inject("navbar")
+@inject("footer")
 @observer
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      engineDesc: SITDOWN_OPTIONS[0].desc,
+    };
+  }
+
+  handleMessage = () => {
+    const {pasteHtml, pasteText} = this.props.footer;
+    let toMarkdown = SitDownConverter.GFM;
+    switch (this.state.platform) {
+      case "csdn":
+        toMarkdown = SitDownConverter.CSDN;
+        break;
+      case "wechat":
+        toMarkdown = SitDownConverter.Wechat;
+        break;
+      case "juejin":
+        toMarkdown = SitDownConverter.Juejin;
+        break;
+      case "zhihu":
+        toMarkdown = SitDownConverter.Zhihu;
+        break;
+      default:
+        toMarkdown = SitDownConverter.Wechat;
+        break;
+    }
+    const markdown = toMarkdown(pasteHtml);
+    const {content} = this.props.content;
+    const convertContent = content.replace(pasteText, markdown);
+    this.props.content.setContent(convertContent);
+
+    // 设置粘贴检测为 false
+    this.props.footer.setPasteHtmlChecked(false);
+  };
+
+  handleMenu = ({key, domEvent}) => {
+    if (key === "thanks") {
+      const w = window.open("about:blank");
+      w.location.href = "https://github.com/mdnice/sitdown";
+    } else {
+      this.setState({engineDesc: key});
+    }
+    domEvent.stopPropagation();
+  };
+
   render() {
+    const menu = (
+      <Menu onClick={this.handleMenu}>
+        {SITDOWN_OPTIONS.map((option) => (
+          <Menu.Item key={option.desc}>
+            <div>{option.value}</div>
+          </Menu.Item>
+        ))}
+        <Menu.Divider />
+        <Menu.Item key="thanks">
+          <a>SitDown 引擎提供支持</a>
+        </Menu.Item>
+      </Menu>
+    );
+
     const {content, themeList} = this.props.content;
     const {templateNum} = this.props.navbar;
+    const {isPasteHtmlChecked} = this.props.footer;
 
     const lineCount = content.split("\n").length;
     const wordCount = wordCalc(content);
@@ -29,6 +94,24 @@ class Footer extends Component {
           主题：
           {themeName}
         </p>
+        {isPasteHtmlChecked && (
+          <div className="nice-footer-message" onClick={this.handleMessage}>
+            点击使用
+            <Dropdown overlay={menu} trigger={["click"]} overlayClassName="nice-footer-overlay" placement="topLeft">
+              <a
+                id="nice-menu-pattern"
+                className="nice-footer-link"
+                href="#"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {this.state.engineDesc}
+              </a>
+            </Dropdown>
+            将粘贴的富文本转换为 markdown
+          </div>
+        )}
       </div>
     );
   }

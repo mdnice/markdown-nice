@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Modal, Select} from "antd";
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/addon/search/searchcursor";
 import "codemirror/keymap/sublime";
@@ -15,7 +14,6 @@ import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
 import EditorMenu from "./layout/EditorMenu";
 import SearchBox from "./component/SearchBox";
-import SitDownConverter from "./utils/sitdownConverter";
 
 import "./App.css";
 import "./utils/mdMirror.css";
@@ -27,7 +25,6 @@ import {
   IMAGE_HOSTING_TYPE,
   MJX_DATA_FORMULA,
   MJX_DATA_FORMULA_TYPE,
-  SITDOWN_OPTIONS,
 } from "./utils/constant";
 import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
@@ -35,9 +32,9 @@ import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
 import bindHotkeys, {betterTab, rightClick} from "./utils/hotkey";
 
-const {Option} = Select;
 @inject("content")
 @inject("navbar")
+@inject("footer")
 @inject("view")
 @inject("dialog")
 @inject("imageHosting")
@@ -48,7 +45,6 @@ class App extends Component {
     this.scale = 1;
     this.handleUpdateMathjax = throttle(updateMathjax, 1500);
     this.state = {
-      platform: "wechat",
       focus: false,
     };
   }
@@ -241,15 +237,10 @@ class App extends Component {
     }
   };
 
-  handlePlatform = (value) => {
-    this.setState({platform: value});
-  };
-
   handlePaste = (instance, e) => {
     const cbData = e.clipboardData;
 
     const insertPasteContent = (cm, content) => {
-      // editor.insertText(content);
       const {length} = cm.getSelections();
       cm.replaceSelections(Array(length).fill(content));
       this.setState(
@@ -271,55 +262,13 @@ class App extends Component {
     if (cbData) {
       const html = cbData.getData("text/html");
       const text = cbData.getData("TEXT");
+      insertPasteContent(instance, text);
       if (html) {
-        Modal.confirm({
-          title: "检测到粘贴了富文本，是否使用 sitdown 转换为 markdown？",
-          content: (
-            <div>
-              <p>选择引擎：</p>
-              <Select
-                defaultValue={this.state.platform}
-                style={{width: 300, marginBottom: "20px"}}
-                onChange={this.handlePlatform}
-              >
-                {SITDOWN_OPTIONS.map((option) => (
-                  <Option key={option.key} value={option.key}>
-                    {option.value}
-                  </Option>
-                ))}
-              </Select>
-            </div>
-          ),
-          onOk: () => {
-            let toMarkdown = SitDownConverter.GFM;
-            switch (this.state.platform) {
-              case "csdn":
-                toMarkdown = SitDownConverter.CSDN;
-                break;
-              case "wechat":
-                toMarkdown = SitDownConverter.Wechat;
-                break;
-              case "juejin":
-                toMarkdown = SitDownConverter.Juejin;
-                break;
-              case "zhihu":
-                toMarkdown = SitDownConverter.Zhihu;
-                break;
-              default:
-                toMarkdown = SitDownConverter.Wechat;
-                break;
-            }
-            const markdown = toMarkdown(html, {fromPaste: true});
-            insertPasteContent(instance, markdown);
-          },
-          onCancel: () => {
-            insertPasteContent(instance, text);
-          },
-          cancelText: "不转换",
-          okText: "转换",
-        });
+        this.props.footer.setPasteHtmlChecked(true);
+        this.props.footer.setPasteHtml(html);
+        this.props.footer.setPasteText(text);
       } else {
-        insertPasteContent(instance, text);
+        this.props.footer.setPasteHtmlChecked(false);
       }
     }
   };

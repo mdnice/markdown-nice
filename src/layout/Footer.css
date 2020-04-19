@@ -13,5 +13,34 @@
 .nice-footer-container p {
   font-size: 12px;
   margin: 0;
-  margin-right: 10px;
+  margin-right: 20px;
+}
+
+.nice-footer-message {
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nice-footer-message:hover {
+  color: #333;
+}
+
+.nice-footer-link {
+  color: #333;
+  font-size: 12px;
+  padding: 0px 5px;
+  cursor: pointer;
+}
+
+.nice-footer-link:hover {
+  color: #333;
+}
+
+.nice-footer-link:focus {
+  color: #333;
+  background: #e6f7ff;
+}
+
+.nice-footer-overlay {
 }
