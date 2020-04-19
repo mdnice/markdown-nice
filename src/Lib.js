@@ -10,6 +10,7 @@ import App from "./App";
 import content from "./store/content";
 import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
+import footer from "./store/footer";
 import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
 import view from "./store/view";
@@ -50,6 +51,7 @@ class Lib extends Component {
         content={content}
         userInfo={userInfo}
         navbar={navbar}
+        footer={footer}
         dialog={dialog}
         imageHosting={imageHosting}
         view={view}
@@ -67,7 +69,7 @@ class Lib extends Component {
               <img
                 alt=""
                 style={{width: "100%"}}
-                src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"
+                src="https://imgkr.cn-bj.ufileos.com/c3690018-4a92-4766-ac7e-ac54dd54c093.jpg"
               />
             }
           />

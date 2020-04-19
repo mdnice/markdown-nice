@@ -15,7 +15,7 @@ class SitDownDialog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      platform: "wechat",
+      platform: "default",
       sourceCode: "",
     };
   }
