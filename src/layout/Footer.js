@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Menu, Dropdown} from "antd";
+import {Menu, Dropdown, message} from "antd";
 import {observer, inject} from "mobx-react";
 import {wordCalc} from "../utils/helper";
 import SitDownConverter from "../utils/sitdownConverter";
 import {SITDOWN_OPTIONS} from "../utils/constant";
+import SvgIcon from "../icon";
 
 import "./Footer.css";
 
@@ -46,6 +47,8 @@ class Footer extends Component {
 
     // 设置粘贴检测为 false
     this.props.footer.setPasteHtmlChecked(false);
+
+    message.success("转换成功！");
   };
 
   handleMenu = ({key, domEvent}) => {
@@ -99,14 +102,15 @@ class Footer extends Component {
             点击使用
             <Dropdown overlay={menu} trigger={["click"]} overlayClassName="nice-footer-overlay" placement="topLeft">
               <a
-                id="nice-menu-pattern"
-                className="nice-footer-link"
+                id="nice-footer-engine"
+                className="nice-footer-engine"
                 href="#"
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
               >
                 {this.state.engineDesc}
+                <SvgIcon name="down" style={style.svgIcon} fill="#40a9ff" />
               </a>
             </Dropdown>
             将粘贴的富文本转换为 markdown
@@ -116,5 +120,12 @@ class Footer extends Component {
     );
   }
 }
+
+const style = {
+  svgIcon: {
+    width: "12px",
+    height: "12px",
+  },
+};
 
 export default Footer;

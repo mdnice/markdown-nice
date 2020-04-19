@@ -6,38 +6,55 @@
   width: 100%;
   height: 20px;
   background: white;
-  padding: 0 20px;
-  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, "PingFang SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding: 0 10px;
+  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, "PingFang SC", Cambria, Cochin, Georgia,
+    Times, "Times New Roman", serif;
 }
 
 .nice-footer-container p {
   font-size: 12px;
   margin: 0;
-  margin-right: 20px;
+  padding: 0 10px;
 }
 
 .nice-footer-message {
+  display: flex;
+  align-items: center;
   color: #333;
   font-size: 12px;
   cursor: pointer;
+  background: #e6f7ff;
+  animation: gradientChange 5s ease forwards;
+  height: 100%;
+  padding: 0 10px;
+}
+
+@keyframes gradientChange {
+  100% {
+    background: white;
+  }
 }
 
 .nice-footer-message:hover {
   color: #333;
+  background: #e6f7ff;
+  animation: none;
 }
 
-.nice-footer-link {
+.nice-footer-engine {
+  display: flex;
   color: #333;
   font-size: 12px;
+  line-height: 12px;
   padding: 0px 5px;
   cursor: pointer;
 }
 
-.nice-footer-link:hover {
+.nice-footer-engine:hover {
   color: #333;
 }
 
-.nice-footer-link:focus {
+.nice-footer-engine:focus {
   color: #333;
   background: #e6f7ff;
 }
