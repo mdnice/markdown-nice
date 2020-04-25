@@ -82,7 +82,7 @@ class Footer extends Component {
 
     const lineCount = content.split("\n").length;
     const wordCount = wordCalc(content);
-    const themeName = themeList[templateNum].name;
+    const themeName = themeList[templateNum] && themeList[templateNum].name;
     return (
       <div className="nice-footer-container">
         <p>
