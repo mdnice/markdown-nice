@@ -34,6 +34,7 @@ export default `/*默认样式，最佳实践*/
 #nice h6 {
   margin-top: 30px;
   margin-bottom: 15px;
+  padding: 0px;
   font-weight: bold;
   color: black;
 }
