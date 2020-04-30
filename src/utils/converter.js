@@ -78,12 +78,16 @@ export const solveJuejinCode = (html) => {
   // 掘金代码不换行问题
   const brReg = /<pre([^>])*class="custom"([^>])*>(.*?)<\/pre>/g;
   const brMatchList = html.match(brReg);
-  for (const item of brMatchList) {
-    const content = item
-      .replace(/display: -webkit-box;/g, "display: block;") // -webkit-box替换为block
-      .replace(/<br>/g, "\n") // <br>替换为\n
-      .replace(/(\n{2,})/g, "\n<span/>\n"); // 对于大于等于2个换行时的额外处理
-    html = html.replace(item, content);
+  console.log(brMatchList);
+  if (brMatchList) {
+    for (const item of brMatchList) {
+      const content = item
+        .replace(/display: -webkit-box;/g, "display: block;") // -webkit-box替换为block
+        .replace(/<br>/g, "\n") // <br>替换为\n
+        .replace(/(\n{2,})/g, "\n<span/>\n"); // 对于大于等于2个换行时的额外处理
+      console.log(typeof item);
+      html = html.replace(new RegExp(item), content);
+    }
   }
   return html;
 };
