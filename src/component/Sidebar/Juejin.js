@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
 import {message, Tooltip} from "antd";
 
-import {solveHtml, solveJuejinMath, juejinSuffix, copySafari} from "../../utils/converter";
+import {solveHtml, solveJuejinMath, solveJuejinCode, addJuejinSuffix, copySafari} from "../../utils/converter";
 import {LAYOUT_ID, CODE_NUM, ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
 import SvgIcon from "../../icon";
 import "./Juejin.css";
@@ -26,8 +26,9 @@ class Juejin extends Component {
     const layout = document.getElementById(LAYOUT_ID); // 保护现场
     const html = layout.innerHTML;
     solveJuejinMath();
-    juejinSuffix();
+    addJuejinSuffix();
     this.html = solveHtml();
+    this.html = solveJuejinCode(this.html);
     copySafari(this.html);
     message.success("已复制且添加 mdnice 排版后缀，感谢宣传，请到稀土掘金粘贴");
     layout.innerHTML = html; // 恢复现场
