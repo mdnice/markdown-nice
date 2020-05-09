@@ -82,10 +82,10 @@ export const solveJuejinCode = (html) => {
     for (const item of brMatchList) {
       const content = item
         .replace(/display: -webkit-box;/g, "display: block;") // -webkit-box替换为block
-        .replace(/<br>/g, "\n") // <br>替换为\n
-        .replace(/(\n{2,})/g, "\n<span/>\n") // 对于大于等于2个换行时的额外处理
+        .replace(/<br>/g, "\n<span/>") // <br>替换为\n<span/>
         .replace(/&nbsp;/g, " "); // 空格转回，不转回遇到 "$ " 情况会出现问题
 
+      console.log(content);
       html = html.replace(item, content);
     }
   }
