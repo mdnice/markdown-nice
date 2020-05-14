@@ -117,11 +117,15 @@
   .nice-wx-box {
     overflow: visible;
     box-shadow: none;
+    width: 100%;
   }
   .nice-style-editing {
     display: none;
   }
   #nice-rich-text {
     padding: 0 !important;
+  }
+  .nice-footer-container {
+    display: none;
   }
 }
