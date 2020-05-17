@@ -305,3 +305,33 @@ export const wordCalc = (data) => {
   }
   return count;
 };
+
+export const hasCookie = (key) => {
+  const cookie = document.cookie.split(";");
+  for (const item of cookie) {
+    const dict = item.trim().split("=");
+    if (dict[0] === key) {
+      return true;
+    }
+  }
+  return false;
+};
+
+export const getCookie = (key) => {
+  const cookie = document.cookie.split(";");
+  for (const item of cookie) {
+    const dict = item.trim().split("=");
+    if (dict[0] === key) {
+      return dict[1];
+    }
+  }
+  return null;
+};
+
+export const setCookie = (key, value) => {
+  document.cookie = `${key}=${value}; domain=.mdnice.com; path=/;`;
+};
+
+export const removeCookie = (key) => {
+  document.cookie = `${key}=; domain=.mdnice.com; path=/; expires=${new Date(0)};`;
+};

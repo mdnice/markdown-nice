@@ -1,8 +1,17 @@
-.nice-user-link {
+.nice-btn-login {
   border: none;
+  width: 20px;
+  height: 20px;
 }
 
-.nice-user-icon {
-  width: 30px;
-  height: 30px;
+.nice-btn-login-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.nice-username {
+  color: #333;
+  font-size: 14px;
+  padding: 8px 10px;
+  cursor: pointer;
 }

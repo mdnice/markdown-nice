@@ -11,9 +11,10 @@ import CodeTheme from "../component/MenuLeft/CodeTheme";
 import Setting from "../component/MenuLeft/Setting";
 import View from "../component/MenuLeft/View";
 
+import LogIn from "../component/MenuLeft/User";
+
 import "./Navbar.css";
 
-// @inject("userInfo")
 @inject("view")
 @observer
 class Navbar extends Component {
@@ -32,6 +33,7 @@ class Navbar extends Component {
               {title}
             </section>
           )}
+          <LogIn />
           <File />
           <Pattern />
           <Function />

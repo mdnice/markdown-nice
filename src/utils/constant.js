@@ -7,6 +7,13 @@ export const CLIENT_SECRET =
 export const PROXY = "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token";
 export const SM_MS_PROXY = "https://cors-anywhere.herokuapp.com/https://sm.ms/api/upload";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
+
+export const USERNAME = "username";
+export const AVATAR = "avatar";
+export const USERID = "userId";
+export const EMAIL = "email";
+export const TOKEN = "token";
+
 export const MJX_DATA_FORMULA = "data-formula";
 export const MJX_DATA_FORMULA_TYPE = "data-formula-type";
 
@@ -110,7 +117,7 @@ export const SITDOWN_OPTIONS = [
 
 export const THEME_API = () => {
   const currentPage = 0;
-  const pageSize = 20;
+  const pageSize = 17;
   const checked = true;
   const order = "ASC";
   return `https://api.mdnice.com/themes?currentPage=${currentPage}&pageSize=${pageSize}&checked=${checked}&order=${order}`;

@@ -17,6 +17,7 @@ import Close from "./Close";
 import FontCase from "./FontCase";
 import Replace from "./Replace";
 import ReplaceAll from "./ReplaceAll";
+import User from "./User";
 
 export default (props) => {
   switch (props.name) {
@@ -54,6 +55,8 @@ export default (props) => {
       return <Replace {...props} />;
     case "replaceAll":
       return <ReplaceAll {...props} />;
+    case "user":
+      return <User {...props} />;
     default:
       return <svg />;
   }

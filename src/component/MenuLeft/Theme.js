@@ -2,8 +2,8 @@ import React from "react";
 import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {RIGHT_SYMBOL, TEMPLATE_NUM, MARKDOWN_THEME_ID, THEME_LIST, STYLE, THEME_API} from "../../utils/constant";
-import {replaceStyle} from "../../utils/helper";
+import {RIGHT_SYMBOL, TEMPLATE_NUM, MARKDOWN_THEME_ID, THEME_LIST, STYLE, THEME_API, TOKEN} from "../../utils/constant";
+import {replaceStyle, getCookie} from "../../utils/helper";
 import TEMPLATE from "../../template/index";
 import "./Theme.css";
 import axios from "axios";
@@ -14,7 +14,6 @@ import axios from "axios";
 @observer
 class Theme extends React.Component {
   changeTemplate = (item) => {
-    console.log(item);
     const index = parseInt(item.key, 10);
     const {themeId, css} = this.props.content.themeList[index];
     this.props.navbar.setTemplateNum(index);
@@ -34,19 +33,40 @@ class Theme extends React.Component {
     this.props.view.setStyleEditorOpen(!isStyleEditorOpen);
   };
 
+  subscribeMore = () => {
+    const w = window.open("about:blank");
+    w.location.href = "https://preview.mdnice.com/themes";
+  };
+
   componentDidMount = async () => {
     let themeList = null;
     try {
-      const {
-        data: response,
-        data: {data},
-      } = await axios.get(THEME_API());
-      if (!response.success) {
-        throw new Error();
+      const token = getCookie(TOKEN);
+      let response;
+      let remoteThemelist;
+      if (token) {
+        // 如果处于登录状态，则读取订阅的主题
+        response = await axios.get(`https://api.mdnice.com/themes/editor`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!response.data.success) {
+          throw new Error();
+        }
+        remoteThemelist = response.data.data;
+      } else {
+        // 否则取之前的主题
+        response = await axios.get(THEME_API());
+        if (!response.data.success) {
+          throw new Error();
+        }
+        remoteThemelist = response.data.data.themeList;
       }
+
       themeList = [
         {themeId: "normal", name: "默认主题", css: TEMPLATE.normal},
-        ...data.themeList,
+        ...remoteThemelist,
         {themeId: "custom", name: "自定义", css: TEMPLATE.custom},
       ];
       this.props.content.setThemeList(themeList);
@@ -96,6 +116,16 @@ class Theme extends React.Component {
           </Menu.Item>
         ))}
         <Menu.Divider />
+        <li className="nice-themeselect-menu-item">
+          <div id="nice-menu-subscribe-more" className="nice-themeselect-theme-item" onClick={this.subscribeMore}>
+            <span>
+              <span className="nice-themeselect-theme-item-flag" />
+              <span className="nice-themeselect-theme-item-name nice-menu-subscribe-more">订阅更多主题</span>
+            </span>
+          </div>
+        </li>
+        <Menu.Divider />
+
         <li className="nice-themeselect-menu-item">
           <div id="nice-menu-view-css" className="nice-themeselect-theme-item" onClick={this.toggleStyleEditor}>
             <span>

@@ -94,7 +94,7 @@ class AboutDialog extends Component {
           <img
             alt="图片描述"
             style={style.leftImgWidth}
-            src="https://my-wechat.mdnice.com/mdnice/bonus_20191007150639.png"
+            src="https://imgkr.cn-bj.ufileos.com/08fc021c-952b-4417-b040-ebbe43e22dec.png"
           />
           <img
             alt="图片描述"

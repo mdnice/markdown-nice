@@ -47,3 +47,7 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
+.nice-menu-subscribe-more {
+  font-weight: bold;
+}
