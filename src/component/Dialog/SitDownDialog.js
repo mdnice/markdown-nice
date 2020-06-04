@@ -102,7 +102,7 @@ class SitDownDialog extends Component {
           id="nice-sitdown-dialog-doc"
           rel="noopener noreferrer"
           target="_blank"
-          href="https://docs.mdnice.com/#/sitdown"
+          href="https://preview.mdnice.com/article/user/sitdown/"
         >
           详细文档
         </a>

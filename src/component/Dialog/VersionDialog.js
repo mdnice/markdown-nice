@@ -36,7 +36,7 @@ class VersionDialog extends Component {
 
   handleDocs = () => {
     const w = window.open("about:blank");
-    w.location.href = "https://docs.mdnice.com";
+    w.location.href = "https://preview.mdnice.com/articles/";
   };
 
   componentDidMount = async () => {
@@ -91,7 +91,7 @@ class VersionDialog extends Component {
               id="nice-version-dialog-doc"
               style={{fontWeight: "bold"}}
               alt=""
-              href="https://docs.mdnice.com"
+              href="https://preview.mdnice.com/articles/"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -104,7 +104,6 @@ class VersionDialog extends Component {
                 id="nice-version-dialog-recommend"
                 style={{fontWeight: "bold", borderBottom: "double"}}
                 alt=""
-                // href="https://docs.mdnice.com/#/beta"
                 href={this.state.recommend.link}
                 rel="noopener noreferrer"
                 target="_blank"

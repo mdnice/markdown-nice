@@ -5,7 +5,7 @@ import "../common.css";
 class Question extends Component {
   handleClick = () => {
     const w = window.open("about:blank");
-    w.location.href = "https://github.com/mdnice/markdown-nice/issues/163";
+    w.location.href = "https://preview.mdnice.com/article/user/solve/";
   };
 
   render() {

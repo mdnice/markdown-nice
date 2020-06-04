@@ -102,7 +102,11 @@ class QiniuOSS extends Component {
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
           <span>配置后请在右上角进行切换，</span>
-          <a rel="noopener noreferrer" target="_blank" href="https://docs.mdnice.com/#/qiniu-image-hosting">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://preview.mdnice.com/article/developer/qiniu-image-hosting/"
+          >
             七牛云图床配置文档
           </a>
         </Form.Item>

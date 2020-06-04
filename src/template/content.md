@@ -301,4 +301,4 @@ Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 
 ### 5.4 更多文档
 
-更多文档请参考 [markdown-nice-docs](https://docs.mdnice.com "更多文档")
+更多文档请参考 [markdown-nice-docs](https://preview.mdnice.com/articles/ "更多文档")
