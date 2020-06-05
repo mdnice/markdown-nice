@@ -156,6 +156,35 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 #nice table tr td {
 }
 
+/*
+ * 表格圆度半径(border-radius) 设置
+ */
+#nice table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+/* 表格左上角
+ * 圆度半径 border-top-left-radius: 12px;
+ */
+#nice table tr:first-child th:first-child {
+}
+/* 表格右上角 
+ * 圆度半径 border-top-right-radius: 12px;
+ */
+#nice table tr:first-child th:last-child {
+}
+/* 表格左下角 
+ * 圆度半径 border-bottom-left-radius: 12px;
+ */
+#nice table tr:last-child td:first-child {
+}
+/* 表格右下角
+ * 圆度半径 border-bottom-right-radius: 12px;
+ */
+#nice table tr:last-child td:last-child {
+}
+
+
 /* 脚注文字 */
 #nice .footnote-word {
 }
