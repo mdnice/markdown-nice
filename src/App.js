@@ -323,7 +323,7 @@ class App extends Component {
     return (
       <appContext.Consumer>
         {({defaultTitle}) => (
-          <div className="App">
+          <div className="nice-app">
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
