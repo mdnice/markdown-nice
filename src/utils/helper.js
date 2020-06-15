@@ -100,6 +100,9 @@ markdownParserWechat
 export const markdownParser = new MarkdownIt({
   html: true,
   highlight: (str, lang) => {
+    if (lang === undefined || lang === "") {
+      lang = "bash";
+    }
     // 加上custom则表示自定义样式，而非微信专属，避免被remove pre
     if (lang && highlightjs.getLanguage(lang)) {
       try {

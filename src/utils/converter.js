@@ -85,7 +85,6 @@ export const solveJuejinCode = (html) => {
         .replace(/<br>/g, "\n<span/>") // <br>替换为\n<span/>
         .replace(/&nbsp;/g, " "); // 空格转回，不转回遇到 "$ " 情况会出现问题
 
-      console.log(content);
       html = html.replace(item, content);
     }
   }
