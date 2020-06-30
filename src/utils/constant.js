@@ -117,7 +117,7 @@ export const SITDOWN_OPTIONS = [
 
 export const THEME_API = () => {
   const currentPage = 0;
-  const pageSize = 17;
+  const pageSize = 10;
   const checked = true;
   const order = "ASC";
   return `https://api.mdnice.com/themes?currentPage=${currentPage}&pageSize=${pageSize}&checked=${checked}&order=${order}`;
