@@ -8,7 +8,7 @@ import markdownItRuby from "markdown-it-ruby";
 import markdownItImsize from "markdown-it-imsize";
 
 import markdownItSpan from "./markdown-it-span";
-import markdownItTableWrap from "./markdown-it-table-wrap";
+import markdownItTableContainer from "./markdown-it-table-container";
 import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import markdownItImageFlow from "./markdown-it-imageflow";
@@ -82,7 +82,7 @@ export const markdownParserWechat = new MarkdownIt({
 
 markdownParserWechat
   .use(markdownItSpan) // 在标题标签中添加span
-  .use(markdownItTableWrap) // 在表格外部添加容器
+  .use(markdownItTableContainer) // 在表格外部添加容器
   .use(markdownItRemovepre) // 移除代码段中的 pre code
   .use(markdownItMath) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
@@ -124,7 +124,7 @@ export const markdownParser = new MarkdownIt({
 
 markdownParser
   .use(markdownItSpan) // 在标题标签中添加span
-  .use(markdownItTableWrap) // 在表格外部添加容器
+  .use(markdownItTableContainer) // 在表格外部添加容器
   .use(markdownItMath) // 数学公式
   .use(markdownItLinkfoot) // 修改脚注
   .use(markdownItTableOfContents, {

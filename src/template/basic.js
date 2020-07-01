@@ -227,6 +227,12 @@ export default `/*默认样式，最佳实践*/
   font-size: 14px;
 }
 
+
+/*表格容器 */
+#nice .table-container{
+  overflow-x: auto;
+}
+
 /*表格*/
 #nice table {
   display: table;
@@ -257,6 +263,12 @@ export default `/*默认样式，最佳实践*/
 #nice table tr th {
   font-weight: bold;
   background-color: #f0f0f0;
+}
+
+/* 表格最小列宽4个汉字 */
+#nice table tr th:nth-of-type(n),
+#nice table tr td:nth-of-type(n){
+  min-width:85px;
 }
 
 /* 微信代码块 */

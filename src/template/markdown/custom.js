@@ -156,6 +156,14 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 #nice table tr td {
 }
 
+/* 
+ * 表格列宽控制
+ * 最小列宽 min-width: 85px;
+*/
+#nice table tr th:nth-of-type(n),
+#nice table tr td:nth-of-type(n){
+}
+
 /* 脚注文字 */
 #nice .footnote-word {
 }
