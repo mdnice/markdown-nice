@@ -149,6 +149,13 @@ export default `/* 全局属性
 }
 
 /*
+ * 表格容器
+ */
+#nice .table_wrap{
+  overflow-x: auto;
+}
+
+/*
  * 表格内的单元格
  * 字体大小 font-size: 16px;
  * 边框 border: 1px solid #ccc;
@@ -156,6 +163,12 @@ export default `/* 全局属性
  */
 #nice table tr th,
 #nice table tr td {
+}
+/* 
+ * 表格列宽控制
+ * 最小列宽 min-width: 100px;
+*/
+#nice table tr td:nth-of-type(n){
 }
 
 /* 脚注文字 */
