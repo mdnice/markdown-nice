@@ -157,9 +157,10 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 }
 
 /* 
- * 表格列宽控制
+ * 某一列表格列宽控制
+ * n 可以修改为具体数字，不修改时表示所有列
  * 最小列宽 min-width: 85px;
-*/
+ */
 #nice table tr th:nth-of-type(n),
 #nice table tr td:nth-of-type(n){
 }

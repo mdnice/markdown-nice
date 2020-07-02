@@ -5,12 +5,12 @@ function makeRule() {
       var curToken = state.tokens[i];
       if (curToken.type === "table_open") {
         var tableContainerStart = new state.Token("html_inline", "", 0);
-        tableContainerStart.content = `<figure class="table-container">`;
+        tableContainerStart.content = `<section class="table-container">`;
         arr.push(tableContainerStart);
         arr.push(curToken);
       } else if (curToken.type === "table_close") {
         var tableContainerClose = new state.Token("html_inline", "", 0);
-        tableContainerClose.content = `</figure>`;
+        tableContainerClose.content = `</section>`;
         arr.push(curToken);
         arr.push(tableContainerClose);
       } else {
