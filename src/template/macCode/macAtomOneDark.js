@@ -104,7 +104,7 @@ hue-6-2: #e6c07b
 #nice .custom:before {
   content: '';
   display:block;
-  background: url(https://imgkr.cn-bj.ufileos.com/97e4eed2-a992-4976-acf0-ccb6fb34d308.png);
+  background: url(https://files.mdnice.com/point.png);
   height: 30px;
   width: 100%;
   background-size:40px;

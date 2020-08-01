@@ -91,16 +91,8 @@ class AboutDialog extends Component {
           就更好啦。
         </p>
         <div style={{display: "flex", alignItems: "center"}}>
-          <img
-            alt="图片描述"
-            style={style.leftImgWidth}
-            src="https://imgkr.cn-bj.ufileos.com/08fc021c-952b-4417-b040-ebbe43e22dec.png"
-          />
-          <img
-            alt="图片描述"
-            style={style.rightImgWidth}
-            src="https://imgkr.cn-bj.ufileos.com/c3690018-4a92-4766-ac7e-ac54dd54c093.jpg"
-          />
+          <img alt="图片描述" style={style.leftImgWidth} src="https://files.mdnice.com/bonus.png" />
+          <img alt="图片描述" style={style.rightImgWidth} src="https://files.mdnice.com/wechat.jpg" />
         </div>
       </Modal>
     );
