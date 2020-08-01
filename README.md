@@ -28,4 +28,6 @@ mdnice 组建了 **用户群** 和 **推文群**，欢迎反馈意见和公众�
 
 ## 友情链接
 
-[BlogHelper](https://github.com/ystcode/BlogHelper)：一键发布本地文章到主流博客平台的托盘助手
+- [BlogHelper](https://github.com/ystcode/BlogHelper)：一键发布本地文章到主流博客平台的托盘助手
+- [qrbtf](https://github.com/ciaochaos/qrbtf)：艺术二维码生成器
+- [编程如画](https://draw.mdnice.com/)：「编程如画」博客
