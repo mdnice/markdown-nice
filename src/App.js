@@ -202,16 +202,18 @@ class App extends Component {
     }
   };
 
-  handleFocus = () => {
+  handleFocus = (editor) => {
     this.setState({
       focus: true,
     });
+    this.props.onFocus && this.props.onFocus(editor.getValue());
   };
 
-  handleBlur = () => {
+  handleBlur = (editor) => {
     this.setState({
       focus: false,
     });
+    this.props.onBlur && this.props.onBlur(editor.getValue());
   };
 
   getStyleInstance = (instance) => {

@@ -2,11 +2,11 @@
   "name": "markdown-nice",
   "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "1.8.6",
+  "version": "1.8.7",
   "private": false,
   "main": "lib/Lib.js",
   "module": "lib/Lib.js",
-  "homepage": "https://mdnice.com",
+  "homepage": "https://www.mdnice.com",
   "license": "GPL-3.0",
   "typings": "./lib/index.d.ts",
   "repository": {

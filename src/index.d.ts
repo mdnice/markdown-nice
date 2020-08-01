@@ -22,6 +22,14 @@ export interface MarkdownNiceProps {
    */
   onTextChange?: (text: string) => void;
   /**
+   * 编辑器失去焦点函数
+   */
+  onBlur?: (text: string) => void;
+  /**
+   * 编辑器获得焦点函数
+   */
+  onFocus?: (text: string) => void;
+  /**
    * 是否启用用户提供的图床, 内部为图床的URL以及要显示的图床名称。
    */
   useImageHosting?: {

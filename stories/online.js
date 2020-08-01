@@ -18,6 +18,7 @@ function App() {
       defaultTitle={defaultTitle}
       defaultText={defaultText}
       onTextChange={t => console.log("text => ", t)}
+      onBlur={t => console.log("text => ", t)}
       useImageHosting={useImageHosting}
     />
   );
