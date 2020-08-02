@@ -289,6 +289,7 @@ class App extends Component {
     const {codeNum, previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
     const {isSearchOpen} = this.props.dialog;
+    const {onStyleChange, onStyleBlur, onStyleFocus} = this.props;
 
     const parseHtml =
       codeNum === 0
@@ -379,7 +380,7 @@ class App extends Component {
 
               {isStyleEditorOpen && (
                 <div id="nice-style-editor" className={styleEditingClass}>
-                  <StyleEditor />
+                  <StyleEditor onStyleChange={onStyleChange} onStyleBlur={onStyleBlur} onStyleFocus={onStyleFocus} />
                 </div>
               )}
 

@@ -30,6 +30,18 @@ export interface MarkdownNiceProps {
    */
   onFocus?: (text: string) => void;
   /**
+   * 自定义主题编辑器内容监听函数
+   */
+  onStyleChange?: (text: string) => void;
+  /**
+   * 自定义主题编辑器失去焦点函数
+   */
+  onStyleBlur?: (text: string) => void;
+  /**
+   * 自定义主题编辑器获得焦点函数
+   */
+  onStyleFocus?: (text: string) => void;
+  /**
    * 是否启用用户提供的图床, 内部为图床的URL以及要显示的图床名称。
    */
   useImageHosting?: {

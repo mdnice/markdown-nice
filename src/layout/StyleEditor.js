@@ -44,6 +44,7 @@ class StyleEditor extends Component {
         const {css} = themeList[templateNum];
         const style = `/*自定义样式，实时生效*/\n\n` + css;
         this.props.content.setCustomStyle(style);
+        this.props.onStyleChange && this.props.onStyleChange(style);
         this.props.navbar.setTemplateNum(themeList.length - 1);
       },
       onCancel: () => {},
@@ -60,16 +61,19 @@ class StyleEditor extends Component {
       } else {
         const style = editor.getValue();
         this.props.content.setCustomStyle(style);
+        this.props.onStyleChange && this.props.onStyleChange(style);
       }
     }
   };
 
-  handleFocus = () => {
+  handleFocus = (editor) => {
     this.focus = true;
+    this.props.onStyleFocus && this.props.onStyleFocus(editor.getValue());
   };
 
-  handleBlur = () => {
+  handleBlur = (editor) => {
     this.focus = false;
+    this.props.onStyleBlur && this.props.onStyleBlur(editor.getValue());
   };
 
   render() {

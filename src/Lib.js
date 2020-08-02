@@ -41,7 +41,17 @@ class Lib extends Component {
   }
 
   render() {
-    const {defaultTitle, defaultText, onTextChange, onBlur, onFocus, useImageHosting} = this.props;
+    const {
+      defaultTitle,
+      defaultText,
+      onTextChange,
+      onBlur,
+      onFocus,
+      onStyleChange,
+      onStyleBlur,
+      onStyleFocus,
+      useImageHosting,
+    } = this.props;
     const appCtx = {
       defaultTitle,
       useImageHosting,
@@ -63,6 +73,9 @@ class Lib extends Component {
               onTextChange={onTextChange}
               onBlur={onBlur}
               onFocus={onFocus}
+              onStyleChange={onStyleChange}
+              onStyleBlur={onStyleBlur}
+              onStyleFocus={onStyleFocus}
               useImageHosting={useImageHosting}
             />
           </appContext.Provider>
@@ -92,6 +105,9 @@ Lib.defaultProps = {
   onTextChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
+  onStyleChange: () => {},
+  onStyleBlur: () => {},
+  onStyleFocus: () => {},
   // eslint-disable-next-line react/default-props-match-prop-types
   useImageHosting: {
     url: "",
@@ -107,6 +123,9 @@ Lib.propTypes = {
   onTextChange: PropTypes.func,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
+  onStyleChange: PropTypes.func,
+  onStyleBlur: PropTypes.func,
+  onStyleFocus: PropTypes.func,
   // eslint-disable-next-line react/require-default-props
   useImageHosting: PropTypes.shape({
     url: PropTypes.string,
