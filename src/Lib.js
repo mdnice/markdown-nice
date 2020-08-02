@@ -55,6 +55,14 @@ class Lib extends Component {
     } = this.props;
     const appCtx = {
       defaultTitle,
+      defaultText,
+      onTextChange,
+      onTextBlur,
+      onTextFocus,
+      onStyleChange,
+      onStyleBlur,
+      onStyleFocus,
+      token,
       useImageHosting,
     };
     return (
