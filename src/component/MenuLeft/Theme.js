@@ -3,7 +3,7 @@ import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 
 import {RIGHT_SYMBOL, TEMPLATE_NUM, MARKDOWN_THEME_ID, THEME_LIST, STYLE, THEME_API, TOKEN} from "../../utils/constant";
-import {replaceStyle, getCookie} from "../../utils/helper";
+import {replaceStyle} from "../../utils/helper";
 import TEMPLATE from "../../template/index";
 import "./Theme.css";
 import axios from "axios";
@@ -41,7 +41,7 @@ class Theme extends React.Component {
   componentDidMount = async () => {
     let themeList = null;
     try {
-      const token = getCookie(TOKEN);
+      const {token} = this.props;
       let response;
       let remoteThemelist;
       if (token) {
@@ -56,7 +56,7 @@ class Theme extends React.Component {
         }
         remoteThemelist = response.data.data;
       } else {
-        // 否则取之前的主题
+        // 否则默认主题
         response = await axios.get(THEME_API());
         if (!response.data.success) {
           throw new Error();

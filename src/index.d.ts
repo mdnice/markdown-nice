@@ -24,11 +24,11 @@ export interface MarkdownNiceProps {
   /**
    * 编辑器失去焦点函数
    */
-  onBlur?: (text: string) => void;
+  onTextBlur?: (text: string) => void;
   /**
    * 编辑器获得焦点函数
    */
-  onFocus?: (text: string) => void;
+  onTextFocus?: (text: string) => void;
   /**
    * 自定义主题编辑器内容监听函数
    */
@@ -41,6 +41,10 @@ export interface MarkdownNiceProps {
    * 自定义主题编辑器获得焦点函数
    */
   onStyleFocus?: (text: string) => void;
+  /**
+   * 用户认证信息
+   */
+  token?: string;
   /**
    * 是否启用用户提供的图床, 内部为图床的URL以及要显示的图床名称。
    */

@@ -11,15 +11,13 @@ import CodeTheme from "../component/MenuLeft/CodeTheme";
 import Setting from "../component/MenuLeft/Setting";
 import View from "../component/MenuLeft/View";
 
-import LogIn from "../component/MenuLeft/User";
-
 import "./Navbar.css";
 
 @inject("view")
 @observer
 class Navbar extends Component {
   render() {
-    const {title} = this.props;
+    const {title, token} = this.props;
     const {isImmersiveEditing} = this.props.view;
     const niceNavbarClass = classnames({
       "nice-navbar": true,
@@ -33,12 +31,11 @@ class Navbar extends Component {
               {title}
             </section>
           )}
-          <LogIn />
           <File />
           <Pattern />
           <Function />
           <View />
-          <Theme />
+          <Theme token={token} />
           <CodeTheme />
           <Setting />
           <Help />

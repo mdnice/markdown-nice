@@ -45,11 +45,12 @@ class Lib extends Component {
       defaultTitle,
       defaultText,
       onTextChange,
-      onBlur,
-      onFocus,
+      onTextBlur,
+      onTextFocus,
       onStyleChange,
       onStyleBlur,
       onStyleFocus,
+      token,
       useImageHosting,
     } = this.props;
     const appCtx = {
@@ -71,12 +72,13 @@ class Lib extends Component {
             <App
               defaultText={defaultText}
               onTextChange={onTextChange}
-              onBlur={onBlur}
-              onFocus={onFocus}
+              onTextBlur={onTextBlur}
+              onTextFocus={onTextFocus}
               onStyleChange={onStyleChange}
               onStyleBlur={onStyleBlur}
               onStyleFocus={onStyleFocus}
               useImageHosting={useImageHosting}
+              token={token}
             />
           </appContext.Provider>
         ) : (
@@ -103,11 +105,12 @@ Lib.defaultProps = {
   defaultTitle: "",
   defaultText: "",
   onTextChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
+  onTextBlur: () => {},
+  onTextFocus: () => {},
   onStyleChange: () => {},
   onStyleBlur: () => {},
   onStyleFocus: () => {},
+  token: "",
   // eslint-disable-next-line react/default-props-match-prop-types
   useImageHosting: {
     url: "",
@@ -121,11 +124,12 @@ Lib.propTypes = {
   defaultTitle: PropTypes.string,
   defaultText: PropTypes.string,
   onTextChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
+  onTextBlur: PropTypes.func,
+  onTextFocus: PropTypes.func,
   onStyleChange: PropTypes.func,
   onStyleBlur: PropTypes.func,
   onStyleFocus: PropTypes.func,
+  token: PropTypes.string,
   // eslint-disable-next-line react/require-default-props
   useImageHosting: PropTypes.shape({
     url: PropTypes.string,

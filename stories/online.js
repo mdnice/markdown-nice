@@ -18,9 +18,10 @@ function App() {
       defaultTitle={defaultTitle}
       defaultText={defaultText}
       onTextChange={t => console.log("text => ", t)}
-      onBlur={t => console.log("text => ", t)}
+      onTextBlur={t => console.log("text => ", t)}
       onStyleChange={t => console.log("text => ", t)}
       onStyleBlur={t => console.log("text => ", t)}
+      token="12345"
       useImageHosting={useImageHosting}
     />
   );

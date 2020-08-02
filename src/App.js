@@ -206,14 +206,14 @@ class App extends Component {
     this.setState({
       focus: true,
     });
-    this.props.onFocus && this.props.onFocus(editor.getValue());
+    this.props.onTextFocus && this.props.onTextFocus(editor.getValue());
   };
 
   handleBlur = (editor) => {
     this.setState({
       focus: false,
     });
-    this.props.onBlur && this.props.onBlur(editor.getValue());
+    this.props.onTextBlur && this.props.onTextBlur(editor.getValue());
   };
 
   getStyleInstance = (instance) => {
@@ -289,7 +289,6 @@ class App extends Component {
     const {codeNum, previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
     const {isSearchOpen} = this.props.dialog;
-    const {onStyleChange, onStyleBlur, onStyleFocus} = this.props;
 
     const parseHtml =
       codeNum === 0
@@ -325,9 +324,9 @@ class App extends Component {
 
     return (
       <appContext.Consumer>
-        {({defaultTitle}) => (
+        {({defaultTitle, onStyleChange, onStyleBlur, onStyleFocus}) => (
           <div className="nice-app">
-            <Navbar title={defaultTitle} />
+            <Navbar title={defaultTitle} token={this.props.token} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
                 {isSearchOpen && <SearchBox />}
