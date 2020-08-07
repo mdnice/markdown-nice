@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://mdnice.com">
-<img width="500" src="https://files.mdnice.com/logo.svg"/>
+<img width="500" src="https://my-wechat.mdnice.com/logo.svg"/>
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
@@ -24,7 +24,7 @@ mdnice 组建了 **用户群** 和 **推文群**，欢迎反馈意见和公众�
 
 | 入群码                                                                                                | 赞赏码
 | ----------------------------------------------------------------------------------------------------- | --|
-| <img width="360px" src="https://files.mdnice.com/wechat.jpg"/> |<img width="300px" src="https://files.mdnice.com/bonus.png">
+| <img width="360px" src="https://my-wechat.mdnice.com/wechat.jpg"/> |<img width="300px" src="https://my-wechat.mdnice.com/bonus.png">
 
 ## 友情链接
 
