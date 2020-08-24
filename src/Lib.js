@@ -126,6 +126,7 @@ Lib.defaultProps = {
     isSmmsOpen: true,
     isQiniuyunOpen: true,
     isAliyunOpen: true,
+    isGiteeOpen: true,
   },
 };
 Lib.propTypes = {
@@ -145,6 +146,7 @@ Lib.propTypes = {
     isSmmsOpen: PropTypes.bool,
     isQiniuyunOpen: PropTypes.bool,
     isAliyunOpen: PropTypes.bool,
+    isGiteeOpen: PropTypes.bool,
   }),
 };
 

@@ -28,6 +28,7 @@ export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
 export const IS_MAC_CODE = "is_mac_code";
 export const NEWEST_VERSION = "newest_version";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
+export const GITEE_IMAGE_HOSTING = "gitee_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
 export const BASIC_THEME_ID = "basic-theme";
@@ -40,6 +41,7 @@ export const IMAGE_HOSTING_NAMES = {
   smms: "SM.MS",
   aliyun: "阿里云",
   qiniuyun: "七牛云",
+  gitee: "Gitee",
 };
 
 export const RIGHT_SYMBOL = "✔️";

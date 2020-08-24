@@ -6,6 +6,7 @@ import SvgIcon from "../../icon";
 
 import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
+import Gitee from "../ImageHosting/Gitee";
 
 import {uploadAdaptor} from "../../utils/imageHosting";
 import {SM_MS_PROXY, IMAGE_HOSTING_TYPE, IMAGE_HOSTING_NAMES} from "../../utils/constant";
@@ -81,6 +82,11 @@ class ImageDialog extends Component {
       uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials});
       // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
     }
+    // 使用Gitee图床
+    else if (this.props.imageHosting.type === "Gitee") {
+      uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials, images});
+      // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
+    }
     // 使用用户提供的图床或是默认mdnice图床
     else {
       uploadAdaptor({formData, file, onSuccess, onError, images});
@@ -143,6 +149,11 @@ class ImageDialog extends Component {
               {useImageHosting.isQiniuyunOpen ? (
                 <TabPane tab={IMAGE_HOSTING_NAMES.qiniuyun} key="3">
                   <QiniuOSS />
+                </TabPane>
+              ) : null}
+              {useImageHosting.isGiteeOpen ? (
+                <TabPane tab={IMAGE_HOSTING_NAMES.gitee} key="4">
+                  <Gitee />
                 </TabPane>
               ) : null}
             </Tabs>

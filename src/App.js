@@ -106,7 +106,7 @@ class App extends Component {
     if (this.props.useImageHosting === undefined) {
       return;
     }
-    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen} = this.props.useImageHosting;
+    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen, isGiteeOpen} = this.props.useImageHosting;
     if (name) {
       this.props.imageHosting.setHostingUrl(url);
       this.props.imageHosting.setHostingName(name);
@@ -121,6 +121,9 @@ class App extends Component {
     if (isQiniuyunOpen) {
       this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.qiniuyun);
     }
+    if (isGiteeOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.gitee);
+    }
 
     // 第一次进入没有默认图床时
     if (window.localStorage.getItem(IMAGE_HOSTING_TYPE) === null) {
@@ -133,6 +136,8 @@ class App extends Component {
         type = IMAGE_HOSTING_NAMES.aliyun;
       } else if (isQiniuyunOpen) {
         type = IMAGE_HOSTING_NAMES.qiniuyun;
+      } else if (isGiteeOpen) {
+        type = IMAGE_HOSTING_NAMES.isGitee;
       }
       this.props.imageHosting.setType(type);
       window.localStorage.setItem(IMAGE_HOSTING_TYPE, type);

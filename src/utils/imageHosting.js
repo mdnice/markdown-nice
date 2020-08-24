@@ -11,6 +11,7 @@ import {
   SM_MS_PROXY,
   ALIOSS_IMAGE_HOSTING,
   QINIUOSS_IMAGE_HOSTING,
+  GITEE_IMAGE_HOSTING,
   IMAGE_HOSTING_TYPE,
   IS_CONTAIN_IMG_NAME,
   IMAGE_HOSTING_NAMES,
@@ -320,9 +321,82 @@ export const aliOSSUpload = ({
   };
 };
 
+// Gitee存储上传
+export const giteeUpload = ({
+  formData = new FormData(),
+  file = {},
+  onProgress = () => {},
+  onSuccess = () => {},
+  onError = () => {},
+  headers = {},
+  withCredentials = false,
+  images = [],
+  content = null, // store content
+}) => {
+  showUploadNoti();
+
+  const config = JSON.parse(window.localStorage.getItem(GITEE_IMAGE_HOSTING));
+
+  const base64Reader = new FileReader();
+  base64Reader.readAsDataURL(file);
+  base64Reader.onload = (e) => {
+    const urlData = e.target.result;
+    const base64 = urlData.split(",").pop();
+
+    const date = new Date();
+    const seperator = "-";
+    const dir = date.getFullYear() + seperator + (date.getMonth() + 1) + seperator + date.getDate();
+
+    const url = `https://gitee.com/api/v5/repos/${config.username}/${config.repo}/contents/${dir}/${file.name}`;
+
+    formData.append("content", base64);
+    formData.append("access_token", config.token);
+    formData.append("message", "mdnice upload picture");
+
+    axios
+      .post(url, formData, {
+        withCredentials,
+        headers,
+        onUploadProgress: ({total, loaded}) => {
+          onProgress(
+            {
+              percent: parseInt(Math.round((loaded / total) * 100).toFixed(2), 10),
+            },
+            file,
+          );
+        },
+      })
+      .then(({data: response}) => {
+        if (response.code === "exception") {
+          throw response.message;
+        }
+        const names = response.content.name.split(".");
+        names.pop();
+        const filename = names.join(".");
+        const image = {
+          filename,
+          url: response.content.download_url,
+        };
+        if (content) {
+          writeToEditor({content, image});
+        }
+        images.push(image);
+        onSuccess(response, file);
+        setTimeout(() => {
+          hideUploadNoti();
+        }, 500);
+      })
+      .catch((error, info) => {
+        hideUploadNoti();
+        uploadError(error.toString() + " 可能存在图片名重复等问题");
+        onError(error, error.toString() + " 可能存在图片名重复等问题");
+      });
+  };
+};
+
 // 自动检测上传配置，进行上传
 export const uploadAdaptor = (...args) => {
-  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // SM.MS | 阿里云 | 七牛云 | 用户自定义图床
+  const type = localStorage.getItem(IMAGE_HOSTING_TYPE); // SM.MS | 阿里云 | 七牛云 | Gitee | 用户自定义图床
   const userType = imageHosting.hostingName;
   if (type === userType) {
     return customImageUpload(...args);
@@ -353,6 +427,13 @@ export const uploadAdaptor = (...args) => {
       return false;
     }
     return aliOSSUpload(...args);
+  } else if (type === IMAGE_HOSTING_NAMES.gitee) {
+    const config = JSON.parse(window.localStorage.getItem(GITEE_IMAGE_HOSTING));
+    if (!config.username.length || !config.repo.length || !config.token.length) {
+      message.error("请先配置 Gitee 图床");
+      return false;
+    }
+    return giteeUpload(...args);
   }
   return true;
 };

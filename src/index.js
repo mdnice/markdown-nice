@@ -9,9 +9,10 @@ ReactDOM.render(
     useImageHosting={{
       url: "https://imgkr.com/api/files/upload",
       name: "图壳",
-      isSmmsOpen: true,
-      isQiniuyunOpen: true,
+      isSmmsOpen: false,
+      isQiniuyunOpen: false,
       isAliyunOpen: true,
+      isGiteeOpen: true,
     }}
     defaultTitle="Markdown Nice"
   />,

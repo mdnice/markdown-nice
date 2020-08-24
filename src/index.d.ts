@@ -54,6 +54,7 @@ export interface MarkdownNiceProps {
     isSmmsOpen: boolean;
     isQiniuyunOpen: boolean;
     isAliyunOpen: boolean;
+    isGiteeOpen: boolean;
   };
 }
 
