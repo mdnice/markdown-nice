@@ -2,7 +2,7 @@
   "name": "markdown-nice",
   "author": "mdnice",
   "description": "a markdown editor with the function of style edition",
-  "version": "1.8.12",
+  "version": "1.8.13",
   "private": false,
   "main": "lib/Lib.js",
   "module": "lib/Lib.js",
