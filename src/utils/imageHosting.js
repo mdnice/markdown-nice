@@ -335,6 +335,10 @@ export const giteeUpload = ({
 }) => {
   showUploadNoti();
 
+  if (file.size / 1024 / 1024 > 1) {
+    message.warn("有图片超过 1 MB，无法使用");
+  }
+
   const config = JSON.parse(window.localStorage.getItem(GITEE_IMAGE_HOSTING));
 
   const base64Reader = new FileReader();
@@ -347,7 +351,8 @@ export const giteeUpload = ({
     const seperator = "-";
     const dir = date.getFullYear() + seperator + (date.getMonth() + 1) + seperator + date.getDate();
 
-    const url = `https://gitee.com/api/v5/repos/${config.username}/${config.repo}/contents/${dir}/${file.name}`;
+    const dateFilename = new Date().getTime() + "-" + file.name;
+    const url = `https://gitee.com/api/v5/repos/${config.username}/${config.repo}/contents/${dir}/${dateFilename}`;
 
     formData.append("content", base64);
     formData.append("access_token", config.token);
@@ -370,7 +375,7 @@ export const giteeUpload = ({
         if (response.code === "exception") {
           throw response.message;
         }
-        const names = response.content.name.split(".");
+        const names = file.name.split(".");
         names.pop();
         const filename = names.join(".");
         const image = {
