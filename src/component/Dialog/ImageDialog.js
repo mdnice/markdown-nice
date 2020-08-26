@@ -7,6 +7,7 @@ import SvgIcon from "../../icon";
 import AliOSS from "../ImageHosting/AliOSS";
 import QiniuOSS from "../ImageHosting/QiniuOSS";
 import Gitee from "../ImageHosting/Gitee";
+import GitHub from "../ImageHosting/GitHub";
 
 import {uploadAdaptor} from "../../utils/imageHosting";
 import {SM_MS_PROXY, IMAGE_HOSTING_TYPE, IMAGE_HOSTING_NAMES} from "../../utils/constant";
@@ -69,23 +70,23 @@ class ImageDialog extends Component {
     }
     // 使用阿里云图床
     if (this.props.imageHosting.type === "阿里云") {
-      // const configAli = JSON.parse(window.localStorage.getItem(ALIOSS_IMAGE_HOSTING));
       uploadAdaptor({file, onSuccess, onError, images});
     }
     // 使用七牛云图床
     else if (this.props.imageHosting.type === "七牛云") {
-      // const config = JSON.parse(window.localStorage.getItem(QINIUOSS_IMAGE_HOSTING));
       uploadAdaptor({file, onSuccess, onError, onProgress, images});
     }
     // 使用SM.MS图床
     else if (this.props.imageHosting.type === "SM.MS") {
       uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials});
-      // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
     }
     // 使用Gitee图床
     else if (this.props.imageHosting.type === "Gitee") {
       uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials, images});
-      // this.smmsUpload(formData, file, action, onProgress, onSuccess, onError, headers, withCredentials);
+    }
+    // 使用GitHub图床
+    else if (this.props.imageHosting.type === "GitHub") {
+      uploadAdaptor({formData, file, action, onProgress, onSuccess, onError, headers, withCredentials, images});
     }
     // 使用用户提供的图床或是默认mdnice图床
     else {
@@ -154,6 +155,11 @@ class ImageDialog extends Component {
               {useImageHosting.isGiteeOpen ? (
                 <TabPane tab={IMAGE_HOSTING_NAMES.gitee} key="4">
                   <Gitee />
+                </TabPane>
+              ) : null}
+              {useImageHosting.isGitHubOpen ? (
+                <TabPane tab={IMAGE_HOSTING_NAMES.github} key="5">
+                  <GitHub />
                 </TabPane>
               ) : null}
             </Tabs>

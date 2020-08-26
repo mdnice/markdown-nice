@@ -13,6 +13,7 @@ ReactDOM.render(
       isQiniuyunOpen: false,
       isAliyunOpen: true,
       isGiteeOpen: true,
+      isGitHubOpen: true,
     }}
     defaultTitle="Markdown Nice"
   />,

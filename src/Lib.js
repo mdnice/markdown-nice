@@ -127,6 +127,7 @@ Lib.defaultProps = {
     isQiniuyunOpen: true,
     isAliyunOpen: true,
     isGiteeOpen: true,
+    isGitHubOpen: true,
   },
 };
 Lib.propTypes = {
@@ -147,6 +148,7 @@ Lib.propTypes = {
     isQiniuyunOpen: PropTypes.bool,
     isAliyunOpen: PropTypes.bool,
     isGiteeOpen: PropTypes.bool,
+    isGitHubOpen: PropTypes.bool,
   }),
 };
 

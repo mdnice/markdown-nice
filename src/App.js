@@ -106,7 +106,7 @@ class App extends Component {
     if (this.props.useImageHosting === undefined) {
       return;
     }
-    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen, isGiteeOpen} = this.props.useImageHosting;
+    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen, isGiteeOpen, isGitHubOpen} = this.props.useImageHosting;
     if (name) {
       this.props.imageHosting.setHostingUrl(url);
       this.props.imageHosting.setHostingName(name);
@@ -123,6 +123,9 @@ class App extends Component {
     }
     if (isGiteeOpen) {
       this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.gitee);
+    }
+    if (isGitHubOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.github);
     }
 
     // 第一次进入没有默认图床时

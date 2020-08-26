@@ -55,6 +55,7 @@ export interface MarkdownNiceProps {
     isQiniuyunOpen: boolean;
     isAliyunOpen: boolean;
     isGiteeOpen: boolean;
+    isGitHubOpen: boolean;
   };
 }
 

@@ -45,7 +45,7 @@ export const getLocalDocuments = (db, DocumentID) => {
 export const setLocalDocuments = (db, localDocuments, document = {}) => {
   const draftIndex = 0;
   if (localDocuments[draftIndex + 1] && localDocuments[draftIndex + 1].Content === localDocuments[draftIndex].Content) {
-    console.log("内容未更新，不进行本地保存。");
+    // console.log("内容未更新，不进行本地保存。");
     return Promise.resolve();
   }
 
@@ -66,7 +66,7 @@ export const setLocalDocuments = (db, localDocuments, document = {}) => {
     }
 
     req.onsuccess = () => {
-      console.log("自动保存成功");
+      // console.log("自动保存成功");
       resolve();
     };
     req.onerror = (event) => {
@@ -95,7 +95,7 @@ export const setLocalDraft = (db, localDocuments, document = {}) => {
     });
 
     req.onsuccess = () => {
-      console.log("自动保存草稿成功");
+      // console.log("自动保存草稿成功");
       resolve();
     };
     req.onerror = (event) => {
