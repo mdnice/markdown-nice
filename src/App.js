@@ -26,7 +26,7 @@ import {
   MJX_DATA_FORMULA,
   MJX_DATA_FORMULA_TYPE,
 } from "./utils/constant";
-import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
+import {markdownParser, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
@@ -294,14 +294,11 @@ class App extends Component {
   }
 
   render() {
-    const {codeNum, previewType} = this.props.navbar;
+    const {previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
     const {isSearchOpen} = this.props.dialog;
 
-    const parseHtml =
-      codeNum === 0
-        ? markdownParserWechat.render(this.props.content.content)
-        : markdownParser.render(this.props.content.content);
+    const parseHtml = markdownParser.render(this.props.content.content);
 
     const mdEditingClass = classnames({
       "nice-md-editing": !isImmersiveEditing,

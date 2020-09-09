@@ -4,6 +4,7 @@ import classnames from "classnames";
 
 import File from "../component/MenuLeft/File";
 import Help from "../component/MenuLeft/Help";
+import Tutorial from "../component/MenuLeft/Tutorial";
 import Pattern from "../component/MenuLeft/Pattern";
 import Function from "../component/MenuLeft/Function";
 import Theme from "../component/MenuLeft/Theme";
@@ -39,6 +40,7 @@ class Navbar extends Component {
           <CodeTheme />
           <Setting />
           <Help />
+          <Tutorial />
         </div>
         <div className="nice-right-nav" />
       </div>

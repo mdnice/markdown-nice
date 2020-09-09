@@ -141,7 +141,7 @@ export default `/* 全局属性
 #nice p code, #nice li code {
 }
 
-/* 非微信代码块
+/* 
  * 代码块不换行 display: -webkit-box !important;
  * 代码块换行 display: block;
  */

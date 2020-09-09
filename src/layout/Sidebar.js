@@ -22,7 +22,7 @@ class Sidebar extends Component {
       <div className={niceSidebarClass}>
         <Wechat />
         <Zhihu />
-        {/* <Juejin /> */}
+        <Juejin />
         <PreviewType />
       </div>
     );

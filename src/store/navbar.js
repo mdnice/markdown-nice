@@ -26,7 +26,7 @@ class Navbar {
   @observable codeNum;
 
   // 是否为 Mac 风格代码
-  @observable isMacCode = false;
+  @observable isMacCode = true;
 
   // 预览类型
   @observable previewType;
@@ -55,14 +55,11 @@ class Navbar {
     window.localStorage.setItem(CODE_NUM, codeNum);
     // 更新style
     const {id, macId} = CODE_OPTIONS[codeNum];
-    // 非微信代码块
-    if (codeNum !== 0) {
-      //  Mac 风格代码
-      if (isMacCode) {
-        replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
-      } else {
-        replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
-      }
+    //  Mac 风格代码
+    if (isMacCode) {
+      replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
+    } else {
+      replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
     }
   };
 
@@ -117,12 +114,10 @@ store.isMacCode = window.localStorage.getItem(IS_MAC_CODE) === "true";
 
 // 初始化代码主题
 const {macId, id} = CODE_OPTIONS[store.codeNum];
-if (store.codeNum !== 0) {
-  if (store.isMacCode) {
-    replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
-  } else {
-    replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
-  }
+if (store.isMacCode) {
+  replaceStyle(CODE_THEME_ID, TEMPLATE.code[macId]);
+} else {
+  replaceStyle(CODE_THEME_ID, TEMPLATE.code[id]);
 }
 
 export default store;

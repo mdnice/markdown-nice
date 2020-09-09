@@ -3,7 +3,7 @@ import {observer, inject} from "mobx-react";
 import {message, Tooltip} from "antd";
 
 import {solveHtml, solveZhihuMath, copySafari} from "../../utils/converter";
-import {LAYOUT_ID, CODE_NUM, ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
+import {LAYOUT_ID, ENTER_DELAY, LEAVE_DELAY} from "../../utils/constant";
 import SvgIcon from "../../icon";
 import "./Zhihu.css";
 
@@ -19,10 +19,6 @@ class Zhihu extends Component {
   }
 
   copyZhihu = () => {
-    if (window.localStorage.getItem(CODE_NUM) === "0") {
-      message.warning("您当前使用的是微信代码主题，请切换其他代码主题后再试！");
-      return;
-    }
     const layout = document.getElementById(LAYOUT_ID); // 保护现场
     const html = layout.innerHTML;
     solveZhihuMath();
