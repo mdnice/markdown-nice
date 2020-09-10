@@ -106,7 +106,12 @@ if (!window.localStorage.getItem(IS_MAC_CODE)) {
 
 // 获取之前选择的主题状态
 store.templateNum = parseInt(window.localStorage.getItem(TEMPLATE_NUM), 10);
+
+if (parseInt(window.localStorage.getItem(CODE_NUM), 10) >= CODE_OPTIONS.length) {
+  window.localStorage.setItem(CODE_NUM, 0);
+}
 store.codeNum = parseInt(window.localStorage.getItem(CODE_NUM), 10);
+
 store.previewType = window.localStorage.getItem(PREVIEW_TYPE);
 store.isSyncScroll = window.localStorage.getItem(IS_SYNC_SCROLL) === "true";
 store.isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
