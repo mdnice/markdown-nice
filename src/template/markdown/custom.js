@@ -87,15 +87,26 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 #nice li section {
 }
 
-/* 引用
+/* 一级引用
  * 左边缘颜色 border-left-color: black;
  * 背景色 background: gray;
  */
-#nice blockquote {
+#nice .multiquote-1 {
 }
 
-/* 引用文字 */
-#nice blockquote p {
+/* 一级引用文字 */
+#nice .multiquote-1 p {
+}
+
+/* 二级引用
+ * 左边缘颜色 border-left-color: black;
+ * 背景色 background: gray;
+ */
+#nice .multiquote-2 blockquote {
+}
+
+/* 二级引用文字 */
+#nice .multiquote-2 blockquote p {
 }
 
 /* 链接 

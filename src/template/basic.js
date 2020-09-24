@@ -104,7 +104,7 @@ export default `/*默认样式，最佳实践*/
 }
 
 /*引用*/
-#nice blockquote {
+#nice .multiquote-1 {
   display: block;
   font-size: 0.9em;
   overflow: auto;
@@ -120,10 +120,17 @@ export default `/*默认样式，最佳实践*/
   margin-top: 20px;
 }
 
-#nice blockquote p {
+#nice .multiquote-1 p {
   margin: 0px;
   color: black;
   line-height: 26px;
+}
+
+#nice .multiquote-2 {
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #nice .table-of-contents a {

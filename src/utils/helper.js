@@ -9,9 +9,9 @@ import markdownItImsize from "markdown-it-imsize";
 
 import markdownItSpan from "./markdown-it-span";
 import markdownItTableContainer from "./markdown-it-table-container";
-import markdownItRemovepre from "./markdown-it-removepre";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import markdownItImageFlow from "./markdown-it-imageflow";
+import markdownItMultiquote from "./markdown-it-multiquote";
 import highlightjs from "./langHighlight";
 import markdownItLiReplacer from "./markdown-it-li";
 
@@ -93,6 +93,7 @@ markdownParser
   .use(markdownItDeflist) // 定义列表
   .use(markdownItLiReplacer) // li 标签中加入 p 标签
   .use(markdownItImageFlow) // 横屏移动插件
+  .use(markdownItMultiquote) // 给多级引用加 class
   .use(markdownItImsize);
 
 export const replaceStyle = (id, css) => {
