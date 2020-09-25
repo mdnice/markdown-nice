@@ -107,6 +107,16 @@ _这个是斜体_
 >> 
 >> ![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
 
+三级引用如下：
+
+>>> ### 三级引用示例
+>>>
+>>> 读一本好书，就是在和高尚的人谈话。 **——歌德**
+>>>
+>>> [Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
+>>> 
+>>> ![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
+
 ### 3.7 分割线
 
 可以在一行中用三个以上的减号来建立一个分隔线，同时需要在分隔线的上面空一行。如下：

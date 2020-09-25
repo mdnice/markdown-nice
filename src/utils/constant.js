@@ -146,8 +146,24 @@ export const TUTORIALS = [
   {
     title: "第4关：引用",
     content: `
-> 读一本好书，就是在和高尚的人谈话。 ——歌德`,
-    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-9/1599653309624-1.4引用.png",
+一级引用如下：
+
+> ### 一级引用示例
+> 
+> 读一本好书。 **——歌德**
+    
+二级引用如下：
+
+>> ### 二级引用示例
+>>
+>> 读一本好书。 **——歌德**
+
+三级引用如下：
+
+>>> ### 三级引用示例
+>>>
+>>> 读一本好书。**——歌德**`,
+    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-25/1601015511898-image.png",
   },
   {
     title: "第5关：粗体和斜体",
@@ -162,8 +178,12 @@ export const TUTORIALS = [
   {
     title: "第6关：链接",
     content: `
-[Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)`,
-    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-9/1599653309626-1.6链接.png",
+[Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
+
+图片还可以和链接嵌套使用，能够实现推荐卡片的效果，用法如下：
+
+[![Markdown Nice 最全功能介绍](https://my-wechat.mdnice.com/dance.gif)](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)`,
+    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-25/1601015877358-image.png",
   },
   {
     title: "第7关：分割线",
@@ -214,8 +234,38 @@ public class HelloWorld {
     System.out.println("Hello,World!"); // 向控制台打印一条语句
   }
 }
+\`\`\`
+
+支持以下语言种类：
+
+\`\`\`
+bash
+clojure，cpp，cs，css
+dart，dockerfile, diff
+erlang
+go，gradle，groovy
+haskell
+java，javascript，json，julia
+kotlin
+lisp，lua
+makefile，markdown，matlab
+objectivec
+perl，php，python
+r，ruby，rust
+scala，shell，sql，swift
+tex，typescript
+verilog，vhdl
+xml
+yaml
+\`\`\`
+
+diff 效果：
+
+\`\`\`diff
++ 新增项
+- 删除项
 \`\`\``,
-    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-9/1599653309633-2.2代码块.png",
+    picture: "https://gitee.com/guanpengchn/picture/raw/master/2020-9-25/1601015700784-image.png",
   },
   {
     title: "第13关：数学公式",

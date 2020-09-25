@@ -97,14 +97,21 @@ export default `/* 全局属性
 }
 
 /* 二级引用
- * 左边缘颜色 border-left-color: black;
- * 背景色 background: gray;
  */
-#nice .multiquote-2 blockquote {
+#nice .multiquote-2 {
 }
 
 /* 二级引用文字 */
-#nice .multiquote-2 blockquote p {
+#nice .multiquote-2 p {
+}
+
+/* 三级引用
+ */
+#nice .multiquote-3 {
+}
+
+/* 三级引用文字 */
+#nice .multiquote-3 p {
 }
 
 /* 链接 

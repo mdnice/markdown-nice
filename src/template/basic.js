@@ -133,6 +133,21 @@ export default `/*默认样式，最佳实践*/
   margin-top: 20px;
 }
 
+#nice .multiquote-3 {
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#nice .multiquote-3 p {
+  text-align: center;
+}
+
+#nice .multiquote-3 h3 {
+  text-align: center;
+}
+
 #nice .table-of-contents a {
   border: none;
   color: black;
