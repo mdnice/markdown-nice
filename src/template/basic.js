@@ -104,6 +104,10 @@ export default `/*默认样式，最佳实践*/
 }
 
 /*引用*/
+#nice blockquote {
+  border: none;
+}
+
 #nice .multiquote-1 {
   display: block;
   font-size: 0.9em;
