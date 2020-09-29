@@ -54,6 +54,10 @@ export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "fon
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
 
+export const MAX_MD_NUMBER = 100000;
+export const THROTTLE_MATHJAX_TIME = 1500;
+export const THROTTLE_MD_RENDER_TIME = 100;
+
 export const CODE_OPTIONS = [
   {
     id: "atomOneDark",

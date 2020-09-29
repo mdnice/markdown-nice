@@ -34,7 +34,6 @@ function hideUploadNoti() {
 
 function writeToEditor({content, image}) {
   const isContainImgName = window.localStorage.getItem(IS_CONTAIN_IMG_NAME) === "true";
-  console.log(isContainImgName);
   let text = "";
   if (isContainImgName) {
     text = `\n![${image.filename}](${image.url})\n`;
@@ -381,7 +380,7 @@ export const giteeUpload = ({
         const filename = names.join(".");
         const image = {
           filename,
-          url: response.content.download_url,
+          url: encodeURI(response.content.download_url),
         };
         if (content) {
           writeToEditor({content, image});
@@ -462,7 +461,7 @@ export const githubUpload = ({
 
         const image = {
           filename,
-          url: imageUrl,
+          url: encodeURI(imageUrl),
         };
         if (content) {
           writeToEditor({content, image});

@@ -25,12 +25,16 @@ import {
   IMAGE_HOSTING_TYPE,
   MJX_DATA_FORMULA,
   MJX_DATA_FORMULA_TYPE,
+  MAX_MD_NUMBER,
+  THROTTLE_MATHJAX_TIME,
+  THROTTLE_MD_RENDER_TIME,
 } from "./utils/constant";
 import {markdownParser, updateMathjax} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
 import bindHotkeys, {betterTab, rightClick} from "./utils/hotkey";
+import {message} from "antd";
 
 @inject("content")
 @inject("navbar")
@@ -43,7 +47,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.scale = 1;
-    this.handleUpdateMathjax = throttle(updateMathjax, 1500);
+    this.handleUpdateMathjax = throttle(updateMathjax, THROTTLE_MATHJAX_TIME);
+    this.handleThrottleChange = throttle(this.handleChange, THROTTLE_MD_RENDER_TIME);
     this.state = {
       focus: false,
     };
@@ -205,6 +210,10 @@ class App extends Component {
   handleChange = (editor) => {
     if (this.state.focus) {
       const content = editor.getValue();
+      if (content.length > MAX_MD_NUMBER) {
+        message.error(`字符数超过 ${MAX_MD_NUMBER}`);
+        return;
+      }
       this.props.content.setContent(content);
       this.props.onTextChange && this.props.onTextChange(content);
     }
@@ -258,7 +267,7 @@ class App extends Component {
           focus: true,
         },
         () => {
-          this.handleChange(cm);
+          this.handleThrottleChange(cm);
         },
       );
     };
@@ -349,7 +358,7 @@ class App extends Component {
                       RightClick: rightClick,
                     },
                   }}
-                  onChange={this.handleChange}
+                  onChange={this.handleThrottleChange}
                   onScroll={this.handleScroll}
                   onFocus={this.handleFocus}
                   onBlur={this.handleBlur}
