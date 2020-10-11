@@ -40,8 +40,36 @@ const handleWechatOuterLink = (content) => {
   }
 };
 
+const handleReferenceLink = (content) => {
+  const refLinkReg = /[\r\n]+(\s{0,3}?(?:(?:\d+\.|-)\s{0,3}?)?\[(\w+)\]:\s*([^"]+)(?:\s+"(\w+)")?\s*[\r\n]+)+/gi;
+  let res;
+  let newContent = content;
+
+  const lineHandler = (refLinkText) => {
+    const lineMatch = refLinkText.match(/\s{0,3}?(?:(?:\d+\.|-)\s{0,3}?)?\[(\w+)\]:\s*([^\s]+)(?:\s+"(\w+)")?/i);
+    if (!lineMatch) {
+      return;
+    }
+    const [rawLine, ref, link, title] = lineMatch;
+    if (/^https?:\/\/mp\.weixin\.qq\.com/i.test(link)) {
+      return;
+    }
+
+    const rawReg = new RegExp("\\[([^\\[\\]\\(\\)]+)\\]\\[" + ref + "\\]", "ig");
+    newContent = newContent.replace(rawReg, (_, name) => `[${name}](${link} "${title || name}")`).replace(rawLine, "");
+  };
+
+  // eslint-disable-next-line no-cond-assign
+  while ((res = refLinkReg.exec(content)) !== null) {
+    const lines = res[0].split(/[\r\n]+/).filter((v) => v.trim());
+    lines.forEach(lineHandler);
+  }
+  return newContent;
+};
+
 export const parseLinkToFoot = (content, store) => {
   content = handleWechatOuterLink(content);
+  content = handleReferenceLink(content);
   content = content.replace(/([\u4e00-\u9fa5])\$/g, "$1 $");
   content = content.replace(/\$([\u4e00-\u9fa5])/g, "$ $1");
   store.setContent(content);
