@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://mdnice.com">
-<img width="500" src="https://my-wechat.mdnice.com/logo.svg"/>
+<img width="500" src="https://files.mdnice.com/logo.svg"/>
 </a>
 </div>
 <h1 align="center">Markdown Nice</h1>
@@ -14,17 +14,17 @@
 
 ## 主题
 
-[Markdown Nice 主题列表](https://preview.mdnice.com/themes/)
+[Markdown Nice 主题列表](https://product.mdnice.com/themes/)
 
 > 欢迎提交主题，提供更多文章示例~~
 
 ## 关于
 
-mdnice 组建了 **用户群** 和 **推文群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
+mdnice 组建了**推文群**，欢迎反馈意见和公众号大佬们一起交流，关注公众号回复「排版」拉你入群。
 
-| 入群码                                                                                                | 赞赏码
-| ----------------------------------------------------------------------------------------------------- | --|
-| <img width="360px" src="https://my-wechat.mdnice.com/wechat.jpg"/> |<img width="300px" src="https://my-wechat.mdnice.com/bonus.png">
+| 入群码                                                                                           |
+| ------------------------------------------------------------------------------------------------ |
+| <img width="360px" src="https://files.mdnice.com/pic/cd3ca20c-896f-4cfc-9bdd-c4c58e69ba26.jpg"/> |
 
 ## 友情链接
 
