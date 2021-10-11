@@ -233,11 +233,11 @@ export const addStyleLabel = (styleLabels) => {
 };
 
 export const updateMathjax = () => {
-  window.MathJax.texReset();
-  window.MathJax.typesetClear();
-  window.MathJax.typesetPromise();
+  if(!window.MathJax) return
+  window.MathJax.texReset && window.MathJax.texReset();
+  window.MathJax.typesetClear && window.MathJax.typesetClear();
+  window.MathJax.typesetPromise && window.MathJax.typesetPromise();
 };
-
 export const download = (content, filename) => {
   const eleLink = document.createElement("a");
   eleLink.download = filename;
