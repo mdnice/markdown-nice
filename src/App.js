@@ -169,26 +169,26 @@ class App extends Component {
   };
 
   getInstance = (instance) => {
-    instance.editor.on("inputRead", function(cm, event) {
-      if (event.origin === "paste") {
-        var text = event.text[0]; // pasted string
-        var new_text = ""; // any operations here
-        cm.refresh();
-        const {length} = cm.getSelections();
-        // my first idea was
-        // note: for multiline strings may need more complex calculations
-        cm.replaceRange(new_text, event.from, {line: event.from.line, ch: event.from.ch + text.length});
-        // first solution did'nt work (before i guess to call refresh) so i tried that way, works too
-        if (length === 1) {
-          cm.execCommand("undo");
+   if(instance && instance.editor){
+      instance.editor.on("inputRead", function(cm, event) {
+        if (event.origin === "paste") {
+          var text = event.text[0]; // pasted string
+          var new_text = ""; // any operations here
+          cm.refresh();
+          const {length} = cm.getSelections();
+          // my first idea was
+          // note: for multiline strings may need more complex calculations
+          cm.replaceRange(new_text, event.from, {line: event.from.line, ch: event.from.ch + text.length});
+          // first solution did'nt work (before i guess to call refresh) so i tried that way, works too
+          if (length === 1) {
+            cm.execCommand("undo");
+          }
+          // cm.setCursor(event.from);
+          cm.replaceSelection(new_text);
         }
-        // cm.setCursor(event.from);
-        cm.replaceSelection(new_text);
-      }
     });
-    if (instance) {
-      this.props.content.setMarkdownEditor(instance.editor);
-    }
+    this.props.content.setMarkdownEditor(instance.editor);
+   }
   };
 
   handleScroll = () => {
