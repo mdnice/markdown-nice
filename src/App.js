@@ -169,7 +169,7 @@ class App extends Component {
   };
 
   getInstance = (instance) => {
-   if(instance && instance.editor){
+    if (instance && instance.editor) {
       instance.editor.on("inputRead", function(cm, event) {
         if (event.origin === "paste") {
           var text = event.text[0]; // pasted string
@@ -186,9 +186,9 @@ class App extends Component {
           // cm.setCursor(event.from);
           cm.replaceSelection(new_text);
         }
-    });
-    this.props.content.setMarkdownEditor(instance.editor);
-   }
+      });
+      this.props.content.setMarkdownEditor(instance.editor);
+    }
   };
 
   handleScroll = () => {
