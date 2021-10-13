@@ -256,9 +256,7 @@ const aliOSSPutObject = ({config, file, buffer, onSuccess, onError, images, cont
     message.error("OSS配置错误，请根据文档检查配置项");
     return;
   }
-
-  const OSSName = getOSSName(file.name);
-
+  const OSSName = getOSSName(`/article/${file.name}`);
   client
     .put(OSSName, buffer)
     .then((response) => {
