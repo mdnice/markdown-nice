@@ -11,7 +11,7 @@
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdnice/markdown-nice"
+    "url": "https://github.com/42how-dev/markdown-nice"
   },
   "scripts": {
     "start": "node scripts/start.js",
