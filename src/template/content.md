@@ -1,5 +1,3 @@
-![](https://my-wechat.mdnice.com/logo.svg)
-
 请使用 **Chrome** 浏览器。
 
 请阅读下方文本熟悉工具使用方法，本文可直接拷贝到微信中预览。
@@ -8,15 +6,10 @@
 
 - 支持自定义样式的 Markdown 编辑器
 - 支持微信公众号、知乎和稀土掘金
-- 欢迎扫码回复「排版」加入用户群
-
-![](https://my-wechat.mdnice.com/wechat.jpg)
 
 ## 2 主题
 
-**https://preview.mdnice.com/themes/**
-
-欢迎提交主题，提供更多文章示例~~
+支持在线编辑css样式并实时显示
 
 ## 3 通用语法
 
@@ -77,9 +70,7 @@ _这个是斜体_
 
 ### 3.5 链接
 
-微信公众号仅支持公众号文章链接，即域名为`https://mp.weixin.qq.com/`的合法链接。使用方法如下所示：
-
-对于该论述，欢迎读者查阅之前发过的文章，[你是《未来世界的幸存者》么？](https://mp.weixin.qq.com/s/s5IhxV2ooX3JN_X416nidA)
+微信公众号仅支持公众号文章链接，即域名为`https://mp.weixin.qq.com/`的合法链接。
 
 ### 3.6 引用
 
@@ -90,10 +81,6 @@ _这个是斜体_
 > ### 一级引用示例
 > 
 > 读一本好书，就是在和高尚的人谈话。 **——歌德**
-> 
-> [Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
-> 
-> ![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
 
 当使用多个 `>` 符号时，就会变成多级引用
 
@@ -102,10 +89,7 @@ _这个是斜体_
 >> ### 二级引用示例
 >>
 >> 读一本好书，就是在和高尚的人谈话。 **——歌德**
->>
->> [Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
 >> 
->> ![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
 
 三级引用如下：
 
@@ -113,9 +97,6 @@ _这个是斜体_
 >>>
 >>> 读一本好书，就是在和高尚的人谈话。 **——歌德**
 >>>
->>> [Markdown Nice最全功能介绍](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
->>> 
->>> ![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
 
 ### 3.7 分割线
 
@@ -151,13 +132,13 @@ _这个是斜体_
 
 插入图片，如果是行内图片则无图例，否则有图例，格式如下：
 
-![这里写图片描述](https://my-wechat.mdnice.com/wechat.jpg)
+![这里写图片描述](https://pic3.zhimg.com/80/v2-9a348e64b023cea546ec0fa33741f662_1440w.webp)
 
 可以通过在图片尾部添加宽度和高度控制图片大小，用法如下：
 
-![同时设置宽度和高度](https://my-wechat.mdnice.com/logo.png =150x150)
+![同时设置宽度和高度](https://pic3.zhimg.com/80/v2-9a348e64b023cea546ec0fa33741f662_1440w.webp =200x80)
 
-![只设置宽度，推荐使用百分比](https://my-wechat.mdnice.com/logo.png =40%x)
+![只设置宽度，推荐使用百分比](https://pic3.zhimg.com/80/v2-9a348e64b023cea546ec0fa33741f662_1440w.webp =40%x)
 
 该语法比较特殊，其他 Markdown 编辑器不完全通用。
 
@@ -172,7 +153,6 @@ _这个是斜体_
 
 图片还可以和链接嵌套使用，能够实现推荐卡片的效果，用法如下：
 
-[![Markdown Nice 最全功能介绍](https://my-wechat.mdnice.com/dance.gif)](https://mp.weixin.qq.com/s/lM808MxUu6tp8zU8SBu3sg)
 
 ## 4. 特殊语法
 
@@ -304,7 +284,7 @@ Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 
 通过`<![](url),![](url)>`这种语法设置横屏滑动滑动片，具体用法如下：
 
-<![蓝1](https://my-wechat.mdnice.com/blue.jpg),![绿2](https://my-wechat.mdnice.com/green.jpg),![红3](https://my-wechat.mdnice.com/red.jpg)>
+<![蓝1](https://pic3.zhimg.com/80/v2-9a348e64b023cea546ec0fa33741f662_1440w.webp),![绿2](https://pic2.zhimg.com/80/v2-d163f8a0ad8d66faeae86fd439b94709_1440w.webp),![红3](https://pic3.zhimg.com/80/v2-9a348e64b023cea546ec0fa33741f662_1440w.webp)>
 
 ## 5 其他语法
 
@@ -318,7 +298,3 @@ Markdown Nice 这么好用，简直是{喜大普奔|hē hē hē hē}呀！
 ### 5.2 UML
 
 不支持，推荐使用开源工具`https://draw.io/`制作后再导入图片
-
-### 5.3 更多文档
-
-更多文档请参考 [markdown-nice-docs](https://preview.mdnice.com/articles/ "更多文档")
