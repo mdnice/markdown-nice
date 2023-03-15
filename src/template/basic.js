@@ -313,7 +313,8 @@ export default `/*默认样式，最佳实践*/
 
 #nice .footnote-num {
   display: inline;
-  width: 10%; /*神奇，50px就不可以*/
+  /*width: 10%;*/ /*神奇，50px就不可以*/
+  margin-right: 4px;
   background: none;
   font-size: 80%;
   opacity: 0.6;
