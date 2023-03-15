@@ -144,7 +144,7 @@ _这个是斜体_
 
 支持 jpg、png、gif、svg 等图片格式，**其中 svg 文件仅可在微信公众平台中使用**，svg 文件示例如下：
 
-![](https://my-wechat.mdnice.com/i-am-svg.svg)
+![](https://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg =200x200)
 
 - 支持图片**拖拽和截图粘贴**到编辑器中上传，上传时使用当前选择的图床。
 - 可使用**格式->图片**上传本地图片，网站目前支持「图壳」图床，失败率低，但是只可保存一天用于排版
