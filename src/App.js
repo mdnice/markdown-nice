@@ -379,8 +379,8 @@ class App extends Component {
                 >
                   <section
                     id={LAYOUT_ID}
-                    data-tool="mdnice编辑器"
-                    data-website="https://www.mdnice.com"
+                    data-tool="mdnice"
+                    data-website="https://md.openhex.cn"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
                     }}

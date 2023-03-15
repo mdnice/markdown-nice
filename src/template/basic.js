@@ -4,7 +4,7 @@ export default `/*默认样式，最佳实践*/
 #nice {
   font-size: 16px;
   color: black;
-  padding: 0 10px;
+  padding: 0px;
   line-height: 1.6;
   word-spacing: 0px;
   letter-spacing: 0px;
