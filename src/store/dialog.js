@@ -17,6 +17,8 @@ class Dialog {
 
   @observable isSitDownOpen = false;
 
+  @observable isImportNotionOpen = false;
+
   @observable isTutorialOpen = false;
 
   @observable tutorialTitle;
@@ -68,6 +70,11 @@ class Dialog {
   @action
   setTutorialOpen = (isTutorialOpen) => {
     this.isTutorialOpen = isTutorialOpen;
+  };
+
+  @action
+  setImportNotionOpen = (isImportNotionOpen) => {
+    this.isImportNotionOpen = isImportNotionOpen;
   };
 
   @action

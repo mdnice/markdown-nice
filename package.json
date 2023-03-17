@@ -24,6 +24,7 @@
     "storybook": "npm run publish:npm && start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.3",
     "@sitdown/juejin": "^1.1.1",
     "@sitdown/wechat": "^1.1.4",
     "@sitdown/zhihu": "^1.1.2",
@@ -33,6 +34,7 @@
     "axios": "^0.18.0",
     "diff-match-patch": "^1.0.4",
     "highlight.js": "^9.15.6",
+    "http-proxy-middleware": "^2.0.6",
     "juice": "^5.2.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
@@ -47,6 +49,7 @@
     "mathjax": "^3.0.1",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "notion-to-md": "^2.5.5",
     "prettier": "^1.19.1",
     "qiniu-js": "^2.5.4",
     "react": "16.10.2",
