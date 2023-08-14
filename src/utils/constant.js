@@ -25,6 +25,7 @@ export const THEME_LIST = "theme_list";
 export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
+export const IS_LINK_2_XWL = "is_link_2_xwl";
 export const IS_MAC_CODE = "is_mac_code";
 export const NEWEST_VERSION = "newest_version";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";

@@ -8,6 +8,7 @@ import markdownItRuby from "markdown-it-ruby";
 import markdownItImsize from "markdown-it-imsize";
 
 import markdownItSpan from "./markdown-it-span";
+import markdownItLink2xwl from "./markdown-it-link2xwl";
 import markdownItTableContainer from "./markdown-it-table-container";
 import markdownItLinkfoot from "./markdown-it-linkfoot";
 import markdownItImageFlow from "./markdown-it-imageflow";
@@ -94,7 +95,8 @@ markdownParser
   .use(markdownItLiReplacer) // li 标签中加入 p 标签
   .use(markdownItImageFlow) // 横屏移动插件
   .use(markdownItMultiquote) // 给多级引用加 class
-  .use(markdownItImsize);
+  .use(markdownItImsize)
+  .use(markdownItLink2xwl);
 
 export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
