@@ -106,7 +106,7 @@
     "pretty-quick": "^1.11.1",
     "raw-loader": "^4.0.0",
     "react-app-polyfill": "^0.2.1",
-    "react-dev-utils": "^7.0.3",
+    "react-dev-utils": "^11.0.4",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "shelljs": "^0.8.3",
