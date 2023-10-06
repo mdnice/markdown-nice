@@ -16,7 +16,7 @@
   "scripts": {
     "start": "node --openssl-legacy-provider scripts/start.js ",
     "watch": "node ./watch.js",
-    "build": "node --max_old_space_size=4096 scripts/build.js",
+    "build": "node --openssl-legacy-provider --max_old_space_size=4096 scripts/build.js",
     "test": "node scripts/test.js",
     "analyze": "source-map-explorer build/static/js/*.js",
     "lint": "eslint src --ext ts,tsx,js --fix",
