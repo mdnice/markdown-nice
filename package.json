@@ -14,7 +14,7 @@
     "url": "https://github.com/mdnice/markdown-nice"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "node --openssl-legacy-provider scripts/start.js ",
     "watch": "node ./watch.js",
     "build": "node --max_old_space_size=4096 scripts/build.js",
     "test": "node scripts/test.js",
